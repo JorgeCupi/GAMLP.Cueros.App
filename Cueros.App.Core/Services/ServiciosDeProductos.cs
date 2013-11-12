@@ -12,7 +12,7 @@ namespace Cueros.App.Core.Services
     {
         /// <summary>
         /// Metodo RE CONTRA beta para realizar pruebas ante un archivo JSON que a futuro sera descargado desde la DB ya con ciertos parametros. Por el momento, no se realizan consultas especificas, si no solo se recibe una lista de 18 productos.
-        /// </summary>
+       /// </summary>
         /// <returns></returns>
         public static async Task<List<Producto>> ObtenerProductos()
         {

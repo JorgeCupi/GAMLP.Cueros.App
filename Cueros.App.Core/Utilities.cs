@@ -18,7 +18,7 @@ namespace Cueros.App.Core
             Resultado res = JsonConvert.DeserializeObject<Resultado>(response);
             return res.Productos;
         }
-
+                
         internal static List<Producto> GetProductsWithThisLine(string response, string line)
         {
             List<Producto> list = TransformToList(response);
