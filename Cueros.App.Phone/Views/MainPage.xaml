@@ -21,7 +21,7 @@
     </phone:PhoneApplicationPage.Resources>
 
     <phone:Panorama Title="CADEPIA">
-        <phone:PanoramaItem Header="destacados">
+        <phone:PanoramaItem Header="categoria">
             <ListBox DataContext="{Binding Source={StaticResource categoriavm}}" 
                      ItemsSource="{Binding Categoria}">
                 <ListBox.ItemsPanel>
