@@ -23,7 +23,7 @@
     <phone:Panorama Title="CADEPIA">
         <phone:PanoramaItem Header="categoria">
             <ListBox DataContext="{Binding Source={StaticResource categoriavm}}" 
-                     ItemsSource="{Binding Categoria}">
+                     ItemsSource="{Binding Productos}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <toolkit:WrapPanel Orientation="Horizontal"/>
@@ -33,7 +33,7 @@
                     <DataTemplate>
                         <toolkit:HubTile Size="Medium"
                                          Margin="5" 
-                                         Title="{Binding categoria}" 
+                                         Title="{Binding Fotos[0].URL}" 
                                          Source="{Binding image}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
