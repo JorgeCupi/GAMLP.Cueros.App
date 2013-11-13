@@ -14,7 +14,7 @@
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     shell:SystemTray.IsVisible="True">
 
-    <phone:Panorama Title="CADEPA">
+    <phone:Panorama Title="CADEPIA">
         <phone:PanoramaItem Header="destacados">
             <ListBox>
                 <ListBox.ItemsPanel>
@@ -30,9 +30,8 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </phone:PanoramaItem>
-        
+
         <phone:PanoramaItem Header="novedades">
-            <Button Click="Button_Click"/>
         </phone:PanoramaItem>
     </phone:Panorama>
 
