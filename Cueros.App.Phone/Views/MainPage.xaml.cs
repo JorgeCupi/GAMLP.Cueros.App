@@ -18,24 +18,14 @@ namespace Cueros.App.Phone
         public MainPage()
         {
             InitializeComponent();
-            Loaded += MainPage_Loaded;
         }
 
-        void MainPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            boton.Click += boton_Click;
-        }
-
-        void boton_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/Views/ListaProductos.xaml", UriKind.Relative));
-        }
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lstcategoria.SelectedItem != null)
             {
                 Categoria c = lstcategoria.SelectedItem as Categoria;
-                NavigationService.Navigate(new Uri("/Views/Lista.xaml?categoria=" + c.categoria, UriKind.Relative));
+                NavigationService.Navigate(new Uri("/Views/ListaProductos.xaml?categoria=" + c.categoria, UriKind.Relative));
             }
         }
 

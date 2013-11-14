@@ -26,14 +26,21 @@
                             Width="500">
             <ListBox DataContext="{Binding Source={StaticResource categoriavm}}"
                      Name="lstcategoria"
-                     SelectionChanged="ListBox_SelectionChanged">
+                     SelectionChanged="ListBox_SelectionChanged" 
+                     ItemsSource="{Binding Categorias}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <toolkit:WrapPanel Orientation="Horizontal"/>
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
-                <Button Name="boton"
-                    Content="Button" Height="102" Width="203"/>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <toolkit:HubTile Size="Medium"
+                                         Margin="10"
+                                         Title="{Binding categoria}"
+                                         Source="{Binding image}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
         </phone:PanoramaItem>
 

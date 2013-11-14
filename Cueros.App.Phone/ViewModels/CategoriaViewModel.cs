@@ -16,6 +16,17 @@ namespace Cueros.App.Phone.ViewModels
     {
         private ObservableCollection<Producto> productos;
         private ObservableCollection<Categoria> categorias;
+        private ObservableCollection<Producto> productoscategoria;
+
+        public ObservableCollection<Producto> ProductosCategoria
+        {
+            get { return productoscategoria; }
+            set
+            {
+                productoscategoria = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ObservableCollection<Categoria> Categorias
         {
@@ -71,6 +82,18 @@ namespace Cueros.App.Phone.ViewModels
                         image = "/Assets/Tiles/FlipCycleTileSmall.png"
                         //image = item.Fotos.First().URL
                     });
+                }
+            }
+        }
+
+        public void prodcat(string categoria)
+        {
+            productoscategoria = new ObservableCollection<Producto>();
+            foreach (var item in productos)
+            {
+                if (item.Linea.Equals(categoria))
+                {
+                    productoscategoria.Add(item);
                 }
             }
         }

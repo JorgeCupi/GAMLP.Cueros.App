@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Cueros.App.Phone.ViewModels;
 
 namespace Cueros.App.Phone.Views
 {
@@ -16,6 +17,15 @@ namespace Cueros.App.Phone.Views
         {
             InitializeComponent();
             Loaded += ListaProductos_Loaded;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (NavigationContext.QueryString.ContainsKey("categoria"))
+            {
+                categoria.Text = NavigationContext.QueryString["categoria"];
+                new CategoriaViewModel().prodcat(categoria.Text);
+            }
         }
 
         void ListaProductos_Loaded(object sender, RoutedEventArgs e)

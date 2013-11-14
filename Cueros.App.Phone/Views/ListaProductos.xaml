@@ -11,29 +11,36 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
+    xmlns:vm ="clr-namespace:Cueros.App.Phone.ViewModels"
     shell:SystemTray.IsVisible="True">
 
-    <!--LayoutRoot es la cuadrícula raíz donde se coloca todo el contenido de la página-->
-    <Grid x:Name="LayoutRoot" Background="BlueViolet">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <phone:PhoneApplicationPage.Resources>
+        <vm:CategoriaViewModel x:Key="categoriavm"/>
+    </phone:PhoneApplicationPage.Resources>
 
-        <!--TitlePanel contiene el nombre de la aplicación y el título de la página-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="LISTA PROD" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+    <!--TitlePanel contiene el nombre de la aplicación y el título de la página-->
+    <StackPanel>
+        <TextBlock Name="categoria"
+                   TextWrapping="Wrap"
+                   Style="{StaticResource PhoneTextTitle1Style}"/>
 
-        <!--ContentPanel. Colocar aquí el contenido adicional-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" 
-              Margin="12,0,12,0">
-            <ListBox x:Name="lstRiesgos" 
-                   Grid.Row="1"
-        		ItemTemplate="{StaticResource ListaProductos}"
-                     />
-        </Grid>
-        <Button Name="boton" Content="Button" HorizontalAlignment="Left" Height="93" Margin="179,504,0,0" Grid.Row="1" VerticalAlignment="Top" Width="237"/>
-    </Grid>
+        <ListBox DataContext="{Binding Source={StaticResource categoriavm}}" 
+                 ItemsSource="{Binding ProductosCategoria}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Assets/Tiles/IconicTileSmall.png"/>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Nombre}"/>
+                            <TextBlock Text="{Binding Modelo}" />
+                            <TextBlock Text="{Binding Temporada}" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
+        <Button Name="boton" 
+                Content="Button" />
+    </StackPanel>
 </phone:PhoneApplicationPage>
