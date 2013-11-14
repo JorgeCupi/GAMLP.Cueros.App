@@ -21,7 +21,9 @@
     </phone:PhoneApplicationPage.Resources>
 
     <phone:Panorama Title="CADEPIA">
-        <phone:PanoramaItem Header="categoria">
+        <phone:PanoramaItem Header="categoria" 
+                            Orientation="Horizontal"
+                            Width="500">
             <ListBox DataContext="{Binding Source={StaticResource categoriavm}}" 
                      ItemsSource="{Binding Productos}">
                 <ListBox.ItemsPanel>
@@ -32,9 +34,9 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <toolkit:HubTile Size="Medium"
-                                         Margin="5" 
-                                         Title="{Binding Fotos[0].URL}" 
-                                         Source="{Binding image}"/>
+                                         Margin="10" 
+                                         Title="{Binding Nombre}" 
+                                         Source="{Binding Fotos[0].URL}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

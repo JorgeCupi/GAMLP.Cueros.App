@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Cueros.App.Core.Models;
 using Cueros.App.Core.Services;
+using Cueros.App.Phone.Models;
 
 namespace Cueros.App.Phone.ViewModels
 {
@@ -22,6 +23,7 @@ namespace Cueros.App.Phone.ViewModels
 
         public CategoriaViewModel()
         {
+            productos = new Almacenar<Producto>().Deserialize("lista.xml");
             datos();
         }
 
@@ -29,6 +31,9 @@ namespace Cueros.App.Phone.ViewModels
         {
             List<Producto> pro = await ServiciosDeProductos.ObtenerProductos();
             productos = new ObservableCollection<Producto>(pro);
+            new Almacenar<Producto>().Serialize(productos, "lista.xml");
         }
+
+
     }
 }

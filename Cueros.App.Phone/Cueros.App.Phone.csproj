@@ -94,6 +94,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="Models\Almacenar.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\GenericEventArgs.cs" />
     <Compile Include="ViewModels\CategoriaViewModel.cs" />
