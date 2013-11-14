@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Cueros.App.Phone.Resources;
+using Cueros.App.Phone.Models;
 
 namespace Cueros.App.Phone
 {
@@ -25,6 +26,15 @@ namespace Cueros.App.Phone
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lstcategoria.SelectedItem != null)
+            {
+                Categoria c = lstcategoria.SelectedItem as Categoria;
+                NavigationService.Navigate(new Uri("/Views/Lista.xaml?categoria=" + c.categoria, UriKind.Relative));
+            }
         }
 
         // Sample code for building a localized ApplicationBar

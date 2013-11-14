@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{bc1c33cb-8eb6-4b8e-96a8-b997db3bc125}" Title="Cueros.App.Phone" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Cueros.App.Phone author" Description="Sample description" Publisher="Cueros.App.Phone" PublisherID="{eca5c8eb-4329-4976-8edc-171c5e26a241}">
+  <App xmlns="" ProductID="{bc1c33cb-8eb6-4b8e-96a8-b997db3bc125}" Title="GADEPIA" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Cueros.App.Phone author" Description="Sample description" Publisher="Cueros.App.Phone" PublisherID="{eca5c8eb-4329-4976-8edc-171c5e26a241}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />

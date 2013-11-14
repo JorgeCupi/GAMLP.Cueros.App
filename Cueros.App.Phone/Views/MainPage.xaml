@@ -25,7 +25,9 @@
                             Orientation="Horizontal"
                             Width="500">
             <ListBox DataContext="{Binding Source={StaticResource categoriavm}}" 
-                     ItemsSource="{Binding Productos}">
+                     ItemsSource="{Binding Categorias}"
+                     Name="lstcategoria"
+                     SelectionChanged="ListBox_SelectionChanged">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <toolkit:WrapPanel Orientation="Horizontal"/>
@@ -35,8 +37,8 @@
                     <DataTemplate>
                         <toolkit:HubTile Size="Medium"
                                          Margin="10" 
-                                         Title="{Binding Nombre}" 
-                                         Source="{Binding Fotos[0].URL}"/>
+                                         Title="{Binding categoria}" 
+                                         Source="{Binding image}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
