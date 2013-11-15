@@ -11,7 +11,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+//Referencia al servicio Cueros
+using Cueros.App.Core.Services;
+using Cueros.App.Core.Models;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Cueros.App.Store
@@ -24,6 +26,31 @@ namespace Cueros.App.Store
         public MainPage()
         {
             this.InitializeComponent();
+            this.Loaded += MainPage_Loaded;
+        }
+
+        void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadProductList();
+        }
+
+        private void LoadProductList()
+        {
+            ListaDeProductos.ItemsSource = ServiciosDeProductos.ObtenerProductos();
+            
+            //List<Producto> list_producto = new List<Producto>();
+            //for (int i = 0; i < 12; i++)
+            //{
+            //    Producto my_product = new Producto() 
+            //    {
+            //        Nombre = "Nombre del producto", 
+            //        Descripcion = "Descripcion del producto", 
+            //        Modelo = "Modelo del producto", 
+            //        Temporada = "Temporada"
+            //    };
+            //    list_producto.Add(my_product);
+            //}
+            //ListaDeProductos.ItemsSource = list_producto;
         }
 
         /// <summary>
