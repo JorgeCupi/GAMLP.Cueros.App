@@ -20,15 +20,12 @@
             <TextBlock Text="Pedido" Style="{StaticResource HeaderTextStyle}" Margin="20,36,20,20"/>
             <TextBlock Name="CantidadDeProductosText" Text="0" Style="{StaticResource SubheaderTextStyle}" Margin="15,45,0,10" Foreground="Gray"/>
             <TextBlock Text="Productos" Style="{StaticResource SubheaderTextStyle}" Margin="5,45,10,10" Foreground="Gray"/>
-
-
-
         </StackPanel>
         <GridView Name="GridLstaPepido" Grid.Row="1" Margin="40,10,40,28">
             <usc:TileListaPedido/>
         </GridView>
 
-            <AppBar  Background="#FF3A496A"  Grid.Row="2">
+        <AppBar  Background="#FF3A496A"  Grid.Row="2">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
