@@ -110,6 +110,18 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\ImagenDescripcion.xaml.cs">
+      <DependentUpon>ImagenDescripcion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TileListaPedido.xaml.cs">
+      <DependentUpon>TileListaPedido.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Detalles.xaml.cs">
+      <DependentUpon>Detalles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListaPedido.xaml.cs">
+      <DependentUpon>ListaPedido.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -122,6 +134,11 @@
     <Content Include="Assets\SmallLogo.png" />
     <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Imagenes\14313825-hombre-de-color-negro-brillante-de-los-zapatos-con-cordones-de-los-zapatos-aislados-sobre-fondo-blan.jpg" />
+    <Content Include="Imagenes\20273-crean-zapatos-concepto-con-dise-os-de-redes-sociales-como-fa.jpg" />
+    <Content Include="Imagenes\tacos.jpg" />
+    <Content Include="Imagenes\zapat.jpg" />
+    <Content Include="Imagenes\zapatos_corazon.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -135,6 +152,22 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ImagenDescripcion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TileListaPedido.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Detalles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ListaPedido.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
