@@ -9,13 +9,15 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Cueros.App.Core.Models;
 using System.Collections.ObjectModel;
+using Cueros.App.Phone.Models;
 
 namespace Cueros.App.Phone.Views
 {
     public partial class DetalleProducto : PhoneApplicationPage
     {
         string nombreProductoObt;
-        public ObservableCollection<Material> material;
+        public ObservableCollection<Producto> producto;
+        public Producto pro;
 
         public DetalleProducto()
         {
@@ -26,19 +28,27 @@ namespace Cueros.App.Phone.Views
         void DetalleProducto_Loaded(object sender, RoutedEventArgs e)
         {
             NombreTitulo.Title = nombreProductoObt;
+            producto = new Almacenar<Producto>().Deserialize("lista.xml");
+            foreach (var item in producto)
+            {
+                if (item.Nombre.Equals(nombreProductoObt))
+                {
+                    pro = item;
+                }
+            }
         }
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            try
-            {
-                NavigationContext.QueryString.TryGetValue("nombre", out nombreProductoObt);
-                MessageBox.Show(nombreProductoObt);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("no se obtuvo nada");
-            }
+            //try
+            //{
+            NavigationContext.QueryString.TryGetValue("nombre", out nombreProductoObt);
+            //MessageBox.Show(nombreProductoObt);
+            //}
+            //catch (Exception)
+            //{
+            //    MessageBox.Show("no se obtuvo nada");
+            //}
         }
         async public void CargarDatos()
         {

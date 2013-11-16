@@ -14,26 +14,54 @@
     shell:SystemTray.IsVisible="False">
 
     <!--LayoutRoot contiene la cuadrícula raíz donde se coloca el resto del contenido de la página-->
-    <Grid x:Name="LayoutRoot">
-        <phone:Panorama Name="NombreTitulo" Title="Nombre Producto">
+    <phone:Panorama Name="NombreTitulo" 
+                    Title="Nombre Producto">
 
-            <!--Elemento Panorama uno-->
-            <phone:PanoramaItem Header="Imagenes">
-                <Grid/>
-            </phone:PanoramaItem>
+        <!--Elemento Panorama uno-->
+        <phone:PanoramaItem Header="Imagenes">
+            <StackPanel/>
+        </phone:PanoramaItem>
 
-            <!--Elemento Panorama dos-->
-            <phone:PanoramaItem Header="Detalles">
-                <Grid/>
-            </phone:PanoramaItem>
-            <phone:PanoramaItem Header="Materiales">
-                <ListBox Name="lstMateriales"
-                 Grid.Row="1"
+        <!--Elemento Panorama dos-->
+        <phone:PanoramaItem Header="Detalles">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Nombre:"
+                               FontWeight="Bold"/>
+                    <TextBlock Text="{Binding id}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Modelo:"
+                               FontWeight="Bold"/>
+                    <TextBlock Text="{Binding modelo}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Descripción:"
+                               FontWeight="Bold"/>
+                    <TextBlock Text="{Binding descripcion}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Modelo:"
+                               FontWeight="Bold"/>
+                    <TextBlock Text="{Binding modelo}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Linea:"
+                               FontWeight="Bold"/>
+                    <TextBlock Text="{Binding linea}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Temporada:"
+                               FontWeight="Bold"/>
+                    <TextBlock Text="{Binding Temporada}"/>
+                </StackPanel>
+            </StackPanel>
+        </phone:PanoramaItem>
+        <phone:PanoramaItem Header="Materiales">
+            <ListBox Name="lstMateriales"
                      ItemTemplate="{StaticResource ListaMateriales}" 
-                 SelectionChanged="SelectMaterial"
-                     />
-            </phone:PanoramaItem>
-        </phone:Panorama>
-    </Grid>
+                     SelectionChanged="SelectMaterial"/>
+        </phone:PanoramaItem>
+    </phone:Panorama>
 
 </phone:PhoneApplicationPage>
