@@ -120,14 +120,26 @@
     <Compile Include="UserControls\ImagenDescripcion.xaml.cs">
       <DependentUpon>ImagenDescripcion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\LargeTileForMainPage.xaml.cs">
+      <DependentUpon>LargeTileForMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SmallTileForMainPage.xaml.cs">
+      <DependentUpon>SmallTileForMainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\TileListaPedido.xaml.cs">
       <DependentUpon>TileListaPedido.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WideTileForMainPage.xaml.cs">
+      <DependentUpon>WideTileForMainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Detalles.xaml.cs">
       <DependentUpon>Detalles.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ListaPedido.xaml.cs">
       <DependentUpon>ListaPedido.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Materiales.xaml.cs">
+      <DependentUpon>Materiales.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -168,7 +180,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\LargeTileForMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SmallTileForMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\TileListaPedido.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\WideTileForMainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,6 +201,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ListaPedido.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Materiales.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
