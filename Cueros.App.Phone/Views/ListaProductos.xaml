@@ -21,26 +21,13 @@
     <!--TitlePanel contiene el nombre de la aplicación y el título de la página-->
     <StackPanel>
         <TextBlock Name="categoria"
+              
                    TextWrapping="Wrap"
                    Style="{StaticResource PhoneTextTitle1Style}"/>
 
-        <ListBox DataContext="{Binding Source={StaticResource categoriavm}}" 
-                 ItemsSource="{Binding ProductosCategoria}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Assets/Tiles/IconicTileSmall.png"/>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Nombre}"/>
-                            <TextBlock Text="{Binding Modelo}" />
-                            <TextBlock Text="{Binding Temporada}" />
-                        </StackPanel>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-
-        <Button Name="boton" 
-                Content="Button" />
+        <ListBox Name="lstProductos"
+                 Grid.Row="1"
+                     ItemTemplate="{StaticResource ListaProductos}"
+                     />
     </StackPanel>
 </phone:PhoneApplicationPage>
