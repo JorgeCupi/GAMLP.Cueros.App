@@ -31,28 +31,48 @@ namespace Cueros.App.Store
 
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadProductList();
+            //LoadProductList();
+            ListCategories();
         }
 
-        private void LoadProductList()
+        
+        async void LoadProductList()
         {
-           // ListaDeProductos.ItemsSource = ServiciosDeProductos.ObtenerProductos();
-            
-           List<Producto> list_producto = new List<Producto>();
-            for (int i = 0; i < 12; i++)
+            var get_list = await ServiciosDeProductos.ObtenerProductos();
+            NewProduct product;
+            List<NewProduct> list_new = new List<NewProduct>();
+            foreach (var item in get_list)
             {
-                Producto my_product = new Producto() 
+                product = new NewProduct() 
                 {
-                   Nombre = "Nombre del producto", 
-                    Descripcion = "Descripcion del producto", 
-                   Modelo = "Modelo del producto", 
-                    Temporada = "Temporada"
-               };
-               list_producto.Add(my_product);
+                    name = item.Nombre, description = item.Descripcion, line = item.Linea, modelo = item.Modelo, url = item.Fotos.FirstOrDefault().URL, temporada = item.Temporada
+                };
+                list_new.Add(product);
             }
-            ListaDeProductos.ItemsSource = list_producto;
+            ListaDeProductos.ItemsSource = list_new;
+
+            #region Pruebas
+            //List<Producto> list_producto = new List<Producto>();
+           // for (int i = 0; i < 12; i++)
+           // {
+           //     Producto my_product = new Producto() 
+           //     {
+           //        Nombre = "Nombre del producto", 
+           //         Descripcion = "Descripcion del producto", 
+           //        Modelo = "Modelo del producto", 
+           //         Temporada = "Temporada"
+           //    };
+           //    list_producto.Add(my_product);
+           // }
+            // ListaDeProductos.ItemsSource = list_producto;
+            #endregion
         }
 
+        async void ListCategories() 
+        {
+            //Mando la linea del producto, ejemplo Mochila
+            var _list = await ServiciosDeProductos.ObtenerProductos("Mochilas");
+        }
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
         /// </summary>
@@ -61,5 +81,16 @@ namespace Cueros.App.Store
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
         }
+    }
+
+    //Clase para mostrar la lista de productos
+    class NewProduct
+    {
+        public string name { get; set; }
+        public string description { get; set; }
+        public string modelo { get; set; }
+        public string line { get; set; }
+        public string url { get; set; }
+        public string temporada { get; set; }
     }
 }
