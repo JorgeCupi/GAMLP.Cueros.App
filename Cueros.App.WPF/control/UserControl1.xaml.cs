@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace Cueros.App.WPF
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserControl1 : UserControl
     {
-        public MainWindow()
+        public UserControl1()
         {
             InitializeComponent();
-
-
-            Uri dir1 = new Uri("imagenes/Logo.jpg", UriKind.Relative);
-
-            BitmapImage img0 = new BitmapImage(dir1);
-            Logo = img0;
         }
     }
 }

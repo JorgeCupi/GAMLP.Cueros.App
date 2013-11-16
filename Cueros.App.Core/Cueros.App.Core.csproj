@@ -60,6 +60,18 @@
       <HintPath>..\packages\Microsoft.Net.Http.2.2.15\lib\portable-net40+sl4+win8+wp71\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="imagenes\14313825-hombre-de-color-negro-brillante-de-los-zapatos-con-cordones-de-los-zapatos-aislados-sobre-fondo-blan.jpg" />
+    <Content Include="imagenes\20273-crean-zapatos-concepto-con-dise-os-de-redes-sociales-como-fa.jpg" />
+    <Content Include="imagenes\984222_473717132707311_1577933707_a.jpg" />
+    <Content Include="imagenes\cadepia.jpg" />
+    <Content Include="imagenes\Logo.jpg" />
+    <Content Include="imagenes\logo_cadepia.jpg" />
+    <Content Include="imagenes\tacos.jpg" />
+    <Content Include="imagenes\zapat.jpg" />
+    <Content Include="imagenes\zapatos_corazon.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
