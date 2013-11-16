@@ -26,8 +26,7 @@
                             Width="500">
             <ListBox DataContext="{Binding Source={StaticResource categoriavm}}"
                      Name="lstcategoria"
-                     SelectionChanged="ListBox_SelectionChanged" 
-                     ItemsSource="{Binding Categorias}">
+                     SelectionChanged="ListBox_SelectionChanged">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <toolkit:WrapPanel Orientation="Horizontal"/>
@@ -46,5 +45,12 @@
 
         <phone:PanoramaItem Header="novedades"/>
     </phone:Panorama>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/refresh.png" 
+                                            Text="refresh"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>
