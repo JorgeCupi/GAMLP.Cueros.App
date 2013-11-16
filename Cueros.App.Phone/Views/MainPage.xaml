@@ -46,11 +46,4 @@
         <phone:PanoramaItem Header="novedades"/>
     </phone:Panorama>
 
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar>
-            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/refresh.png" 
-                                            Text="refresh"/>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
-
 </phone:PhoneApplicationPage>

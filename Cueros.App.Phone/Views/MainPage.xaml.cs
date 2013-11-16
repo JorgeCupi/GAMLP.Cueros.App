@@ -20,7 +20,7 @@ namespace Cueros.App.Phone
         // Constructor
         public ObservableCollection<Producto> productos;
         public ObservableCollection<Categoria> categorias;
-        
+
         public MainPage()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace Cueros.App.Phone
 
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            //BuildLocalizedApplicationBar();
+            BuildLocalizedApplicationBar();
             productos = new Almacenar<Producto>().Deserialize("lista.xml");
             categorias = new Almacenar<Categoria>().Deserialize("categoria.xml");
             obtenerproductos();
@@ -77,16 +77,18 @@ namespace Cueros.App.Phone
             }
         }
 
-        // Sample code for building a localized ApplicationBar
         private void BuildLocalizedApplicationBar()
         {
-            // Set the page's ApplicationBar to a new instance of ApplicationBar.
             ApplicationBar = new ApplicationBar();
-
-            // Create a new button and set the text value to the localized string from AppResources.
-            ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.refresh.png", UriKind.Relative));
-            appBarButton.Text = AppResources.AppBarButtonText;
+            ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/refresh.png", UriKind.Relative));
+            appBarButton.Text = "Refresh";
             ApplicationBar.Buttons.Add(appBarButton);
+            appBarButton.Click += appBarButton_Click;
+        }
+
+        void appBarButton_Click(object sender, EventArgs e)
+        {
+            categoria();
         }
     }
 }
