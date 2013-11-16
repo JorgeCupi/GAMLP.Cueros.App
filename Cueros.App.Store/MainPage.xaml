@@ -25,8 +25,22 @@
                 <TextBlock Text="Cadepia" Style="{StaticResource HeaderTextStyle}" Margin="20,36,20,20"/>
             </StackPanel>
             
+             <GridView Grid.Row="1" Margin="20"
+                       Name="ItemTileGroup"
+                       AutomationProperties.AutomationId="ItemTileGroup"
+                       AutomationProperties.Name="Group Items">
+                 
+                 
+                 
+                 
+
+            </GridView>
             
         </Grid>
+        
+       
+        
+        
         
         <!--Lista de productos-->
         <ListBox Width="400" Grid.Column="1" Name="ListaDeProductos"  ScrollViewer.IsVerticalRailEnabled="True" BorderThickness="0">
@@ -45,12 +59,13 @@
                             <TextBlock Text="{Binding temp.min}"/>
                             <TextBlock Text="{Binding temp.max}"/>
                         </StackPanel>-->
-                    <StackPanel Height="150" Width="380">
-                        <TextBlock Text="{Binding Nombre}" Foreground="Black" FontSize="30"/>
-                        <StackPanel Margin="20,10,0,0">
-                            <TextBlock Text="{Binding Descripcion}" Foreground="Black" FontSize="15"/>
-                            <TextBlock Text="{Binding Modelo}" Foreground="Black" FontSize="15"/>
-                            <TextBlock Text="{Binding Temporada}" Foreground="Black" FontSize="15"/>
+                    <StackPanel Orientation="Horizontal" Height="100" Width="380">
+                        <Image Height="80" Width="80" Source="Assets/SmallLogo.png"/>
+                        <StackPanel Margin="10,0,0,0">
+                             <TextBlock Text="{Binding Nombre}" Foreground="Black" Style="{StaticResource TitleTextStyle}"/>
+                            <TextBlock Text="{Binding Descripcion}" Foreground="Black" Style="{StaticResource ItemTextStyle}"/>
+                            <TextBlock Text="{Binding Modelo}" Foreground="Black" Style="{StaticResource ItemTextStyle}"/>
+                            <TextBlock Text="{Binding Temporada}" Foreground="Black" Style="{StaticResource ItemTextStyle}"/>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>

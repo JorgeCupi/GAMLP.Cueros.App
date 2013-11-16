@@ -36,21 +36,21 @@ namespace Cueros.App.Store
 
         private void LoadProductList()
         {
-            ListaDeProductos.ItemsSource = ServiciosDeProductos.ObtenerProductos();
+           // ListaDeProductos.ItemsSource = ServiciosDeProductos.ObtenerProductos();
             
-            //List<Producto> list_producto = new List<Producto>();
-            //for (int i = 0; i < 12; i++)
-            //{
-            //    Producto my_product = new Producto() 
-            //    {
-            //        Nombre = "Nombre del producto", 
-            //        Descripcion = "Descripcion del producto", 
-            //        Modelo = "Modelo del producto", 
-            //        Temporada = "Temporada"
-            //    };
-            //    list_producto.Add(my_product);
-            //}
-            //ListaDeProductos.ItemsSource = list_producto;
+           List<Producto> list_producto = new List<Producto>();
+            for (int i = 0; i < 12; i++)
+            {
+                Producto my_product = new Producto() 
+                {
+                   Nombre = "Nombre del producto", 
+                    Descripcion = "Descripcion del producto", 
+                   Modelo = "Modelo del producto", 
+                    Temporada = "Temporada"
+               };
+               list_producto.Add(my_product);
+            }
+            ListaDeProductos.ItemsSource = list_producto;
         }
 
         /// <summary>
