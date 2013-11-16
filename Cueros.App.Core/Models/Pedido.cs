@@ -2,8 +2,8 @@
 
 namespace Cueros.App.Core.Models
 {
-    public class Resultado
+    public class Pedido
     {
-        public List<Producto> Productos { get; set; }
+        List<Producto> Productos { get; set; }
     }
 }
