@@ -15,7 +15,7 @@
 
     <!--LayoutRoot contiene la cuadrícula raíz donde se coloca el resto del contenido de la página-->
     <Grid x:Name="LayoutRoot">
-        <phone:Panorama Title="Nombre Producto">
+        <phone:Panorama Name="NombreTitulo" Title="Nombre Producto">
 
             <!--Elemento Panorama uno-->
             <phone:PanoramaItem Header="Imagenes">
@@ -27,7 +27,11 @@
                 <Grid/>
             </phone:PanoramaItem>
             <phone:PanoramaItem Header="Materiales">
-                
+                <ListBox Name="lstMateriales"
+                 Grid.Row="1"
+                     ItemTemplate="{StaticResource ListaMateriales}" 
+                 SelectionChanged="SelectMaterial"
+                     />
             </phone:PanoramaItem>
         </phone:Panorama>
     </Grid>

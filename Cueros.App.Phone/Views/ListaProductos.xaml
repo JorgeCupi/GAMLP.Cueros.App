@@ -27,7 +27,8 @@
 
         <ListBox Name="lstProductos"
                  Grid.Row="1"
-                     ItemTemplate="{StaticResource ListaProductos}"
+                     ItemTemplate="{StaticResource ListaProductos}" 
+                 SelectionChanged="Select"
                      />
     </StackPanel>
 </phone:PhoneApplicationPage>

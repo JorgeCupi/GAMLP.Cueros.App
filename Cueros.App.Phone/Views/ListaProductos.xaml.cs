@@ -48,6 +48,15 @@ namespace Cueros.App.Phone.Views
             }
         }
 
+        private void Select(object sender, SelectionChangedEventArgs e)
+        {
+            if (lstProductos.SelectedItem != null)
+            {
+                Producto c = lstProductos.SelectedItem as Producto;
+                NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml?nombre=" + c.Nombre, UriKind.Relative));
+            }
+        }
+         
 
     }
 }
