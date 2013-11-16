@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Cueros.App.Core.Models
 {
@@ -19,5 +20,7 @@ namespace Cueros.App.Core.Models
         public List<Foto> Fotos { get; set; }
 
         public List<Material> Materiales { get; set; }
+
+        public DateTime FechaPublicacion { get; set; }
     }
 }
