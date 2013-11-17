@@ -61,6 +61,26 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </phone:PanoramaItem>
+
+        <phone:PanoramaItem Header="destacados">
+            <ListBox>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="150"
+                                   Height="150" 
+                                   Source="/Assets/Tiles/FlipCycleTileSmall.png"/>
+                            <StackPanel>
+                                <TextBlock/>
+                                <TextBlock/>
+                                <TextBlock/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </phone:PanoramaItem>
+
     </phone:Panorama>
 
 </phone:PhoneApplicationPage>
