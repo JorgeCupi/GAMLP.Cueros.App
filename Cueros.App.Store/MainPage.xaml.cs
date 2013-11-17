@@ -100,8 +100,9 @@ namespace Cueros.App.Store
         {
             if (ListaDeProductos.SelectedItem != null) 
             {
-                
-                var msgDlg = new Windows.UI.Popups.MessageDialog("seleccionado");
+                var my_product = ((ListaDeProductos.SelectedItem) as NewProduct).name;
+
+                var msgDlg = new Windows.UI.Popups.MessageDialog(my_product);
                 msgDlg.DefaultCommandIndex = 1;
                 await msgDlg.ShowAsync();
             }
