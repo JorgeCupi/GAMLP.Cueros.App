@@ -20,7 +20,8 @@ namespace Cueros.App.Core
 
         internal static List<Categoria> TransformToCategoriesList(string response)
         {
-            return JsonConvert.DeserializeObject<List<Categoria>>(response);
+            ResultadoDeCategorias res =JsonConvert.DeserializeObject<ResultadoDeCategorias>(response);
+            return res.Categorias;
         }
 
         public static async Task<string> DownloadJsonFromThisUrl(string url)
