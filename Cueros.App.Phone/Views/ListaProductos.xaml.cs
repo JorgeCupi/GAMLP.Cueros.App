@@ -32,7 +32,7 @@ namespace Cueros.App.Phone.Views
         }
         async public void CargarDatos()
         {
-            List<Producto> pro = await ServiciosDeProductos.ObtenerProductosDeEstaCategoria(id);
+            List<Producto> pro = await ServiciosDeProductos.GetProductsFromThisCategory(id);
             lstProductos.ItemsSource = pro;
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)

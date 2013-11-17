@@ -34,7 +34,7 @@ namespace Cueros.App.Store.Views
         }
 
     async void LoadMaterialList() {
-        var get_list = await ServiciosDeProductos.ObtenerProductos();
+        var get_list = await ServiciosDeProductos.GetProducts();
         //NewProduct product;
         List<Material> list_new = new List<Material>();
         Material m;

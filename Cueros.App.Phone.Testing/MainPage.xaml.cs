@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Cueros.App.Phone.Testing.Resources;
 using Cueros.App.Core.Services;
+using Cueros.App.Core.Models;
 
 namespace Cueros.App.Phone.Testing
 {

@@ -48,7 +48,7 @@ namespace Cueros.App.Store
         
         async void LoadProductList()
         {
-            var get_list = await ServiciosDeProductos.ObtenerProductos();
+            var get_list = await ServiciosDeProductos.GetProducts();
             NewProduct product;
             List<NewProduct> list_new = new List<NewProduct>();
             foreach (var item in get_list)
