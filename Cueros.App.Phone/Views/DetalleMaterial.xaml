@@ -18,12 +18,12 @@
         <phone:Panorama Title="Nombre Material">
 
             <!--Elemento Panorama uno-->
-            <phone:PanoramaItem Header="item1">
+            <phone:PanoramaItem Header="Detalles">
                 <Grid/>
             </phone:PanoramaItem>
 
             <!--Elemento Panorama dos-->
-            <phone:PanoramaItem Header="item2">
+            <phone:PanoramaItem Header="">
                 <Grid/>
             </phone:PanoramaItem>
         </phone:Panorama>

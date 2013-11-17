@@ -15,7 +15,7 @@ namespace Cueros.App.Phone.Views
 {
     public partial class DetalleProducto : PhoneApplicationPage
     {
-        string nombreProductoObt;
+        string idProductoObt;
         public ObservableCollection<Producto> producto;
         public Producto pro;
 
@@ -23,15 +23,17 @@ namespace Cueros.App.Phone.Views
         {
             InitializeComponent();
             Loaded += DetalleProducto_Loaded;
+            CargarDatosDetalles();
+            CargandoListaDeMateriales();
         }
 
         void DetalleProducto_Loaded(object sender, RoutedEventArgs e)
         {
-            NombreTitulo.Title = nombreProductoObt;
+            NombreTitulo.Title = idProductoObt;
             producto = new Almacenar<Producto>().Deserialize("lista.xml");
             foreach (var item in producto)
             {
-                if (item.Nombre.Equals(nombreProductoObt))
+                if (item.Id.Equals(idProductoObt))
                 {
                     pro = item;
                 }
@@ -42,7 +44,7 @@ namespace Cueros.App.Phone.Views
             base.OnNavigatedTo(e);
             //try
             //{
-            NavigationContext.QueryString.TryGetValue("nombre", out nombreProductoObt);
+            NavigationContext.QueryString.TryGetValue("id", out idProductoObt);
             //MessageBox.Show(nombreProductoObt);
             //}
             //catch (Exception)
@@ -50,14 +52,22 @@ namespace Cueros.App.Phone.Views
             //    MessageBox.Show("no se obtuvo nada");
             //}
         }
-        async public void CargarDatos()
+        async public void CargarDatosDetalles()
         {
-            
+            NombreTitulo.Title = pro.Nombre;
+            modelo.Text = pro.Modelo;
+            descripcion.Text = pro.Descripcion;
+        }
+        void CargandoListaDeMateriales()
+        {
+            lstMateriales.ItemsSource = pro.Materiales;
         }
         private void Select(object sender, SelectionChangedEventArgs e)
         {
             if (lstMateriales.SelectedItem != null)
             {
+                Material c = lstMateriales.SelectedItem as Material;
+                NavigationService.Navigate(new Uri("/Views/DetalleMaterial.xaml?nombre=" + c.Nombre, UriKind.Relative));
                 // c = lstProductos.SelectedItem as Producto;
                 //NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml?nombre=" + c.Nombre, UriKind.Relative));
             }

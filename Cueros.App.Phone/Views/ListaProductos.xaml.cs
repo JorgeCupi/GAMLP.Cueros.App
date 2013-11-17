@@ -29,12 +29,11 @@ namespace Cueros.App.Phone.Views
         void ListaProductos_Loaded(object sender, RoutedEventArgs e)
         {
             CargarDatos();
-
         }
         async public void CargarDatos()
         {
-            //List<Producto> pro = await ServiciosDeProductos.ObtenerProductos(lineax);
-            //lstProductos.ItemsSource = pro;
+            List<Producto> pro = await ServiciosDeProductos.ObtenerProductosDeEstaCategoria(id);
+            lstProductos.ItemsSource = pro;
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -51,10 +50,10 @@ namespace Cueros.App.Phone.Views
             if (lstProductos.SelectedItem != null)
             {
                 Producto c = lstProductos.SelectedItem as Producto;
-                NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml?nombre=" + c.Nombre, UriKind.Relative));
+                NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml?id=" + c.Id, UriKind.Relative));
             }
         }
-         
+        
 
     }
 }

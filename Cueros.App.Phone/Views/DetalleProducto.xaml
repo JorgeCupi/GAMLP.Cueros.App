@@ -28,27 +28,22 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Nombre:"
                                FontWeight="Bold"/>
-                    <TextBlock Text="{Binding id}"/>
+                    <TextBlock Name="id" Text="{Binding id}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Modelo:"
                                FontWeight="Bold"/>
-                    <TextBlock Text="{Binding modelo}"/>
+                    <TextBlock Name="modelo" Text="{Binding modelo}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Descripción:"
                                FontWeight="Bold"/>
-                    <TextBlock Text="{Binding descripcion}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Modelo:"
-                               FontWeight="Bold"/>
-                    <TextBlock Text="{Binding modelo}"/>
+                    <TextBlock Name="descripcion" Text="{Binding descripcion}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Linea:"
                                FontWeight="Bold"/>
-                    <TextBlock Text="{Binding linea}"/>
+                    <TextBlock Name="linea" Text="{Binding linea}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Temporada:"
