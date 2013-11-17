@@ -47,13 +47,13 @@
             </StackPanel.Background>
             
             
-            <TextBlock Text="Productos" Margin="15,0" Style="{StaticResource SubheaderTextStyle}"/>
+            <TextBlock Text="Categorias" Margin="15,0" Style="{StaticResource SubheaderTextStyle}"/>
             <ComboBox Height="102" Name="ComboBoxCategoria" Margin="2,20" Foreground="Gray" SelectionChanged="ComboBoxCategoria_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <Image Height="80" Width="80" Source="{Binding urlCategoria}"/>
-                            <TextBlock Text="{Binding nameCategoria}" Style="{StaticResource TitleTextStyle}" Foreground="Black"/>
+                            <TextBlock Text="{Binding nameCategoria}" Style="{StaticResource SubheaderTextStyle}" Foreground="Black" Margin="20,10"/>
                             
                         </StackPanel>
                         

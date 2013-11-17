@@ -43,16 +43,10 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
 
-                            <StackPanel Orientation="Horizontal" Height="100" Width="380">
-                                <!--<Image Height="80" Width="80" Source="Assets/SmallLogo.png"/>-->
-                                <Image Height="80" Width="80" Source="{Binding url}"/>
-                                <StackPanel Margin="10,0,0,0">
-                                    <TextBlock Text="{Binding name}" Foreground="White" Style="{StaticResource TitleTextStyle}"/>
-                                    <TextBlock Text="{Binding description}" Foreground="White" Style="{StaticResource ItemTextStyle}"/>
-                                    <TextBlock Text="{Binding modelo}" Foreground="White" Style="{StaticResource ItemTextStyle}"/>
-                                    <TextBlock Text="{Binding temporada}" Foreground="White" Style="{StaticResource ItemTextStyle}"/>
-                                </StackPanel>
+                            <StackPanel Orientation="Vertical" Height="50" Width="380">
+                                <TextBlock Text="{Binding Nombre}" Margin="20,10" Style="{StaticResource SubheaderTextStyle}" Foreground="White"/>
                             </StackPanel>
+ 
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

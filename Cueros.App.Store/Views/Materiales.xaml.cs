@@ -11,7 +11,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+using Cueros.App.Core.Models;
+using Cueros.App.Core.Services;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Cueros.App.Store.Views
@@ -24,7 +25,31 @@ namespace Cueros.App.Store.Views
         public Materiales()
         {
             this.InitializeComponent();
+            this.Loaded += Materiales_Loaded;
         }
+
+    void Materiales_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadMaterialList();
+        }
+
+    async void LoadMaterialList() {
+        var get_list = await ServiciosDeProductos.ObtenerProductos();
+        //NewProduct product;
+        List<Material> list_new = new List<Material>();
+        Material m;
+        foreach (var item in get_list)
+        {
+            m = new Material() {Nombre = item.Materiales.FirstOrDefault().Nombre,
+            Color = item.Materiales.FirstOrDefault().Color, 
+            NombreComercial=item.Materiales.FirstOrDefault().NombreComercial,
+            TipoUnidad =item.Materiales.FirstOrDefault().TipoUnidad,
+            CostoUnidad= item.Materiales.FirstOrDefault().CostoUnidad};
+            list_new.Add(m);
+        }
+        ListaDeMateriales.ItemsSource = list_new;
+    
+    }
 
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
@@ -33,6 +58,10 @@ namespace Cueros.App.Store.Views
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+        
+        
         }
+
+  
     }
 }
