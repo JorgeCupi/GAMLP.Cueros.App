@@ -31,8 +31,8 @@ namespace Cueros.App.Store
 
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            //LoadProductList();
-            ListCategories();
+            LoadProductList();
+            //ListCategories();
         }
 
         
@@ -45,7 +45,8 @@ namespace Cueros.App.Store
             {
                 product = new NewProduct() 
                 {
-                    name = item.Nombre, description = item.Descripcion, line = item.Linea, modelo = item.Modelo, url = item.Fotos.FirstOrDefault().URL, temporada = item.Temporada
+                    name = item.Nombre, description = item.Descripcion, line = item.Linea, 
+                    modelo = item.Modelo, url = item.Fotos.FirstOrDefault().URL, temporada = item.Temporada
                 };
                 list_new.Add(product);
             }

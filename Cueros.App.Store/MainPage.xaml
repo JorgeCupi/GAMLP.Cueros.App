@@ -34,14 +34,19 @@
             </GridView>
             
         </Grid>
-        
-        
-       
-        
-        
-        
+
+        <StackPanel Width="400" Margin="965,0,1,693" Grid.ColumnSpan="2">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#CCEAEAEA"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <TextBlock Text="Productos" FontSize="30" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+        </StackPanel>
         <!--Lista de productos-->
-        <ListBox Width="400" Grid.Column="1" Name="ListaDeProductos"  ScrollViewer.IsVerticalRailEnabled="True" BorderThickness="0">
+        <ListBox Width="400" Grid.Column="1" Name="ListaDeProductos"  ScrollViewer.IsVerticalRailEnabled="True" BorderThickness="0" Margin="0,75,0,0">
                 <ListBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
