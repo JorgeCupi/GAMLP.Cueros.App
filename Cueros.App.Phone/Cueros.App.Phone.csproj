@@ -102,9 +102,6 @@
     <Compile Include="Views\DetalleProducto.xaml.cs">
       <DependentUpon>DetalleProducto.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Lista.xaml.cs">
-      <DependentUpon>Lista.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ListaProductos.xaml.cs">
       <DependentUpon>ListaProductos.xaml</DependentUpon>
     </Compile>
@@ -128,10 +125,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DetalleProducto.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Lista.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

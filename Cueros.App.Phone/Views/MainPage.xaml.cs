@@ -116,5 +116,23 @@ namespace Cueros.App.Phone
         {
             Cargar();
         }
+
+        private void lstnovedades_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lstnovedades.SelectedItem != null)
+            {
+                Producto p = lstnovedades.SelectedItem as Producto;
+                NavigationService.Navigate(new Uri("/View/DetalleProducto.xml?producto=" + p.Id, UriKind.Relative));
+            }
+        }
+
+        private void lstdestacados_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lstdestacados.SelectedItem != null)
+            {
+                Producto p = lstdestacados.SelectedItem as Producto;
+                NavigationService.Navigate(new Uri("/View/DetalleProducto.xml?producto=" + p.Id, UriKind.Relative));
+            }
+        }
     }
 }
