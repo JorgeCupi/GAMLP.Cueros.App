@@ -13,7 +13,18 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 
-    <ListBox Name="lstProductos">
+    <!--<ListBox Name="lstProductos">
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <StackPanel>
+                    <TextBlock Text="{Binding Nombre}"
+                               Margin="12"/>
+                </StackPanel>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>-->
+
+    <ListBox Name="lstCategorias">
         <ListBox.ItemTemplate>
             <DataTemplate>
                 <StackPanel>
