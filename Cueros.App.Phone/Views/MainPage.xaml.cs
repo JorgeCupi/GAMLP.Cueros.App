@@ -18,6 +18,8 @@ namespace Cueros.App.Phone
     public partial class MainPage : PhoneApplicationPage
     {
         public ObservableCollection<Categoria> categoria;
+        public ObservableCollection<Producto> novedades;
+        public ObservableCollection<Producto> destacados;
 
         public MainPage()
         {
@@ -28,15 +30,23 @@ namespace Cueros.App.Phone
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             BuildLocalizedApplicationBar();
+            categoria = new Almacenar<Categoria>().Deserialize("categorias.xml");
+            novedades = new Almacenar<Producto>().Deserialize("novedades.xml");
+            destacados = new Almacenar<Producto>().Deserialize("destacados.xml");
+            if (categoria != null && categoria.Count != 0)
+                lstcategoria.ItemsSource = categoria;
+            if (novedades != null && novedades.Count != 0)
+                lstnovedades.ItemsSource = novedades;
+            if (destacados != null && destacados.Count != 0)
+                lstdestacados.ItemsSource = destacados;
             Cargar();
         }
 
         void Cargar()
         {
-            categoria = new Almacenar<Categoria>().Deserialize("categorias.xml");
-            if (categoria != null && categoria.Count != 0)
-                lstcategoria.ItemsSource = categoria;
+            obtenerdestacados();
             obtenerproductos();
+            obtenernovedades();
         }
 
         public async void obtenerproductos()
@@ -51,20 +61,38 @@ namespace Cueros.App.Phone
             }
             catch (Exception)
             {
-                MessageBox.Show("no!");
             }
         }
 
-        //public async obtenernovedades()
-        //{
-        //    try
-        //    {
-        //        List
-        //    }
-        //    catch (Exception)
-        //    {
-        //    }
-        //}
+        public async void obtenernovedades()
+        {
+            try
+            {
+                List<Producto> pro = await ServiciosDeProductos.ObtenerProductosMasNovedosos(10);
+                novedades = new ObservableCollection<Producto>(pro);
+                new Almacenar<Producto>().Serialize(novedades, "novedades.xml");
+                if (novedades != null && novedades.Count != 0)
+                    lstnovedades.ItemsSource = novedades;
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        public async void obtenerdestacados()
+        {
+            try
+            {
+                List<Producto> pro = await ServiciosDeProductos.ObtenerProductosDestacados(10);
+                destacados = new ObservableCollection<Producto>(pro);
+                new Almacenar<Producto>().Serialize(destacados, "destacados.xml");
+                if (destacados != null && destacados.Count != 0)
+                    lstdestacados.ItemsSource = destacados;
+            }
+            catch (Exception)
+            {
+            }
+        }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
