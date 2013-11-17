@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using Cueros.App.Core.Services;
 using Cueros.App.Core.Models;
 using Windows.UI.Popups;
+
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Cueros.App.Store
@@ -33,8 +34,9 @@ namespace Cueros.App.Store
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             LoadProductList();
-            //ListCategories();
+            ListCategories();
             ViewDestacados();
+            
         }
 
         private void ViewDestacados()
@@ -77,10 +79,26 @@ namespace Cueros.App.Store
             #endregion
         }
 
+
+
+
         async void ListCategories() 
         {
-            //Mando la linea del producto, ejemplo Mochila
-            
+
+            var get_list = await ServiciosDeCategorias.ObtenerListaDeCategorias();
+            NewCategoria categoria;
+            List<NewCategoria> list_new = new List<NewCategoria>();
+            foreach (var item in get_list)
+            {
+                categoria = new NewCategoria()
+                {
+                    nameCategoria = item.Nombre,
+                    urlCategoria = item.UrlImagen
+                };
+                list_new.Add(categoria);
+            }
+            ComboBoxCategoria.ItemsSource = list_new;
+   
         }
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
@@ -107,6 +125,11 @@ namespace Cueros.App.Store
                 await msgDlg.ShowAsync();
             }
         }
+
+        private void ComboBoxCategoria_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 
     //Clase para mostrar la lista de productos
@@ -119,4 +142,12 @@ namespace Cueros.App.Store
         public string url { get; set; }
         public string temporada { get; set; }
     }
+
+    class NewCategoria
+    {
+        public string IdCategoria { get; set; }
+        public string nameCategoria { get; set; }
+        public string urlCategoria { get; set; }
+    }
+
 }
