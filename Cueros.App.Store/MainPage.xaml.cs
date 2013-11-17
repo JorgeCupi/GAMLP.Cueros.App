@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Navigation;
 //Referencia al servicio Cueros
 using Cueros.App.Core.Services;
 using Cueros.App.Core.Models;
+using Windows.UI.Popups;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Cueros.App.Store
@@ -33,6 +34,13 @@ namespace Cueros.App.Store
         {
             LoadProductList();
             //ListCategories();
+            ViewDestacados();
+        }
+
+        private void ViewDestacados()
+        {
+            Cueros.App.Store.UserControls.LargeTileForMainPage large = new UserControls.LargeTileForMainPage();
+            
         }
 
         
@@ -45,7 +53,7 @@ namespace Cueros.App.Store
             {
                 product = new NewProduct() 
                 {
-                    name = item.Nombre, description = item.Descripcion, line = item.Linea, 
+                    name = item.Nombre, description = item.Descripcion,
                     modelo = item.Modelo, url = item.Fotos.FirstOrDefault().URL, temporada = item.Temporada
                 };
                 list_new.Add(product);
@@ -72,7 +80,7 @@ namespace Cueros.App.Store
         async void ListCategories() 
         {
             //Mando la linea del producto, ejemplo Mochila
-            var _list = await ServiciosDeProductos.ObtenerProductos("Mochilas");
+            
         }
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
@@ -81,6 +89,22 @@ namespace Cueros.App.Store
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+        }
+
+        private void AppBarBotonListaPedido_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Views.ListaPedido));
+        }
+
+        async void ListaDeProductos_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (ListaDeProductos.SelectedItem != null) 
+            {
+                
+                var msgDlg = new Windows.UI.Popups.MessageDialog("seleccionado");
+                msgDlg.DefaultCommandIndex = 1;
+                await msgDlg.ShowAsync();
+            }
         }
     }
 

@@ -34,5 +34,10 @@ namespace Cueros.App.Store.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
         }
+
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+        }
     }
 }

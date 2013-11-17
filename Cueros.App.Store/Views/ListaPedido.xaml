@@ -18,7 +18,7 @@
         </GridView>
         <StackPanel  Grid.Row="0" Margin="10,10,0,10" Orientation="Horizontal">
 
-            <Button Name="ButtonBack" Style="{StaticResource BackButtonStyle}" Margin="30,10" />
+            <Button Name="ButtonBack" Style="{StaticResource BackButtonStyle}" Margin="30,10" Click="ButtonBack_Click"/>
             <TextBlock Text="Pedido" Style="{StaticResource HeaderTextStyle}" Margin="20,36,20,20"/>
             <TextBlock Name="CantidadDeProductosText" Text="0" Style="{StaticResource SubheaderTextStyle}" Margin="15,45,0,10" Foreground="Gray"/>
             <TextBlock Text="Productos" Style="{StaticResource SubheaderTextStyle}" Margin="5,45,10,10" Foreground="Gray"/>
