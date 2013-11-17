@@ -72,13 +72,18 @@
                                     Margin="5">
                             <Image Width="150"
                                    Height="150" 
-                                   Source="{Binding Fotos[0]}"/>
+                                   Margin="20"
+                                   Stretch="UniformToFill"
+                                   Source="{Binding Fotos[0].URL}"/>
                             <StackPanel VerticalAlignment="Center">
                                 <TextBlock Text="{Binding Nombre}"
                                            TextWrapping="Wrap"
-                                           Width="250"/>
-                                <TextBlock Text="{Binding Temporada}"/>
-                                <TextBlock Text="{Binding FechaPublicacion}"/>
+                                           Width="220"
+                                           Foreground="White"/>
+                                <TextBlock Text="{Binding Temporada}"
+                                           Foreground="White"/>
+                                <TextBlock Text="{Binding FechaPublicacion}"
+                                           Foreground="White"/>
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>
@@ -97,13 +102,18 @@
                                     Margin="5">
                             <Image Width="150"
                                    Height="150" 
-                                   Source="{Binding Fotos[0]}"/>
+                                   Margin="20"
+                                   Stretch="UniformToFill"
+                                   Source="{Binding Fotos[0].URL}"/>
                             <StackPanel VerticalAlignment="Center">
                                 <TextBlock Text="{Binding Nombre}"
                                            TextWrapping="Wrap"
-                                           Width="250"/>
-                                <TextBlock Text="{Binding Temporada}"/>
-                                <TextBlock Text="{Binding FechaPublicacion}"/>
+                                           Foreground="White"
+                                           Width="220"/>
+                                <TextBlock Text="{Binding Temporada}"
+                                           Foreground="White"/>
+                                <TextBlock Text="{Binding FechaPublicacion}"
+                                           Foreground="White"/>
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>
