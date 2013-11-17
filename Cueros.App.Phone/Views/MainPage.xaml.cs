@@ -17,9 +17,7 @@ namespace Cueros.App.Phone
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        // Constructor
-        public ObservableCollection<Producto> productos;
-        public ObservableCollection<Categoria> categorias;
+        public ObservableCollection<Categoria> categoria;
 
         public MainPage()
         {
@@ -30,22 +28,26 @@ namespace Cueros.App.Phone
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             BuildLocalizedApplicationBar();
-            productos = new Almacenar<Producto>().Deserialize("lista.xml");
-            categorias = new Almacenar<Categoria>().Deserialize("categoria.xml");
+            Cargar();
+        }
+
+        void Cargar()
+        {
+            categoria = new Almacenar<Categoria>().Deserialize("categorias.xml");
+            if (categoria != null && categoria.Count != 0)
+                lstcategoria.ItemsSource = categoria;
             obtenerproductos();
-            if (categorias != null && categorias.Count != 0)
-                lstcategoria.ItemsSource = categorias.ToList();
         }
 
         public async void obtenerproductos()
         {
             try
             {
-                List<Producto> pro = await ServiciosDeProductos.ObtenerProductos();
-                productos = new ObservableCollection<Producto>(pro);
-                categoria();
-                new Almacenar<Producto>().Serialize(productos, "lista.xml");
-                new Almacenar<Categoria>().Serialize(categorias, "categoria.xml");
+                List<Categoria> cat = await ServiciosDeCategorias.ObtenerListaDeCategorias();
+                categoria = new ObservableCollection<Categoria>(cat);
+                new Almacenar<Categoria>().Serialize(categoria, "categorias.xml");
+                if (categoria != null && categoria.Count != 0)
+                    lstcategoria.ItemsSource = categoria;
             }
             catch (Exception)
             {
@@ -53,29 +55,23 @@ namespace Cueros.App.Phone
             }
         }
 
-        public void categoria()
-        {
-            categorias = new ObservableCollection<Categoria>();
-            foreach (var item in productos)
-            {
-                if (categorias.Where(i => i.categoria.Equals(item.Linea)).Count() == 0)
-                {
-                    categorias.Add(new Categoria()
-                    {
-                        categoria = item.Linea,
-                        image = "/Assets/Tiles/FlipCycleTileSmall.png"
-                        //image = item.Fotos.First().URL
-                    });
-                }
-            }
-        }
+        //public async obtenernovedades()
+        //{
+        //    try
+        //    {
+        //        List
+        //    }
+        //    catch (Exception)
+        //    {
+        //    }
+        //}
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lstcategoria.SelectedItem != null)
             {
                 Categoria c = lstcategoria.SelectedItem as Categoria;
-                NavigationService.Navigate(new Uri("/Views/ListaProductos.xaml?categoria=" + c.categoria, UriKind.Relative));
+                NavigationService.Navigate(new Uri("/Views/ListaProductos.xaml?categoria=" + c.Id, UriKind.Relative));
             }
         }
 
@@ -90,7 +86,7 @@ namespace Cueros.App.Phone
 
         void appBarButton_Click(object sender, EventArgs e)
         {
-            categoria();
+            Cargar();
         }
     }
 }

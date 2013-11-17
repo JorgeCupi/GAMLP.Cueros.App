@@ -14,10 +14,6 @@
     xmlns:vm ="clr-namespace:Cueros.App.Phone.ViewModels"
     shell:SystemTray.IsVisible="True">
 
-    <phone:PhoneApplicationPage.Resources>
-        <vm:CategoriaViewModel x:Key="categoriavm"/>
-    </phone:PhoneApplicationPage.Resources>
-
     <!--TitlePanel contiene el nombre de la aplicación y el título de la página-->
     <StackPanel>
         <TextBlock Name="categoria"

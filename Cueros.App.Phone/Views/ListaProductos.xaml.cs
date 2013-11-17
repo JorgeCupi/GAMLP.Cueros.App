@@ -8,8 +8,6 @@ using System.Collections.ObjectModel;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using Cueros.App.Phone.ViewModels;
-
 using Cueros.App.Core;
 using Cueros.App.Phone;
 using Cueros.App.Phone.Models;
@@ -35,16 +33,16 @@ namespace Cueros.App.Phone.Views
         }
         async public void CargarDatos()
         {
-            List<Producto> pro = await ServiciosDeProductos.ObtenerProductos(lineax);
-            lstProductos.ItemsSource = pro;
+            //List<Producto> pro = await ServiciosDeProductos.ObtenerProductos(lineax);
+            //lstProductos.ItemsSource = pro;
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (NavigationContext.QueryString.ContainsKey("categoria"))
             {
-                categoria.Text = NavigationContext.QueryString["categoria"];
-                new CategoriaViewModel().prodcat(categoria.Text);
-                lineax = categoria.Text;
+                //categoria.Text = NavigationContext.QueryString["categoria"];
+                //new CategoriaViewModel().prodcat(categoria.Text);
+                //lineax = categoria.Text;
             }
         }
 

@@ -16,16 +16,11 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 
-    <phone:PhoneApplicationPage.Resources>
-        <vm:CategoriaViewModel x:Key="categoriavm"/>
-    </phone:PhoneApplicationPage.Resources>
-
     <phone:Panorama Title="CADEPIA">
         <phone:PanoramaItem Header="categoria" 
                             Orientation="Horizontal"
                             Width="500">
-            <ListBox DataContext="{Binding Source={StaticResource categoriavm}}"
-                     Name="lstcategoria"
+            <ListBox Name="lstcategoria"
                      SelectionChanged="ListBox_SelectionChanged">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -36,8 +31,8 @@
                     <DataTemplate>
                         <toolkit:HubTile Size="Medium"
                                          Margin="10"
-                                         Title="{Binding categoria}"
-                                         Source="{Binding image}"/>
+                                         Title="{Binding Nombre}"
+                                         Source="{Binding UrlImage}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

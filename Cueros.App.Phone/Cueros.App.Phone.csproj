@@ -95,10 +95,7 @@
     </Compile>
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Models\Almacenar.cs" />
-    <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\GenericEventArgs.cs" />
-    <Compile Include="ViewModels\CategoriaViewModel.cs" />
-    <Compile Include="ViewModels\NotificationEnabledObject.cs" />
     <Compile Include="Views\DetalleProducto.xaml.cs">
       <DependentUpon>DetalleProducto.xaml</DependentUpon>
     </Compile>
