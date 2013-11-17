@@ -33,7 +33,8 @@ namespace Cueros.App.Phone
             productos = new Almacenar<Producto>().Deserialize("lista.xml");
             categorias = new Almacenar<Categoria>().Deserialize("categoria.xml");
             obtenerproductos();
-            lstcategoria.ItemsSource = categorias.ToList();
+            if (categorias != null && categorias.Count != 0)
+                lstcategoria.ItemsSource = categorias.ToList();
         }
 
         public async void obtenerproductos()

@@ -60,7 +60,7 @@
         <phone:PanoramaItem Header="Materiales">
             <ListBox Name="lstMateriales"
                      ItemTemplate="{StaticResource ListaMateriales}" 
-                     SelectionChanged="SelectMaterial"/>
+                     />
         </phone:PanoramaItem>
     </phone:Panorama>
 
