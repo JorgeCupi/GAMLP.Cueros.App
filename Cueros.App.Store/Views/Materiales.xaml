@@ -7,25 +7,84 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="120"/>
+            <RowDefinition Height="0"/>
             <RowDefinition Height="*"/>
-           
-            
-        </Grid.RowDefinitions>
-        <StackPanel  Grid.Row="0" Margin="10,10,0,10" Orientation="Horizontal">
 
-            <Button Name="ButtonBack" Style="{StaticResource BackButtonStyle}" Margin="30,10" />
-            <TextBlock Text="Materiales" Style="{StaticResource HeaderTextStyle}" Margin="20,36,20,20"/>
-        </StackPanel>
-        
+
+        </Grid.RowDefinitions>
+
+
         <Grid Grid.Row="1">
-            
-            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="500"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Background="#E53A496A">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="*"/>
+
+
+                </Grid.RowDefinitions>
+                <StackPanel>
+                    <TextBlock Grid.Row="0" Style="{StaticResource HeaderTextStyle}" Text="Items" Margin="30,50" Foreground="White"/>
+                </StackPanel>
+                <ListBox Width="400"  Background="#E53A496A" Grid.Row="1" Name="ListaDeMateriales"  ScrollViewer.IsVerticalRailEnabled="True" BorderThickness="0">
+
+
+                    <!--Template Lista-->
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+
+                            <StackPanel Orientation="Horizontal" Height="100" Width="380">
+                                <!--<Image Height="80" Width="80" Source="Assets/SmallLogo.png"/>-->
+                                <Image Height="80" Width="80" Source="{Binding url}"/>
+                                <StackPanel Margin="10,0,0,0">
+                                    <TextBlock Text="{Binding name}" Foreground="White" Style="{StaticResource TitleTextStyle}"/>
+                                    <TextBlock Text="{Binding description}" Foreground="White" Style="{StaticResource ItemTextStyle}"/>
+                                    <TextBlock Text="{Binding modelo}" Foreground="White" Style="{StaticResource ItemTextStyle}"/>
+                                    <TextBlock Text="{Binding temporada}" Foreground="White" Style="{StaticResource ItemTextStyle}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="0.726"/>
+                        <GradientStop Color="#CCEAEAEA"/>
+                    </LinearGradientBrush>
+
+                </Grid.Background>
+                <StackPanel>
+                    <TextBlock Text="Datos" Style="{StaticResource HeaderTextStyle}" Margin="30,50" Foreground="Gray"/>
+
+                    <Grid Name="DatosDeMateriales" Height="548">
+
+                    </Grid>
+
+                </StackPanel>
+
+            </Grid>
+
+            <Grid Grid.Column="2">
+
+
+            </Grid>
         </Grid>
-        
-        
+
+
     </Grid>
+
 </Page>
