@@ -16,7 +16,7 @@ namespace Cueros.App.Core.Services
         /// <returns></returns>
         public static async Task<List<Producto>> ObtenerProductos()
         {
-            string url = "https://dl.dropboxusercontent.com/s/7f402dzmqmw871m/CUEROS.json?dl=1&token_hash=AAHNw7NngxtL3TRef5pTNFNe-jYRKekuEczDA8bhEnvdsQ";
+            string url = "https://dl.dropboxusercontent.com/s/sz7n21swk4vv15s/CUEROS.json?dl=1&token_hash=AAGvd8odSNROK7fuPa3aUMscH5nR2wbUqvtBZEkCDYFpYQ";
             string response = await Utilities.DownloadJsonFromThisUrl(url);
 
             return Utilities.TransformToProductList(response);
@@ -29,7 +29,7 @@ namespace Cueros.App.Core.Services
         /// <returns></returns>
         public static async Task<List<Producto>> ObtenerProductosDeEstaCategoria(string IdCategoria)
         {
-            string url = "https://dl.dropboxusercontent.com/s/7f402dzmqmw871m/CUEROS.json?dl=1&token_hash=AAHNw7NngxtL3TRef5pTNFNe-jYRKekuEczDA8bhEnvdsQ";
+            string url = "https://dl.dropboxusercontent.com/s/sz7n21swk4vv15s/CUEROS.json?dl=1&token_hash=AAGvd8odSNROK7fuPa3aUMscH5nR2wbUqvtBZEkCDYFpYQ";
             string response = await Utilities.DownloadJsonFromThisUrl(url);
 
             return GetProductsWithThisLine(response, IdCategoria);
@@ -42,7 +42,7 @@ namespace Cueros.App.Core.Services
         /// <returns></returns>
         public static async Task<List<Producto>> ObtenerProductosMasNovedosos(int numeroMaximoDeResultados)
         {
-            string url = "https://dl.dropboxusercontent.com/s/7f402dzmqmw871m/CUEROS.json?dl=1&token_hash=AAHNw7NngxtL3TRef5pTNFNe-jYRKekuEczDA8bhEnvdsQ";
+            string url = "https://dl.dropboxusercontent.com/s/sz7n21swk4vv15s/CUEROS.json?dl=1&token_hash=AAGvd8odSNROK7fuPa3aUMscH5nR2wbUqvtBZEkCDYFpYQ";
             string response = await Utilities.DownloadJsonFromThisUrl(url);
 
             return GetRecentProducts(response, numeroMaximoDeResultados);
@@ -55,7 +55,7 @@ namespace Cueros.App.Core.Services
         /// <returns></returns>
         public static async Task<List<Producto>> ObtenerProductosDestacados(int numeroMaximoDeResultados)
         {
-            string url = "https://dl.dropboxusercontent.com/s/7f402dzmqmw871m/CUEROS.json?dl=1&token_hash=AAHNw7NngxtL3TRef5pTNFNe-jYRKekuEczDA8bhEnvdsQ";
+            string url = "https://dl.dropboxusercontent.com/s/sz7n21swk4vv15s/CUEROS.json?dl=1&token_hash=AAGvd8odSNROK7fuPa3aUMscH5nR2wbUqvtBZEkCDYFpYQ";
             string response = await Utilities.DownloadJsonFromThisUrl(url);
 
             return GetTopProducts(response, numeroMaximoDeResultados);
