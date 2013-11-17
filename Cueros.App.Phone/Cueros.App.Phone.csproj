@@ -96,6 +96,9 @@
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Models\Almacenar.cs" />
     <Compile Include="Models\GenericEventArgs.cs" />
+    <Compile Include="Views\DetalleMaterial.xaml.cs">
+      <DependentUpon>DetalleMaterial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DetalleProducto.xaml.cs">
       <DependentUpon>DetalleProducto.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Views\DetalleMaterial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DetalleProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

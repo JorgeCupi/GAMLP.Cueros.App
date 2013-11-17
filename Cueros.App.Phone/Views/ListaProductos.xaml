@@ -17,13 +17,12 @@
     <!--TitlePanel contiene el nombre de la aplicación y el título de la página-->
     <StackPanel>
         <TextBlock Name="categoria"
-              
                    TextWrapping="Wrap"
                    Style="{StaticResource PhoneTextTitle1Style}"/>
 
         <ListBox Name="lstProductos"
                  Grid.Row="1"
-                     ItemTemplate="{StaticResource ListaProductos}" 
+                 ItemTemplate="{StaticResource ListaProductos}" 
                  SelectionChanged="Select"
                      />
     </StackPanel>

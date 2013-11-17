@@ -19,7 +19,7 @@ namespace Cueros.App.Phone.Views
     public partial class ListaProductos : PhoneApplicationPage
     {
         public ObservableCollection<Producto> productos;
-        string lineax;
+        string id;
         public ListaProductos()
         {
             InitializeComponent();

@@ -15,7 +15,7 @@
 
     <!--LayoutRoot contiene la cuadrícula raíz donde se coloca el resto del contenido de la página-->
     <Grid x:Name="LayoutRoot">
-        <phone:Panorama Title="mi aplicación">
+        <phone:Panorama Title="Nombre Material">
 
             <!--Elemento Panorama uno-->
             <phone:PanoramaItem Header="item1">
