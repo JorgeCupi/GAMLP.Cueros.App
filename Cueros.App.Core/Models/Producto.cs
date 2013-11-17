@@ -13,7 +13,7 @@ namespace Cueros.App.Core.Models
 
         public string Nombre { get; set; }
 
-        public string Linea { get; set; }
+        public Categoria Categoria{ get; set; }
 
         public string Temporada { get; set; }
 
@@ -22,5 +22,7 @@ namespace Cueros.App.Core.Models
         public List<Material> Materiales { get; set; }
 
         public DateTime FechaPublicacion { get; set; }
+
+        public int VentasRealizadas { get; set; }
     }
 }

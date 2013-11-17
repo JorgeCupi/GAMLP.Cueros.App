@@ -37,12 +37,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Foto.cs" />
     <Compile Include="Models\Material.cs" />
+    <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Proveedor.cs" />
     <Compile Include="Models\Producto.cs" />
     <Compile Include="Models\Resultado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ServiciosDeCategorias.cs" />
     <Compile Include="Services\ServiciosDeProductos.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
