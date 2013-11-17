@@ -7,6 +7,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     
+    <Page.BottomAppBar>
+
+        <AppBar Height="100" Background="#FF3A496A"  IsSticky="True">
+            <StackPanel Orientation="Horizontal">
+
+                <Button Name="AppBarBotonListaPedido" Style="{StaticResource ListAppBarButtonStyle}" Foreground="White" Click="AppBarBotonListaPedido_Click"/>
+            </StackPanel>
+        </AppBar>
+    </Page.BottomAppBar>
+    
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -93,17 +103,6 @@
             </ListBox>
 
         <!--AppBar-->
-        <AppBar Margin="0,668,0,0" Background="#FF3A496A" Grid.ColumnSpan="4">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Horizontal">
-                    <Button Name="AppBarBotonListaPedido" Style="{StaticResource ListAppBarButtonStyle}" Foreground="White" Click="AppBarBotonListaPedido_Click" Margin="0,-6,0,6"/>
-                    </StackPanel>
-                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal"/>
-            </Grid>
-        </AppBar>
+        
     </Grid>
 </Page>
