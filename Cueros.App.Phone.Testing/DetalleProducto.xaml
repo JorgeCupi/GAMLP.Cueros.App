@@ -1,0 +1,69 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Cueros.App.Phone.Testing.DetalleProducto"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False"
+    xmlns:tk="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
+
+    <phone:Panorama>
+        <phone:Panorama.Title>
+            <TextBlock Text="Nombre_Producto"
+                       FontSize="92"
+                       Margin="12,24"/>
+        </phone:Panorama.Title>
+        <phone:PanoramaItem Header="Descripcion">
+            <StackPanel>
+                <Rectangle Height="300"
+                           Width="300"
+                           Fill="Blue"/>
+                <TextBlock Text="Descripcion del producto"/>
+            </StackPanel>
+        </phone:PanoramaItem>
+
+        <phone:PanoramaItem Orientation="Horizontal"
+                            Header="Fotos">
+            <tk:WrapPanel Orientation="Vertical">
+                <ListBox Name="lstFotos">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <tk:WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Rectangle Height="200" Width="200"
+                                   Fill="Blue"
+                                   Margin="6"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </tk:WrapPanel>
+        </phone:PanoramaItem>
+        <phone:PanoramaItem Header="Materiales">
+            <ScrollViewer>
+                <tk:WrapPanel Orientation="Vertical">
+                    <ListBox Name="lstMateriales">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Rectangle Height="200" Width="200"
+                                   Fill="Green"
+                                   Margin="6"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </tk:WrapPanel>
+            </ScrollViewer>
+        </phone:PanoramaItem>
+    </phone:Panorama>
+
+</phone:PhoneApplicationPage>

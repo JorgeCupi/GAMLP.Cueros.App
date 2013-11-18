@@ -19,6 +19,40 @@ namespace Cueros.App.Phone.Testing
         {
             InitializeComponent();
             this.Loaded += MainPage_Loaded;
+            lstCategorias.Tap += lstCategorias_Tap;
+
+            lstTop.Tap += NavigateThisProduct;
+            lstNuevos.Tap += NavigateThisProduct;
+            FillListNews();
+        }
+
+        void NavigateThisProduct(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/DetalleProducto.xaml",UriKind.Relative));
+        }
+
+        private void FillListNews()
+        {
+            lstNuevos.Items.Add("blaa");
+            lstNuevos.Items.Add("blaa");
+            lstNuevos.Items.Add("blaa");
+            lstNuevos.Items.Add("blaa");
+            lstNuevos.Items.Add("blaa");
+            lstNuevos.Items.Add("blaa");
+
+            lstTop.Items.Add("bleee");
+            lstTop.Items.Add("bleee");
+            lstTop.Items.Add("bleee");
+            lstTop.Items.Add("bleee");
+            lstTop.Items.Add("bleee");
+            lstTop.Items.Add("bleee");
+            lstTop.Items.Add("bleee");
+            lstTop.Items.Add("bleee");
+        }
+
+        void lstCategorias_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Productos.xaml",UriKind.Relative));
         }
 
         async void MainPage_Loaded(object sender, RoutedEventArgs e)
