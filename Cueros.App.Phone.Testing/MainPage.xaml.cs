@@ -24,7 +24,7 @@ namespace Cueros.App.Phone.Testing
         async void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             //lstProductos.ItemsSource = await ServiciosDeProductos.ObtenerProductos();
-            lstCategorias.ItemsSource = await ServiciosDeCategorias.ObtenerListaDeCategorias();
+            lstCategorias.ItemsSource = await ServiciosDeCategorias.GetListOfCategories();
         }
     }
 }

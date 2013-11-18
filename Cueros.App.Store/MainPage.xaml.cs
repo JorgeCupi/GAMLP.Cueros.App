@@ -85,7 +85,7 @@ namespace Cueros.App.Store
         async void ListCategories() 
         {
 
-            var get_list = await ServiciosDeCategorias.ObtenerListaDeCategorias();
+            var get_list = await ServiciosDeCategorias.GetListOfCategories();
             NewCategoria categoria;
             List<NewCategoria> list_new = new List<NewCategoria>();
             foreach (var item in get_list)

@@ -53,7 +53,7 @@ namespace Cueros.App.Phone
         {
             try
             {
-                List<Categoria> cat = await ServiciosDeCategorias.ObtenerListaDeCategorias();
+                List<Categoria> cat = await ServiciosDeCategorias.GetListOfCategories();
                 categoria = new ObservableCollection<Categoria>(cat);
                 new Almacenar<Categoria>().Serialize(categoria, "categorias.xml");
                 if (categoria != null && categoria.Count != 0)

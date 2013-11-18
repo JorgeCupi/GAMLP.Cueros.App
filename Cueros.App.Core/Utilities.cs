@@ -40,5 +40,10 @@ namespace Cueros.App.Core
                 return "Error 400"; // No se pudo realizar la descarga del string.
             }
         }
+
+        internal static Categoria TransformToCategory(string response)
+        {
+            return JsonConvert.DeserializeObject<Categoria>(response);
+        }
     }
 }
