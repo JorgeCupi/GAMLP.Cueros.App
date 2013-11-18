@@ -10,21 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Cueros.App.WPF
+namespace Cueros.App.WPF.Usercontrol
 {
     /// <summary>
-    /// Interaction logic for Informacion.xaml
+    /// Interaction logic for UserControl2.xaml
     /// </summary>
-    public partial class Informacion : Window
+    public partial class UserControl2 : UserControl
     {
-        private Core.Models.Categoria categoria;
-
-        public Informacion(Core.Models.Categoria categoria)
+        public UserControl2()
         {
             InitializeComponent();
-            this.categoria = categoria;
+
         }
     }
 }

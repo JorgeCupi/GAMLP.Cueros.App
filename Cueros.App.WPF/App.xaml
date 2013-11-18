@@ -3,6 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <DataTemplate x:Key="ListaProductos">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105" Width="432" Background="#FF928A95">
+                    
+                    <Image  Source="{Binding UrlImagen}" Width="100" Height="100" Stretch="Fill" Margin="10"/>
+                    
+                        <TextBlock Text="{Binding Nombre}" Width="320" TextWrapping="Wrap" Margin="10,0" FontSize="25" Foreground="DarkMagenta" VerticalAlignment="Center"/>
+                    
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
     </Application.Resources>
 </Application>

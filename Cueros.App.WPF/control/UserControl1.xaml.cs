@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Cueros.App.WPF
+namespace Cueros.App.WPF.Usercontrol
 {
     /// <summary>
     /// Interaction logic for UserControl1.xaml
