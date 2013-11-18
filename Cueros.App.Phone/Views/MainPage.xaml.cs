@@ -68,7 +68,7 @@ namespace Cueros.App.Phone
         {
             try
             {
-                List<Producto> pro = await ServiciosDeProductos.GetRecentProductsFromThisCategory(10);
+                List<Producto> pro = await ServiciosDeProductos.GetRecentProducts(10);
                 novedades = new ObservableCollection<Producto>(pro);
                 new Almacenar<Producto>().Serialize(novedades, "novedades.xml");
                 if (novedades != null && novedades.Count != 0)
