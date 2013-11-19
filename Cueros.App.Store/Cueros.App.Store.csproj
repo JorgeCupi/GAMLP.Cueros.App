@@ -120,17 +120,11 @@
     <Compile Include="UserControls\ImagenDescripcion.xaml.cs">
       <DependentUpon>ImagenDescripcion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\LargeTileForMainPage.xaml.cs">
-      <DependentUpon>LargeTileForMainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\SmallTileForMainPage.xaml.cs">
-      <DependentUpon>SmallTileForMainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\TileListaPedido.xaml.cs">
       <DependentUpon>TileListaPedido.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\WideTileForMainPage.xaml.cs">
-      <DependentUpon>WideTileForMainPage.xaml</DependentUpon>
+    <Compile Include="UserControls\uscDestacados.xaml.cs">
+      <DependentUpon>uscDestacados.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Detalles.xaml.cs">
       <DependentUpon>Detalles.xaml</DependentUpon>
@@ -140,6 +134,9 @@
     </Compile>
     <Compile Include="Views\Materiales.xaml.cs">
       <DependentUpon>Materiales.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewCategoria.xaml.cs">
+      <DependentUpon>ViewCategoria.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -153,11 +150,11 @@
     <Content Include="Assets\SmallLogo.png" />
     <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\StoreLogo.png" />
-    <Content Include="Imagenes\14313825-hombre-de-color-negro-brillante-de-los-zapatos-con-cordones-de-los-zapatos-aislados-sobre-fondo-blan.jpg" />
-    <Content Include="Imagenes\20273-crean-zapatos-concepto-con-dise-os-de-redes-sociales-como-fa.jpg" />
-    <Content Include="Imagenes\tacos.jpg" />
-    <Content Include="Imagenes\zapat.jpg" />
-    <Content Include="Imagenes\zapatos_corazon.jpg" />
+    <Content Include="Imagenes\zapato1.jpg" />
+    <Content Include="Imagenes\zapato_casual.jpg" />
+    <Content Include="Imagenes\zapato_tacon2.jpg" />
+    <Content Include="Imagenes\zapato2.jpg" />
+    <Content Include="Imagenes\zapato_tacon1.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -180,19 +177,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\LargeTileForMainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\SmallTileForMainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UserControls\TileListaPedido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\WideTileForMainPage.xaml">
+    <Page Include="UserControls\uscDestacados.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -205,6 +194,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Materiales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewCategoria.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

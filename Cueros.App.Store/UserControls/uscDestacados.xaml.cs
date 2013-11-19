@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -16,9 +17,9 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Cueros.App.Store.UserControls
 {
-    public sealed partial class LargeTileForMainPage : UserControl
+    public sealed partial class uscDestacados : UserControl
     {
-        public LargeTileForMainPage()
+        public uscDestacados()
         {
             this.InitializeComponent();
         }

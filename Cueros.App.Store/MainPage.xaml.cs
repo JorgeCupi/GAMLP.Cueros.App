@@ -33,73 +33,38 @@ namespace Cueros.App.Store
 
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadProductList();
-            ListCategories();
-            ViewDestacados();
-            
+            //ListCategories();
+            //ListDestacados();
         }
 
-        private void ViewDestacados()
+        async void ListDestacados()
         {
-            Cueros.App.Store.UserControls.LargeTileForMainPage large = new UserControls.LargeTileForMainPage();
-            
-        }
-
-        
-        async void LoadProductList()
-        {
-            var get_list = await ServiciosDeProductos.GetProducts();
-            NewProduct product;
-            List<NewProduct> list_new = new List<NewProduct>();
+            var list_url = new List<string>();
+            var get_list =  await ServiciosDeProductos.ObtenerProductosDestacados(5);
             foreach (var item in get_list)
             {
-                product = new NewProduct() 
-                {
-                    name = item.Nombre, description = item.Descripcion,
-                    modelo = item.Modelo, url = item.Fotos.FirstOrDefault().URL, temporada = item.Temporada
-                };
-                list_new.Add(product);
+                list_url.Add(item.Fotos.FirstOrDefault().URL);
             }
-            ListaDeProductos.ItemsSource = list_new;
-
-            #region Pruebas
-            //List<Producto> list_producto = new List<Producto>();
-           // for (int i = 0; i < 12; i++)
-           // {
-           //     Producto my_product = new Producto() 
-           //     {
-           //        Nombre = "Nombre del producto", 
-           //         Descripcion = "Descripcion del producto", 
-           //        Modelo = "Modelo del producto", 
-           //         Temporada = "Temporada"
-           //    };
-           //    list_producto.Add(my_product);
-           // }
-            // ListaDeProductos.ItemsSource = list_producto;
-            #endregion
+            //List_Destacados.ItemsSource = list_url;
         }
 
-
-
-
-        async void ListCategories() 
+        async void ListCategories()
         {
-
-            var get_list = await ServiciosDeCategorias.GetListOfCategories();
-            NewCategoria categoria;
-            List<NewCategoria> list_new = new List<NewCategoria>();
-            foreach (var item in get_list)
+            //var get_list = await ServiciosDeCategorias.ObtenerListaDeCategorias();
+            Categoria categoria;
+            List<Categoria> list_new = new List<Categoria>();
+            foreach (var item in await ServiciosDeCategorias.ObtenerListaDeCategorias())
             {
-                categoria = new NewCategoria()
+                categoria = new Categoria()
                 {
-                    nameCategoria = item.Nombre,
-                    urlCategoria = item.UrlImagen
+                    Nombre = item.Nombre,
+                    UrlImagen = item.UrlImagen
                 };
                 list_new.Add(categoria);
             }
-            ComboBoxCategoria.ItemsSource = list_new;
-   
+            ListaDeProductos.ItemsSource = list_new;
         }
+
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
         /// </summary>
@@ -114,40 +79,14 @@ namespace Cueros.App.Store
             Frame.Navigate(typeof(Views.ListaPedido));
         }
 
-        async void ListaDeProductos_Tapped(object sender, TappedRoutedEventArgs e)
+        private void ListaDeProductos_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (ListaDeProductos.SelectedItem != null) 
+            if (ListaDeProductos.SelectedItem != null)
             {
-                var my_product = ((ListaDeProductos.SelectedItem) as NewProduct).name;
-
-                var msgDlg = new Windows.UI.Popups.MessageDialog(my_product);
-                msgDlg.DefaultCommandIndex = 1;
-                await msgDlg.ShowAsync();
+                var my_categoria = ListaDeProductos.SelectedItem as Producto;
+                Frame.Navigate(typeof(Views.ViewCategoria), my_categoria);
             }
         }
-
-        private void ComboBoxCategoria_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-    }
-
-    //Clase para mostrar la lista de productos
-    class NewProduct
-    {
-        public string name { get; set; }
-        public string description { get; set; }
-        public string modelo { get; set; }
-        public string line { get; set; }
-        public string url { get; set; }
-        public string temporada { get; set; }
-    }
-
-    class NewCategoria
-    {
-        public string IdCategoria { get; set; }
-        public string nameCategoria { get; set; }
-        public string urlCategoria { get; set; }
     }
 
 }

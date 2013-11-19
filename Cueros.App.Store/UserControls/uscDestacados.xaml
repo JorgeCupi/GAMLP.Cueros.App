@@ -1,0 +1,50 @@
+﻿<UserControl
+    x:Class="Cueros.App.Store.UserControls.uscDestacados"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Cueros.App.Store.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="500"
+    d:DesignWidth="700">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="277*"/>
+            <RowDefinition Height="223*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="271*"/>
+            <ColumnDefinition Width="129*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" >
+            <StackPanel Background="#FF458D49" Margin="43,0,15,3">
+                <Image Source="/Imagenes/zapato2.jpg" Height="245" Stretch="UniformToFill"/>
+                <TextBlock Text="Zapato para hombre" HorizontalAlignment="Center" Margin="0,3,0,0" FontSize="16" Foreground="White"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="0" Grid.Column="1">
+            <StackPanel Background="#FFBB1F3B" Margin="3">
+                <Image Source="/Imagenes/zapato_tacon1.jpg" Height="245" Stretch="UniformToFill"/>
+                <TextBlock Text="Zapato para dama" HorizontalAlignment="Center" Margin="0,3,0,0" FontSize="16" Foreground="White"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0" Margin="80,0,10,0">
+            <StackPanel Background="#FF233DE8" Margin="3">
+                <Image Source="/Imagenes/zapato_casual.jpg" Height="192" Stretch="UniformToFill"/>
+                <TextBlock Text="Zapato casual para hombre" HorizontalAlignment="Center" Margin="0,3,0,0" FontSize="16" Foreground="White"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <StackPanel Background="#FFCDB02E" Margin="3">
+                <Image Source="/Imagenes/zapato1.jpg" Height="192" Stretch="UniformToFill"/>
+                <TextBlock Text="Zapato para hombre" HorizontalAlignment="Center" Margin="0,3,0,0" FontSize="16" Foreground="White"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
