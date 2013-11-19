@@ -33,14 +33,14 @@ namespace Cueros.App.Store
 
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            //ListCategories();
+            ListCategories();
             //ListDestacados();
         }
 
         async void ListDestacados()
         {
             var list_url = new List<string>();
-            var get_list =  await ServiciosDeProductos.ObtenerProductosDestacados(5);
+            var get_list = await ServiciosDeProductos.GetTopProducts(5);
             foreach (var item in get_list)
             {
                 list_url.Add(item.Fotos.FirstOrDefault().URL);
@@ -53,7 +53,7 @@ namespace Cueros.App.Store
             //var get_list = await ServiciosDeCategorias.ObtenerListaDeCategorias();
             Categoria categoria;
             List<Categoria> list_new = new List<Categoria>();
-            foreach (var item in await ServiciosDeCategorias.ObtenerListaDeCategorias())
+            foreach (var item in await ServiciosDeCategorias.GetListOfCategories())
             {
                 categoria = new Categoria()
                 {
