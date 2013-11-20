@@ -25,8 +25,8 @@ namespace Cueros.App.WPF
 
         string nombreProductoObt;
         public ObservableCollection<Producto> producto;
-        public Producto pro;
         private Producto producto1;
+        private List<Producto> Carrito;
 
         public DetalleProducto(Producto producto1)
         {
@@ -34,6 +34,28 @@ namespace Cueros.App.WPF
             this.producto1 = producto1;
             InitializeComponent();
             this.Loaded += DetalleProducto_Loaded;
+            btnMateriales.Click += btnMateriales_Click;
+            btnIncio.Click += btnIncio_Click;
+            btnCarrito.Click += btnCarrito_Click;
+        }
+
+        void btnCarrito_Click(object sender, RoutedEventArgs e)
+        {
+            Carrito.Add(producto1);
+        }
+
+        void btnIncio_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow M = new MainWindow();
+            M.Show();
+        }
+
+        void btnMateriales_Click(object sender, RoutedEventArgs e)
+        {
+            Materiales Ma = new Materiales(producto1);
+            Ma.Owner = this;
+            this.Hide();
+            Ma.Show();
         }
 
         void DetalleProducto_Loaded(object sender, RoutedEventArgs e)
@@ -41,18 +63,14 @@ namespace Cueros.App.WPF
             ProductoLista();
         }
 
-        async void ProductoLista()
+        void ProductoLista()
         {
-            var get_lista = await ServiciosDeProductos.GetProducts();
 
-            List<Producto> list = new List<Producto>();
-            foreach(var item in get_lista)
-            {
-                if (item.Nombre.Equals(nombreProductoObt))
-                {
-                    pro = item;
-                }
-            }
+            txtId.Text = producto1.Id;
+            txtLinea.Text = producto1.Nombre;
+            txtDescripcion.Text = producto1.Descripcion;
+            txtModelo.Text = producto1.Modelo;
+            txtTemporada.Text = producto1.Temporada;
 
         }
     }
