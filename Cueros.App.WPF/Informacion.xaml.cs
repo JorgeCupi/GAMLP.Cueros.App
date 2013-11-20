@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Cueros.App.Core.Models;
+using Cueros.App.Core.Services;
 
 namespace Cueros.App.WPF
 {
@@ -19,12 +21,54 @@ namespace Cueros.App.WPF
     /// </summary>
     public partial class Informacion : Window
     {
-        private Core.Models.Categoria categoria;
-
-        public Informacion(Core.Models.Categoria categoria)
+       String cate;
+        public Informacion(Categoria c)
         {
+            cate = c.Id;
             InitializeComponent();
-            this.categoria = categoria;
+            Loaded += Page1_Loaded;
+
+        }
+
+        private void Page1_Loaded(object sender, RoutedEventArgs e)
+        {
+            ProductOfCategories();
+        }
+
+        async void ProductOfCategories()
+        {
+            try
+            {
+                List<Producto> get_list = await ServiciosDeProductos.GetProductsFromThisCategory(cate);
+                ListaCategoria.ItemsSource = get_list;
+                ListaCategoria.SelectionChanged += ListaCategoria_SelectionChanged;
+            }
+            catch(Exception)
+            {
+                List<Producto> get_list = new List<Producto>();
+                get_list.Add(new Producto()
+                {
+                    Nombre = "O.o oops, ahora no podemos conextarnos, intenta más tarde"
+                });
+                ListaCategoria.ItemsSource = get_list;
+                
+            }
+
+        }
+
+        void ListaCategoria_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var producto = ListaCategoria.SelectedItem as Producto;
+            DetalleProducto dp = new DetalleProducto(producto);
+            dp.Show();
+            this.Hide();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow MainW = new MainWindow();
+            MainW.Show();
+            this.Hide();
         }
     }
 }
