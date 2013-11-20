@@ -62,6 +62,9 @@
     <Compile Include="DetalleProducto.xaml.cs">
       <DependentUpon>DetalleProducto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Materiales.xaml.cs">
+      <DependentUpon>Materiales.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProductVM\ProductRepo.cs" />
     <Compile Include="ProductVM\VMProduct.cs" />
     <Page Include="control\UserControl2.xaml">
@@ -89,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="control\UserControl1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Materiales.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

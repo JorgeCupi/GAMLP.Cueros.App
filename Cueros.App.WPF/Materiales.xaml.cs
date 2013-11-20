@@ -32,11 +32,11 @@ namespace Cueros.App.WPF
         void listarMateriales()
         {
             var ListaM = pro.Materiales;
-            
+
             List<Material> list_new = new List<Material>();
             Material m;
 
-            foreach(var item in ListaM)
+            foreach (var item in ListaM)
             {
                 m = new Material()
                 {
