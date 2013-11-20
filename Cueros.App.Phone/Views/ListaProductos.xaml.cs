@@ -18,42 +18,83 @@ namespace Cueros.App.Phone.Views
 {
     public partial class ListaProductos : PhoneApplicationPage
     {
-        public ObservableCollection<Producto> productos;
-        string id;
+        String id;
+        String categoria;
+
         public ListaProductos()
         {
             InitializeComponent();
-            Loaded += ListaProductos_Loaded;
         }
 
-        void ListaProductos_Loaded(object sender, RoutedEventArgs e)
-        {
-            CargarDatos();
-        }
-        async public void CargarDatos()
-        {
-            List<Producto> pro = await ServiciosDeProductos.GetProductsFromThisCategory(id);
-            lstProductos.ItemsSource = pro;
-        }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (NavigationContext.QueryString.ContainsKey("categoria"))
+            if (NavigationContext.QueryString.ContainsKey("id") &&NavigationContext.QueryString.ContainsKey("categoria"))
             {
-                //categoria.Text = NavigationContext.QueryString["categoria"];
-                //new CategoriaViewModel().prodcat(categoria.Text);
-                //lineax = categoria.Text;
+                id = NavigationContext.QueryString["id"];
+                categoria = NavigationContext.QueryString["categoria"];
+                panorama.Title = categoria;
+                cargar();
             }
         }
 
-        private void Select(object sender, SelectionChangedEventArgs e)
+        public void cargar()
         {
-            if (lstProductos.SelectedItem != null)
+            novedades();
+            destacados();
+            productos();
+        }
+
+        public async void novedades()
+        {
+            try
             {
-                Producto c = lstProductos.SelectedItem as Producto;
-                NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml?id=" + c.Id, UriKind.Relative));
+                List<Producto> novedades = await ServiciosDeProductos.GetRecentProductsFromThisCategory(id, 10);
+                lstnovedades.ItemsSource = novedades;
+            }
+            catch (Exception)
+            {
             }
         }
-        
+
+        public async void destacados()
+        {
+            try
+            {
+                List<Producto> destacados = await ServiciosDeProductos.GetTopProductsFromThisCategory(id, 10);
+                lstdestacados.ItemsSource = destacados;
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        public async void productos()
+        {
+            try
+            {
+                List<Producto> productos = await ServiciosDeProductos.GetProductsFromThisCategory(id);
+                lstproductos.ItemsSource = productos;
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void lstnovedades_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void lstdestacados_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void lstproductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
 
     }
 }

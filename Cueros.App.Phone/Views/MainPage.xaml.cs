@@ -99,7 +99,7 @@ namespace Cueros.App.Phone
             if (lstcategoria.SelectedItem != null)
             {
                 Categoria c = lstcategoria.SelectedItem as Categoria;
-                NavigationService.Navigate(new Uri("/Views/ListaProductos.xaml?categoria=" + c.Id, UriKind.Relative));
+                NavigationService.Navigate(new Uri("/Views/ListaProductos.xaml?id=" + c.Id + "&categoria=" + c.Nombre, UriKind.Relative));
             }
         }
 

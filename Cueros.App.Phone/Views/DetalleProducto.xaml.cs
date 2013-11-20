@@ -22,46 +22,14 @@ namespace Cueros.App.Phone.Views
         public DetalleProducto()
         {
             InitializeComponent();
-            Loaded += DetalleProducto_Loaded;
-            CargarDatosDetalles();
-            CargandoListaDeMateriales();
         }
 
-        void DetalleProducto_Loaded(object sender, RoutedEventArgs e)
-        {
-            NombreTitulo.Title = idProductoObt;
-            producto = new Almacenar<Producto>().Deserialize("lista.xml");
-            foreach (var item in producto)
-            {
-                if (item.Id.Equals(idProductoObt))
-                {
-                    pro = item;
-                }
-            }
-        }
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
-            //try
-            //{
             NavigationContext.QueryString.TryGetValue("id", out idProductoObt);
-            //MessageBox.Show(nombreProductoObt);
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("no se obtuvo nada");
-            //}
+
         }
-        async public void CargarDatosDetalles()
-        {
-            NombreTitulo.Title = pro.Nombre;
-            modelo.Text = pro.Modelo;
-            descripcion.Text = pro.Descripcion;
-        }
-        void CargandoListaDeMateriales()
-        {
-            lstMateriales.ItemsSource = pro.Materiales;
-        }
+
         private void Select(object sender, SelectionChangedEventArgs e)
         {
             if (lstMateriales.SelectedItem != null)
