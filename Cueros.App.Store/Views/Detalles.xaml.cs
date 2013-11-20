@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Cueros.App.Core.Models;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -21,9 +22,13 @@ namespace Cueros.App.Store.Views
     /// </summary>
     public sealed partial class Detalles : Page
     {
+        //Este será el pedido, se sincronizará en todos los views
+        private List<Producto> Pedido = new List<Producto>();
+
         public Detalles()
         {
             this.InitializeComponent();
+
         }
 
         /// <summary>
@@ -33,6 +38,9 @@ namespace Cueros.App.Store.Views
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            var Lista = e.Parameter as List<Producto>;
+            this.Pedido = Lista;
+
         }
     }
 }

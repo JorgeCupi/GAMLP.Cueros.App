@@ -25,6 +25,9 @@ namespace Cueros.App.Store
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        //Este será el pedido, se sincronizará en todos los views
+        private List<Producto> Pedido = new List<Producto>();
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -72,11 +75,13 @@ namespace Cueros.App.Store
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            var Lista = e.Parameter as List<Producto>;
+            this.Pedido = Lista;
         }
 
         private void AppBarBotonListaPedido_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Views.ListaPedido));
+            Frame.Navigate(typeof(Views.ListaPedido), this.Pedido);
         }
 
         private void ListaDeProductos_Tapped(object sender, TappedRoutedEventArgs e)

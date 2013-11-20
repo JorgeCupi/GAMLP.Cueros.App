@@ -18,20 +18,20 @@ namespace Cueros.App.Store.UserControls
 {
     public sealed partial class DetallesProducto : UserControl
     {
-         private string name;
+        private string name;
         private string nomCaracterista1;
         private string nomCaracterista3;
         private string nomCaracterista2;
         private string textValorCaracteristica1;
         private string textValorCaracteristica2;
         private string textValorCaracteristica3;
-        
+
         public string ProdName
         {
             set
             {
                 name = value;
-               NombreProducto.Text = ProdName;
+                NombreProducto.Text = ProdName;
             }
             get
             {
@@ -79,13 +79,13 @@ namespace Cueros.App.Store.UserControls
         }
 
 
-      
+
         public string TextValorCaracteristica1
         {
             set
             {
-                textValorCaracteristica1= value;
-                Property1.Text= TextValorCaracteristica1;
+                textValorCaracteristica1 = value;
+                Property1.Text = TextValorCaracteristica1;
             }
             get
             {
@@ -94,7 +94,8 @@ namespace Cueros.App.Store.UserControls
         }
 
 
-        public string TextValorCaracteristica2        {
+        public string TextValorCaracteristica2
+        {
             set
             {
                 textValorCaracteristica2 = value;
@@ -122,7 +123,7 @@ namespace Cueros.App.Store.UserControls
 
         private void BotonAgregar_Click(object sender, RoutedEventArgs e)
         {
-
+            //implementar agregar producto
         }
 
 
