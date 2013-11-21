@@ -103,7 +103,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel  Grid.ColumnSpan="2" Orientation="Horizontal">
-            <Button Style="{StaticResource EstiloRedondo}" Click="Button_Click"/>
+            <Button Style="{StaticResource EstiloRedondo}"/>
             <TextBlock Text="  MATERIALES: " Foreground="WhiteSmoke" VerticalAlignment="Center" />
 
         </StackPanel>
