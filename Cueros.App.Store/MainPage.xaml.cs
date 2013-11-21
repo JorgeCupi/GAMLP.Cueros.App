@@ -84,6 +84,8 @@ namespace Cueros.App.Store
             Frame.Navigate(typeof(Views.ListaPedido), this.Pedido);
         }
 
+
+
         private void ListaDeProductos_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (ListaDeProductos.SelectedItem != null)
@@ -91,6 +93,11 @@ namespace Cueros.App.Store
                 var my_categoria = ListaDeProductos.SelectedItem as Producto;
                 Frame.Navigate(typeof(Views.ViewCategoria), my_categoria);
             }
+        }
+
+        private void BotonPrueba_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Views.Detalles));
         }
     }
 

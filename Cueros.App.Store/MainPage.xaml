@@ -10,11 +10,12 @@
 
     <!--AppBar-->
     <Page.BottomAppBar>
-        <AppBar Background="Black">
+        <AppBar Background="#FF324491">
             <StackPanel Orientation="Horizontal">
                 <Button Name="AppBarBotonListaPedido"
                         Style="{StaticResource ListAppBarButtonStyle}" 
                         Foreground="White" Click="AppBarBotonListaPedido_Click" Margin="0,-6,0,6"/>
+                <Button Name="BotonPrueba" Style="{StaticResource ListAppBarButtonStyle}" Foreground="White" Click="BotonPrueba_Click"/>
             </StackPanel>
         </AppBar>
     </Page.BottomAppBar>
