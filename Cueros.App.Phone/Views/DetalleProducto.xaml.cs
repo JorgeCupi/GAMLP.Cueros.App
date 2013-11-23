@@ -27,7 +27,6 @@ namespace Cueros.App.Phone.Views
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             NavigationContext.QueryString.TryGetValue("id", out idProductoObt);
-
         }
 
         private void Select(object sender, SelectionChangedEventArgs e)

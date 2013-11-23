@@ -12,6 +12,7 @@ using Cueros.App.Phone.Models;
 using Cueros.App.Core.Services;
 using System.Collections.ObjectModel;
 using Cueros.App.Core.Models;
+using Cueros.App.Phone.Views;
 
 namespace Cueros.App.Phone
 {
@@ -20,7 +21,7 @@ namespace Cueros.App.Phone
         public ObservableCollection<Categoria> categoria;
         public ObservableCollection<Producto> novedades;
         public ObservableCollection<Producto> destacados;
-
+        Producto p;
         public MainPage()
         {
             InitializeComponent();
@@ -61,6 +62,7 @@ namespace Cueros.App.Phone
             }
             catch (Exception)
             {
+                MessageBox.Show("no inter");
             }
         }
 
@@ -76,6 +78,7 @@ namespace Cueros.App.Phone
             }
             catch (Exception)
             {
+                MessageBox.Show("no inter");
             }
         }
 
@@ -91,6 +94,7 @@ namespace Cueros.App.Phone
             }
             catch (Exception)
             {
+                MessageBox.Show("no inter");
             }
         }
 
@@ -121,8 +125,9 @@ namespace Cueros.App.Phone
         {
             if (lstnovedades.SelectedItem != null)
             {
-                Producto p = lstnovedades.SelectedItem as Producto;
-                NavigationService.Navigate(new Uri("/View/DetalleProducto.xml?producto=" + p.Id, UriKind.Relative));
+                p = lstnovedades.SelectedItem as Producto;
+                NavigationService.Navigate(new Uri("/DetalleProducto.xaml", UriKind.Relative));
+               // NavigationService.Navigate(new Uri("/View/DetalleProducto.xml?producto=" + p.Id, UriKind.Relative));
             }
         }
 
@@ -130,8 +135,22 @@ namespace Cueros.App.Phone
         {
             if (lstdestacados.SelectedItem != null)
             {
-                Producto p = lstdestacados.SelectedItem as Producto;
-                NavigationService.Navigate(new Uri("/View/DetalleProducto.xml?producto=" + p.Id, UriKind.Relative));
+                p = lstdestacados.SelectedItem as Producto;
+                NavigationService.Navigate(new Uri("/DetalleProducto.xaml", UriKind.Relative));
+               // NavigationService.Navigate(new Uri("/View/DetalleProducto.xml?producto=" + p.Id, UriKind.Relative));
+            }
+        }
+        protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            DetalleProducto detProd = e.Content as DetalleProducto;
+            //Pagina2 pagina2 = e.Content as Pagina2;
+
+            if (detProd != null)
+            {
+                Producto prod = lstdestacados.SelectedItem as Producto;
+                detProd.DataContext = prod;
+                //pagina2.DataContext = telefono;
             }
         }
     }

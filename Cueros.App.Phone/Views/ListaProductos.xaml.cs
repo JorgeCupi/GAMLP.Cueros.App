@@ -82,19 +82,31 @@ namespace Cueros.App.Phone.Views
 
         private void lstnovedades_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml", UriKind.Relative));
         }
 
         private void lstdestacados_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml", UriKind.Relative));
         }
 
         private void lstproductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml", UriKind.Relative));
         }
 
+        protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            DetalleProducto detProd = e.Content as DetalleProducto;
+            //Pagina2 pagina2 = e.Content as Pagina2;
 
+            if (detProd != null)
+            {
+                Producto prod = lstdestacados.SelectedItem as Producto;
+                detProd.DataContext = prod;
+                //pagina2.DataContext = telefono;
+            }
+        }
     }
 }
