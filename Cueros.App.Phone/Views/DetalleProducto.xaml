@@ -11,14 +11,35 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
+    xmlns:tool="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     shell:SystemTray.IsVisible="False">
 
     <!--LayoutRoot contiene la cuadrícula raíz donde se coloca el resto del contenido de la página-->
-    <phone:Panorama Name="panorama">
+    <phone:Panorama Name="panorama"
+                    Title="{Binding Nombre}">
 
         <!--Elemento Panorama uno-->
         <phone:PanoramaItem Header="Imagenes">
-            <StackPanel/>
+            <ListBox ItemsSource="{Binding Fotos}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <tool:WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="{StaticResource PhoneAccentBrush}"
+                                BorderThickness="3"
+                                Margin="10">
+                            <Image Width="400"
+                                   Height="200"
+                                   Stretch="UniformToFill"
+                                   Source="{Binding URL}">
+                            </Image>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </phone:PanoramaItem>
 
         <!--Elemento Panorama dos-->
@@ -26,27 +47,26 @@
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Modelo:"
-                               FontWeight="Bold"/>
+                               FontWeight="Bold"
+                               Width="130"/>
                     <TextBlock Name="id" Text="{Binding Modelo}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Nombre:"
-                               FontWeight="Bold"/>
-                    <TextBlock Name="modelo" Text="{Binding Nombre}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Descripción:"
-                               FontWeight="Bold"/>
+                               FontWeight="Bold"
+                               Width="130"/>
                     <TextBlock Name="descripcion" Text="{Binding Descripcion}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Categoria:"
-                               FontWeight="Bold"/>
+                               FontWeight="Bold"
+                               Width="130"/>
                     <TextBlock Name="linea" Text="{Binding Categoria.Nombre}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Temporada:"
-                               FontWeight="Bold"/>
+                               FontWeight="Bold"
+                               Width="130"/>
                     <TextBlock Text="{Binding Temporada}"/>
                 </StackPanel>
             </StackPanel>
