@@ -103,6 +103,7 @@ namespace Cueros.App.Phone
             if (lstcategoria.SelectedItem != null)
             {
                 Categoria c = lstcategoria.SelectedItem as Categoria;
+                //MessageBox.Show("go list de prod "+ c.Nombre);
                 NavigationService.Navigate(new Uri("/Views/ListaProductos.xaml?id=" + c.Id + "&categoria=" + c.Nombre, UriKind.Relative));
             }
         }
@@ -123,20 +124,22 @@ namespace Cueros.App.Phone
 
         private void lstnovedades_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            p = lstnovedades.SelectedItem as Producto;
             if (lstnovedades.SelectedItem != null)
             {
-                p = lstnovedades.SelectedItem as Producto;
-                NavigationService.Navigate(new Uri("/DetalleProducto.xaml", UriKind.Relative));
+                //MessageBox.Show("det Prod "+p.Nombre);
+                NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml", UriKind.Relative));
                // NavigationService.Navigate(new Uri("/View/DetalleProducto.xml?producto=" + p.Id, UriKind.Relative));
             }
         }
 
         private void lstdestacados_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            p = lstdestacados.SelectedItem as Producto;
             if (lstdestacados.SelectedItem != null)
             {
-                p = lstdestacados.SelectedItem as Producto;
-                NavigationService.Navigate(new Uri("/DetalleProducto.xaml", UriKind.Relative));
+               // MessageBox.Show("det Prod " + p.Nombre);
+                NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml", UriKind.Relative));
                // NavigationService.Navigate(new Uri("/View/DetalleProducto.xml?producto=" + p.Id, UriKind.Relative));
             }
         }
@@ -144,13 +147,10 @@ namespace Cueros.App.Phone
         {
             base.OnNavigatedFrom(e);
             DetalleProducto detProd = e.Content as DetalleProducto;
-            //Pagina2 pagina2 = e.Content as Pagina2;
 
             if (detProd != null)
             {
-                Producto prod = lstdestacados.SelectedItem as Producto;
-                detProd.DataContext = prod;
-                //pagina2.DataContext = telefono;
+                detProd.DataContext = p;
             }
         }
     }
