@@ -22,6 +22,7 @@ namespace Cueros.App.Phone.Views
         public DetalleProducto()
         {
             InitializeComponent();
+           // lstMateriales.ItemsSource = 
         }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)

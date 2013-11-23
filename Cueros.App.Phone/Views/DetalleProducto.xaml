@@ -25,24 +25,24 @@
         <phone:PanoramaItem Header="Detalles">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Nombre:"
-                               FontWeight="Bold"/>
-                    <TextBlock Name="id" Text="{Binding id}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Modelo:"
                                FontWeight="Bold"/>
-                    <TextBlock Name="modelo" Text="{Binding modelo}"/>
+                    <TextBlock Name="id" Text="{Binding Modelo}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Nombre:"
+                               FontWeight="Bold"/>
+                    <TextBlock Name="modelo" Text="{Binding Nombre}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Descripción:"
                                FontWeight="Bold"/>
-                    <TextBlock Name="descripcion" Text="{Binding descripcion}"/>
+                    <TextBlock Name="descripcion" Text="{Binding Descripcion}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Linea:"
+                    <TextBlock Text="Categoria:"
                                FontWeight="Bold"/>
-                    <TextBlock Name="linea" Text="{Binding linea}"/>
+                    <TextBlock Name="linea" Text="{Binding Categoria.Nombre}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Temporada:"
@@ -53,6 +53,7 @@
         </phone:PanoramaItem>
         <phone:PanoramaItem Header="Materiales">
             <ListBox Name="lstMateriales"
+                     ItemsSource="{Binding Materiales}"
                      ItemTemplate="{StaticResource ListaMateriales}" 
                      />
         </phone:PanoramaItem>
