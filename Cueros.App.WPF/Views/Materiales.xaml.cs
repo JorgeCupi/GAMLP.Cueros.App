@@ -48,10 +48,7 @@ namespace Cueros.App.WPF
 
             string pr;
 
-            foreach (var item in material)
-            {
- 
-            }
+            
         }
 
         void listarProveedores()
