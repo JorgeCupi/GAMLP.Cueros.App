@@ -32,13 +32,13 @@ namespace Cueros.App.Phone.Views
 
         private void Select(object sender, SelectionChangedEventArgs e)
         {
-            if (lstMateriales.SelectedItem != null)
-            {
-                Material c = lstMateriales.SelectedItem as Material;
-                NavigationService.Navigate(new Uri("/Views/DetalleMaterial.xaml?nombre=" + c.Nombre, UriKind.Relative));
-                // c = lstProductos.SelectedItem as Producto;
-                //NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml?nombre=" + c.Nombre, UriKind.Relative));
-            }
+            //if (lstMateriales.SelectedItem != null)
+            //{
+            //    Material c = lstMateriales.SelectedItem as Material;
+            //    NavigationService.Navigate(new Uri("/Views/DetalleMaterial.xaml?nombre=" + c.Nombre, UriKind.Relative));
+            //    // c = lstProductos.SelectedItem as Producto;
+            //    //NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml?nombre=" + c.Nombre, UriKind.Relative));
+            //}
         }
     }
 }
