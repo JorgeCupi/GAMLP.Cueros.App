@@ -32,20 +32,31 @@ namespace Cueros.App.WPF.Views
         private int tiempoCreacion;
         private int t = 1440;
         private int dias;
-
-
-
+        private Pedido pedidos;
+        private List<Producto> listaProductos;
 
         public RPedido(Producto p, int c)
         {
 
             this.pro = p;
+            listaProductos = new List<Producto>();
             InitializeComponent();
 
             this.cantidad = c;
             LlenarTextos();
 
             btncalcular.Click += btncalcular_Click;
+            btnadicionar.Click += btnadicionar_Click;
+        }
+
+        void btnadicionar_Click(object sender, RoutedEventArgs e)
+        {
+            listaProductos.Add(pro);
+            //pedidos = new Pedido(){ 
+            //    FechaPedido=DateTime.Now,
+            //    NombreCliente="pepito",
+                
+            //}
         }
 
         void btncalcular_Click(object sender, RoutedEventArgs e)

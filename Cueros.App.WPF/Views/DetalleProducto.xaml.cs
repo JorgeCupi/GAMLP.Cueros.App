@@ -29,11 +29,26 @@ namespace Cueros.App.WPF
         private Producto producto1;
         private List<Producto> Carrito;
         private int cantidad;
+        private MainWindow mainWindow;
+        private Informacion informacion;
 
-        public DetalleProducto(Producto producto1)
+
+        public DetalleProducto(Producto producto1, MainWindow mainWindow)
         {
-            
             this.producto1 = producto1;
+            this.mainWindow = mainWindow;           
+            InitializeComponent();
+            this.Loaded += DetalleProducto_Loaded;
+            btnMateriales.Click += btnMateriales_Click;
+            btnIncio.Click += btnIncio_Click;
+            btnCarrito.Click += btnCarrito_Click;
+            btnPedido.Click += btnPedido_Click;
+        }
+
+        public DetalleProducto(Producto producto1, Informacion informacion)
+        {
+            this.producto1 = producto1;
+            this.informacion = informacion;
             InitializeComponent();
             this.Loaded += DetalleProducto_Loaded;
             btnMateriales.Click += btnMateriales_Click;
@@ -65,10 +80,15 @@ namespace Cueros.App.WPF
 
         void btnIncio_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow M = new MainWindow();
-            this.Hide();
-            M.Show();
-            
+            if (mainWindow != null)
+            {
+                mainWindow.Show();
+            }
+            if (informacion != null)
+            {
+                informacion.Show();
+            }
+            this.Hide();            
         }
 
         void btnMateriales_Click(object sender, RoutedEventArgs e)

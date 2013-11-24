@@ -32,7 +32,7 @@ namespace Cueros.App.WPF
         void lstProductosDest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var producto = lstProductosDest.SelectedItem as Producto;
-            DetalleProducto dp = new DetalleProducto(producto);
+            DetalleProducto dp = new DetalleProducto(producto, this);
             dp.Show();
             this.Hide();
         }
@@ -40,7 +40,7 @@ namespace Cueros.App.WPF
         void lstProductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var producto = lstProductos.SelectedItem as Producto;
-            DetalleProducto dp = new DetalleProducto(producto);
+            DetalleProducto dp = new DetalleProducto(producto,this);
             dp.Show();
             this.Hide();
         }
@@ -48,7 +48,7 @@ namespace Cueros.App.WPF
         void lstCategorias_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var categoria = lstCategorias.SelectedItem as Categoria;
-            Informacion inf = new Informacion(categoria);
+            Informacion inf = new Informacion(categoria, this);
             inf.Show();
             this.Hide();
         }

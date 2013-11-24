@@ -25,7 +25,7 @@
                 </TabItem>
                 <TabItem Header="Categoria de procuctos">
                     <Grid>
-                        <ListBox Name="lstCategorias" ItemTemplate="{StaticResource ListaProductos}"/>
+                        <ListBox Name="lstCategorias" ItemTemplate="{StaticResource ListaCategorias}"/>
                     </Grid>
                 </TabItem>
             </TabControl>

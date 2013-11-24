@@ -147,7 +147,7 @@
             </ListBox>
             <Grid Name="barraBottones" Grid.Column="1" Grid.Row="2" Background="White"  >
                 <Button Name="btncalcular" Grid.Row="2" Style="{StaticResource EstiloRedondo}"  HorizontalAlignment="Left"/>
-                <Button Name="btncrear"  Grid.Row="2" Style="{StaticResource EstiloRedondo}" HorizontalAlignment="Right" />
+                <Button Name="btnadicionar" Style="{StaticResource EstiloRedondo}" HorizontalAlignment="Right" Height="50" VerticalAlignment="Top" />
             </Grid >
 
 

@@ -22,12 +22,14 @@ namespace Cueros.App.WPF
     public partial class Informacion : Window
     {
        String cate;
-        public Informacion(Categoria c)
+       private MainWindow mainWindow;
+
+        public Informacion(Categoria c, MainWindow mainWindow)
         {
+            this.mainWindow = mainWindow;
             cate = c.Id;
             InitializeComponent();
             Loaded += Page1_Loaded;
-
         }
 
         private void Page1_Loaded(object sender, RoutedEventArgs e)
@@ -59,15 +61,14 @@ namespace Cueros.App.WPF
         void ListaCategoria_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var producto = ListaCategoria.SelectedItem as Producto;
-            DetalleProducto dp = new DetalleProducto(producto);
+            DetalleProducto dp = new DetalleProducto(producto, this);
             dp.Show();
             this.Hide();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow MainW = new MainWindow();
-            MainW.Show();
+            mainWindow.Show();
             this.Hide();
         }
     }
