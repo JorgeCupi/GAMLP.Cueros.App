@@ -1,0 +1,85 @@
+﻿<Window x:Class="Cueros.App.WPF.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         Title="MainWindow" Height="350" Width="525" Foreground="#FFF02525" Background="#FF686868">
+
+    <Window.Resources>
+        <Storyboard x:Key="TimelineErrorSesion">
+            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectFondoAnimacion" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+                <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="sc#1, 0, 0, 0"/>
+                <SplineColorKeyFrame KeyTime="00:00:00.5000000" Value="#FF9C2A2A"/>
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectFondoAnimacion" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="sc#1, 0, 0, 0"/>
+                <SplineColorKeyFrame KeyTime="00:00:00.5000000" Value="#FF280000"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="TimelineIntentoSesion">
+            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectFondoAnimacion" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF9C2A2A"/>
+                <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF000000"/>
+                <SplineColorKeyFrame KeyTime="00:00:00.5000000" Value="#FF2A609C"/>
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectFondoAnimacion" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF280000"/>
+                <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF000000"/>
+                <SplineColorKeyFrame KeyTime="00:00:00.5000000" Value="#FF000A28"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Border Margin="5,5,5,5" Height="Auto" Background="#FFFFFFFF" CornerRadius="5,5,5,5" Padding="2,2,2,2">
+        <Border.BitmapEffect>
+            <OuterGlowBitmapEffect GlowColor="#FF000000" GlowSize="5"/>
+        </Border.BitmapEffect>
+        <Grid x:Name="gridLogin" Width="Auto" Height="Auto">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Rectangle Stroke="{x:Null}" Margin="0,0,0,0">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1.016" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF8F8F8" Offset="0"/>
+                        <GradientStop Color="#FFDBDBDB" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle Stroke="{x:Null}" Margin="-2,0,2,0" Grid.Row="2" x:Name="rectInferior">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1.015" StartPoint="0.5,-0.016">
+                        <GradientStop Color="#FFF8F8F8" Offset="0"/>
+                        <GradientStop Color="#FFE5E5E5" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle Stroke="{x:Null}" Margin="0,0,0,0" Grid.Row="1" x:Name="rectFondoAnimacion">
+
+                <Rectangle.Fill>
+                    <RadialGradientBrush>
+                        <RadialGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1" ScaleY="1"/>
+                                <SkewTransform AngleX="0" AngleY="0" CenterX="0.5" CenterY="0.5"/>
+                                <RotateTransform Angle="0" CenterX="0.5" CenterY="0.5"/>
+                                <TranslateTransform X="0" Y="0"/>
+                            </TransformGroup>
+                        </RadialGradientBrush.RelativeTransform>
+                        <GradientStop Color="#FF83B9F5" Offset="0"/>
+                        <GradientStop Color="#FF374778" Offset="1"/>
+                    </RadialGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <Label HorizontalAlignment="Left" Margin="0,18,0,0" VerticalAlignment="Top" Content="by Sergio" FontFamily="Impact" FontSize="36" Foreground="#FFD0D0D0"/>
+
+            <Label Content="Usuario"  Grid.Row="1" FontSize="22" FontStyle="Italic" Margin="95,17,-95,84" Grid.RowSpan="2"/>
+            <Label Content="Contraseña"  Grid.Row="1" FontSize="22" FontStyle="Italic" Margin="62,52,-62,49" Grid.RowSpan="2"/>
+            <TextBox Name="txtUsuario" FontSize="20" HorizontalAlignment="Left" Height="30" Margin="200,22,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+            <PasswordBox Name="PassUsuario" FontSize="25" HorizontalAlignment="Left" Height="30" Margin="200,58,0,0" Grid.Row="1" VerticalAlignment="Top" Width="210"/>
+            <Button FontSize="44" Content="Entrar" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="483" Height="81" Name="btnEntrar"/>
+
+        </Grid>
+    </Border>
+</Window>

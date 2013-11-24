@@ -119,8 +119,9 @@
                 <TextBlock Grid.Row="1"  Text="PROVEEDORES" Name="txtProv"/>
             </StackPanel>
             <ListBox  Background="#FF286099" Name="ListaProveedores" Grid.Row="2"  BorderThickness="0">
+                
                 <ListBox.ItemTemplate>
-
+                        
                     <DataTemplate>
                         <Grid >
                             <Grid.ColumnDefinitions>

@@ -39,6 +39,18 @@ namespace Cueros.App.WPF
 
         }
 
+        void listaProveedores_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            var material = ListaMateriales.SelectedItem as Material;
+
+            List<Proveedor> prov = new List<Proveedor>();
+
+            string pr;
+
+            
+        }
+
         void listarProveedores()
         {
             
@@ -55,6 +67,7 @@ namespace Cueros.App.WPF
 
             foreach (var item in ListaM)
             {
+                
                 M = "Material: " + item.Nombre;
                 M = M + " \n";
                 M = M + "Nombre Comercial: " + item.NombreComercial;
@@ -65,6 +78,7 @@ namespace Cueros.App.WPF
                 M = M + " \n";
                 M = M + "Costo unidad: " + item.CostoUnidad;
                 Mat.Add(M);
+                
             }
 
             //List<Material> list_new = new List<Material>();
