@@ -12,6 +12,7 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     xmlns:tool="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    tool:TiltEffect.IsTiltEnabled="True"
     shell:SystemTray.IsVisible="False">
 
     <!--LayoutRoot contiene la cuadrícula raíz donde se coloca el resto del contenido de la página-->
@@ -49,19 +50,24 @@
                     <TextBlock Text="Modelo:"
                                FontWeight="Bold"
                                Width="130"/>
-                    <TextBlock Name="id" Text="{Binding Modelo}"/>
+                    <TextBlock Name="id" 
+                               Text="{Binding Modelo}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Descripción:"
                                FontWeight="Bold"
                                Width="130"/>
-                    <TextBlock Name="descripcion" Text="{Binding Descripcion}"/>
+                    <TextBlock Name="descripcion"
+                               Text="{Binding Descripcion}"
+                               TextWrapping="Wrap"
+                               Width="300"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Categoria:"
                                FontWeight="Bold"
                                Width="130"/>
-                    <TextBlock Name="linea" Text="{Binding Categoria.Nombre}"/>
+                    <TextBlock Name="linea" 
+                               Text="{Binding Categoria.Nombre}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Temporada:"
@@ -78,32 +84,39 @@
                     <DataTemplate>
                         <tool:ExpanderView>
                             <tool:ExpanderView.Expander>
-                                <StackPanel>
+                                <StackPanel Background="{StaticResource PhoneAccentBrush}"
+                                            Margin="10">
                                     <StackPanel.Resources>
                                         <Style TargetType="TextBlock" x:Key="caja">
                                             <Setter Property="FontSize"
                                                     Value="25"/>
+                                            <Setter Property="Foreground"
+                                                    Value="White"/>
                                         </Style>
                                     </StackPanel.Resources>
-                                    <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Horizontal"
+                                                Width="400">
                                         <TextBlock Text="Material:"
                                                    FontWeight="Bold"/>
                                         <TextBlock Text="{Binding Nombre}"
                                                    Style="{StaticResource caja}"/>
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Horizontal"
+                                                Width="400">
                                         <TextBlock Text="Nombre Comercial:"
                                                    FontWeight="Bold"/>
                                         <TextBlock Text="{Binding NombreComercial}"
                                                    Style="{StaticResource caja}"/>
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Horizontal"
+                                                Width="400">
                                         <TextBlock Text="Color:"
                                                    FontWeight="Bold"/>
                                         <TextBlock Text="{Binding Color}"
                                                    Style="{StaticResource caja}"/>
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Horizontal"
+                                                Width="400">
                                         <TextBlock Text="Costo Unidad:"
                                                    FontWeight="Bold"/>
                                         <TextBlock Text="{Binding CostoUnidad}"
@@ -117,29 +130,35 @@
                                         <Style TargetType="TextBlock" x:Key="caja">
                                             <Setter Property="FontSize"
                                                     Value="20"/>
+                                            <Setter Property="Foreground"
+                                                    Value="White"/>
                                         </Style>
                                     </ListBox.Resources>
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <Border BorderBrush="{StaticResource PhoneAccentBrush}"
                                                     BorderThickness="1">
-                                                <StackPanel Margin="5">
-                                                    <StackPanel Orientation="Horizontal">
+                                                <StackPanel Margin="10">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Width="350">
                                                         <TextBlock Text="Proveedor:"/>
                                                         <TextBlock Text="{Binding Nombre}"
                                                                    Style="{StaticResource caja}"/>
                                                     </StackPanel>
-                                                    <StackPanel Orientation="Horizontal">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Width="350">
                                                         <TextBlock Text="Dirección:"/>
                                                         <TextBlock Text="{Binding Direccion}"
                                                                    Style="{StaticResource caja}"/>
                                                     </StackPanel>
-                                                    <StackPanel Orientation="Horizontal">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Width="350">
                                                         <TextBlock Text="Correo:"/>
                                                         <TextBlock Text="{Binding Correo}"
                                                                    Style="{StaticResource caja}"/>
                                                     </StackPanel>
-                                                    <StackPanel Orientation="Horizontal">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Width="350">
                                                         <TextBlock Text="Telefono:"/>
                                                         <TextBlock Text="{Binding Telefono}"
                                                                    Style="{StaticResource caja}"/>
@@ -155,6 +174,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </phone:PanoramaItem>
+    
     </phone:Panorama>
 
 </phone:PhoneApplicationPage>

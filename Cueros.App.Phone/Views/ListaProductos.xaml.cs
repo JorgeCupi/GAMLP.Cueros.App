@@ -82,8 +82,8 @@ namespace Cueros.App.Phone.Views
 
         private void lstnovedades_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            p = lstdestacados.SelectedItem as Producto;
-            if (lstdestacados.SelectedItem != null)
+            p = lstnovedades.SelectedItem as Producto;
+            if (lstnovedades.SelectedItem != null)
             {
                 // MessageBox.Show("det Prod " + p.Nombre);
                 NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml", UriKind.Relative));
@@ -106,8 +106,8 @@ namespace Cueros.App.Phone.Views
 
         private void lstproductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            p = lstdestacados.SelectedItem as Producto;
-            if (lstdestacados.SelectedItem != null)
+            p = lstproductos.SelectedItem as Producto;
+            if (lstproductos.SelectedItem != null)
             {
                 // MessageBox.Show("det Prod " + p.Nombre);
                 NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml", UriKind.Relative));

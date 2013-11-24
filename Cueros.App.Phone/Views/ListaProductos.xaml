@@ -13,7 +13,7 @@
     mc:Ignorable="d"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     shell:SystemTray.IsVisible="False"
-    toolkit:TiltEffect.IsTiltEnabled="False">
+    toolkit:TiltEffect.IsTiltEnabled="True">
 
 
     <toolkit:TransitionService.NavigationInTransition>
@@ -110,11 +110,11 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <toolkit:HubTile Title="{Binding Nombre}"
-                                      Source="{Binding Fotos[0].URL}"
-                                      Notification="{Binding Temporada}"
-                                      DisplayNotification="True"
-                                      Size="Medium"
-                                      Margin="5"/>
+                                         Source="{Binding Fotos[0].URL}"
+                                         Notification="{Binding Temporada}"
+                                         DisplayNotification="True"
+                                         Size="Large"
+                                         Margin="5" />
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
