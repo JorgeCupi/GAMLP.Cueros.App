@@ -36,7 +36,6 @@
                        TextWrapping="Wrap"
                        FontSize="38"
                        VerticalAlignment="Top" Margin="10,45,250,0"/>
-
         </Grid>
     </Grid>
 
