@@ -112,13 +112,13 @@
         <Grid Grid.Row="1" >
             <Grid.RowDefinitions>
 
-                <RowDefinition Height="0.3*" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackPanel Background="#FF286099">
-                <TextBlock Grid.Row="1"  Text="PROVEEDORES" />
+            <StackPanel Background="#FF286099" >
+                <TextBlock Grid.Row="1"  Text="PROVEEDORES" Name="txtProv"/>
             </StackPanel>
-            <ListBox  Background="#FF286099" Name="Detalles" Grid.Row="2"  BorderThickness="0">
+            <ListBox  Background="#FF286099" Name="ListaProveedores" Grid.Row="2"  BorderThickness="0">
                 <ListBox.ItemTemplate>
 
                     <DataTemplate>

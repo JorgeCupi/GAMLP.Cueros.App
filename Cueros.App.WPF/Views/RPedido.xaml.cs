@@ -51,7 +51,7 @@ namespace Cueros.App.WPF.Views
         void btncalcular_Click(object sender, RoutedEventArgs e)
         {
             precioTotal = cantidad * costo;
-            txtCostoTotal.Text = precioTotal.ToString() + " Bs.";
+            txtCostoTotal.Text = txtCostoTotal.Text + precioTotal.ToString() + " Bs.";
         }
 
         void LlenarTextos()

@@ -66,7 +66,9 @@ namespace Cueros.App.WPF
         void btnIncio_Click(object sender, RoutedEventArgs e)
         {
             MainWindow M = new MainWindow();
+            this.Hide();
             M.Show();
+            
         }
 
         void btnMateriales_Click(object sender, RoutedEventArgs e)

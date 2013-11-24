@@ -39,6 +39,12 @@ namespace Cueros.App.WPF
 
         }
 
+        void listarProveedores()
+        {
+            
+
+        }
+
         void listarMateriales()
         {
 
