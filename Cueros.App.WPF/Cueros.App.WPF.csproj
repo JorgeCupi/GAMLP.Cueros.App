@@ -62,11 +62,17 @@
     <Compile Include="Views\DetalleProducto.xaml.cs">
       <DependentUpon>DetalleProducto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Inicio.xaml.cs">
+      <DependentUpon>Inicio.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Materiales.xaml.cs">
       <DependentUpon>Materiales.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProductVM\ProductRepo.cs" />
     <Compile Include="ProductVM\VMProduct.cs" />
+    <Compile Include="Views\Working.xaml.cs">
+      <DependentUpon>Working.xaml</DependentUpon>
+    </Compile>
     <Page Include="control\UserControl2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,6 +80,10 @@
     <Page Include="Views\DetalleProducto.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Inicio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -96,6 +106,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Materiales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Working.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,6 +152,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="imagenes\zapat.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagenes\alimentos.jpg" />
+    <Resource Include="imagenes\cuero.jpg" />
+    <Resource Include="imagenes\joyeria.jpg" />
+    <Resource Include="imagenes\textiles.jpg" />
+    <Resource Include="imagenes\trabajando.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

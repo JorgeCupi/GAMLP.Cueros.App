@@ -1,0 +1,27 @@
+﻿<Window x:Class="Cueros.App.WPF.Views.Inicio"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Inicio" Height="350" Width="525">
+    <Grid Margin="5,5,5,10">
+        <Button Margin="50,30,274,150" Click="Click_Cueros" FontSize="30" FontWeight="Bold" Content="Cueros">
+            <Button.Background>
+                <ImageBrush ImageSource="/Cueros.App.WPF;component/imagenes/cuero.jpg"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="275,170,49,10" Click="Click_work" FontSize="30" FontWeight="Bold" Content="Textiles">
+            <Button.Background>
+                <ImageBrush ImageSource="/Cueros.App.WPF;component/imagenes/textiles.jpg"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="50,170,274,10" Click="Click_work" FontSize="30" FontWeight="Bold" Content="Alimentos">
+            <Button.Background>
+                <ImageBrush ImageSource="/Cueros.App.WPF;component/imagenes/alimentos.jpg"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="275,30,49,150" Click="Click_work" FontSize="30" FontWeight="Bold" Content="Joyeria">
+            <Button.Background>
+                <ImageBrush ImageSource="/Cueros.App.WPF;component/imagenes/joyeria.jpg"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>
