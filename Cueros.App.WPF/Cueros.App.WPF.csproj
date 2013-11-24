@@ -70,10 +70,11 @@
     </Compile>
     <Compile Include="ProductVM\ProductRepo.cs" />
     <Compile Include="ProductVM\VMProduct.cs" />
-    <Compile Include="Views\Working.xaml.cs">
-      <DependentUpon>Working.xaml</DependentUpon>
     <Compile Include="Views\RPedido.xaml.cs">
       <DependentUpon>RPedido.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Working.xaml.cs">
+      <DependentUpon>Working.xaml</DependentUpon>
     </Compile>
     <Page Include="control\UserControl2.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -111,8 +112,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Working.xaml">
     <Page Include="Views\RPedido.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Working.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

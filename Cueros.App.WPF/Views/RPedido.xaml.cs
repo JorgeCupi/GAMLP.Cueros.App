@@ -28,20 +28,20 @@ namespace Cueros.App.WPF.Views
         private double precioTotal;
         private double costo = 15.5;
         private int cantidad;
-        private int tiempo=45;
+        private int tiempo = 45;
         private int tiempoCreacion;
         private int t = 1440;
         private int dias;
-        
 
-        
+
+
 
         public RPedido(Producto p, int c)
         {
-            
+
             this.pro = p;
             InitializeComponent();
-            
+
             this.cantidad = c;
             LlenarTextos();
 
@@ -51,13 +51,13 @@ namespace Cueros.App.WPF.Views
         void btncalcular_Click(object sender, RoutedEventArgs e)
         {
             precioTotal = cantidad * costo;
-            txtCostoTotal.Text = precioTotal.ToString() + " Bs."; 
+            txtCostoTotal.Text = precioTotal.ToString() + " Bs.";
         }
 
         void LlenarTextos()
         {
             txtNombreP.Text = pro.Id;
-            txtCantidad.Text = txtCantidad.Text + this.cantidad.ToString() + "Unidades";
+            txtCantidad.Text = this.cantidad.ToString() + "Unidades";
             txtCostoU.Text = txtCostoU.Text + costo.ToString();
             tiempoCreacion = tiempo * cantidad;
             dias = tiempoCreacion / t;

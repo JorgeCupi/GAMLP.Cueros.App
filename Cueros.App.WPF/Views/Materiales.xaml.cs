@@ -36,18 +36,18 @@ namespace Cueros.App.WPF
             MainWindow home = new MainWindow();
             this.Hide();
             home.Show();
-            
+
         }
 
         void listarMateriales()
         {
-            
+
             var ListaM = pro.Materiales;
-            List<string> Mat= new List<string>();
+            List<string> Mat = new List<string>();
             string M;
 
 
-            foreach(var item in ListaM)
+            foreach (var item in ListaM)
             {
                 M = item.Nombre;
                 M = M + " ";

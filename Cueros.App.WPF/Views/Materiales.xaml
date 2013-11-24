@@ -4,7 +4,7 @@
         Title="MainWindow" Height="350" Width="525">
 
     <Window.Resources>
-        
+
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Segoe UI" />
             <Setter Property="Foreground" Value="Black"/>
