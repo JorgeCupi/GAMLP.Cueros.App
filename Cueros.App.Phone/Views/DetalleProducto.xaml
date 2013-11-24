@@ -45,37 +45,54 @@
 
         <!--Elemento Panorama dos-->
         <phone:PanoramaItem Header="Detalles">
-            <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Modelo:"
-                               FontWeight="Bold"
-                               Width="130"/>
-                    <TextBlock Name="id" 
-                               Text="{Binding Modelo}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Descripción:"
-                               FontWeight="Bold"
-                               Width="130"/>
-                    <TextBlock Name="descripcion"
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                          VerticalScrollBarVisibility="Visible">
+                <StackPanel Margin="20,0,10,0">
+                    <StackPanel>
+                        <TextBlock Text="Modelo:"
+                               FontSize="30"
+                               FontWeight="Bold"/>
+                        <TextBlock Name="id"
+                               FontSize="25"
+                               Text="{Binding Modelo}" 
+                               Opacity="0.7"
+                               Margin="30,0,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <TextBlock Text="Descripción:"
+                               FontSize="30"
+                               FontWeight="Bold"/>
+                        <TextBlock Name="descripcion"
+                               FontSize="25"
                                Text="{Binding Descripcion}"
                                TextWrapping="Wrap"
-                               Width="300"/>
+                               Opacity="0.7"
+                               Margin="30,0,0,0" 
+                               HorizontalAlignment="Left" 
+                               Width="360"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="Categoria:"
+                               FontSize="30"
+                               FontWeight="Bold"/>
+                        <TextBlock Name="linea" 
+                               FontSize="25"
+                               Text="{Binding Categoria.Nombre}"
+                               Opacity="0.7"
+                               Margin="30,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="Temporada:"
+                               FontSize="30"
+                               FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Temporada}"
+                               FontSize="25"
+                               Margin="30,0,0,0"
+                               Opacity="0.7"/>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Categoria:"
-                               FontWeight="Bold"
-                               Width="130"/>
-                    <TextBlock Name="linea" 
-                               Text="{Binding Categoria.Nombre}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Temporada:"
-                               FontWeight="Bold"
-                               Width="130"/>
-                    <TextBlock Text="{Binding Temporada}"/>
-                </StackPanel>
-            </StackPanel>
+            </ScrollViewer>
         </phone:PanoramaItem>
 
         <phone:PanoramaItem Header="Materiales">
@@ -174,7 +191,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </phone:PanoramaItem>
-    
+
     </phone:Panorama>
 
 </phone:PhoneApplicationPage>

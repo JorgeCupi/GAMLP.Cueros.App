@@ -96,7 +96,6 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </phone:PanoramaItem>
-
         <phone:PanoramaItem Header="productos"
                             Orientation="Horizontal"
                             Width="500">
