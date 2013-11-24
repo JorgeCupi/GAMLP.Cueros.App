@@ -15,7 +15,6 @@
     shell:SystemTray.IsVisible="False"
     toolkit:TiltEffect.IsTiltEnabled="True">
 
-
     <toolkit:TransitionService.NavigationInTransition>
         <toolkit:NavigationInTransition>
             <toolkit:NavigationInTransition.Backward>
@@ -96,9 +95,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </phone:PanoramaItem>
-        <phone:PanoramaItem Header="productos"
-                            Orientation="Horizontal"
-                            Width="500">
+        <phone:PanoramaItem Header="productos">
             <ListBox Name="lstproductos"
                      SelectionChanged="lstproductos_SelectionChanged">
                 <ListBox.ItemsPanel>

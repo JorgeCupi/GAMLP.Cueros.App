@@ -15,15 +15,16 @@ namespace Cueros.App.Phone.Views
 {
     public partial class DetalleProducto : PhoneApplicationPage
     {
-        string idProductoObt;
         public ObservableCollection<Producto> producto;
         public Producto pro;
+        public List<Core.Models.Proveedor> p;
+        public Material m;
 
         public DetalleProducto()
         {
             InitializeComponent();
             Loaded += DetalleProducto_Loaded;
-           // lstMateriales.ItemsSource = 
+            // lstMateriales.ItemsSource = 
         }
 
         void DetalleProducto_Loaded(object sender, RoutedEventArgs e)
@@ -31,21 +32,6 @@ namespace Cueros.App.Phone.Views
             CargarAppBar();
         }
 
-        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
-        {
-            NavigationContext.QueryString.TryGetValue("id", out idProductoObt);
-        }
-
-        private void Select(object sender, SelectionChangedEventArgs e)
-        {
-            //if (lstMateriales.SelectedItem != null)
-            //{
-            //    Material c = lstMateriales.SelectedItem as Material;
-            //    NavigationService.Navigate(new Uri("/Views/DetalleMaterial.xaml?nombre=" + c.Nombre, UriKind.Relative));
-            //    // c = lstProductos.SelectedItem as Producto;
-            //    //NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml?nombre=" + c.Nombre, UriKind.Relative));
-            //}
-        }
         private void CargarAppBar()
         {
             ApplicationBar = new ApplicationBar();
@@ -59,6 +45,27 @@ namespace Cueros.App.Phone.Views
         void AgregarPedido_Click(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/Views/AgregarPedido.xaml", UriKind.Relative));
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            m = lstmateriales.SelectedItem as Material;
+            if (m != null)
+            {
+                p = m.Proveedores;
+                NavigationService.Navigate(new Uri("/Views/Proveedor.xaml", UriKind.Relative));
+            }
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            Proveedor pro = e.Content as Proveedor;
+            if (pro != null)
+            {
+                pro.lstProveedores.ItemsSource = p;
+                pro.material.Text = m.Nombre;
+            }
         }
     }
 }
