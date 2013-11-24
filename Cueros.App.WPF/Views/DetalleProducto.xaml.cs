@@ -44,11 +44,17 @@ namespace Cueros.App.WPF
 
         void btnPedido_Click(object sender, RoutedEventArgs e)
         {
-
-            this.cantidad = Convert.ToInt32(TextCantidad.Text);
-            RPedido p = new RPedido(producto1, cantidad);
-            p.Owner = this;
-            p.Show();
+            if (!TextCantidad.Text.Equals(""))
+            {
+                this.cantidad = Convert.ToInt32(TextCantidad.Text);
+                RPedido p = new RPedido(producto1, cantidad);
+                p.Owner = this;
+                p.Show();
+            }
+            else
+            {
+                MessageBox.Show("Necesita introducir una cantidad en la caja de texto de la derecha por favor");
+            }
 
         }
 
@@ -73,14 +79,9 @@ namespace Cueros.App.WPF
 
         void DetalleProducto_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!TextCantidad.Text.Equals(""))
-            {
+            
                 ProductoLista();
-            }
-            else
-            {
-                MessageBox.Show("Necesita introducir una cantidad en la caja de texto de la derecha por favor");
-            }
+            
             
         }
 
