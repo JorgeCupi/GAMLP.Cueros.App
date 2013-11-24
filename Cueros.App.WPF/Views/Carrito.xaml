@@ -12,7 +12,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-                        <Image Stretch="UniformToFill" Source="{Binding  URL}"/>
+                        <Image Stretch="UniformToFill" Source="{Binding  Fotos {0}.URL}"/>
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="Id"/>
@@ -28,7 +28,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="Descripcion"/>
-                                <TextBox Text="{Binding Descripcion}"/>
+                                <TextBox Text="{Binding Descripcion}" TextWrapping="Wrap"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>

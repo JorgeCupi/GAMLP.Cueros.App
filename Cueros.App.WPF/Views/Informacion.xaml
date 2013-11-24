@@ -31,7 +31,7 @@
                 <DataTemplate>
                     <Grid Height="150" Width="300">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="130"/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
@@ -40,7 +40,9 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Image Source="{Binding  0.URL}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"/>
+                        <ScrollViewer Grid.Column="0" Grid.Row="0" Grid.RowSpan="3">
+                        <Image Source="{Binding  Fotos {0}.URL}" />
+                            </ScrollViewer>
                         <Label Foreground="White" Grid.Column="1" Grid.Row="0" Content="Nombre"/>
                         <Label Foreground="White" Grid.Column="2" Grid.Row="0" Content="{Binding Id}"/>
 
