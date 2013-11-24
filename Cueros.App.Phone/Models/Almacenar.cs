@@ -52,7 +52,6 @@ namespace Cueros.App.Phone.Models
                 return null;
             }
         }
-
         //para desearilzar ejemplo:
         //List<E> lista = new Almacenar<E>().Deserialize("nombre_lista.xml");
         // para serializar ejemplo: (donde lista es la de arriba ojo)

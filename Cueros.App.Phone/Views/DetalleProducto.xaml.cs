@@ -22,7 +22,13 @@ namespace Cueros.App.Phone.Views
         public DetalleProducto()
         {
             InitializeComponent();
+            Loaded += DetalleProducto_Loaded;
            // lstMateriales.ItemsSource = 
+        }
+
+        void DetalleProducto_Loaded(object sender, RoutedEventArgs e)
+        {
+            CargarAppBar();
         }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
@@ -39,6 +45,20 @@ namespace Cueros.App.Phone.Views
             //    // c = lstProductos.SelectedItem as Producto;
             //    //NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml?nombre=" + c.Nombre, UriKind.Relative));
             //}
+        }
+        private void CargarAppBar()
+        {
+            ApplicationBar = new ApplicationBar();
+            ApplicationBarIconButton AgregarPedido = new ApplicationBarIconButton(new Uri("/Assets/AppBar/refresh.png", UriKind.Relative));
+            AgregarPedido.Text = "Añadir Pedido";
+            ApplicationBar.Buttons.Add(AgregarPedido);
+            AgregarPedido.Click += AgregarPedido_Click;
+            // VerPedido.Click += VerPedido_Click;
+        }
+
+        void AgregarPedido_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/AgregarPedido.xaml", UriKind.Relative));
         }
     }
 }

@@ -115,6 +115,19 @@ namespace Cueros.App.Phone
             appBarButton.Text = "Refresh";
             ApplicationBar.Buttons.Add(appBarButton);
             appBarButton.Click += appBarButton_Click;
+
+            ApplicationBarIconButton VerPedido = new ApplicationBarIconButton(new Uri("/Assets/AppBar/refresh.png", UriKind.Relative));
+            VerPedido.Text = "Ver Pedido";
+            ApplicationBar.Buttons.Add(VerPedido);
+            VerPedido.Click += VerPedido_Click;
+
+            
+        }
+
+        void VerPedido_Click(object sender, EventArgs e)
+        {
+            //aca codigo para mandar a la base de datos para guardar el pedido
+            NavigationService.Navigate(new Uri("/Views/Carrito.xaml", UriKind.Relative));
         }
 
         void appBarButton_Click(object sender, EventArgs e)
@@ -138,9 +151,7 @@ namespace Cueros.App.Phone
             p = lstdestacados.SelectedItem as Producto;
             if (lstdestacados.SelectedItem != null)
             {
-               // MessageBox.Show("det Prod " + p.Nombre);
                 NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml", UriKind.Relative));
-               // NavigationService.Navigate(new Uri("/View/DetalleProducto.xml?producto=" + p.Id, UriKind.Relative));
             }
         }
         protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
