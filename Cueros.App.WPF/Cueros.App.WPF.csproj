@@ -72,6 +72,8 @@
     <Compile Include="ProductVM\VMProduct.cs" />
     <Compile Include="Views\Working.xaml.cs">
       <DependentUpon>Working.xaml</DependentUpon>
+    <Compile Include="Views\RPedido.xaml.cs">
+      <DependentUpon>RPedido.xaml</DependentUpon>
     </Compile>
     <Page Include="control\UserControl2.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -110,6 +112,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Working.xaml">
+    <Page Include="Views\RPedido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

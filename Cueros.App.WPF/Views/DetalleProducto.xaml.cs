@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Cueros.App.Core.Services;
 using Cueros.App.Core.Models;
 using System.Collections.ObjectModel;
+using Cueros.App.WPF.Views;
 
 namespace Cueros.App.WPF
 {
@@ -27,6 +28,7 @@ namespace Cueros.App.WPF
         public ObservableCollection<Producto> producto;
         private Producto producto1;
         private List<Producto> Carrito;
+        private int cantidad;
 
         public DetalleProducto(Producto producto1)
         {
@@ -37,6 +39,17 @@ namespace Cueros.App.WPF
             btnMateriales.Click += btnMateriales_Click;
             btnIncio.Click += btnIncio_Click;
             btnCarrito.Click += btnCarrito_Click;
+            btnPedido.Click += btnPedido_Click;
+        }
+
+        void btnPedido_Click(object sender, RoutedEventArgs e)
+        {
+
+            this.cantidad = Convert.ToInt32(TextCantidad.Text);
+            RPedido p = new RPedido(producto1, cantidad);
+            p.Owner = this;
+            p.Show();
+
         }
 
         void btnCarrito_Click(object sender, RoutedEventArgs e)
@@ -54,7 +67,7 @@ namespace Cueros.App.WPF
         {
             Materiales Ma = new Materiales(producto1);
             Ma.Owner = this;
-            this.Hide();
+           // this.Hide();
             Ma.Show();
         }
 
@@ -67,8 +80,10 @@ namespace Cueros.App.WPF
         {
 
             txtId.Text = producto1.Id;
+            
             txtLinea.Text = producto1.Nombre;
             txtDescripcion.Text = producto1.Descripcion;
+            
             txtModelo.Text = producto1.Modelo;
             txtTemporada.Text = producto1.Temporada;
 
