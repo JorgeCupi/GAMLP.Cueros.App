@@ -49,15 +49,15 @@ namespace Cueros.App.WPF
 
             foreach (var item in ListaM)
             {
-                M = item.Nombre;
-                M = M + " ";
-                M = item.NombreComercial;
-                M = M + " ";
-                M = M + item.TipoUnidad;
-                M = M + " ";
-                M = M + item.Color;
-                M = M + " ";
-                M = M + item.CostoUnidad;
+                M = "Material: " + item.Nombre;
+                M = M + " \n";
+                M = M + "Nombre Comercial: " + item.NombreComercial;
+                M = M + " \n";
+                M = M + "Tipo Unidad: " + item.TipoUnidad;
+                M = M + " \n";
+                M = M + "Color: " + item.Color;
+                M = M + " \n";
+                M = M + "Costo unidad: " + item.CostoUnidad;
                 Mat.Add(M);
             }
 

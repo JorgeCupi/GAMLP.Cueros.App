@@ -57,7 +57,7 @@ namespace Cueros.App.WPF.Views
         void LlenarTextos()
         {
             txtNombreP.Text = pro.Id;
-            txtCantidad.Text = this.cantidad.ToString() + "Unidades";
+            txtCantidad.Text = this.cantidad.ToString() + " Unidades";
             txtCostoU.Text = txtCostoU.Text + costo.ToString();
             tiempoCreacion = tiempo * cantidad;
             dias = tiempoCreacion / t;

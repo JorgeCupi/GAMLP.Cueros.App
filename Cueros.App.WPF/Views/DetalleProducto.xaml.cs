@@ -54,7 +54,7 @@ namespace Cueros.App.WPF
 
         void btnCarrito_Click(object sender, RoutedEventArgs e)
         {
-            Carrito.Add(producto1);
+            //Carrito.Add(producto1);
         }
 
         void btnIncio_Click(object sender, RoutedEventArgs e)
@@ -73,7 +73,15 @@ namespace Cueros.App.WPF
 
         void DetalleProducto_Loaded(object sender, RoutedEventArgs e)
         {
-            ProductoLista();
+            if (!TextCantidad.Text.Equals(""))
+            {
+                ProductoLista();
+            }
+            else
+            {
+                MessageBox.Show("Necesita introducir una cantidad en la caja de texto de la derecha por favor");
+            }
+            
         }
 
         void ProductoLista()
