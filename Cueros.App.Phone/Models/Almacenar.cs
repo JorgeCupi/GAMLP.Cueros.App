@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +17,7 @@ namespace Cueros.App.Phone.Models
         //serializa internamente en xml una lista de datos 
         public void Serialize(ObservableCollection<T> results, string filename)
         {
-            DataContractSerializer serializer = new DataContractSerializer(typeof(ObservableCollection<T>));
+            DataContractJsonSerializer serializer =  new DataContractJsonSerializer(typeof(ObservableCollection<T>));
             using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
             {
                 if (isf.FileExists(filename))
@@ -40,7 +41,7 @@ namespace Cueros.App.Phone.Models
                 {
                     using (var stream = isf.OpenFile(filename, System.IO.FileMode.Open))
                     {
-                        DataContractSerializer serializer = new DataContractSerializer(typeof(ObservableCollection<T>));
+                        DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(ObservableCollection<T>));
                         var data = serializer.ReadObject(stream) as ObservableCollection<T>;
                         if (data != null && data.Count > 0)
                         {

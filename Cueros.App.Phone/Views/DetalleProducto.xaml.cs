@@ -15,8 +15,6 @@ namespace Cueros.App.Phone.Views
 {
     public partial class DetalleProducto : PhoneApplicationPage
     {
-        public ObservableCollection<Producto> producto;
-        public Producto pro;
         public List<Core.Models.Proveedor> p;
         public Material m;
 
@@ -65,6 +63,18 @@ namespace Cueros.App.Phone.Views
             {
                 pro.lstProveedores.ItemsSource = p;
                 pro.material.Text = m.Nombre;
+            }
+            AgregarPedido ap = e.Content as AgregarPedido;
+            if (ap != null)
+            {
+                ap.detalles.DataContext = this.DataContext;
+                Double CostoUnidad = 0;
+                foreach (var item in lstmateriales.ItemsSource)
+                {
+                    Material pedido = item as Material;
+                    CostoUnidad += pedido.CostoUnidad;
+                }
+                ap.CostoUnidad.Text = CostoUnidad.ToString();
             }
         }
     }

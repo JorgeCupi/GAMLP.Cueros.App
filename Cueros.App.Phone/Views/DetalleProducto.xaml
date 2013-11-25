@@ -125,44 +125,37 @@
                      Name="lstmateriales">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderThickness="3"
-                                Background="{StaticResource PhoneAccentBrush}"
-                                Margin="10">
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="10">
+                            <Border Width="10"
+                                    Background="{StaticResource PhoneAccentBrush}"
+                                    Margin="0,0,10,0"/>
                             <StackPanel Margin="10"
                                         Width="380">
                                 <TextBlock Text="{Binding Nombre}"
-                                           Foreground="White"
                                            FontSize="45"/>
                                 <TextBlock Text="Nombre Comercial:"
-                                               Foreground="White"
                                                Margin="10,0,0,0"/>
                                 <TextBlock Text="{Binding NombreComercial}"
-                                               Foreground="White"
                                                Margin="70,0,0,0"
                                                Opacity="0.7"/>
                                 <TextBlock Text="Costo Unidad:"
-                                               Foreground="White"
                                                Margin="10,0,0,0"/>
                                 <TextBlock Text="{Binding CostoUnidad}"
-                                               Foreground="White"
                                                Margin="70,0,0,0"
                                                Opacity="0.7"/>
                                 <TextBlock Text="Color:"
-                                               Foreground="White"
                                                Margin="10,0,0,0"/>
                                 <TextBlock Text="{Binding Color}"
-                                               Foreground="White"
                                                Margin="70,0,0,0"
                                                Opacity="0.7"/>
                                 <TextBlock Text="Tipo Unidad:"
-                                               Foreground="White"
                                                Margin="10,0,0,0"/>
                                 <TextBlock Text="{Binding TipoUnidad}"
-                                               Foreground="White"
                                                Margin="70,0,0,0"
                                                Opacity="0.7"/>
                             </StackPanel>
-                        </Border>
+                        </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

@@ -31,9 +31,9 @@ namespace Cueros.App.Phone
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             BuildLocalizedApplicationBar();
-            categoria = new Almacenar<Categoria>().Deserialize("categorias.xml");
-            novedades = new Almacenar<Producto>().Deserialize("novedades.xml");
-            destacados = new Almacenar<Producto>().Deserialize("destacados.xml");
+            categoria = new Almacenar<Categoria>().Deserialize("categorias.json");
+            novedades = new Almacenar<Producto>().Deserialize("novedades.json");
+            destacados = new Almacenar<Producto>().Deserialize("destacados.json");
             if (categoria != null && categoria.Count != 0)
                 lstcategoria.ItemsSource = categoria;
             if (novedades != null && novedades.Count != 0)
@@ -41,6 +41,12 @@ namespace Cueros.App.Phone
             if (destacados != null && destacados.Count != 0)
                 lstdestacados.ItemsSource = destacados;
             Cargar();
+        }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            base.OnBackKeyPress(e);
+            while (NavigationService.CanGoBack) NavigationService.RemoveBackEntry();
         }
 
         void Cargar()
@@ -56,13 +62,13 @@ namespace Cueros.App.Phone
             {
                 List<Categoria> cat = await ServiciosDeCategorias.GetListOfCategories();
                 categoria = new ObservableCollection<Categoria>(cat);
-                new Almacenar<Categoria>().Serialize(categoria, "categorias.xml");
+                new Almacenar<Categoria>().Serialize(categoria, "categorias.json");
                 if (categoria != null && categoria.Count != 0)
                     lstcategoria.ItemsSource = categoria;
             }
             catch (Exception)
             {
-                MessageBox.Show("no inter");
+                //MessageBox.Show("no inter");
             }
         }
 
@@ -72,13 +78,13 @@ namespace Cueros.App.Phone
             {
                 List<Producto> pro = await ServiciosDeProductos.GetRecentProducts(10);
                 novedades = new ObservableCollection<Producto>(pro);
-                new Almacenar<Producto>().Serialize(novedades, "novedades.xml");
+                new Almacenar<Producto>().Serialize(novedades, "novedades.json");
                 if (novedades != null && novedades.Count != 0)
                     lstnovedades.ItemsSource = novedades;
             }
             catch (Exception)
             {
-                MessageBox.Show("no inter");
+                //MessageBox.Show("no inter");
             }
         }
 
@@ -88,13 +94,13 @@ namespace Cueros.App.Phone
             {
                 List<Producto> pro = await ServiciosDeProductos.GetTopProducts(10);
                 destacados = new ObservableCollection<Producto>(pro);
-                new Almacenar<Producto>().Serialize(destacados, "destacados.xml");
+                new Almacenar<Producto>().Serialize(destacados, "destacados.json");
                 if (destacados != null && destacados.Count != 0)
                     lstdestacados.ItemsSource = destacados;
             }
             catch (Exception)
             {
-                MessageBox.Show("no inter");
+                //MessageBox.Show("no inter");
             }
         }
 

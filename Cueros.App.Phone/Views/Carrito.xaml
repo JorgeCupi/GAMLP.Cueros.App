@@ -14,22 +14,17 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot es la cuadrícula raíz donde se coloca todo el contenido de la página-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <!--TitlePanel contiene el nombre de la aplicación y el título de la página-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Name="Pedido" Text="Pedido" FontSize="45"/>
-        </StackPanel>
-
-        <!--ContentPanel. Colocar aquí el contenido adicional-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox Name="lstPedidos"
-                     ItemTemplate="{StaticResource ListaPedido}"/>
-        </Grid>
-    </Grid>
-
+    <StackPanel Margin="20"
+                Name="detalles">
+        <TextBlock Text="Pedidos"
+                   FontSize="45"
+                   Style="{StaticResource PhoneTextNormalStyle}"/>
+        <ListBox>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
 </phone:PhoneApplicationPage>

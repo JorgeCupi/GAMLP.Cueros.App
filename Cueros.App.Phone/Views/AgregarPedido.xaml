@@ -10,33 +10,58 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
+    
 
-    <!--LayoutRoot es la cuadrícula raíz donde se coloca todo el contenido de la página-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="Nombre de Producto" 
-                       FontSize="45"
-                       Style="{StaticResource PhoneTextNormalStyle}"/>
+    <StackPanel Margin="20"
+                Name="detalles">
+        <TextBlock Text="{Binding Nombre}"
+                   FontSize="45"
+                   Name="producto"
+                   Style="{StaticResource PhoneTextNormalStyle}"
+                   TextWrapping="Wrap"/>
+        <StackPanel Orientation="Horizontal"
+                    Margin="20">
+            <TextBlock Text="Unidades:"
+                       FontSize="40"
+                       VerticalAlignment="Center"/>
+            <TextBox x:Name="cantidad"
+                     Text="1"
+                     InputScope="Number" 
+                     Width="226"
+                     VerticalAlignment="Center"
+                     TextChanged="cantidad_TextChanged"/>
         </StackPanel>
-
-        <!--ContentPanel. Colocar aquí el contenido adicional-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBox Name="cantidad"
-                     Height="72" TextWrapping="Wrap" 
-                     Text="" 
-                     VerticalAlignment="Top" Margin="201,40,10,0"/>
-            <TextBlock Text="Cantidad" 
-                       TextWrapping="Wrap"
-                       FontSize="38"
-                       VerticalAlignment="Top" Margin="10,45,250,0"/>
-        </Grid>
-    </Grid>
-
+        <TextBlock Text="Detalles:"
+                   FontSize="30"
+                   Margin="5"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Costo Unidad:"
+                       Margin="20,5,20,5"
+                       Width="130"/>
+            <TextBlock Name="CostoUnidad"
+                       Width="250"/>
+        </StackPanel>
+        <Border Background="{StaticResource PhoneAccentBrush}"
+                Margin="15,0,15,0"
+                Height="5"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Costo Total:"
+                       Margin="20,5,20,5"
+                       Width="130"/>
+            <TextBlock Name="CostoTotal"
+                       Width="250"/>
+        </StackPanel>
+        <Button Content="Guardar"
+                Width="200"
+                Background="{StaticResource PhoneAccentBrush}"
+                Padding="15"
+                BorderThickness="0"
+                
+                Click="Button_Click"/>
+    </StackPanel>
+    
+    
 </phone:PhoneApplicationPage>
