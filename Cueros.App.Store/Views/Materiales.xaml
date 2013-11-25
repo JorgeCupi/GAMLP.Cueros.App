@@ -6,93 +6,179 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-
+    
+    <Page.BottomAppBar>
+        <AppBar Background="#FF324491">
+            <StackPanel Orientation="Horizontal">
+                <Button Name="AppBarButtonCrear"
+                        Style="{StaticResource SettingsAppBarButtonStyle}" 
+                        Foreground="White"  Margin="0,-6,0,6" Click="AppBarButtonCrear_Click"/>
+                <Button Name="AppButtonAgregar" Style="{StaticResource AddAppBarButtonStyle}" Foreground="White" Click="AppButtonAgregar_Click"/>
+            </StackPanel>
+        </AppBar>
+    </Page.BottomAppBar>
+    
+    
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0"/>
-            <RowDefinition Height="*"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        </Grid.RowDefinitions>
-
-
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="400"/>
-                <ColumnDefinition Width="500"/>
-                <ColumnDefinition Width="*"/>
-
-            </Grid.ColumnDefinitions>
-
-            <Grid Grid.Column="0" Background="#E53A496A">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100" />
-                    <RowDefinition Height="*"/>
-
-
-                </Grid.RowDefinitions>
-                <StackPanel>
-                    <TextBlock Grid.Row="0" Style="{StaticResource HeaderTextStyle}" Text="Items" Margin="30,50" Foreground="White"/>
-                </StackPanel>
-                <ListBox Width="400"  Background="#E53A496A" Grid.Row="1" Name="ListaDeMateriales"  ScrollViewer.IsVerticalRailEnabled="True" BorderThickness="0">
-
-
-                    <!--Template Lista-->
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-
-                            <StackPanel Orientation="Vertical" Height="50" Width="380">
-                                <TextBlock Text="{Binding Nombre}" Margin="20,10" Style="{StaticResource SubheaderTextStyle}" Foreground="White"/>
-                            </StackPanel>
- 
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </Grid>
-
-            <Grid Grid.Column="1">
-                <Grid.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black"/>
-                        <GradientStop Color="White" Offset="0.726"/>
-                        <GradientStop Color="#CCEAEAEA"/>
-                    </LinearGradientBrush>
-
-                </Grid.Background>
-                <StackPanel>
-                    <TextBlock Text="Datos" Style="{StaticResource HeaderTextStyle}" Margin="30,50" Foreground="Gray"/>
-
-                    <Grid Name="DatosDeMateriales" Height="548">
-
-                    </Grid>
-
-                </StackPanel>
-
-            </Grid>
-
-            <Grid Grid.Column="2">
-
-
-            </Grid>
-        </Grid>
-        <AppBar Margin="0,0,0,0" Background="#FF3A496A" Grid.ColumnSpan="3" Height="150">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
+            <Grid Height="120" Background="#E53A496A" Grid.Row="0" >
                 <StackPanel Orientation="Horizontal">
-
-                    <Button Name="AppBarBotonListaPedido" Style="{StaticResource PreviousAppBarButtonStyle}" Foreground="White" />
-
-                   
+                    <Button Style="{StaticResource BackButtonStyle}" Foreground="White" Background="White" Name="BackButton" Click="BackButton_Click"/>
+                    <TextBlock Style="{StaticResource PageHeaderTextStyle}" Text="Materiales" Foreground="White"/>
                 </StackPanel>
-                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal"/>
             </Grid>
-        </AppBar>
+            
+            
+        
+<ListView Background="#E53A496A" Name="ListaDeMateriales" Tapped="ListaDeMateriales_Tapped" Grid.Row="1">
+                <ListView.ItemTemplate>
+                    
+                    
+                    
+                    <DataTemplate>
+                        <StackPanel Margin="5">
+                        <TextBlock Style="{StaticResource SubheaderTextStyle}" Name="TextNombreMaterial" Text="{Binding Nombre}"/>
+                            <TextBlock Name="TextUnidadMaterial" Style="{StaticResource ItemTextStyle}" Text="{Binding TipoUnidad}"/> 
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        
+        </Grid>
+        
+        
+        <Grid Grid.Column="1" DataContext="{Binding m}">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="350"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock Name="TextNombreProductoCabezera" Style="{StaticResource PageHeaderTextStyle}" Foreground="LightBlue" Margin="10"/>
+            </StackPanel>
+            
+            
+                
+                <StackPanel Grid.Row="2" Margin="20,0,0,0" >
+                    
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <TextBlock Text="Nombre Comercial: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" />
+                        <TextBlock Name="TextNombreComercial" Text="{Binding NombreComercial}" Style="{StaticResource BodyTextStyle}"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <TextBlock Text="Color: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" />
+                        <TextBlock Name="TextColorMaterial"  Style="{StaticResource BodyTextStyle}"/>
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <TextBlock Text="Tipo Unidad: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" />
+                        <TextBlock Name="TextTipoUnidad" Text="{Binding TipoUnidad}" Style="{StaticResource BodyTextStyle}"/>
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <TextBlock Text="Costo Unidad: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" />
+                        <TextBlock Name="TextCostoUnidadMaterial" Text="{Binding CostoUnidad}" Style="{StaticResource BodyTextStyle}"/>
+
+                    </StackPanel>
+
+
+                </StackPanel>
+
+
+            <FlipView Grid.Row="1" Name="FlipViewImagenes">
+                <FlipView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Height="350" Width="500" Source="{Binding URL}"/>
+                    </DataTemplate>
+                </FlipView.ItemTemplate>
+            </FlipView>
+            
+            <StackPanel Grid.Row="3" Orientation="Vertical">
+                <TextBlock Text="Cantidad" Style="{StaticResource SubheaderTextStyle}" Margin="30,0" Foreground="LightBlue"/>
+                <StackPanel Orientation="Horizontal">
+                <TextBox Name="TextBoxCantidadProductos" Height="20" Width="150" Margin="30"  Text="1" />
+                <Button Content="Aceptar" Name="BotonAceptar" Click="BotonAceptar_Click"/> 
+                
+                </StackPanel>
+            </StackPanel>
+            
+            
+        </Grid>
+
+        <ListBox Name="ListBoxProveedores" Grid.Column="2">
+            <ListBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFEEEEEE" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ListBox.Background>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="Nombre: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" />
+                            <TextBlock Name="TextNombreProveedor" Text="{Binding Nombre}" Style="{StaticResource BodyTextStyle}"/>
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="ID: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" />
+                            <TextBlock Name="TextIdProveedor" Text="{Binding Id}" Style="{StaticResource BodyTextStyle}"/>
+
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="Direccion: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" />
+                            <TextBlock Name="TextDireccionProveedor" Text="{Binding Direccion}" Style="{StaticResource BodyTextStyle}"/>
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="Correo: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" />
+                            <TextBlock Name="TextCorreoProveedor" Text="{Binding Correo}" Style="{StaticResource BodyTextStyle}"/>
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="Telefono: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" />
+                            <TextBlock Name="TextTelefonoProveedor" Text="{Binding Telefono}" Style="{StaticResource BodyTextStyle}"/>
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="Ciudad: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" />
+                            <TextBlock Name="TextCiudadProveedor" Text="{Binding Ciudad}" Style="{StaticResource BodyTextStyle}"/>
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBlock Text="Pais: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" />
+                            <TextBlock Name="TextPaisProveedor" Text="{Binding Pais}" Style="{StaticResource BodyTextStyle}"/>
+
+                        </StackPanel>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
     </Grid>
-
 </Page>
