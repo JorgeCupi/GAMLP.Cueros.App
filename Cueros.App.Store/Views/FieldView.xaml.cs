@@ -11,8 +11,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Cueros.App.Core.Models;
-using Cueros.App.Core.Services;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -21,24 +19,14 @@ namespace Cueros.App.Store.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Detalles : Page
+    public sealed partial class FieldView : Page
     {
-        //Este será el pedido, se sincronizará en todos los views
-        private List<Producto> Pedido = new List<Producto>();
-
-        public Detalles()
+        public FieldView()
         {
             this.InitializeComponent();
-            this.Loaded += Detalles_Loaded;
+            gvwContainer.Tapped += gvwContainer_Tapped;
         }
 
-        void Detalles_Loaded(object sender, RoutedEventArgs e)
-
-        { 
-        
-        
-        
-        }
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
         /// </summary>
@@ -46,28 +34,12 @@ namespace Cueros.App.Store.Views
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var Lista = e.Parameter as List<Producto>;
-            this.Pedido = Lista;
-
-        }
-        async void ObtenerProducto() {
-
-            Producto producto;
-            List<Producto> list_new = new List<Producto>();
-            foreach (var item in await ServiciosDeProductos.GetProducts())
-            {
-                producto= new Producto()
-                {
-                    Nombre = item.Nombre,
-                 Descripcion=item.Descripcion,
-                };
-                list_new.Add(producto);
-            }
-         
-            GridImagen.DataContext = list_new;
         }
 
-
-
+        void gvwContainer_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Productos));
+            //this.Frame.Navigate(typeof(Productos));
+        }
     }
 }

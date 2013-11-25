@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="Cueros.App.Store.Views.FieldView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Cueros.App.Store.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Style x:Key="spContainerStyle" TargetType="StackPanel">
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="Background" Value="#e53a496a"/>            
+        </Style>
+        <Style x:Key="txbTitleStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="60"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="imgStyle" TargetType="Image">
+            <Setter Property="Width" Value="290"/>
+            <Setter Property="Height" Value="290"/>
+        </Style>
+    </Page.Resources>
+        <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>        
+            <TextBlock Text="Escoger Rubro" Style="{StaticResource ResourceKey=PageHeaderTextStyle}" Margin="30"/>
+        <GridView Name="gvwContainer" Grid.Row="1" Margin="0,50">
+            <StackPanel Style="{StaticResource ResourceKey=spContainerStyle}">
+                <Image Source="/Image/Cueros.jpg" Stretch="UniformToFill" Style="{StaticResource ResourceKey=imgStyle}"/>
+                <TextBlock Text="Cueros" Style="{StaticResource ResourceKey=txbTitleStyle}"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource ResourceKey=spContainerStyle}">
+                <Image Source="/Image/Textiles.jpg" Stretch="UniformToFill" Style="{StaticResource ResourceKey=imgStyle}"/>                
+                <TextBlock Text="Textiles" Style="{StaticResource ResourceKey=txbTitleStyle}"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource ResourceKey=spContainerStyle}">
+                <Image Source="/Image/Alimentos.jpg" Stretch="UniformToFill" Style="{StaticResource ResourceKey=imgStyle}"/>
+                <TextBlock Text="Alimentos" Style="{StaticResource ResourceKey=txbTitleStyle}"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource ResourceKey=spContainerStyle}">
+                <Image Source="/Image/Joyas.jpg" Stretch="UniformToFill" Style="{StaticResource ResourceKey=imgStyle}"/>
+                <TextBlock Text="Joyería" Style="{StaticResource ResourceKey=txbTitleStyle}"/>
+            </StackPanel>
+        </GridView>
+    </Grid>
+</Page>

@@ -110,33 +110,19 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControls\DetallesProducto.xaml.cs">
-      <DependentUpon>DetallesProducto.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\ImagenDescripcion.xaml.cs">
-      <DependentUpon>ImagenDescripcion.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\TileListaPedido.xaml.cs">
-      <DependentUpon>TileListaPedido.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\uscDestacados.xaml.cs">
-      <DependentUpon>uscDestacados.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Detalles.xaml.cs">
-      <DependentUpon>Detalles.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ListaPedido.xaml.cs">
-      <DependentUpon>ListaPedido.xaml</DependentUpon>
+    <Compile Include="Views\FieldView.xaml.cs">
+      <DependentUpon>FieldView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Materiales.xaml.cs">
       <DependentUpon>Materiales.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ViewCategoria.xaml.cs">
-      <DependentUpon>ViewCategoria.xaml</DependentUpon>
+    <Compile Include="Views\PedidoView.xaml.cs">
+      <DependentUpon>PedidoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductoCantidad.cs" />
+    <Compile Include="Views\Productos.xaml.cs">
+      <DependentUpon>Productos.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -150,11 +136,11 @@
     <Content Include="Assets\SmallLogo.png" />
     <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\StoreLogo.png" />
-    <Content Include="Imagenes\zapato1.jpg" />
-    <Content Include="Imagenes\zapato_casual.jpg" />
-    <Content Include="Imagenes\zapato_tacon2.jpg" />
-    <Content Include="Imagenes\zapato2.jpg" />
-    <Content Include="Imagenes\zapato_tacon1.jpg" />
+    <Content Include="Image\Alimentos.jpg" />
+    <Content Include="Image\Cueros.jpg" />
+    <Content Include="Image\Joyas.jpg" />
+    <Content Include="Image\Textiles.jpg" />
+    <Content Include="Image\vacacientifica.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -165,39 +151,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="Views\FieldView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\DetallesProducto.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\ImagenDescripcion.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\TileListaPedido.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\uscDestacados.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Detalles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ListaPedido.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Materiales.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\ViewCategoria.xaml">
+    <Page Include="Views\PedidoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Productos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
