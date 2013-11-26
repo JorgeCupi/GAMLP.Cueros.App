@@ -21,15 +21,24 @@
             <Setter Property="Height" Value="290"/>
         </Style>
     </Page.Resources>
-        <Grid Background="White">
+    
+   
+    
+        <Grid  >
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Image/Queen.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="120"/>
             <RowDefinition/>
-        </Grid.RowDefinitions>        
-            <TextBlock Text="Escoger Rubro" Style="{StaticResource ResourceKey=PageHeaderTextStyle}" Margin="30"/>
-        <GridView Name="gvwContainer" Grid.Row="1" Margin="0,50">
+        </Grid.RowDefinitions>
+        
+            <Rectangle Margin="0" Fill="White" Grid.RowSpan="2" Opacity="0.2"/>
+
+        <TextBlock Text="Escoger Rubro" Style="{StaticResource ResourceKey=PageHeaderTextStyle}" Margin="30" Foreground="White"/>
+        <GridView Name="gvwContainer" Grid.Row="1" Margin="20,50,20,20">
             <StackPanel Style="{StaticResource ResourceKey=spContainerStyle}">
-                <Image Source="/Image/Cueros.jpg" Stretch="UniformToFill" Style="{StaticResource ResourceKey=imgStyle}"/>
+                <Image Source="/Image/Cueros.jpg"  Stretch="UniformToFill" Style="{StaticResource ResourceKey=imgStyle}"/>
                 <TextBlock Text="Cueros" Style="{StaticResource ResourceKey=txbTitleStyle}"/>
             </StackPanel>
             <StackPanel Style="{StaticResource ResourceKey=spContainerStyle}">

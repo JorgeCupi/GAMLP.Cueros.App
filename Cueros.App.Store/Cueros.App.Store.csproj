@@ -139,6 +139,7 @@
     <Content Include="Image\Alimentos.jpg" />
     <Content Include="Image\Cueros.jpg" />
     <Content Include="Image\Joyas.jpg" />
+    <Content Include="Image\Queen.jpg" />
     <Content Include="Image\Textiles.jpg" />
     <Content Include="Image\vacacientifica.jpg" />
   </ItemGroup>

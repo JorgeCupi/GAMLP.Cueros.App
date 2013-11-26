@@ -10,9 +10,7 @@
     <Page.BottomAppBar>
         <AppBar Background="#FF324491">
             <StackPanel Orientation="Horizontal">
-                <Button Name="AppBarButtonCrear"
-                        Style="{StaticResource SettingsAppBarButtonStyle}" 
-                        Foreground="White"  Margin="0,-6,0,6" Click="AppBarButtonCrear_Click"/>
+                
                 <Button Name="AppButtonAgregar" Style="{StaticResource AddAppBarButtonStyle}" Foreground="White" Click="AppButtonAgregar_Click"/>
             </StackPanel>
         </AppBar>
@@ -23,8 +21,8 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
-            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid>
 
@@ -59,7 +57,7 @@
         </Grid>
         
         
-        <Grid Grid.Column="1" DataContext="{Binding m}">
+        <Grid Grid.Column="2" DataContext="{Binding m}">
             
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
@@ -124,7 +122,21 @@
             
         </Grid>
 
-        <ListBox Name="ListBoxProveedores" Grid.Column="2">
+        <Grid Grid.Column="1">
+        
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <RowDefinition  Height="*"/>
+                
+                
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="#FFEEEEEE">
+                <TextBlock Text="Proveedores" Margin="30,40" Style="{StaticResource PageHeaderTextStyle}"/>
+            </Grid>
+       
+            <ListBox Name="ListBoxProveedores" Grid.Row="1" BorderThickness="0">
+
+            
             <ListBox.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFEEEEEE" Offset="0"/>
@@ -179,6 +191,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
+</Grid>
     </Grid>
 </Page>
