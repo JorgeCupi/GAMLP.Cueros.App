@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}"
+    Foreground="#FFFFFF"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
@@ -36,14 +36,16 @@
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
 
-    <phone:Panorama Name="panorama">
-        <phone:PanoramaItem Header="novedades">
+    <phone:Panorama Name="panorama"
+                    Background="#4668C5">
+        <phone:PanoramaItem Header="novedades"
+                            Foreground="#FFFFFF">
             <ListBox Name="lstnovedades"
                      SelectionChanged="lstnovedades_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal"
-                                    Background="{StaticResource PhoneAccentBrush}"
+                                    Background="#5A7DD5"
                                     Width="400"
                                     Margin="5">
                             <Image Width="150"
@@ -66,13 +68,14 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </phone:PanoramaItem>
-        <phone:PanoramaItem Header="destacados">
+        <phone:PanoramaItem Header="destacados"
+                            Foreground="#FFFFFF">
             <ListBox Name="lstdestacados"
                      SelectionChanged="lstdestacados_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal"
-                                    Background="{StaticResource PhoneAccentBrush}"
+                                    Background="#5A7DD5"
                                     Width="400"
                                     Margin="5">
                             <Image Width="150"
@@ -95,7 +98,8 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </phone:PanoramaItem>
-        <phone:PanoramaItem Header="productos">
+        <phone:PanoramaItem Header="productos"
+                            Foreground="#FFFFFF">
             <ListBox Name="lstproductos"
                      SelectionChanged="lstproductos_SelectionChanged">
                 <ListBox.ItemsPanel>
@@ -109,6 +113,7 @@
                                          Source="{Binding Fotos[0].URL}"
                                          Notification="{Binding Temporada}"
                                          DisplayNotification="True"
+                                         Background="#5A7DD5"
                                          Size="Large"
                                          Margin="5" />
                     </DataTemplate>

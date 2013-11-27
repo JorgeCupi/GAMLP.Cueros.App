@@ -102,9 +102,6 @@
     <Compile Include="Views\Carrito.xaml.cs">
       <DependentUpon>Carrito.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DetalleMaterial.xaml.cs">
-      <DependentUpon>DetalleMaterial.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\DetalleProducto.xaml.cs">
       <DependentUpon>DetalleProducto.xaml</DependentUpon>
     </Compile>
@@ -134,10 +131,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Carrito.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DetalleMaterial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

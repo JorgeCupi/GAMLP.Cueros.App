@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}"
+    Foreground="#FFFFFF"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     toolkit:TiltEffect.IsTiltEnabled="True"
@@ -41,10 +41,12 @@
 
     <!--LayoutRoot contiene la cuadrícula raíz donde se coloca el resto del contenido de la página-->
     <phone:Panorama Name="panorama"
-                    Title="{Binding Nombre}">
+                    Title="{Binding Nombre}"
+                    Background="#4668C5">
 
         <!--Elemento Panorama uno-->
-        <phone:PanoramaItem Header="Imagenes">
+        <phone:PanoramaItem Header="Imagenes"
+                            Foreground="#FFFFFF">
             <ListBox ItemsSource="{Binding Fotos}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -53,7 +55,7 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="{StaticResource PhoneAccentBrush}"
+                        <Border BorderBrush="#5A7DD5"
                                 BorderThickness="3"
                                 Margin="10">
                             <Image Width="400"
@@ -68,7 +70,8 @@
         </phone:PanoramaItem>
 
         <!--Elemento Panorama dos-->
-        <phone:PanoramaItem Header="Detalles">
+        <phone:PanoramaItem Header="Detalles"
+                            Foreground="#FFFFFF">
             <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                           VerticalScrollBarVisibility="Visible">
                 <StackPanel Margin="20,0,10,0">
@@ -79,7 +82,6 @@
                         <TextBlock Name="id"
                                FontSize="25"
                                Text="{Binding Modelo}" 
-                               Opacity="0.7"
                                Margin="30,0,0,0"/>
                     </StackPanel>
 
@@ -91,7 +93,6 @@
                                FontSize="25"
                                Text="{Binding Descripcion}"
                                TextWrapping="Wrap"
-                               Opacity="0.7"
                                Margin="30,0,0,0" 
                                HorizontalAlignment="Left" 
                                Width="360"/>
@@ -112,48 +113,57 @@
                                FontWeight="Bold"/>
                         <TextBlock Text="{Binding Temporada}"
                                FontSize="25"
-                               Margin="30,0,0,0"
-                               Opacity="0.7"/>
+                               Margin="30,0,0,0"/>
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>
         </phone:PanoramaItem>
 
-        <phone:PanoramaItem Header="Materiales">
+        <phone:PanoramaItem Header="Materiales"
+                            Foreground="#FFFFFF">
             <ListBox ItemsSource="{Binding Materiales}"
                      SelectionChanged="ListBox_SelectionChanged"
-                     Name="lstmateriales">
+                     Name="lstmateriales"
+                     Foreground="#FFFFFF">
+                <!--<VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="SelectionState">
+                        <VisualState x:Name="Selected">
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                   Storyboard.TargetProperty="Foreground">
+                                    <DiscreteObjectKeyFrame KeyTime="0" Value="#FFFFFF" />
+                                </ObjectAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>-->
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal"
                                     Margin="10">
                             <Border Width="10"
-                                    Background="{StaticResource PhoneAccentBrush}"
+                                    Background="#5A7DD5"
                                     Margin="0,0,10,0"/>
                             <StackPanel Margin="10"
                                         Width="380">
                                 <TextBlock Text="{Binding Nombre}"
                                            FontSize="45"/>
                                 <TextBlock Text="Nombre Comercial:"
-                                               Margin="10,0,0,0"/>
+                                           Margin="10,0,0,0"/>
                                 <TextBlock Text="{Binding NombreComercial}"
-                                               Margin="70,0,0,0"
-                                               Opacity="0.7"/>
+                                           Margin="70,0,0,0"/>
                                 <TextBlock Text="Costo Unidad:"
-                                               Margin="10,0,0,0"/>
+                                           Margin="10,0,0,0"/>
                                 <TextBlock Text="{Binding CostoUnidad}"
-                                               Margin="70,0,0,0"
-                                               Opacity="0.7"/>
+                                           Margin="70,0,0,0"/>
                                 <TextBlock Text="Color:"
                                                Margin="10,0,0,0"/>
                                 <TextBlock Text="{Binding Color}"
-                                               Margin="70,0,0,0"
-                                               Opacity="0.7"/>
+                                           Margin="70,0,0,0"/>
                                 <TextBlock Text="Tipo Unidad:"
-                                               Margin="10,0,0,0"/>
+                                           Margin="10,0,0,0"/>
                                 <TextBlock Text="{Binding TipoUnidad}"
-                                               Margin="70,0,0,0"
-                                               Opacity="0.7"/>
+                                           Margin="70,0,0,0"/>
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>

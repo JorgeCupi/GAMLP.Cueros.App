@@ -13,7 +13,7 @@
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}"
+    Foreground="#FFFFFF"
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="False">
 
@@ -38,11 +38,11 @@
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
 
+    
 
-    <phone:Panorama Title="CADEPIA">
-        <phone:PanoramaItem Header="categoria" 
-                            Orientation="Horizontal"
-                            Width="500">
+    <phone:Panorama Title="CADEPIA"
+                    Background="#4668C5">
+        <phone:PanoramaItem Header="categoria" >
             <ListBox Name="lstcategoria"
                      SelectionChanged="ListBox_SelectionChanged">
                 <ListBox.ItemsPanel>
@@ -52,10 +52,11 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <toolkit:HubTile Size="Medium"
+                        <toolkit:HubTile Size="Large"
                                          Margin="10"
                                          Title="{Binding Nombre}"
-                                         Source="{Binding UrlImagen}"/>
+                                         Source="{Binding UrlImagen}"
+                                         Background="#5A7DD5"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
@@ -67,7 +68,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal"
-                                    Background="{StaticResource PhoneAccentBrush}"
+                                    Background="#5A7DD5"
                                     Width="400"
                                     Margin="5">
                             <Image Width="150"
@@ -97,7 +98,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal"
-                                    Background="{StaticResource PhoneAccentBrush}"
+                                    Background="#5A7DD5"
                                     Width="400"
                                     Margin="5">
                             <Image Width="150"

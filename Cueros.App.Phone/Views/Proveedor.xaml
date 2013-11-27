@@ -8,11 +8,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}"
+    Foreground="#FFFFFF"
     SupportedOrientations="Portrait" Orientation="Portrait"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True"
+    shell:SystemTray.IsVisible="False"
     toolkit:TiltEffect.IsTiltEnabled="True">
 
     <toolkit:TransitionService.NavigationInTransition>
@@ -37,21 +37,16 @@
     </toolkit:TransitionService.NavigationOutTransition>
 
     <!--LayoutRoot es la cuadrícula raíz donde se coloca todo el contenido de la página-->
-    <Grid Margin="20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
+    <StackPanel Background="#4668C5">
         <TextBlock Name="material"
-                   Style="{StaticResource PhoneTextTitle1Style}"
-                   Grid.Row="0"/>
-        
-        <ListBox Name="lstProveedores"
-                 Grid.Row="1">
+                   Style="{StaticResource PhoneTextTitle1Style}"/>
+
+        <ListBox Name="lstProveedores" 
+                 Height="700">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border Background="{StaticResource PhoneAccentBrush}"
+                    <Border Background="#5A7DD5"
                             Margin="5"
                             Width="420">
                         <StackPanel Margin="10">
@@ -98,6 +93,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-    </Grid>
+    </StackPanel>
 
 </phone:PhoneApplicationPage>
