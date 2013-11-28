@@ -37,7 +37,7 @@
     </toolkit:TransitionService.NavigationOutTransition>
 
     <phone:Panorama Name="panorama"
-                    Background="#4668C5">
+                    Background="#060671">
         <phone:PanoramaItem Header="novedades"
                             Foreground="#FFFFFF">
             <ListBox Name="lstnovedades"
@@ -45,7 +45,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal"
-                                    Background="#5A7DD5"
+                                    Background="#0038BD "
                                     Width="400"
                                     Margin="5">
                             <Image Width="150"
@@ -75,7 +75,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal"
-                                    Background="#5A7DD5"
+                                    Background="#0038BD"
                                     Width="400"
                                     Margin="5">
                             <Image Width="150"
@@ -113,7 +113,7 @@
                                          Source="{Binding Fotos[0].URL}"
                                          Notification="{Binding Temporada}"
                                          DisplayNotification="True"
-                                         Background="#5A7DD5"
+                                         Background="#0038BD"
                                          Size="Large"
                                          Margin="5" />
                     </DataTemplate>

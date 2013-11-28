@@ -38,11 +38,9 @@
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
 
-    
-
     <phone:Panorama Title="CADEPIA"
-                    Background="#4668C5">
-        <phone:PanoramaItem Header="categoria" >
+                    Background="#060671">
+        <phone:PanoramaItem Header="categoria" > 
             <ListBox Name="lstcategoria"
                      SelectionChanged="ListBox_SelectionChanged">
                 <ListBox.ItemsPanel>
@@ -56,7 +54,7 @@
                                          Margin="10"
                                          Title="{Binding Nombre}"
                                          Source="{Binding UrlImagen}"
-                                         Background="#5A7DD5"/>
+                                         Background="#0038BD"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
@@ -68,7 +66,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal"
-                                    Background="#5A7DD5"
+                                    Background="#0038BD"
                                     Width="400"
                                     Margin="5">
                             <Image Width="150"
@@ -98,7 +96,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal"
-                                    Background="#5A7DD5"
+                                    Background="#0038BD"
                                     Width="400"
                                     Margin="5">
                             <Image Width="150"

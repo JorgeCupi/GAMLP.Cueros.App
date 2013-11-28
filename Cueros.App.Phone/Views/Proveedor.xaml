@@ -38,7 +38,7 @@
 
     <!--LayoutRoot es la cuadrícula raíz donde se coloca todo el contenido de la página-->
 
-    <StackPanel Background="#4668C5">
+    <StackPanel Background="#060671 ">
         <TextBlock Name="material"
                    Style="{StaticResource PhoneTextTitle1Style}"/>
 
@@ -46,7 +46,7 @@
                  Height="700">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border Background="#5A7DD5"
+                    <Border Background="#0038BD "
                             Margin="5"
                             Width="420">
                         <StackPanel Margin="10">

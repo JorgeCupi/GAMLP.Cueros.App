@@ -42,7 +42,7 @@
     <!--LayoutRoot contiene la cuadrícula raíz donde se coloca el resto del contenido de la página-->
     <phone:Panorama Name="panorama"
                     Title="{Binding Nombre}"
-                    Background="#4668C5">
+                    Background="#060671">
 
         <!--Elemento Panorama uno-->
         <phone:PanoramaItem Header="Imagenes"
@@ -55,7 +55,7 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="#5A7DD5"
+                        <Border BorderBrush="#0038BD"
                                 BorderThickness="3"
                                 Margin="10">
                             <Image Width="400"
@@ -142,7 +142,7 @@
                         <StackPanel Orientation="Horizontal"
                                     Margin="10">
                             <Border Width="10"
-                                    Background="#5A7DD5"
+                                    Background="#0038BD"
                                     Margin="0,0,10,0"/>
                             <StackPanel Margin="10"
                                         Width="380">
