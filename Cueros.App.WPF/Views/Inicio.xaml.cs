@@ -22,6 +22,7 @@ namespace Cueros.App.WPF.Views
         public Inicio()
         {
             InitializeComponent();
+
         }
         private void Click_Cueros(object sender, RoutedEventArgs e)
         {
@@ -35,5 +36,6 @@ namespace Cueros.App.WPF.Views
             MainW.Show();
             this.Hide();
         }
+
     }
 }

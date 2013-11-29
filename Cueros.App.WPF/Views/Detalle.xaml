@@ -1,0 +1,60 @@
+﻿<Window x:Class="Cueros.App.WPF.Views.Detalle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Detalle" Height="600" Width="1024">
+    <Border BorderThickness="3" BorderBrush="Black" Background="#060671">
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Background="White">
+                    <ListBox Name="imagenes" ItemTemplate="{StaticResource imagenes}" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <Button Height="20" Width="50" Content="Volver" Click="btnIncio_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                </Grid>
+                <Grid Grid.Row="1" Name="pro" Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130*"/>
+                        <ColumnDefinition Width="207*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Nombre "/>
+                    <Label Grid.Column="1" Grid.Row="0" Content="{Binding Nombre}"/>
+                    <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Descripcion"/>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Foreground="Black" Text="{Binding Descripcion}" TextWrapping="Wrap" Height="Auto" />
+                    <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Temporada "/>
+                    <Label Grid.Column="1" Grid.Row="2" Foreground="Black" Content="{Binding Temporada}"/>
+                    <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Modelo"/>
+                    <Label Grid.Column="1" Grid.Row="3" Foreground="Black" Content="{Binding Modelo}"/>
+                    <Button Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" Click="Button_Click" Content="Realizar pedido"/>
+                    <TextBox Grid.Column="1" Grid.Row="4" Name="Cantidad" Text="Introduzca Unidades para el pedido"/>
+
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <StackPanel>
+                    <Label Content="Materiales" FontSize="20" Foreground="White" HorizontalAlignment="Center"/>
+                    <ListBox Name="ListaMateriales" Background="Transparent" ItemTemplate="{StaticResource Materiales}"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="2">
+                <StackPanel>
+                    <Label Content="Proveedores" FontSize="20" Foreground="White"  HorizontalAlignment="Center"/>
+                    <ListBox Name="Prov" Background="Transparent" ItemTemplate="{StaticResource Proveedor}"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

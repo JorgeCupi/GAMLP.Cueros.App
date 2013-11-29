@@ -5,19 +5,96 @@
     <Application.Resources>
         <DataTemplate x:Key="ListaProductos">
             <StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105" Width="432" Background="#FF928A95">
+                <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105" Width="700" Background="#0038bd">
                     <Image  Source="{Binding Fotos[0].URL}" Width="100" Height="100" Stretch="Fill" Margin="10"/>
-                    <TextBlock Text="{Binding Nombre}" Width="220" TextWrapping="Wrap" Margin="10,0" FontSize="25" Foreground="DarkMagenta" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding Nombre}" Width="220" TextWrapping="Wrap" Margin="10,0" FontSize="25" Foreground="White" VerticalAlignment="Center"/>
                 </StackPanel>
             </StackPanel>
         </DataTemplate>
         <DataTemplate x:Key="ListaCategorias">
             <StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105" Width="432" Background="#FF928A95">
+                <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105" Width="700" Background="#0038bd">
                     <Image  Source="{Binding UrlImagen}" Width="100" Height="100" Stretch="Fill" Margin="10"/>
-                    <TextBlock Text="{Binding Nombre}" Width="220" TextWrapping="Wrap" Margin="10,0" FontSize="25" Foreground="DarkMagenta" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding Nombre}" Width="220" TextWrapping="Wrap" Margin="10,0" FontSize="25" Foreground="White" VerticalAlignment="Center"/>
                 </StackPanel>
             </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="ProductosCategoria">
+            <Grid Height="150" Width="Auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Foreground="White" Grid.Column="0" Grid.Row="0" Content="Nombre"/>
+                <Label Foreground="White" Grid.Column="1" Grid.Row="0" Content="{Binding Nombre}"/>
+
+                <Label Foreground="White" Grid.Column="0" Grid.Row="1" Content="Modelo"/>
+                <Label Foreground="White" Grid.Column="1" Grid.Row="1" Content="{Binding Modelo}"/>
+
+                <Label Foreground="White" Grid.Column="0" Grid.Row="2" Content="Temporada"/>
+                <Label Foreground="White" Grid.Column="1" Grid.Row="2" Content="{Binding Temporada}"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="Materiales">
+
+            <Grid Height="150" Width="300">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Foreground="White" Grid.Column="0" Grid.Row="0" Content="Nombre"/>
+                <Label Foreground="White" Grid.Column="1" Grid.Row="0" Content="{Binding Nombre}"/>
+
+                <Label Foreground="White" Grid.Column="0" Grid.Row="1" Content="Nombre comercial"/>
+                <Label Foreground="White" Grid.Column="1" Grid.Row="1" Content="{Binding NombreComercial}"/>
+
+                <Label Foreground="White" Grid.Column="0" Grid.Row="2" Content="Color"/>
+                <Label Foreground="White" Grid.Column="1" Grid.Row="2" Content="{Binding Color}"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="Proveedor">
+
+            <Grid Height="150" Width="300">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Foreground="White" Grid.Column="0" Grid.Row="0" Content="Nombre"/>
+                <Label Foreground="White" Grid.Column="1" Grid.Row="0" Content="{Binding Nombre}"/>
+
+                <Label Foreground="White" Grid.Column="0" Grid.Row="1" Content="Correo"/>
+                <Label Foreground="White" Grid.Column="1" Grid.Row="1" Content="{Binding Correo}"/>
+
+                <Label Foreground="White" Grid.Column="0" Grid.Row="2" Content="Direccion"/>
+                <Label Foreground="White" Grid.Column="1" Grid.Row="2" Content="{Binding Direccion}"/>
+
+                <Label Foreground="White" Grid.Column="0" Grid.Row="3" Content="Telefono"/>
+                <Label Foreground="White" Grid.Column="1" Grid.Row="3" Content="{Binding Telefono}"/>
+
+                <Label Foreground="White" Grid.Column="0" Grid.Row="4" Content="Ciudad "/>
+                <Label Foreground="White" Grid.Column="1" Grid.Row="4" Content="{Binding Ciudad}"/>
+
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="imagenes">
+            <Image Source="{Binding URL}"/>
         </DataTemplate>
     </Application.Resources>
 </Application>

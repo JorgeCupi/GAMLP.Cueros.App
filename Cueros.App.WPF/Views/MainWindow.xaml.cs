@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Cueros.App.Core.Services;
 using Cueros.App.Core.Models;
 using System.Collections.ObjectModel;
+using Cueros.App.WPF.Views;
 
 namespace Cueros.App.WPF
 {
@@ -32,7 +33,7 @@ namespace Cueros.App.WPF
         void lstProductosDest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var producto = lstProductosDest.SelectedItem as Producto;
-            DetalleProducto dp = new DetalleProducto(producto, this);
+            Detalle dp = new Detalle(producto, this);
             dp.Show();
             this.Hide();
         }
@@ -40,7 +41,7 @@ namespace Cueros.App.WPF
         void lstProductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var producto = lstProductos.SelectedItem as Producto;
-            DetalleProducto dp = new DetalleProducto(producto,this);
+            Detalle dp = new Detalle(producto,this);
             dp.Show();
             this.Hide();
         }

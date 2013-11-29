@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Cueros.App.Core.Models;
 using Cueros.App.Core.Services;
+using Cueros.App.WPF.Views;
 
 namespace Cueros.App.WPF
 {
@@ -41,9 +42,15 @@ namespace Cueros.App.WPF
         {
             try
             {
-                List<Producto> get_list = await ServiciosDeProductos.GetProductsFromThisCategory(cate);
-                ListaCategoria.ItemsSource = get_list;
-                ListaCategoria.SelectionChanged += ListaCategoria_SelectionChanged;
+                List<Producto> All = await ServiciosDeProductos.GetProductsFromThisCategory(cate);
+                Todos.ItemsSource = All;
+                List<Producto> Nov = await ServiciosDeProductos.GetRecentProductsFromThisCategory(cate);
+                Novedades.ItemsSource = Nov;
+                List<Producto> Des = await ServiciosDeProductos.GetRecentProductsFromThisCategory(cate);
+                Destacados.ItemsSource = Des;
+                Todos.SelectionChanged += Todos_SelectionChanged;
+                Novedades.SelectionChanged += Novedades_SelectionChanged;
+                Destacados.SelectionChanged += Destacados_SelectionChanged;
             }
             catch(Exception)
             {
@@ -52,18 +59,31 @@ namespace Cueros.App.WPF
                 {
                     Nombre = "O.o oops, ahora no podemos conextarnos, intenta más tarde"
                 });
-                ListaCategoria.ItemsSource = get_list;
+                Todos.ItemsSource = get_list;
+                Novedades.ItemsSource = get_list;
+                Destacados.ItemsSource = get_list;
                 
             }
 
         }
 
-        void ListaCategoria_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        void Todos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var producto = ListaCategoria.SelectedItem as Producto;
-            DetalleProducto dp = new DetalleProducto(producto, this);
-            dp.Show();
-            this.Hide();
+            var producto = Todos.SelectedItem as Producto;
+            det.DataContext = producto;
+            imagenes.ItemsSource = producto.Fotos;
+        }
+        void Novedades_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var producto = Novedades.SelectedItem as Producto;
+            det.DataContext = producto;
+            imagenes.ItemsSource = producto.Fotos;
+        }
+        void Destacados_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var producto = Destacados.SelectedItem as Producto;
+            det.DataContext = producto;
+            imagenes.ItemsSource = producto.Fotos;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -71,5 +91,30 @@ namespace Cueros.App.WPF
             mainWindow.Show();
             this.Hide();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var producto = Todos.SelectedItem as Producto;
+            Detalle dp = new Detalle(producto, this);
+            dp.Show();
+            this.Hide();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var producto = Novedades.SelectedItem as Producto;
+            Detalle dp = new Detalle(producto, this);
+            dp.Show();
+            this.Hide();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            var producto = Destacados.SelectedItem as Producto;
+            Detalle dp = new Detalle(producto, this);
+            dp.Show();
+            this.Hide();
+        }
+
     }
 }
