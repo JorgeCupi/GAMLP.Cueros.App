@@ -24,7 +24,7 @@ namespace Cueros.App.WPF.Views
     public partial class RPedido : Window
     {
 
-        private Producto pro = new Producto();
+        private Producto pro;
         private double precioTotal;
         private double costo = 15.5;
         private int cantidad;
@@ -34,46 +34,28 @@ namespace Cueros.App.WPF.Views
         private int dias;
         private Pedido pedidos;
         private List<Producto> listaProductos;
+        private Detalle det;
 
-        public RPedido(Producto p, int c)
+        public RPedido(Producto p, Detalle Detail)
         {
-
-            this.pro = p;
+             det = Detail;
+            pro = p;
             listaProductos = new List<Producto>();
             InitializeComponent();
-
-            this.cantidad = c;
-            LlenarTextos();
-
-            btncalcular.Click += btncalcular_Click;
-            btnadicionar.Click += btnadicionar_Click;
+            Loaded += RPedido_Loaded;
         }
 
-        void btnadicionar_Click(object sender, RoutedEventArgs e)
+        void RPedido_Loaded(object sender, RoutedEventArgs e)
         {
-            listaProductos.Add(pro);
-            //pedidos = new Pedido(){ 
-            //    FechaPedido=DateTime.Now,
-            //    NombreCliente="pepito",
-                
-            //}
+            DetallesP.DataContext = pro;
+            imagen.ItemsSource = pro.Fotos;
+            precioTotal = costo * Convert.ToInt32(Cant.Text);
+            Total.Content = precioTotal;
         }
-
-        void btncalcular_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            precioTotal = cantidad * costo;
-            txtCostoTotal.Text = txtCostoTotal.Text + precioTotal.ToString() + " Bs.";
+            det.Show();
+            this.Hide();
         }
-
-        void LlenarTextos()
-        {
-            txtNombreP.Text = pro.Id;
-            txtCantidad.Text = this.cantidad.ToString() + " Unidades";
-            txtCostoU.Text = txtCostoU.Text + costo.ToString();
-            tiempoCreacion = tiempo * cantidad;
-            dias = tiempoCreacion / t;
-            txtTC.Text = txtTC.Text + tiempoCreacion.ToString() + " minutos \n" + "El pedido se entregara en " + Convert.ToInt32(dias + 1).ToString() + " dias";
-        }
-
     }
 }

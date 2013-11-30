@@ -1,158 +1,58 @@
 ﻿<Window x:Class="Cueros.App.WPF.Views.RPedido"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Realizar pedido" Height="350" Width="525">
-    <Window.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="Segoe UI" />
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Margin" Value="15"/>
-        </Style>
-        <SolidColorBrush x:Key="ColorNormal" >
-            <SolidColorBrush.Color>
-                <Color ></Color>
-            </SolidColorBrush.Color>
-        </SolidColorBrush>
+        Title="Realizar pedido" Height="600" Width="400">
 
-        <LinearGradientBrush x:Key="ColorDeBordeNormal" StartPoint="0,0" EndPoint="0,1">
-            <GradientBrush.GradientStops>
-                <GradientStopCollection>
-                    <GradientStop Color="#CCC" Offset="0.0"/>
-                    <GradientStop Color="#444" Offset="1.0"/>
-                </GradientStopCollection>
-            </GradientBrush.GradientStops>
-        </LinearGradientBrush>
-
-        <Style x:Key="EstiloRedondo" TargetType="Button">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="Border" 
-                                CornerRadius="30"
-                                BorderThickness="2"
-                                BorderBrush="White"
-                                Width="50"
-                                Height="50"
-                                Background="{StaticResource ColorNormal}" >
-                            <ContentPresenter
-                                Margin="2"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                RecognizesAccessKey="True"/>
-
-                            <Border.Effect>
-                                <DropShadowEffect/>
-                            </Border.Effect>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="Border" Property="Background"  >
-                                    <Setter.Value>
-                                        <SolidColorBrush  Color="#FF286099" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="Border" Property="Background">
-                                    <Setter.Value>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                            <GradientBrush.GradientStops>
-                                                <GradientStopCollection>
-                                                    <GradientStop Color="#BBB" Offset="0.0"/>
-                                                    <GradientStop Color="#EEE" Offset="0.1"/>
-                                                    <GradientStop Color="#EEE" Offset="0.9"/>
-                                                    <GradientStop Color="#FFF" Offset="1.0"/>
-                                                </GradientStopCollection>
-                                            </GradientBrush.GradientStops>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
-
-                                <Setter TargetName="Border" Property="BorderBrush">
-                                    <Setter.Value>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                            <GradientBrush.GradientStops>
-                                                <GradientStopCollection>
-                                                    <GradientStop Color="#CCC" Offset="0.0"/>
-                                                    <GradientStop Color="#444" Offset="1.0"/>
-                                                </GradientStopCollection>
-                                            </GradientBrush.GradientStops>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
-
-    <Grid Background="Black" Name="contenedor">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2*"/>
-        </Grid.ColumnDefinitions>
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.2*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <StackPanel  Grid.ColumnSpan="3" Orientation="Horizontal">
-            <Button Style="{StaticResource EstiloRedondo}" />
-            <TextBlock Text="  PEDIDO " FontSize="25" Foreground="WhiteSmoke" VerticalAlignment="Center" />
-
-        </StackPanel>
-
-        <Grid Grid.Row="1" >
+    <Border BorderThickness="3" BorderBrush="Black" Background="#060671">
+        <Grid Background="#060671">
             <Grid.RowDefinitions>
-
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition />
             </Grid.RowDefinitions>
-            <StackPanel Background="#FF286099" Grid.Row="0">
-                <TextBlock Text="PRODUCTO" Name="txtNombreP"/>
-                <TextBlock Text="4 unidades" Name="txtCantidad" HorizontalAlignment="Right"/>
-            </StackPanel>
-            <ListBox  Background="#FF286099" Name="Producto" Grid.Row="2"  >
-                <!--//imagen-->
 
-            </ListBox>
+            <Label Grid.Row="0" Content="Pedido" FontSize="35" Foreground="White"/>
+            <ListBox Grid.Row="1" Name="imagen" ItemTemplate="{StaticResource imagenes}" Width="385"/>
+
+            <Button Grid.Row="1" Height="20" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Volver" Click="Button_Click"/>
+            <StackPanel Grid.Row="2">
+                
+               <ListBox >
+                    <Grid Name="DetallesP">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="0" Grid.Row="0" Foreground="#0038bd" Content="Nombre"/>
+                        <Label Grid.Column="1" Grid.Row="0" Content="{Binding Nombre}"/>
+
+                        <Label Grid.Column="0" Grid.Row="1" Foreground="#0038bd" Content="Modelo"/>
+                        <Label Grid.Column="1" Grid.Row="1" Content="{Binding Modelo}"/>
+
+                        <Label Grid.Column="0" Grid.Row="2" Foreground="#0038bd" Content="Descripcion"/>
+                        <TextBlock Grid.Column="1" Grid.Row="2" Width="150" Text="{Binding Descripcion}"/>
+
+                        <Label Grid.Column="0" Grid.Row="3" Foreground="#0038bd" Content="Temporada"/>
+                        <Label Grid.Column="1" Grid.Row="3" Content="{Binding Temporada}"/>
+                        <Label Grid.Column="0" Grid.Row="4" Foreground="#0038bd" Content="Cantidad"/>
+                        <TextBox Name="Cant" Grid.Column="1" Grid.Row="4" Text="1"/>
+
+                        <Label Grid.Column="0" Grid.Row="5" Foreground="#0038bd" Content="precio"/>
+                        <Label Name="Total" Grid.Column="1" Grid.Row="5" />
+                        <Button Grid.Column="1" Grid.Row="6" Width="80" Content="Gruardar" Background="Transparent" Foreground="#0038bd" Click="Button_Click"/>
+
+                    </Grid>
+                </ListBox>
+            </StackPanel>
         </Grid>
-
-        <Grid Grid.Column="1" Grid.Row="1" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.3*" />
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <StackPanel Background="White">
-                <TextBlock Grid.Row="1"  Text="DETALLE"   VerticalAlignment="Center"/>
-            </StackPanel>
-            <ListBox   Background="White" Name="Detalle" Grid.Row="1"  >
-                <Grid >
-                    <StackPanel Height="auto" Width="auto">
-                        <TextBlock Text="COSTO UNIDAD: " FontSize="16" Foreground="Black"  Name="txtCostoU"/>
-
-                        <TextBlock Text="Tiempo de creacion: " FontSize="14" Foreground="Black"  Name="txtTC"/>
-                        <TextBlock Text="Costo Total: " FontSize="14" Foreground="Black" Name="txtCostoTotal"/>
-
-                    </StackPanel>
-
-                </Grid>
-
-            </ListBox>
-            <Grid Name="barraBottones" Grid.Column="1" Grid.Row="2" Background="White"  >
-                <Button Name="btncalcular" Grid.Row="2" Style="{StaticResource EstiloRedondo}"  HorizontalAlignment="Left"/>
-                <Button Name="btnadicionar" Style="{StaticResource EstiloRedondo}" HorizontalAlignment="Right" Height="50" VerticalAlignment="Top" />
-            </Grid >
-
-
-        </Grid >
-
-
-    </Grid>
+    </Border>
 </Window>

@@ -15,7 +15,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid Background="White">
-                    <ListBox Name="imagenes" ItemTemplate="{StaticResource imagenes}" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <ListBox Name="imagenes" Width="330" ItemTemplate="{StaticResource imagenes}" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
                     <Button Height="20" Width="50" Content="Volver" Click="btnIncio_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 </Grid>
                 <Grid Grid.Row="1" Name="pro" Background="White">
@@ -38,9 +38,7 @@
                     <Label Grid.Column="1" Grid.Row="2" Foreground="Black" Content="{Binding Temporada}"/>
                     <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Modelo"/>
                     <Label Grid.Column="1" Grid.Row="3" Foreground="Black" Content="{Binding Modelo}"/>
-                    <Button Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" Click="Button_Click" Content="Realizar pedido"/>
-                    <TextBox Grid.Column="1" Grid.Row="4" Name="Cantidad" Text="Introduzca Unidades para el pedido"/>
-
+                    <Button Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" Click="Button_Click" Content="Realizar pedido" Grid.ColumnSpan="2" Margin="2,5,205,5"/>
                 </Grid>
             </Grid>
             <Grid Grid.Column="1">

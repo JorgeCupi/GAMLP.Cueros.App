@@ -62,9 +62,8 @@ namespace Cueros.App.WPF
             if (!TextCantidad.Text.Equals(""))
             {
                 this.cantidad = Convert.ToInt32(TextCantidad.Text);
-                RPedido p = new RPedido(producto1, cantidad);
-                p.Owner = this;
-                p.Show();
+                Owner = this;
+               Show();
             }
             else
             {

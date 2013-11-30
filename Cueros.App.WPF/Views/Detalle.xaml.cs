@@ -26,7 +26,6 @@ namespace Cueros.App.WPF.Views
         private Producto producto1;
         private MainWindow mainWindow;
         private Informacion informacion;
-        private int cantidad;
         public Detalle(Producto pro, MainWindow mainWindow)
         {
             producto1 = pro;
@@ -67,17 +66,9 @@ namespace Cueros.App.WPF.Views
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!Cantidad.Text.Equals(""))
-            {
-                this.cantidad = Convert.ToInt32(Cantidad.Text);
-                RPedido p = new RPedido(producto1, cantidad);
+                RPedido p = new RPedido(producto1, this);
                 p.Owner = this;
                 p.Show();
-            }
-            else
-            {
-                MessageBox.Show("Necesita introducir una cantidad en la caja de texto de la derecha por favor");
-            }
         }
 
     }
