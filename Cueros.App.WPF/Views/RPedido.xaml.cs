@@ -38,11 +38,12 @@ namespace Cueros.App.WPF.Views
 
         public RPedido(Producto p, Detalle Detail)
         {
-             det = Detail;
+            InitializeComponent();
+            det = Detail;
             pro = p;
             listaProductos = new List<Producto>();
-            InitializeComponent();
             Loaded += RPedido_Loaded;
+            Cant.TextChanged +=Cant_TextChanged;
         }
 
         void RPedido_Loaded(object sender, RoutedEventArgs e)
@@ -56,6 +57,16 @@ namespace Cueros.App.WPF.Views
         {
             det.Show();
             this.Hide();
+        }
+
+        private void Cant_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!Cant.Text.Equals(""))
+            {
+                this.precioTotal = costo * Convert.ToInt32(Cant.Text);
+                Total.Content = precioTotal.ToString();
+            }
+            
         }
     }
 }

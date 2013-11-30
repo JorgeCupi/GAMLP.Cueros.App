@@ -62,6 +62,9 @@
     <Compile Include="Views\Detalle.xaml.cs">
       <DependentUpon>Detalle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ficha.xaml.cs">
+      <DependentUpon>ficha.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -90,6 +93,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Detalle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ficha.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
