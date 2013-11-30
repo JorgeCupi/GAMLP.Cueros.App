@@ -102,6 +102,9 @@
     <Compile Include="Views\Carrito.xaml.cs">
       <DependentUpon>Carrito.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Catalogo.xaml.cs">
+      <DependentUpon>Catalogo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DetalleProducto.xaml.cs">
       <DependentUpon>DetalleProducto.xaml</DependentUpon>
     </Compile>
@@ -131,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Carrito.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Catalogo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -179,6 +186,10 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Picture\Alimentos.jpg" />
+    <Content Include="Picture\Cueros.jpg" />
+    <Content Include="Picture\Joyas.jpg" />
+    <Content Include="Picture\Textiles.jpg" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />

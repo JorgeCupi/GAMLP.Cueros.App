@@ -17,109 +17,35 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="False">
 
-    <toolkit:TransitionService.NavigationInTransition>
-        <toolkit:NavigationInTransition>
-            <toolkit:NavigationInTransition.Backward>
-                <toolkit:TurnstileTransition Mode="BackwardIn"/>
-            </toolkit:NavigationInTransition.Backward>
-            <toolkit:NavigationInTransition.Forward>
-                <toolkit:TurnstileTransition Mode="ForwardIn"/>
-            </toolkit:NavigationInTransition.Forward>
-        </toolkit:NavigationInTransition>
-    </toolkit:TransitionService.NavigationInTransition>
-    <toolkit:TransitionService.NavigationOutTransition>
-        <toolkit:NavigationOutTransition>
-            <toolkit:NavigationOutTransition.Backward>
-                <toolkit:TurnstileTransition Mode="BackwardOut"/>
-            </toolkit:NavigationOutTransition.Backward>
-            <toolkit:NavigationOutTransition.Forward>
-                <toolkit:TurnstileTransition Mode="ForwardOut"/>
-            </toolkit:NavigationOutTransition.Forward>
-        </toolkit:NavigationOutTransition>
-    </toolkit:TransitionService.NavigationOutTransition>
-
-    <phone:Panorama Title="CADEPIA"
-                    Background="#060671">
-        <phone:PanoramaItem Header="categoria" > 
-            <ListBox Name="lstcategoria"
-                     SelectionChanged="ListBox_SelectionChanged">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <toolkit:WrapPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <toolkit:HubTile Size="Large"
-                                         Margin="10"
-                                         Title="{Binding Nombre}"
-                                         Source="{Binding UrlImagen}"
-                                         Background="#0038BD"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </phone:PanoramaItem>
-
-        <phone:PanoramaItem Header="novedades">
-            <ListBox Name="lstnovedades"
-                     SelectionChanged="lstnovedades_SelectionChanged">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal"
-                                    Background="#0038BD"
-                                    Width="400"
-                                    Margin="5">
-                            <Image Width="150"
-                                   Height="150" 
-                                   Margin="20"
-                                   Stretch="UniformToFill"
-                                   Source="{Binding Fotos[0].URL}"/>
-                            <StackPanel VerticalAlignment="Center">
-                                <TextBlock Text="{Binding Nombre}"
-                                           TextWrapping="Wrap"
-                                           Width="220"
-                                           Foreground="White"/>
-                                <TextBlock Text="{Binding Temporada}"
-                                           Foreground="White"/>
-                                <TextBlock Text="{Binding FechaPublicacion}"
-                                           Foreground="White"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </phone:PanoramaItem>
-
-        <phone:PanoramaItem Header="destacados">
-            <ListBox Name="lstdestacados"
-                     SelectionChanged="lstdestacados_SelectionChanged">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal"
-                                    Background="#0038BD"
-                                    Width="400"
-                                    Margin="5">
-                            <Image Width="150"
-                                   Height="150" 
-                                   Margin="20"
-                                   Stretch="UniformToFill"
-                                   Source="{Binding Fotos[0].URL}"/>
-                            <StackPanel VerticalAlignment="Center">
-                                <TextBlock Text="{Binding Nombre}"
-                                           TextWrapping="Wrap"
-                                           Foreground="White"
-                                           Width="220"/>
-                                <TextBlock Text="{Binding Temporada}"
-                                           Foreground="White"/>
-                                <TextBlock Text="{Binding FechaPublicacion}"
-                                           Foreground="White"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </phone:PanoramaItem>
-
-    </phone:Panorama>
-
+    <Grid x:Name="LayoutRoot" Background="#060671">
+        <phone:Pivot Title="Rubro">
+            <phone:PivotItem Header="Cueros">
+                <Grid>
+                    <Image Source="/Picture/Cueros.jpg" 
+                           Name="cuero"
+                           Margin="65,76,104,130"
+                           />
+                </Grid>
+            </phone:PivotItem>
+            <phone:PivotItem Header="Joyeria">
+                <Grid>
+                    <Image Source="/Picture/Joyas.jpg"
+                           Name="joyeria"
+                           Height="400" Margin="33,75,65,160"/>
+                </Grid>
+            </phone:PivotItem>
+            <phone:PivotItem Header="Alimentacion">
+                <Grid>
+                    <Image Source="/Picture/Alimentos.jpg"
+                           Name="alimentos" Margin="16,123,46,277"/>
+                </Grid>
+            </phone:PivotItem>
+            <phone:PivotItem Header="Textiles">
+                <Grid>
+                    <Image Source="/Picture/Textiles.jpg"
+                           Name="textiles" Margin="26,77,55,209"/>
+                </Grid>
+            </phone:PivotItem>
+        </phone:Pivot>
+    </Grid>
 </phone:PhoneApplicationPage>

@@ -18,10 +18,6 @@ namespace Cueros.App.Phone
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        public ObservableCollection<Categoria> categoria;
-        public ObservableCollection<Producto> novedades;
-        public ObservableCollection<Producto> destacados;
-        Producto p;
         public MainPage()
         {
             InitializeComponent();
@@ -30,145 +26,31 @@ namespace Cueros.App.Phone
 
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            BuildLocalizedApplicationBar();
-            categoria = new Almacenar<Categoria>().Deserialize("categorias.json");
-            novedades = new Almacenar<Producto>().Deserialize("novedades.json");
-            destacados = new Almacenar<Producto>().Deserialize("destacados.json");
-            if (categoria != null && categoria.Count != 0)
-                lstcategoria.ItemsSource = categoria;
-            if (novedades != null && novedades.Count != 0)
-                lstnovedades.ItemsSource = novedades;
-            if (destacados != null && destacados.Count != 0)
-                lstdestacados.ItemsSource = destacados;
-            Cargar();
+            cuero.Tap += cuero_Tap;
+            textiles.Tap += textiles_Tap;
+            alimentos.Tap += alimentos_Tap;
+            joyeria.Tap += joyeria_Tap;
         }
 
-        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        void joyeria_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            base.OnBackKeyPress(e);
-            while (NavigationService.CanGoBack) NavigationService.RemoveBackEntry();
+            NavigationService.Navigate(new Uri("/Views/Catalogo.xaml", UriKind.Relative));
         }
 
-        void Cargar()
+        void alimentos_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            obtenerdestacados();
-            obtenerproductos();
-            obtenernovedades();
+            NavigationService.Navigate(new Uri("/Views/Catalogo.xaml", UriKind.Relative));
         }
 
-        public async void obtenerproductos()
+        void textiles_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            try
-            {
-                List<Categoria> cat = await ServiciosDeCategorias.GetListOfCategories();
-                categoria = new ObservableCollection<Categoria>(cat);
-                new Almacenar<Categoria>().Serialize(categoria, "categorias.json");
-                if (categoria != null && categoria.Count != 0)
-                    lstcategoria.ItemsSource = categoria;
-            }
-            catch (Exception)
-            {
-                //MessageBox.Show("no inter");
-            }
+            NavigationService.Navigate(new Uri("/Views/Catalogo.xaml", UriKind.Relative));
         }
-
-        public async void obtenernovedades()
+         
+        void cuero_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            try
-            {
-                List<Producto> pro = await ServiciosDeProductos.GetRecentProducts(10);
-                novedades = new ObservableCollection<Producto>(pro);
-                new Almacenar<Producto>().Serialize(novedades, "novedades.json");
-                if (novedades != null && novedades.Count != 0)
-                    lstnovedades.ItemsSource = novedades;
-            }
-            catch (Exception)
-            {
-                //MessageBox.Show("no inter");
-            }
+            NavigationService.Navigate(new Uri("/Views/Catalogo.xaml", UriKind.Relative));
         }
 
-        public async void obtenerdestacados()
-        {
-            try
-            {
-                List<Producto> pro = await ServiciosDeProductos.GetTopProducts(10);
-                destacados = new ObservableCollection<Producto>(pro);
-                new Almacenar<Producto>().Serialize(destacados, "destacados.json");
-                if (destacados != null && destacados.Count != 0)
-                    lstdestacados.ItemsSource = destacados;
-            }
-            catch (Exception)
-            {
-                //MessageBox.Show("no inter");
-            }
-        }
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (lstcategoria.SelectedItem != null)
-            {
-                Categoria c = lstcategoria.SelectedItem as Categoria;
-                //MessageBox.Show("go list de prod "+ c.Nombre);
-                NavigationService.Navigate(new Uri("/Views/ListaProductos.xaml?id=" + c.Id + "&categoria=" + c.Nombre, UriKind.Relative));
-            }
-        }
-
-        private void BuildLocalizedApplicationBar()
-        {
-            ApplicationBar = new ApplicationBar();
-            ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/refresh.png", UriKind.Relative));
-            appBarButton.Text = "Refresh";
-            ApplicationBar.Buttons.Add(appBarButton);
-            appBarButton.Click += appBarButton_Click;
-
-            ApplicationBarIconButton VerPedido = new ApplicationBarIconButton(new Uri("/Assets/AppBar/refresh.png", UriKind.Relative));
-            VerPedido.Text = "Ver Pedido";
-            ApplicationBar.Buttons.Add(VerPedido);
-            VerPedido.Click += VerPedido_Click;
-
-            
-        }
-
-        void VerPedido_Click(object sender, EventArgs e)
-        {
-            //aca codigo para mandar a la base de datos para guardar el pedido
-            NavigationService.Navigate(new Uri("/Views/Carrito.xaml", UriKind.Relative));
-        }
-
-        void appBarButton_Click(object sender, EventArgs e)
-        {
-            Cargar();
-        }
-
-        private void lstnovedades_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            p = lstnovedades.SelectedItem as Producto;
-            if (lstnovedades.SelectedItem != null)
-            {
-                //MessageBox.Show("det Prod "+p.Nombre);
-                NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml", UriKind.Relative));
-               // NavigationService.Navigate(new Uri("/View/DetalleProducto.xml?producto=" + p.Id, UriKind.Relative));
-            }
-        }
-
-        private void lstdestacados_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            p = lstdestacados.SelectedItem as Producto;
-            if (lstdestacados.SelectedItem != null)
-            {
-                NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml", UriKind.Relative));
-            }
-        }
-        protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
-        {
-            base.OnNavigatedFrom(e);
-            DetalleProducto detProd = e.Content as DetalleProducto;
-
-            if (detProd != null)
-            {
-                detProd.DataContext = p;
-            }
-        }
     }
 }
