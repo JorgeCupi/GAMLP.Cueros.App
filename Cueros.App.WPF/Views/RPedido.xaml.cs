@@ -15,13 +15,14 @@ using Cueros.App.Core.Services;
 using Cueros.App.Core.Models;
 using System.Collections.ObjectModel;
 using Cueros.App.WPF.Views;
+using MahApps.Metro.Controls;
 
 namespace Cueros.App.WPF.Views
 {
     /// <summary>
     /// Interaction logic for RPedido.xaml
     /// </summary>
-    public partial class RPedido : Window
+    public partial class RPedido : MetroWindow
     {
 
         private Producto pro;

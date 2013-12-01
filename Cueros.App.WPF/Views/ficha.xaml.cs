@@ -11,13 +11,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace Cueros.App.WPF.Views
 {
     /// <summary>
     /// Interaction logic for ficha.xaml
     /// </summary>
-    public partial class ficha : Window
+    public partial class ficha :MetroWindow
     {
         public ficha()
         {

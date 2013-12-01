@@ -1,11 +1,21 @@
-﻿<Window x:Class="Cueros.App.WPF.Informacion"
+﻿<Controls:MetroWindow x:Class="Cueros.App.WPF.Informacion"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
 		mc:Ignorable="d" 
 		Title="Informacion" Height="600" Width="1024">
-
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Border BorderThickness="3" BorderBrush="Black" Background="#060671">
         <Grid DataContext="{Binding Pro}">
             <Grid.ColumnDefinitions>
@@ -86,4 +96,4 @@
             <Button Grid.Column="1" Grid.Row="1" Content="Regresar" Click="Button_Click" Background="#0038bd" Foreground="White"/>
         </Grid>
     </Border>
-</Window>
+</Controls:MetroWindow>

@@ -1,7 +1,18 @@
-﻿<Window x:Class="Cueros.App.WPF.Views.Detalle"
+﻿<Controls:MetroWindow x:Class="Cueros.App.WPF.Views.Detalle"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         Title="Detalle" Height="600" Width="1024">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Border BorderThickness="3" BorderBrush="Black" Background="#060671">
         <Grid >
             <Grid.ColumnDefinitions>
@@ -55,4 +66,4 @@
             </Grid>
         </Grid>
     </Border>
-</Window>
+</Controls:MetroWindow>

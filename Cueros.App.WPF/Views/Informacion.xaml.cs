@@ -14,13 +14,14 @@ using System.Windows.Shapes;
 using Cueros.App.Core.Models;
 using Cueros.App.Core.Services;
 using Cueros.App.WPF.Views;
+using MahApps.Metro.Controls;
 
 namespace Cueros.App.WPF
 {
     /// <summary>
     /// Interaction logic for Informacion.xaml
     /// </summary>
-    public partial class Informacion : Window
+    public partial class Informacion :MetroWindow
     {
        String cate;
        private MainWindow mainWindow;

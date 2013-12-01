@@ -17,7 +17,7 @@ namespace Cueros.App.WPF.Views
     /// <summary>
     /// Interaction logic for Inicio.xaml
     /// </summary>
-    public partial class Inicio : Window
+    public partial class Inicio 
     {
         public Inicio()
         {

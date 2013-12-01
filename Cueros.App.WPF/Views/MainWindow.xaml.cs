@@ -16,13 +16,14 @@ using Cueros.App.Core.Services;
 using Cueros.App.Core.Models;
 using System.Collections.ObjectModel;
 using Cueros.App.WPF.Views;
+using MahApps.Metro.Controls;
 
 namespace Cueros.App.WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         public MainWindow()
         {
