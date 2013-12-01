@@ -18,6 +18,9 @@ namespace Cueros.App.Phone.Views
 {
     public partial class ListaProductos : PhoneApplicationPage
     {
+        public ObservableCollection<Producto> novedades;
+        public ObservableCollection<Producto> destacados;
+        public ObservableCollection<Producto> productos;
         String id;
         String categoria;
         Producto p;
@@ -28,52 +31,67 @@ namespace Cueros.App.Phone.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (NavigationContext.QueryString.ContainsKey("id") &&NavigationContext.QueryString.ContainsKey("categoria"))
+            if (NavigationContext.QueryString.ContainsKey("id") && NavigationContext.QueryString.ContainsKey("categoria"))
             {
                 id = NavigationContext.QueryString["id"];
                 categoria = NavigationContext.QueryString["categoria"];
                 panorama.Title = categoria;
+                novedades = new Almacenar<Producto>().Deserialize(categoria + "_novedades.json");
+                destacados = new Almacenar<Producto>().Deserialize(categoria + "_destacados.json");
+                productos = new Almacenar<Producto>().Deserialize(categoria + "_categorias.json");
+                if (novedades != null && novedades.Count != 0)
+                    lstnovedades.ItemsSource = novedades;
+                if (destacados != null && destacados.Count != 0)
+                    lstdestacados.ItemsSource = destacados;
+                if (productos != null && productos.Count != 0)
+                    lstproductos.ItemsSource = productos;
                 cargar();
             }
         }
 
         public void cargar()
         {
-            novedades();
-            destacados();
-            productos();
+            obtenernovedades();
+            obtenerdestacados();
+            obtenerproductos();
         }
 
-        public async void novedades()
+        public async void obtenernovedades()
         {
             try
             {
-                List<Producto> novedades = await ServiciosDeProductos.GetRecentProductsFromThisCategory(id, 10);
-                lstnovedades.ItemsSource = novedades;
+                List<Producto> nov = await ServiciosDeProductos.GetRecentProductsFromThisCategory(id, 10);
+                novedades = new ObservableCollection<Producto>(nov);
+                new Almacenar<Producto>().Serialize(novedades, categoria + "_novedades.json");
+                lstnovedades.ItemsSource = nov;
             }
             catch (Exception)
             {
             }
         }
 
-        public async void destacados()
+        public async void obtenerdestacados()
         {
             try
             {
-                List<Producto> destacados = await ServiciosDeProductos.GetTopProductsFromThisCategory(id, 10);
-                lstdestacados.ItemsSource = destacados;
+                List<Producto> des = await ServiciosDeProductos.GetTopProductsFromThisCategory(id, 10);
+                destacados = new ObservableCollection<Producto>(des);
+                new Almacenar<Producto>().Serialize(destacados, categoria + "_destacados.json");
+                lstdestacados.ItemsSource = des;
             }
             catch (Exception)
             {
             }
         }
 
-        public async void productos()
+        public async void obtenerproductos()
         {
             try
             {
-                List<Producto> productos = await ServiciosDeProductos.GetProductsFromThisCategory(id);
-                lstproductos.ItemsSource = productos;
+                List<Producto> pro = await ServiciosDeProductos.GetProductsFromThisCategory(id);
+                productos = new ObservableCollection<Producto>(pro);
+                new Almacenar<Producto>().Serialize(productos, categoria + "_productos.json");
+                lstproductos.ItemsSource = pro;
             }
             catch (Exception)
             {

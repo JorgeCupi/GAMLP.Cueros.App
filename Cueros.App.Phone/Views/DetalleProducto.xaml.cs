@@ -33,7 +33,7 @@ namespace Cueros.App.Phone.Views
         private void CargarAppBar()
         {
             ApplicationBar = new ApplicationBar();
-            ApplicationBarIconButton AgregarPedido = new ApplicationBarIconButton(new Uri("/Assets/AppBar/refresh.png", UriKind.Relative));
+            ApplicationBarIconButton AgregarPedido = new ApplicationBarIconButton(new Uri("/Assets/AppBar/add.png", UriKind.Relative));
             AgregarPedido.Text = "Añadir Pedido";
             ApplicationBar.Buttons.Add(AgregarPedido);
             AgregarPedido.Click += AgregarPedido_Click;

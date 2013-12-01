@@ -120,8 +120,8 @@ namespace Cueros.App.Phone.Views
             ApplicationBar.Buttons.Add(appBarButton);
             appBarButton.Click += appBarButton_Click;
 
-            ApplicationBarIconButton VerPedido = new ApplicationBarIconButton(new Uri("/Assets/AppBar/refresh.png", UriKind.Relative));
-            VerPedido.Text = "Ver Pedido";
+            ApplicationBarIconButton VerPedido = new ApplicationBarIconButton(new Uri("/Assets/AppBar/cart.png", UriKind.Relative));
+            VerPedido.Text = "Pedidos";
             ApplicationBar.Buttons.Add(VerPedido);
             VerPedido.Click += VerPedido_Click;
 

@@ -167,6 +167,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />
+    <Content Include="Assets\AppBar\add.png" />
+    <Content Include="Assets\AppBar\cart.png" />
     <Content Include="Assets\AppBar\refresh.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
