@@ -1,4 +1,4 @@
-﻿using Cueros.App.Store.Views;
+﻿using Cueros.App.Store.Class;
 using System;
 using System.Collections.Generic;
 using System.IO;

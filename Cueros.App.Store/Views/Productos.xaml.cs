@@ -12,7 +12,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 using Cueros.App.Core.Services;
 using Cueros.App.Core.Models;
@@ -21,21 +20,31 @@ using System.Xml.Serialization;
 using System.Threading.Tasks;
 using Windows.Networking.Connectivity;
 using Windows.UI.Popups;
+using Cueros.App.Store.Class;
 
-namespace Cueros.App.Store.Views
+namespace Cueros.App.Store.Class
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class Productos : Page
     {
+        private static List<RequestProduct> pedido;
+        public static List<RequestProduct> Pedido
+        {
+            get { return pedido; }
+            set { pedido = value; }
+        }
+
         public Productos()
         {
             this.InitializeComponent();
             this.Loaded += Productos_Loaded;
         }
 
-        
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+        }
         async void Productos_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -155,13 +164,5 @@ namespace Cueros.App.Store.Views
             return internetProfile != null &&
                 internetProfile.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
         }
-    }
-
-    public class Product 
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string UrlImage { get; set; }
-        public string Temporada { get; set; }
     }
 }

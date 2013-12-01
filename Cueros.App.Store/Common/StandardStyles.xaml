@@ -411,16 +411,22 @@
 
     <Style x:Key="PreviousAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
         <Setter Property="AutomationProperties.AutomationId" Value="PreviousAppBarButton"/>
-        <Setter Property="AutomationProperties.Name" Value="Previous"/>
+        
         <Setter Property="Content" Value="&#xE112;"/>
     </Style>
 
     <Style x:Key="AddAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
         <Setter Property="AutomationProperties.AutomationId" Value="AddAppBarButton"/>
-        <Setter Property="AutomationProperties.Name" Value="Add"/>
+        <Setter Property="AutomationProperties.Name" Value="Agregar"/>
         <Setter Property="Content" Value="&#xE109;"/>
     </Style>
-    
+
+    <Style x:Key="ShopAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="ShopAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="Ver Pedido"/>
+        <Setter Property="Content" Value="&#xE14D;"/>
+    </Style>
+
     <!-- 
         Standard AppBarButton Styles for use with Button and ToggleButton
     

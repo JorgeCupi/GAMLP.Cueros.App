@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Cueros.App.Store.Views
+namespace Cueros.App.Store.Class
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -24,7 +24,13 @@ namespace Cueros.App.Store.Views
         public FieldView()
         {
             this.InitializeComponent();
+            this.Loaded += FieldView_Loaded;
             gvwContainer.Tapped += gvwContainer_Tapped;
+        }
+
+        void FieldView_Loaded(object sender, RoutedEventArgs e)
+        {
+            Pedido.Pedidos = new List<RequestProduct>();
         }
 
         /// <summary>
@@ -40,6 +46,11 @@ namespace Cueros.App.Store.Views
         {
             this.Frame.Navigate(typeof(Productos));
             //this.Frame.Navigate(typeof(Productos));
+        }
+
+        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

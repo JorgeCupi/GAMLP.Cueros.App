@@ -15,19 +15,19 @@ using Windows.UI.Xaml.Navigation;
 using Cueros.App.Core.Models;
 using Cueros.App.Core.Services;
 using Windows.UI.Popups;
+using Cueros.App.Store.Class;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Cueros.App.Store.Views
+namespace Cueros.App.Store.Class
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class Materiales : Page
     {
-
         Producto bx = null;
         Material m = new Material();
-        ProductoAgregable NewP = new ProductoAgregable();
+        ProductoCantidad NewP = new ProductoCantidad();
         List<Material> listMat = new List<Material>();
         List<Proveedor> listProv = new List<Proveedor>();
 
@@ -35,11 +35,13 @@ namespace Cueros.App.Store.Views
         {
             this.InitializeComponent();
             this.Loaded += Materiales_Loaded;
+            AppButtonAgregar.Click +=AppButtonAgregar_Click;
+            AppButtonVer.Click += AppButtonVer_Click;
         }
 
         void Materiales_Loaded(object sender, RoutedEventArgs e)
         {
-            obtenerMateriales(bx);
+           
         }
 
         void obtenerMateriales(Producto a)
@@ -47,29 +49,35 @@ namespace Cueros.App.Store.Views
             listMat = a.Materiales;
             ListaDeMateriales.ItemsSource = listMat;
             FlipViewImagenes.ItemsSource = a.Fotos;
+            TextNombreProductoCabezera.Text = a.Nombre;
+            TextoDescripcionProducto.Text = a.Descripcion;
+            TextoModeloProducto.Text = a.Modelo;
+            TextoTemporadaProducto.Text = a.Temporada;
+            TextoVentasProductos.Text = a.VentasRealizadas.ToString();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             bx = e.Parameter as Producto;
-            
-        }
-        private void AppBarButtonCrear_Click(object sender, RoutedEventArgs e)
-        {
-
+            obtenerMateriales(bx);
         }
 
-        private async void AppButtonAgregar_Click(object sender, RoutedEventArgs e)
+        private void AppButtonAgregar_Click(object sender, RoutedEventArgs e)
         {
-            if (TextBoxCantidadProductos.Text == null)
-            {
-                MessageDialog dialog = new MessageDialog("tengo Sueño", "Joder");
-                await dialog.ShowAsync();
-            }
             int cantidad = int.Parse(TextBoxCantidadProductos.Text);
-            ProductoCantidad pc = new ProductoCantidad() {Pro = bx, Cantidad = cantidad};
-            this.Frame.Navigate(typeof(PedidoView), pc);
+            ProductoCantidad pc = new ProductoCantidad() { Producto = bx, Cantidad = cantidad };
+            double PrecioU = GetPrecio(pc);
+            double PrecioT = PrecioU * cantidad;
+            RequestProduct NuevoRequestProduct = new RequestProduct {PName = bx.Nombre, PNItems =  cantidad, PPriceU = PrecioU, PPriceT = PrecioT, PurlImage = bx.Fotos.FirstOrDefault().URL};
+            Pedido.Pedidos.Add(NuevoRequestProduct);
+            AppButtonAgregar.IsEnabled = false;
         }
+
+        private void AppButtonVer_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(PedidoView));
+        }
+
         private void ListaDeMateriales_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (ListaDeMateriales.SelectedItem != null)
@@ -86,7 +94,7 @@ namespace Cueros.App.Store.Views
         }
         public void cargardoDedatosFeo(Material a)
         {
-            TextNombreProductoCabezera.Text = m.Nombre;
+           
             TextNombreComercial.Text = m.NombreComercial;
             TextColorMaterial.Text = m.Color.ToString();
             TextTipoUnidad.Text = m.TipoUnidad;
@@ -96,15 +104,15 @@ namespace Cueros.App.Store.Views
         {
             this.Frame.GoBack();
         }
-        private void BotonAceptar_Click(object sender, RoutedEventArgs e)
+        
+        private double GetPrecio(ProductoCantidad x)
         {
-
+            double precio = 0;
+            foreach (var material in x.Producto.Materiales)
+            {
+                precio += material.CostoUnidad;
+            }
+            return precio;
         }
-    }
-
-
-    public class ProductoAgregable : Producto
-    {
-        public int cantidad { get; set; }
     }
 }

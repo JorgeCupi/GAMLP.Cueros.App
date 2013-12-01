@@ -12,10 +12,11 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Cueros.App.Core.Models;
+using Cueros.App.Store.Class;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Cueros.App.Store.Views
+namespace Cueros.App.Store.Class
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -27,13 +28,6 @@ namespace Cueros.App.Store.Views
         {
             get { return PrecioTotal; }
             set { PrecioTotal = value; }
-        }
-
-        private List<RequestProduct> pedido = new List<RequestProduct>();
-        public List<RequestProduct> Pedido
-        {
-            get { return pedido; }
-            set { pedido = value; }
         }
 
         public PedidoView()
@@ -49,44 +43,24 @@ namespace Cueros.App.Store.Views
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var Nuevo = e.Parameter as ProductoCantidad;
-            var NuevoProducto = new RequestProduct() { PName = Nuevo.Pro.Nombre, PPriceT = GetPrecio(Nuevo) * Nuevo.Cantidad, PPriceU = GetPrecio(Nuevo), 
-                PNItems = Nuevo.Cantidad, PurlImage = Nuevo.Pro.Fotos.FirstOrDefault().URL };
-            Pedido.Add(NuevoProducto);
+            gdvContainer.ItemsSource = Pedido.Pedidos;
             txbPrecioFinal.Text = "\t" + GetPrecioTotal();
         }
 
         private double GetPrecioTotal()
         {
             double precio = 0;
-            foreach (var item in Pedido)
+            foreach (var item in Pedido.Pedidos)
             {
                 precio += item.PPriceT;
-            }
-            return precio;
-        }
-        private double GetPrecio(ProductoCantidad x)
-        {
-            double precio = 0;
-            foreach (var material in x.Pro.Materiales)
-            {
-                precio += material.CostoUnidad;
             }
             return precio;
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Productos));
+            Frame.Navigate(typeof(Productos), Pedido.Pedidos);
         }
     }
 
-    public class RequestProduct
-    {
-        public string PName { get; set; }
-        public double PPriceT { get; set; }
-        public double PPriceU { get; set; }
-        public double PNItems { get; set; }
-        public string PurlImage { get; set; }
-    }
 }

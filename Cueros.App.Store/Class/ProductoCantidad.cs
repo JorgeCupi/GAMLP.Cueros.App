@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cueros.App.Store.Views
+namespace Cueros.App.Store.Class
 {
-    class ProductoCantidad 
+    public class ProductoCantidad 
     {
-        public Producto Pro { get; set; }
+        public Producto Producto { get; set; }
         public int Cantidad { get; set; }
     }
 }
