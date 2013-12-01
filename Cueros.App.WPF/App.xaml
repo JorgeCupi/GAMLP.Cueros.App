@@ -5,7 +5,7 @@
     <Application.Resources>
         <DataTemplate x:Key="ListaProductos">
             <StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105" Width="700" Background="#0038bd">
+                <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105" Width="300" Background="#0038bd">
                     <Image  Source="{Binding Fotos[0].URL}" Width="100" Height="100" Stretch="Fill" Margin="10"/>
                     <TextBlock Text="{Binding Nombre}" Width="220" TextWrapping="Wrap" Margin="10,0" FontSize="25" Foreground="White" VerticalAlignment="Center"/>
                 </StackPanel>
@@ -13,7 +13,7 @@
         </DataTemplate>
         <DataTemplate x:Key="ListaCategorias">
             <StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105" Width="700" Background="#0038bd">
+                <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105" Width="300" Background="#0038bd">
                     <Image  Source="{Binding UrlImagen}" Width="100" Height="100" Stretch="Fill" Margin="10"/>
                     <TextBlock Text="{Binding Nombre}" Width="220" TextWrapping="Wrap" Margin="10,0" FontSize="25" Foreground="White" VerticalAlignment="Center"/>
                 </StackPanel>
@@ -94,7 +94,7 @@
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="imagenes">
-            <Image Source="{Binding URL}"/>
+            <Image  Width="350" Source="{Binding URL}"/>
         </DataTemplate>
     </Application.Resources>
 </Application>

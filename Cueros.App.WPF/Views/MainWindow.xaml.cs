@@ -27,6 +27,9 @@ namespace Cueros.App.WPF
         public MainWindow()
         {
             InitializeComponent();
+
+            lstCategorias.SelectionChanged += lstCategorias_SelectionChanged;
+            lstProductosDest.SelectionChanged += lstProductosDest_SelectionChanged;
             Loaded+=ListaProductos_Loaded;
         }
 
@@ -55,22 +58,24 @@ namespace Cueros.App.WPF
         }
         void ListaProductos_Loaded(object sender, RoutedEventArgs e)
         {
+            
             CargarDatos();
-
+            
         }
         async void CargarDatos()
         {
             try
             {
+                pgrBar.Visibility = Visibility.Visible;
+                brdMain.Opacity = 0.6;
                 List<Producto> pro = await ServiciosDeProductos.GetRecentProducts(10);
                 lstProductos.ItemsSource = pro;
                 pro = await ServiciosDeProductos.GetTopProducts(10);
                 lstProductosDest.ItemsSource = pro;
                 List<Categoria> cat = await ServiciosDeCategorias.GetListOfCategories();
                 lstCategorias.ItemsSource = cat;
-                lstCategorias.SelectionChanged += lstCategorias_SelectionChanged;
-                lstProductos.SelectionChanged += lstProductos_SelectionChanged;
-                lstProductosDest.SelectionChanged += lstProductosDest_SelectionChanged;
+                pgrBar.Visibility = Visibility.Collapsed;
+                brdMain.Opacity = 1;
             }
             catch (Exception)
             {

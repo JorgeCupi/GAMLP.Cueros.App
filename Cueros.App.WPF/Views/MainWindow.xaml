@@ -3,26 +3,38 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="" Height="600" Width="800"
         Background="Transparent">
-    <Border BorderThickness="3" BorderBrush="Black" Background="#060671">
-        <Grid Margin="7,17,7,7">
-            <TabControl>
-                <TabItem Header="Productos Novedosos">
-                    <Grid >
-                        <ListBox Name="lstProductos" ItemTemplate="{StaticResource ListaProductos}" />
-                    </Grid>
-                </TabItem>
-                <TabItem Header="Productos Destacados">
-                    <Grid>
-                        <ListBox Name="lstProductosDest" ItemTemplate="{StaticResource ListaProductos}" />
-                    </Grid>
-                </TabItem>
-                <TabItem Header="Categoria de procuctos">
-                    <Grid>
-                        <ListBox Name="lstCategorias" ItemTemplate="{StaticResource ListaCategorias}"/>
-                    </Grid>
-                </TabItem>
-            </TabControl>
+    <Grid>
+        <Border BorderThickness="3" BorderBrush="Black" Background="#060671"
+                Name="brdMain">
+            <Grid Margin="7,17,7,7">
+                <TabControl>
+                    <TabItem Header="Productos Novedosos">
+                        <Grid>
+                            <WrapPanel Orientation="Horizontal">
+                                <ListBox Name="lstProductos" ItemTemplate="{StaticResource ListaProductos}"
+                                 Width="300"/>
+                            </WrapPanel>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Productos Destacados">
+                        <Grid>
+                            <ListBox Name="lstProductosDest" ItemTemplate="{StaticResource ListaProductos}" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Categoria de procuctos">
+                        <Grid>
+                            <ListBox Name="lstCategorias" ItemTemplate="{StaticResource ListaCategorias}"/>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
 
-        </Grid>
-    </Border>
+            </Grid>
+        </Border>
+        
+        <ProgressBar IsIndeterminate="True"
+                     Height="50"
+                     Width="200"
+                     Name="pgrBar"/>
+    </Grid>
+    
 </Window>

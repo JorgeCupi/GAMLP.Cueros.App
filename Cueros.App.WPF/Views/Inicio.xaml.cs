@@ -36,6 +36,6 @@ namespace Cueros.App.WPF.Views
             MainW.Show();
             this.Hide();
         }
-
+        
     }
 }
