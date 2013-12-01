@@ -26,31 +26,11 @@ namespace Cueros.App.Phone
 
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            cuero.Tap += cuero_Tap;
-            textiles.Tap += textiles_Tap;
-            alimentos.Tap += alimentos_Tap;
-            joyeria.Tap += joyeria_Tap;
+            
         }
-
-        void joyeria_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        private void SeleccionaRubro(object sender, SelectionChangedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Views/Catalogo.xaml", UriKind.Relative));
         }
-
-        void alimentos_Tap(object sender, System.Windows.Input.GestureEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/Views/Catalogo.xaml", UriKind.Relative));
-        }
-
-        void textiles_Tap(object sender, System.Windows.Input.GestureEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/Views/Catalogo.xaml", UriKind.Relative));
-        }
-         
-        void cuero_Tap(object sender, System.Windows.Input.GestureEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/Views/Catalogo.xaml", UriKind.Relative));
-        }
-
     }
 }

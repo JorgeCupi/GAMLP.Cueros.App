@@ -18,34 +18,36 @@
     shell:SystemTray.IsVisible="False">
 
     <Grid x:Name="LayoutRoot" Background="#060671">
-        <phone:Pivot Title="Rubro">
-            <phone:PivotItem Header="Cueros">
-                <Grid>
-                    <Image Source="/Picture/Cueros.jpg" 
-                           Name="cuero"
-                           Margin="65,76,104,130"
-                           />
-                </Grid>
+        <phone:Pivot Title="Cadepia" Foreground="White">
+            <phone:PivotItem Header="Rubro">
+                <ListBox Name="lstRubro"
+                     SelectionChanged="SeleccionaRubro">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <toolkit:WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+
+                    <toolkit:HubTile Size="Large"
+                                         Margin="10"
+                                         Background="#0038BD"
+                                     Source="/Picture/Cueros.jpg"
+                             Name="cueros"/>
+                    <toolkit:HubTile Size="Large"
+                                         Margin="10"
+                                         Background="#0038BD"
+                                     Source="/Picture/Alimentos.jpg"/>
+                    <toolkit:HubTile Size="Large"
+                                         Margin="10"
+                                         Background="#0038BD"
+                                     Source="/Picture/Joyas.jpg"/>
+                    <toolkit:HubTile Size="Large"
+                                         Margin="10"
+                                         Background="#0038BD"
+                                     Source="/Picture/Textiles.jpg"/>
+                </ListBox>
             </phone:PivotItem>
-            <phone:PivotItem Header="Joyeria">
-                <Grid>
-                    <Image Source="/Picture/Joyas.jpg"
-                           Name="joyeria"
-                           Height="400" Margin="33,75,65,160"/>
-                </Grid>
-            </phone:PivotItem>
-            <phone:PivotItem Header="Alimentacion">
-                <Grid>
-                    <Image Source="/Picture/Alimentos.jpg"
-                           Name="alimentos" Margin="16,123,46,277"/>
-                </Grid>
-            </phone:PivotItem>
-            <phone:PivotItem Header="Textiles">
-                <Grid>
-                    <Image Source="/Picture/Textiles.jpg"
-                           Name="textiles" Margin="26,77,55,209"/>
-                </Grid>
-            </phone:PivotItem>
+            
         </phone:Pivot>
     </Grid>
 </phone:PhoneApplicationPage>

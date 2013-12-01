@@ -41,11 +41,11 @@ namespace Cueros.App.Phone.Views
             Cargar();
         }
 
-        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
-        {
-            base.OnBackKeyPress(e);
-            while (NavigationService.CanGoBack) NavigationService.RemoveBackEntry();
-        }
+        //protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+       // {
+          //  base.OnBackKeyPress(e);
+           // while (NavigationService.CanGoBack) NavigationService.RemoveBackEntry();
+       // }
 
         void Cargar()
         {
@@ -127,7 +127,6 @@ namespace Cueros.App.Phone.Views
 
             
         }
-
         void VerPedido_Click(object sender, EventArgs e)
         {
             //aca codigo para mandar a la base de datos para guardar el pedido
@@ -162,11 +161,11 @@ namespace Cueros.App.Phone.Views
         {
             base.OnNavigatedFrom(e);
             DetalleProducto detProd = e.Content as DetalleProducto;
-
             if (detProd != null)
             {
                 detProd.DataContext = p;
             }
         }
+        
     }
 }
