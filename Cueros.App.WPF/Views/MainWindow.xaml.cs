@@ -68,7 +68,7 @@ namespace Cueros.App.WPF
             try
             {
                 pgrBar.Visibility = Visibility.Visible;
-                brdMain.Opacity = 0.6;
+                brdMain.Opacity = 0;
                 List<Producto> pro = await ServiciosDeProductos.GetRecentProducts(10);
                 lstProductos.ItemsSource = pro;
                 pro = await ServiciosDeProductos.GetTopProducts(10);

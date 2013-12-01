@@ -16,84 +16,88 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Border BorderThickness="3" BorderBrush="Black" Background="#060671">
-        <Grid DataContext="{Binding Pro}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="30"/>
-            </Grid.RowDefinitions>
-
-            <TabControl Background="Transparent">
-                <TabItem Header="Todos" FontSize="15">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition Height="30"/>
-                        </Grid.RowDefinitions>
-                        <ListBox Grid.Row="0" Margin="10" Foreground="White" Name="Todos" Background="Transparent" ItemTemplate="{StaticResource ProductosCategoria}"/>
-                        <Button Grid.Row="1" Content="Ver Detalles" Click="Button_Click_1"/>
-                    </Grid>
-                </TabItem>
-                <TabItem Header="Novedosos" FontSize="15">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition Height="30"/>
-                        </Grid.RowDefinitions>
-                        <ListBox Grid.Row="0" Margin="10" Foreground="White" Name="Novedades" Background="Transparent" ItemTemplate="{StaticResource ProductosCategoria}"/>
-                        <Button Grid.Row="1" Content="Ver Detalles" Click="Button_Click_2"/>
-                    </Grid>
-                </TabItem>
-                <TabItem Header="Destacados" FontSize="15">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition Height="30"/>
-                        </Grid.RowDefinitions>
-                        <ListBox Grid.Row="0" Margin="10" Foreground="White" Name="Destacados" Background="Transparent" ItemTemplate="{StaticResource ProductosCategoria}"/>
-                        <Button Grid.Row="1" Content="Ver Detalles" Click="Button_Click_3"/>
-                    </Grid>
-                </TabItem>
-            </TabControl>
-            <Grid Grid.Column="1" Grid.Row="0">
+    <Grid>
+        <Border BorderThickness="3" BorderBrush="Black" Background="#060671" Name="Categorias">
+            <Grid DataContext="{Binding Pro}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0" Margin="10,10,10,0" >
-                    <ListBox Name="imagenes" ItemTemplate="{StaticResource imagenes}"/>
-                </Grid>
-                <Grid Grid.Row="1" Background="White" Margin="10,0,10,0">
 
-                    <Grid Grid.Row="1" Name="det" Background="White">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="130*"/>
-                            <ColumnDefinition Width="207*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="40"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="40"/>
-                            <RowDefinition/>
-                            <RowDefinition Height="30"/>
-                        </Grid.RowDefinitions>
-                        <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Nombre "/>
-                        <Label Grid.Column="1" Grid.Row="0" Content="{Binding Nombre}"/>
-                        <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Descripcion"/>
-                        <TextBlock Grid.Column="1" Grid.Row="1" Foreground="Black" Text="{Binding Descripcion}" TextWrapping="Wrap" Height="Auto" />
-                        <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Temporada "/>
-                        <Label Grid.Column="1" Grid.Row="2" Foreground="Black" Content="{Binding Temporada}"/>
-                        <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Modelo"/>
-                        <Label Grid.Column="1" Grid.Row="3" Foreground="Black" Content="{Binding Modelo}"/>
+                <TabControl Background="Transparent">
+                    <TabItem Header="Todos" FontSize="15">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <ListBox Grid.Row="0" Margin="10" Foreground="White" Name="Todos" Background="Transparent" ItemTemplate="{StaticResource ProductosCategoria}"/>
+                            <Button Grid.Row="1" Content="Ver Detalles" Click="Button_Click_1"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Novedosos" FontSize="15">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <ListBox Grid.Row="0" Margin="10" Foreground="White" Name="Novedades" Background="Transparent" ItemTemplate="{StaticResource ProductosCategoria}"/>
+                            <Button Grid.Row="1" Content="Ver Detalles" Click="Button_Click_2"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Destacados" FontSize="15">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <ListBox Grid.Row="0" Margin="10" Foreground="White" Name="Destacados" Background="Transparent" ItemTemplate="{StaticResource ProductosCategoria}"/>
+                            <Button Grid.Row="1" Content="Ver Detalles" Click="Button_Click_3"/>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+                <Grid Grid.Column="1" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="10,10,10,0" >
+                        <ListBox Name="imagenes" ItemTemplate="{StaticResource imagenes}"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Background="White" Margin="10,0,10,0">
 
+                        <Grid Grid.Row="1" Name="det" Background="White">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="130*"/>
+                                <ColumnDefinition Width="207*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Nombre "/>
+                            <Label Grid.Column="1" Grid.Row="0" Content="{Binding Nombre}"/>
+                            <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Descripcion"/>
+                            <TextBlock Grid.Column="1" Grid.Row="1" Foreground="Black" Text="{Binding Descripcion}" TextWrapping="Wrap" Height="Auto" />
+                            <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Temporada "/>
+                            <Label Grid.Column="1" Grid.Row="2" Foreground="Black" Content="{Binding Temporada}"/>
+                            <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Modelo"/>
+                            <Label Grid.Column="1" Grid.Row="3" Foreground="Black" Content="{Binding Modelo}"/>
+
+                        </Grid>
                     </Grid>
                 </Grid>
+                <Button Grid.Column="1" Grid.Row="1" Content="Regresar" Click="Button_Click" Background="#0038bd" Foreground="White" Margin="10,0"/>
             </Grid>
-            <Button Grid.Column="1" Grid.Row="1" Content="Regresar" Click="Button_Click" Background="#0038bd" Foreground="White"/>
-        </Grid>
-    </Border>
+        </Border>
+
+        <Controls:ProgressRing IsActive="True" Name="pgrBar" />
+    </Grid>
 </Controls:MetroWindow>
