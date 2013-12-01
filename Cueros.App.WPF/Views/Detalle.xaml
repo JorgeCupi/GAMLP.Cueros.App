@@ -20,14 +20,20 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Style="{DynamicResource MetroCircleButtonStyle}" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Height="40" Width="40" HorizontalAlignment="Left" Click="btnIncio_Click" VerticalAlignment="Top" Margin="4,0,0,0"/>
+
+            <Grid Grid.Column="0" Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid Background="White">
                     <ListBox Name="imagenes" Width="330" ItemTemplate="{StaticResource imagenes}" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
-                    <Button Height="20" Width="50" Content="Volver" Click="btnIncio_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 </Grid>
                 <Grid Grid.Row="1" Name="pro" Background="White">
                     <Grid.ColumnDefinitions>
@@ -52,13 +58,13 @@
                     <Button Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" Click="Button_Click" Content="Realizar pedido" Grid.ColumnSpan="2" Margin="2,5,205,5"/>
                 </Grid>
             </Grid>
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="1" Grid.Row="1">
                 <StackPanel>
                     <Label Content="Materiales" FontSize="20" Foreground="White" HorizontalAlignment="Center"/>
                     <ListBox Name="ListaMateriales" Background="Transparent" ItemTemplate="{StaticResource Materiales}"/>
                 </StackPanel>
             </Grid>
-            <Grid Grid.Column="2">
+            <Grid Grid.Column="2" Grid.Row="1">
                 <StackPanel>
                     <Label Content="Proveedores" FontSize="20" Foreground="White"  HorizontalAlignment="Center"/>
                     <ListBox Name="Prov" Background="Transparent" ItemTemplate="{StaticResource Proveedor}"/>

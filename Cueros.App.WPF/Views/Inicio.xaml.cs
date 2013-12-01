@@ -28,7 +28,7 @@ namespace Cueros.App.WPF.Views
         private void Cueros_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
-            MainWindow MainW = new MainWindow();
+            MainWindow MainW = new MainWindow(this);
             MainW.Show();
             this.Hide();
         }

@@ -25,8 +25,10 @@ namespace Cueros.App.WPF
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        public MainWindow()
+        private Inicio inicio;
+        public MainWindow( Inicio Ini)
         {
+            inicio = Ini;
             InitializeComponent();
 
             lstCategorias.SelectionChanged += lstCategorias_SelectionChanged;
@@ -89,6 +91,12 @@ namespace Cueros.App.WPF
                 lstProductosDest.ItemsSource = pro;
                 lstCategorias.ItemsSource = pro;
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            inicio.Show();
+            this.Hide();
         }
     }
 }

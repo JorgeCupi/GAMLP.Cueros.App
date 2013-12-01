@@ -18,7 +18,13 @@
         <Border BorderThickness="3" BorderBrush="Black" Background="#060671"
                 Name="brdMain">
             <Grid Margin="7,17,7,7">
-                <TabControl>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Style="{DynamicResource MetroCircleButtonStyle}" Height="40" Width="40" HorizontalAlignment="Left" Click="Button_Click" VerticalAlignment="Top"/>
+                <TabControl Grid.Row="1">
+
                     <TabItem Header=" Novedosos">
                         <Grid>
 

@@ -33,9 +33,7 @@ namespace Cueros.App.WPF
 
         void btnInicio_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow home = new MainWindow();
             this.Hide();
-            home.Show();
 
         }
 
