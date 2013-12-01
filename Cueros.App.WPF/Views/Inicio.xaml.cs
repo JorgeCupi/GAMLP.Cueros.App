@@ -24,18 +24,22 @@ namespace Cueros.App.WPF.Views
             InitializeComponent();
 
         }
-        private void Click_Cueros(object sender, RoutedEventArgs e)
+
+        private void Cueros_MouseDown(object sender, MouseButtonEventArgs e)
         {
+
             MainWindow MainW = new MainWindow();
             MainW.Show();
             this.Hide();
         }
-        private void Click_work(object sender, RoutedEventArgs e)
+
+        private void Work_MouseDown(object sender, MouseButtonEventArgs e)
         {
+
             Working MainW = new Working();
             MainW.Show();
             this.Hide();
         }
-        
+                
     }
 }

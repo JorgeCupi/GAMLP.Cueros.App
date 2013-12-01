@@ -19,7 +19,7 @@
                 Name="brdMain">
             <Grid Margin="7,17,7,7">
                 <TabControl>
-                    <TabItem Header="Productos Novedosos">
+                    <TabItem Header=" Novedosos">
                         <Grid>
                             <WrapPanel Orientation="Horizontal">
                                 <ListBox Name="lstProductos" ItemTemplate="{StaticResource ListaProductos}"
@@ -27,12 +27,12 @@
                             </WrapPanel>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Productos Destacados">
+                    <TabItem Header=" Destacados">
                         <Grid>
                             <ListBox Name="lstProductosDest" ItemTemplate="{StaticResource ListaProductos}" />
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Categoria de procuctos">
+                    <TabItem Header=" Por Categoria">
                         <Grid>
                             <ListBox Name="lstCategorias" ItemTemplate="{StaticResource ListaCategorias}"/>
                         </Grid>
@@ -43,9 +43,9 @@
         </Border>
         
         <ProgressBar IsIndeterminate="True"
-                     Height="50"
-                     Width="200"
-                     Name="pgrBar"/>
+                     Height="30"
+                     Width="300"
+                     Name="pgrBar" Background="DarkCyan"/>
     </Grid>
     
 </Controls:MetroWindow>
