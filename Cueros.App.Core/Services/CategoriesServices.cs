@@ -9,7 +9,7 @@ namespace Cueros.App.Core.Services
 {
     public static class CategoriesServices
     {
-        public static async Task<List<Category>> GetListOfCategories()
+        public static async Task<List<Category>> GetCategories()
         {
             string url = "https://dl.dropboxusercontent.com/s/6ysajpdq04qkcxv/Categorias.json?dl=1&token_hash=AAEesyUbBh7vEzrybQ_5Ik7DtEDgTWOmCe2wT7Cv61rTEQ";
             string response = await Utilities.DownloadJsonFromThisUrl(url);

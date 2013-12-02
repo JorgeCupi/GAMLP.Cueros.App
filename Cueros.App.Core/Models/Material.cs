@@ -19,5 +19,7 @@ namespace Cueros.App.Core.Models
         public List<Supplier> Suppliers { get; set; }
 
         public string Color { get; set; }
+
+        public Picture Picture { get; set; }
     }
 }

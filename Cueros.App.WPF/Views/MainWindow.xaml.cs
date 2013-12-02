@@ -75,7 +75,7 @@ namespace Cueros.App.WPF
                 lstProductos.ItemsSource = pro;
                 pro = await ProductsServices.GetTopProducts(10);
                 lstProductosDest.ItemsSource = pro;
-                List<Category> cat = await CategoriesServices.GetListOfCategories();
+                List<Category> cat = await CategoriesServices.GetCategories();
                 lstCategorias.ItemsSource = cat;
                 pgrBar.Visibility = Visibility.Collapsed;
                 brdMain.Opacity = 1;

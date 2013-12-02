@@ -24,7 +24,7 @@ namespace Cueros.App.Core.Services
 
         public static async Task<Order> GetOrder(int ID)
         {
-            string url = "http://cadepiacueros.azurewebsites.net/order/get?OrderID=/" + ID;
+            string url = "http://cadepiacueros.azurewebsites.net/order/get?OrderID=" + ID;
             string response = await Utilities.DownloadJsonFromThisUrl(url);
 
             return Utilities.TransformToOrder(response);

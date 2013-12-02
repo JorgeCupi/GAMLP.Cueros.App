@@ -19,7 +19,7 @@ namespace Cueros.App.Core.Services
 
         public static async Task<Supplier> GetSupplier(int ID)
         {
-            string url = "http://cadepiacueros.azurewebsites.net/supplier/get?SupplierID=/" + ID;
+            string url = "http://cadepiacueros.azurewebsites.net/supplier/get?SupplierID=" + ID;
             string response = await Utilities.DownloadJsonFromThisUrl(url);
 
             return Utilities.TransformToSupplier(response);

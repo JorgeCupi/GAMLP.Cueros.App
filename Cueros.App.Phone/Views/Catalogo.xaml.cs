@@ -58,7 +58,7 @@ namespace Cueros.App.Phone.Views
         {
             try
             {
-                List<Category> cat = await CategoriesServices.GetListOfCategories();
+                List<Category> cat = await CategoriesServices.GetCategories();
                 categoria = new ObservableCollection<Category>(cat);
                 new Almacenar<Category>().Serialize(categoria, "categorias.json");
                 if (categoria != null && categoria.Count != 0)

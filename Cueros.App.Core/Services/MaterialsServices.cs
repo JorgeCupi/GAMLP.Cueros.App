@@ -19,7 +19,7 @@ namespace Cueros.App.Core.Services
 
         public static async Task<Material> GetMaterial(int ID)
         {
-            string url = "http://cadepiacueros.azurewebsites.net/material/get?MaterialID=/" + ID;
+            string url = "http://cadepiacueros.azurewebsites.net/material/get?MaterialID=" + ID;
             string response = await Utilities.DownloadJsonFromThisUrl(url);
 
             return Utilities.TransformToMaterial(response);

@@ -58,7 +58,13 @@ namespace Cueros.App.Phone.Testing
         async void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             //lstProductos.ItemsSource = await ServiciosDeProductos.ObtenerProductos();
-            lstCategorias.ItemsSource = await CategoriesServices.GetListOfCategories();
+            //lstCategorias.ItemsSource = await CategoriesServices.GetListOfCategories();
+
+            //List<Supplier> suppliers = await SuppliersServices.GetSuppliers();
+            //MessageBox.Show(suppliers.Count.ToString());
+
+            Supplier supplier = await SuppliersServices.GetSupplier(4);
+            MessageBox.Show(supplier.Name);
         }
     }
 }
