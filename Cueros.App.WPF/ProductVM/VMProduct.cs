@@ -13,8 +13,8 @@ namespace Cueros.App.WPF.ProductVM
     public class VMProduct : INotifyPropertyChanged
     {
         private ProductRepo repo;
-        private List<Producto> ListOfProducts;
-        public List<Producto> ListProduct {
+        private List<Product> ListOfProducts;
+        public List<Product> ListProduct {
             get { return ListOfProducts; }
             set { ChangeProperty("ProductList");
             ListOfProducts = value;

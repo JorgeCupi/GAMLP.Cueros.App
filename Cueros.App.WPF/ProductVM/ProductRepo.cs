@@ -12,12 +12,12 @@ namespace Cueros.App.WPF.ProductVM
         public ProductRepo() 
         { 
         }
-        public IEnumerable<Producto> GetProducts() 
+        public IEnumerable<Product> GetProducts() 
         {
-            List<Producto> Products = new List<Producto>();
-         List<Producto> listaP;
+            List<Product> Products = new List<Product>();
+         List<Product> listaP;
             while(true){
-                Products.Add(new Producto
+                Products.Add(new Product
                     {
                     });
                 return Products;

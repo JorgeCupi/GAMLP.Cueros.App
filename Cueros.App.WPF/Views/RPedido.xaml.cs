@@ -25,7 +25,7 @@ namespace Cueros.App.WPF.Views
     public partial class RPedido : MetroWindow
     {
 
-        private Producto pro;
+        private Product pro;
         private double precioTotal;
         private double costo = 15.5;
         private int cantidad;
@@ -33,16 +33,16 @@ namespace Cueros.App.WPF.Views
         private int tiempoCreacion;
         private int t = 1440;
         private int dias;
-        private Pedido pedidos;
-        private List<Producto> listaProductos;
+        private Order pedidos;
+        private List<Product> listaProductos;
         private Detalle det;
 
-        public RPedido(Producto p, Detalle Detail)
+        public RPedido(Product p, Detalle Detail)
         {
             InitializeComponent();
             det = Detail;
             pro = p;
-            listaProductos = new List<Producto>();
+            listaProductos = new List<Product>();
             Loaded += RPedido_Loaded;
             Cant.TextChanged +=Cant_TextChanged;
         }
@@ -50,7 +50,7 @@ namespace Cueros.App.WPF.Views
         void RPedido_Loaded(object sender, RoutedEventArgs e)
         {
             DetallesP.DataContext = pro;
-            imagen.ItemsSource = pro.Fotos;
+            imagen.ItemsSource = pro.Pictures;
             precioTotal = costo * Convert.ToInt32(Cant.Text);
             Total.Content = precioTotal;
         }

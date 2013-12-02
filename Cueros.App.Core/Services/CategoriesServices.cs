@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Cueros.App.Core.Services
 {
-    public static class ServiciosDeCategorias
+    public static class CategoriesServices
     {
-        public static async Task<List<Categoria>> GetListOfCategories()
+        public static async Task<List<Category>> GetListOfCategories()
         {
             string url = "https://dl.dropboxusercontent.com/s/6ysajpdq04qkcxv/Categorias.json?dl=1&token_hash=AAEesyUbBh7vEzrybQ_5Ik7DtEDgTWOmCe2wT7Cv61rTEQ";
             string response = await Utilities.DownloadJsonFromThisUrl(url);
@@ -17,7 +17,7 @@ namespace Cueros.App.Core.Services
             return Utilities.TransformToCategoriesList(response);
         }
 
-        public static async Task<Categoria> GetCategory(string IdCategory)
+        public static async Task<Category> GetCategory(string IdCategory)
         {
             string url = "";
             string response = await Utilities.DownloadJsonFromThisUrl(url);

@@ -18,12 +18,12 @@ namespace Cueros.App.Phone.Views
 {
     public partial class ListaProductos : PhoneApplicationPage
     {
-        public ObservableCollection<Producto> novedades;
-        public ObservableCollection<Producto> destacados;
-        public ObservableCollection<Producto> productos;
+        public ObservableCollection<Product> novedades;
+        public ObservableCollection<Product> destacados;
+        public ObservableCollection<Product> productos;
         String id;
         String categoria;
-        Producto p;
+        Product p;
         public ListaProductos()
         {
             InitializeComponent();
@@ -36,9 +36,9 @@ namespace Cueros.App.Phone.Views
                 id = NavigationContext.QueryString["id"];
                 categoria = NavigationContext.QueryString["categoria"];
                 panorama.Title = categoria;
-                novedades = new Almacenar<Producto>().Deserialize(categoria + "_novedades.json");
-                destacados = new Almacenar<Producto>().Deserialize(categoria + "_destacados.json");
-                productos = new Almacenar<Producto>().Deserialize(categoria + "_categorias.json");
+                novedades = new Almacenar<Product>().Deserialize(categoria + "_novedades.json");
+                destacados = new Almacenar<Product>().Deserialize(categoria + "_destacados.json");
+                productos = new Almacenar<Product>().Deserialize(categoria + "_categorias.json");
                 if (novedades != null && novedades.Count != 0)
                     lstnovedades.ItemsSource = novedades;
                 if (destacados != null && destacados.Count != 0)
@@ -60,9 +60,9 @@ namespace Cueros.App.Phone.Views
         {
             try
             {
-                List<Producto> nov = await ServiciosDeProductos.GetRecentProductsFromThisCategory(id, 10);
-                novedades = new ObservableCollection<Producto>(nov);
-                new Almacenar<Producto>().Serialize(novedades, categoria + "_novedades.json");
+                List<Product> nov = await ProductsServices.GetRecentProductsFromThisCategory(id, 10);
+                novedades = new ObservableCollection<Product>(nov);
+                new Almacenar<Product>().Serialize(novedades, categoria + "_novedades.json");
                 lstnovedades.ItemsSource = nov;
             }
             catch (Exception)
@@ -74,9 +74,9 @@ namespace Cueros.App.Phone.Views
         {
             try
             {
-                List<Producto> des = await ServiciosDeProductos.GetTopProductsFromThisCategory(id, 10);
-                destacados = new ObservableCollection<Producto>(des);
-                new Almacenar<Producto>().Serialize(destacados, categoria + "_destacados.json");
+                List<Product> des = await ProductsServices.GetTopProductsFromThisCategory(id, 10);
+                destacados = new ObservableCollection<Product>(des);
+                new Almacenar<Product>().Serialize(destacados, categoria + "_destacados.json");
                 lstdestacados.ItemsSource = des;
             }
             catch (Exception)
@@ -88,9 +88,9 @@ namespace Cueros.App.Phone.Views
         {
             try
             {
-                List<Producto> pro = await ServiciosDeProductos.GetProductsFromThisCategory(id);
-                productos = new ObservableCollection<Producto>(pro);
-                new Almacenar<Producto>().Serialize(productos, categoria + "_productos.json");
+                List<Product> pro = await ProductsServices.GetProductsFromThisCategory(id);
+                productos = new ObservableCollection<Product>(pro);
+                new Almacenar<Product>().Serialize(productos, categoria + "_productos.json");
                 lstproductos.ItemsSource = pro;
             }
             catch (Exception)
@@ -100,7 +100,7 @@ namespace Cueros.App.Phone.Views
 
         private void lstnovedades_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            p = lstnovedades.SelectedItem as Producto;
+            p = lstnovedades.SelectedItem as Product;
             if (lstnovedades.SelectedItem != null)
             {
                 // MessageBox.Show("det Prod " + p.Nombre);
@@ -112,7 +112,7 @@ namespace Cueros.App.Phone.Views
 
         private void lstdestacados_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            p = lstdestacados.SelectedItem as Producto;
+            p = lstdestacados.SelectedItem as Product;
             if (lstdestacados.SelectedItem != null)
             {
                 // MessageBox.Show("det Prod " + p.Nombre);
@@ -124,7 +124,7 @@ namespace Cueros.App.Phone.Views
 
         private void lstproductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            p = lstproductos.SelectedItem as Producto;
+            p = lstproductos.SelectedItem as Product;
             if (lstproductos.SelectedItem != null)
             {
                 // MessageBox.Show("det Prod " + p.Nombre);

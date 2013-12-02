@@ -12,16 +12,16 @@ namespace Cueros.App.Core
     {
         private static HttpClient client { get; set; }
 
-        internal static List<Producto> TransformToProductList(string response)
+        internal static List<Product> TransformToProductList(string response)
         {
-            Resultado res = JsonConvert.DeserializeObject<Resultado>(response);
-            return res.Productos;
+            ProductsResults res = JsonConvert.DeserializeObject<ProductsResults>(response);
+            return res.Products;
         }
 
-        internal static List<Categoria> TransformToCategoriesList(string response)
+        internal static List<Category> TransformToCategoriesList(string response)
         {
-            ResultadoDeCategorias res =JsonConvert.DeserializeObject<ResultadoDeCategorias>(response);
-            return res.Categorias;
+            CategoriesResults res = JsonConvert.DeserializeObject<CategoriesResults>(response);
+            return res.Categories;
         }
 
         public static async Task<string> DownloadJsonFromThisUrl(string url)
@@ -41,9 +41,44 @@ namespace Cueros.App.Core
             }
         }
 
-        internal static Categoria TransformToCategory(string response)
+        internal static Category TransformToCategory(string response)
         {
-            return JsonConvert.DeserializeObject<Categoria>(response);
+            return JsonConvert.DeserializeObject<Category>(response);
+        }
+
+        internal static List<Supplier> TransformToSuppliersList(string response)
+        {
+            return JsonConvert.DeserializeObject<List<Supplier>>(response);
+        }
+
+        internal static Supplier TransformToSupplier(string response)
+        {
+            return JsonConvert.DeserializeObject<Supplier>(response);
+        }
+
+        internal static Product TransformToProduct(string response)
+        {
+            return JsonConvert.DeserializeObject<Product>(response);
+        }
+
+        internal static List<Material> TransformToMaterialsList(string response)
+        {
+            return JsonConvert.DeserializeObject<List<Material>>(response);
+        }
+
+        internal static Material TransformToMaterial(string response)
+        {
+            return JsonConvert.DeserializeObject<Material>(response);
+        }
+
+        internal static List<Order> TransformToOrdersList(string response)
+        {
+            return JsonConvert.DeserializeObject<List<Order>>(response);
+        }
+
+        internal static Order TransformToOrder(string response)
+        {
+            return JsonConvert.DeserializeObject<Order>(response);
         }
     }
 }

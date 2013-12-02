@@ -9,7 +9,7 @@ namespace Cueros.App.Store.Class
 {
     public class ProductoCantidad 
     {
-        public Producto Producto { get; set; }
+        public Cueros.App.Core.Models.Product Producto { get; set; }
         public int Cantidad { get; set; }
     }
 }

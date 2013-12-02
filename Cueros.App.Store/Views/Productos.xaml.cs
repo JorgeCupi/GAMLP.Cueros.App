@@ -77,9 +77,9 @@ namespace Cueros.App.Store.Class
             Product _product;
             try
             {
-                foreach (var item in await ServiciosDeProductos.GetProducts())
+                foreach (var item in await ProductsServices.GetProducts())
                 {
-                    _product = new Product() { Name = item.Nombre, UrlImage = item.Fotos.FirstOrDefault().URL, Temporada = item.Temporada, Id = item.Id };
+                    _product = new Product() { Name = item.Name, UrlImage = item.Pictures.FirstOrDefault().URL, Temporada = item.Season, Id = item.ProductID };
                     _list.Add(_product);
                 }
                 my_list_productos.ItemsSource = _list;
@@ -107,12 +107,12 @@ namespace Cueros.App.Store.Class
         {
             try
             {
-                Producto _objeto = null;
+                Cueros.App.Core.Models.Product _objeto = null;
                 if (my_list_productos.SelectedItem != null)
                 {
                     var _idProducto = (my_list_productos.SelectedItem as Product).Id;
-                    var result = from item in await ServiciosDeProductos.GetProducts()
-                                 where item.Id == _idProducto
+                    var result = from item in await ProductsServices.GetProducts()
+                                 where item.ProductID == _idProducto
                                  select item;
                     _objeto = result.ToList().FirstOrDefault();
                 }
@@ -131,15 +131,15 @@ namespace Cueros.App.Store.Class
             await ApplicationData.Current.LocalFolder.CreateFileAsync("Cadepia.xml", CreationCollisionOption.ReplaceExisting);
             using (Stream stream = await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync("Cadepia.xml", CreationCollisionOption.ReplaceExisting))
             {
-                var _list = await ServiciosDeProductos.GetProducts();
+                var _list = await ProductsServices.GetProducts();
                 XmlSerializer serializer = new XmlSerializer(_list.GetType());
                 serializer.Serialize(stream, _list);
                 await stream.FlushAsync();
             }
         }
 
-        List<Producto> list = new List<Producto>();
-        async Task<List<Producto>> Deserializar() 
+        List<Product> list = new List<Product>();
+        async Task<List<Product>> Deserializar() 
         {
             //Abrimos el fichero donde están los datos serializados
             StorageFile file = await ApplicationData.Current.LocalFolder.GetFileAsync("Cadepia.xml");
@@ -152,7 +152,7 @@ namespace Cueros.App.Store.Class
                     //Inicializamos el serializador y desserializamos
                     XmlSerializer serializer = new XmlSerializer(list.GetType());
                     //Tenemos que definir a que tipo de objeto tiene que convertir el objeto deserializado
-                    list = serializer.Deserialize(stream) as List<Producto>;
+                    list = serializer.Deserialize(stream) as List<Product>;
                 }
             }
             return list;

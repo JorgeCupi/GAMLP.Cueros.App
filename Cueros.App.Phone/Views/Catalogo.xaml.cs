@@ -16,10 +16,10 @@ namespace Cueros.App.Phone.Views
 {
     public partial class Catalogo : PhoneApplicationPage
     {
-         public ObservableCollection<Categoria> categoria;
-        public ObservableCollection<Producto> novedades;
-        public ObservableCollection<Producto> destacados;
-        Producto p;
+         public ObservableCollection<Category> categoria;
+        public ObservableCollection<Product> novedades;
+        public ObservableCollection<Product> destacados;
+        Product p;
         public Catalogo()
         {
             InitializeComponent();
@@ -29,9 +29,9 @@ namespace Cueros.App.Phone.Views
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             BuildLocalizedApplicationBar();
-            categoria = new Almacenar<Categoria>().Deserialize("categorias.json");
-            novedades = new Almacenar<Producto>().Deserialize("novedades.json");
-            destacados = new Almacenar<Producto>().Deserialize("destacados.json");
+            categoria = new Almacenar<Category>().Deserialize("categorias.json");
+            novedades = new Almacenar<Product>().Deserialize("novedades.json");
+            destacados = new Almacenar<Product>().Deserialize("destacados.json");
             if (categoria != null && categoria.Count != 0)
                 lstcategoria.ItemsSource = categoria;
             if (novedades != null && novedades.Count != 0)
@@ -58,9 +58,9 @@ namespace Cueros.App.Phone.Views
         {
             try
             {
-                List<Categoria> cat = await ServiciosDeCategorias.GetListOfCategories();
-                categoria = new ObservableCollection<Categoria>(cat);
-                new Almacenar<Categoria>().Serialize(categoria, "categorias.json");
+                List<Category> cat = await CategoriesServices.GetListOfCategories();
+                categoria = new ObservableCollection<Category>(cat);
+                new Almacenar<Category>().Serialize(categoria, "categorias.json");
                 if (categoria != null && categoria.Count != 0)
                     lstcategoria.ItemsSource = categoria;
             }
@@ -74,9 +74,9 @@ namespace Cueros.App.Phone.Views
         {
             try
             {
-                List<Producto> pro = await ServiciosDeProductos.GetRecentProducts(10);
-                novedades = new ObservableCollection<Producto>(pro);
-                new Almacenar<Producto>().Serialize(novedades, "novedades.json");
+                List<Product> pro = await ProductsServices.GetRecentProducts(10);
+                novedades = new ObservableCollection<Product>(pro);
+                new Almacenar<Product>().Serialize(novedades, "novedades.json");
                 if (novedades != null && novedades.Count != 0)
                     lstnovedades.ItemsSource = novedades;
             }
@@ -90,9 +90,9 @@ namespace Cueros.App.Phone.Views
         {
             try
             {
-                List<Producto> pro = await ServiciosDeProductos.GetTopProducts(10);
-                destacados = new ObservableCollection<Producto>(pro);
-                new Almacenar<Producto>().Serialize(destacados, "destacados.json");
+                List<Product> pro = await ProductsServices.GetTopProducts(10);
+                destacados = new ObservableCollection<Product>(pro);
+                new Almacenar<Product>().Serialize(destacados, "destacados.json");
                 if (destacados != null && destacados.Count != 0)
                     lstdestacados.ItemsSource = destacados;
             }
@@ -106,9 +106,9 @@ namespace Cueros.App.Phone.Views
         {
             if (lstcategoria.SelectedItem != null)
             {
-                Categoria c = lstcategoria.SelectedItem as Categoria;
+                Category c = lstcategoria.SelectedItem as Category;
                 //MessageBox.Show("go list de prod "+ c.Nombre);
-                NavigationService.Navigate(new Uri("/Views/ListaProductos.xaml?id=" + c.Id + "&categoria=" + c.Nombre, UriKind.Relative));
+                NavigationService.Navigate(new Uri("/Views/ListaProductos.xaml?id=" + c.CategoryID + "&categoria=" + c.Name, UriKind.Relative));
             }
         }
 
@@ -140,7 +140,7 @@ namespace Cueros.App.Phone.Views
 
         private void lstnovedades_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            p = lstnovedades.SelectedItem as Producto;
+            p = lstnovedades.SelectedItem as Product;
             if (lstnovedades.SelectedItem != null)
             {
                 //MessageBox.Show("det Prod "+p.Nombre);
@@ -151,7 +151,7 @@ namespace Cueros.App.Phone.Views
 
         private void lstdestacados_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            p = lstdestacados.SelectedItem as Producto;
+            p = lstdestacados.SelectedItem as Product;
             if (lstdestacados.SelectedItem != null)
             {
                 NavigationService.Navigate(new Uri("/Views/DetalleProducto.xaml", UriKind.Relative));

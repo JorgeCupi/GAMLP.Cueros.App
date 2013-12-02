@@ -21,8 +21,8 @@ namespace Cueros.App.WPF.Views
     /// </summary>
     public partial class Carrito : Page
     {
-        List<Producto> Pro = new List<Producto>();
-        public Carrito(List<Producto> p)
+        List<Product> Pro = new List<Product>();
+        public Carrito(List<Product> p)
         {
             Pro = p;
             InitializeComponent();

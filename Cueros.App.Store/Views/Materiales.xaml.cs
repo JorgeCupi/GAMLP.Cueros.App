@@ -15,7 +15,6 @@ using Windows.UI.Xaml.Navigation;
 using Cueros.App.Core.Models;
 using Cueros.App.Core.Services;
 using Windows.UI.Popups;
-using Cueros.App.Store.Class;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Cueros.App.Store.Class
@@ -25,11 +24,11 @@ namespace Cueros.App.Store.Class
     /// </summary>
     public sealed partial class Materiales : Page
     {
-        Producto bx = null;
+        Cueros.App.Core.Models.Product bx = null;
         Material m = new Material();
         ProductoCantidad NewP = new ProductoCantidad();
         List<Material> listMat = new List<Material>();
-        List<Proveedor> listProv = new List<Proveedor>();
+        List<Supplier> listProv = new List<Supplier>();
 
         public Materiales()
         {
@@ -44,21 +43,21 @@ namespace Cueros.App.Store.Class
            
         }
 
-        void obtenerMateriales(Producto a)
+        void obtenerMateriales(Cueros.App.Core.Models.Product a)
         {
-            listMat = a.Materiales;
+            listMat = a.Materials;
             ListaDeMateriales.ItemsSource = listMat;
-            FlipViewImagenes.ItemsSource = a.Fotos;
-            TextNombreProductoCabezera.Text = a.Nombre;
-            TextoDescripcionProducto.Text = a.Descripcion;
-            TextoModeloProducto.Text = a.Modelo;
-            TextoTemporadaProducto.Text = a.Temporada;
-            TextoVentasProductos.Text = a.VentasRealizadas.ToString();
+            FlipViewImagenes.ItemsSource = a.Pictures;
+            TextNombreProductoCabezera.Text = a.Name;
+            TextoDescripcionProducto.Text = a.Description;
+            TextoModeloProducto.Text = a.Model;
+            TextoTemporadaProducto.Text = a.Season;
+            TextoVentasProductos.Text = a.SoldUnits.ToString();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            bx = e.Parameter as Producto;
+            bx = e.Parameter as Cueros.App.Core.Models.Product;
             obtenerMateriales(bx);
         }
 
@@ -68,7 +67,7 @@ namespace Cueros.App.Store.Class
             ProductoCantidad pc = new ProductoCantidad() { Producto = bx, Cantidad = cantidad };
             double PrecioU = GetPrecio(pc);
             double PrecioT = PrecioU * cantidad;
-            RequestProduct NuevoRequestProduct = new RequestProduct {PName = bx.Nombre, PNItems =  cantidad, PPriceU = PrecioU, PPriceT = PrecioT, PurlImage = bx.Fotos.FirstOrDefault().URL};
+            RequestProduct NuevoRequestProduct = new RequestProduct {PName = bx.Name, PNItems =  cantidad, PPriceU = PrecioU, PPriceT = PrecioT, PurlImage = bx.Pictures.FirstOrDefault().URL};
             Pedido.Pedidos.Add(NuevoRequestProduct);
             AppButtonAgregar.IsEnabled = false;
         }
@@ -82,12 +81,12 @@ namespace Cueros.App.Store.Class
         {
             if (ListaDeMateriales.SelectedItem != null)
             {
-                m.Nombre = (ListaDeMateriales.SelectedItem as Material).Nombre;
-                m.NombreComercial = (ListaDeMateriales.SelectedItem as Material).NombreComercial;
-                m.TipoUnidad = (ListaDeMateriales.SelectedItem as Material).TipoUnidad;
-                m.CostoUnidad = (ListaDeMateriales.SelectedItem as Material).CostoUnidad;
+                m.Name = (ListaDeMateriales.SelectedItem as Material).Name;
+                m.CommercialName= (ListaDeMateriales.SelectedItem as Material).CommercialName;
+                m.Unit = (ListaDeMateriales.SelectedItem as Material).Unit;
+                m.UnitPrice= (ListaDeMateriales.SelectedItem as Material).UnitPrice;
                 m.Color = (ListaDeMateriales.SelectedItem as Material).Color;
-                listProv = (ListaDeMateriales.SelectedItem as Material).Proveedores;
+                listProv = (ListaDeMateriales.SelectedItem as Material).Suppliers;
                 ListBoxProveedores.ItemsSource = listProv;
                 cargardoDedatosFeo(m);
             }
@@ -95,10 +94,10 @@ namespace Cueros.App.Store.Class
         public void cargardoDedatosFeo(Material a)
         {
            
-            TextNombreComercial.Text = m.NombreComercial;
+            TextNombreComercial.Text = m.CommercialName;
             TextColorMaterial.Text = m.Color.ToString();
-            TextTipoUnidad.Text = m.TipoUnidad;
-            TextCostoUnidadMaterial.Text = m.CostoUnidad.ToString();
+            TextTipoUnidad.Text = m.Unit;
+            TextCostoUnidadMaterial.Text = m.UnitPrice.ToString();
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
@@ -108,9 +107,9 @@ namespace Cueros.App.Store.Class
         private double GetPrecio(ProductoCantidad x)
         {
             double precio = 0;
-            foreach (var material in x.Producto.Materiales)
+            foreach (var material in x.Producto.Materials)
             {
-                precio += material.CostoUnidad;
+                precio += material.UnitPrice;
             }
             return precio;
         }

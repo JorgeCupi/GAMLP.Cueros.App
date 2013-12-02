@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Cueros.App.Core.Models
 {
-    public class Categoria
+    public class Category
     {
-        public string Id { get; set; }
+        public string CategoryID { get; set; }
 
-        public string Nombre { get; set; }
+        public string Name { get; set; }
 
-        public string UrlImagen { get; set; }
+        public string Url { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace Cueros.App.Phone.Views
 {
     public partial class DetalleProducto : PhoneApplicationPage
     {
-        public List<Core.Models.Proveedor> p;
+        public List<Core.Models.Supplier> p;
         public Material m;
 
         public DetalleProducto()
@@ -50,7 +50,7 @@ namespace Cueros.App.Phone.Views
             m = lstmateriales.SelectedItem as Material;
             if (m != null)
             {
-                p = m.Proveedores;
+                p = m.Suppliers;
                 NavigationService.Navigate(new Uri("/Views/Proveedor.xaml", UriKind.Relative));
             }
         }
@@ -62,7 +62,7 @@ namespace Cueros.App.Phone.Views
             if (pro != null)
             {
                 pro.lstProveedores.ItemsSource = p;
-                pro.material.Text = m.Nombre;
+                pro.material.Text = m.Name;
             }
             AgregarPedido ap = e.Content as AgregarPedido;
             if (ap != null)
@@ -72,7 +72,7 @@ namespace Cueros.App.Phone.Views
                 foreach (var item in lstmateriales.ItemsSource)
                 {
                     Material pedido = item as Material;
-                    CostoUnidad += pedido.CostoUnidad;
+                    CostoUnidad += pedido.UnitPrice;
                 }
                 ap.CostoUnidad.Text = CostoUnidad.ToString();
             }

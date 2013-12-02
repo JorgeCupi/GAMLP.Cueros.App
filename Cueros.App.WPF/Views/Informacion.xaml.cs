@@ -26,10 +26,10 @@ namespace Cueros.App.WPF
        String cate;
        private MainWindow mainWindow;
 
-        public Informacion(Categoria c, MainWindow mainWindow)
+        public Informacion(Category c, MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
-            cate = c.Id;
+            cate = c.CategoryID;
             InitializeComponent();
             Loaded += Page1_Loaded;
 
@@ -49,21 +49,21 @@ namespace Cueros.App.WPF
             {
                 pgrBar.Visibility = Visibility.Visible;
                 Categorias.Opacity = 0;
-                List<Producto> All = await ServiciosDeProductos.GetProductsFromThisCategory(cate);
+                List<Product> All = await ProductsServices.GetProductsFromThisCategory(cate);
                 Todos.ItemsSource = All;
-                List<Producto> Nov = await ServiciosDeProductos.GetRecentProductsFromThisCategory(cate);
+                List<Product> Nov = await ProductsServices.GetRecentProductsFromThisCategory(cate);
                 Novedades.ItemsSource = Nov;
-                List<Producto> Des = await ServiciosDeProductos.GetRecentProductsFromThisCategory(cate);
+                List<Product> Des = await ProductsServices.GetRecentProductsFromThisCategory(cate);
                 Destacados.ItemsSource = Des;
                 pgrBar.Visibility = Visibility.Collapsed;
                 Categorias.Opacity = 1;
             }
             catch(Exception)
             {
-                List<Producto> get_list = new List<Producto>();
-                get_list.Add(new Producto()
+                List<Product> get_list = new List<Product>();
+                get_list.Add(new Product()
                 {
-                    Nombre = "O.o oops, ahora no podemos conextarnos, intenta más tarde"
+                    Name = "O.o oops, ahora no podemos conextarnos, intenta más tarde"
                 });
                 Todos.ItemsSource = get_list;
                 Novedades.ItemsSource = get_list;
@@ -75,21 +75,21 @@ namespace Cueros.App.WPF
 
         void Todos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var producto = Todos.SelectedItem as Producto;
+            var producto = Todos.SelectedItem as Product;
             det.DataContext = producto;
-            imagenes.ItemsSource = producto.Fotos;
+            imagenes.ItemsSource = producto.Pictures;
         }
         void Novedades_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var producto = Novedades.SelectedItem as Producto;
+            var producto = Novedades.SelectedItem as Product;
             det.DataContext = producto;
-            imagenes.ItemsSource = producto.Fotos;
+            imagenes.ItemsSource = producto.Pictures;
         }
         void Destacados_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var producto = Destacados.SelectedItem as Producto;
+            var producto = Destacados.SelectedItem as Product;
             det.DataContext = producto;
-            imagenes.ItemsSource = producto.Fotos;
+            imagenes.ItemsSource = producto.Pictures;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -100,7 +100,7 @@ namespace Cueros.App.WPF
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var producto = Todos.SelectedItem as Producto;
+            var producto = Todos.SelectedItem as Product;
             Detalle dp = new Detalle(producto, this);
             dp.Show();
             this.Hide();
@@ -108,7 +108,7 @@ namespace Cueros.App.WPF
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            var producto = Novedades.SelectedItem as Producto;
+            var producto = Novedades.SelectedItem as Product;
             Detalle dp = new Detalle(producto, this);
             dp.Show();
             this.Hide();
@@ -116,7 +116,7 @@ namespace Cueros.App.WPF
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            var producto = Destacados.SelectedItem as Producto;
+            var producto = Destacados.SelectedItem as Product;
             Detalle dp = new Detalle(producto, this);
             dp.Show();
             this.Hide();

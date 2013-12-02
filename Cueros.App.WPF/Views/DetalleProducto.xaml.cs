@@ -25,15 +25,15 @@ namespace Cueros.App.WPF
     {
 
         string nombreProductoObt;
-        public ObservableCollection<Producto> producto;
-        private Producto producto1;
-        private List<Producto> Carrito;
+        public ObservableCollection<Product> producto;
+        private Product producto1;
+        private List<Product> Carrito;
         private int cantidad;
         private MainWindow mainWindow;
         private Informacion informacion;
 
 
-        public DetalleProducto(Producto producto1, MainWindow mainWindow)
+        public DetalleProducto(Product producto1, MainWindow mainWindow)
         {
             this.producto1 = producto1;
             this.mainWindow = mainWindow;           
@@ -45,7 +45,7 @@ namespace Cueros.App.WPF
             btnPedido.Click += btnPedido_Click;
         }
 
-        public DetalleProducto(Producto producto1, Informacion informacion)
+        public DetalleProducto(Product producto1, Informacion informacion)
         {
             this.producto1 = producto1;
             this.informacion = informacion;
@@ -109,13 +109,13 @@ namespace Cueros.App.WPF
         void ProductoLista()
         {
 
-            txtId.Text = producto1.Id;
+            txtId.Text = producto1.ProductID;
             
-            txtLinea.Text = producto1.Nombre;
-            txtDescripcion.Text = producto1.Descripcion;
+            txtLinea.Text = producto1.Name;
+            txtDescripcion.Text = producto1.Description;
             
-            txtModelo.Text = producto1.Modelo;
-            txtTemporada.Text = producto1.Temporada;
+            txtModelo.Text = producto1.Model;
+            txtTemporada.Text = producto1.Season;
 
         }
     }

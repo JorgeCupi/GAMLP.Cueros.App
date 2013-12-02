@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace Cueros.App.Core.Services
 {
-    public static class ServiciosDeProductos
+    public static class ProductsServices
     {
         #region Atributes
         public static string url { get; set; }
         public static string response { get; set; }
-        public static List<Producto> list { get; set; }
+        public static List<Product> list { get; set; }
         #endregion
 
         #region All products
         /// <summary>
         /// Obtiene todos los productos de la base de datos.
         /// </summary>
-        public static async Task<List<Producto>> GetProducts()
+        public static async Task<List<Product>> GetProducts()
         {
             url = "https://dl.dropboxusercontent.com/s/sz7n21swk4vv15s/CUEROS.json?dl=1&token_hash=AAGvd8odSNROK7fuPa3aUMscH5nR2wbUqvtBZEkCDYFpYQ";
             response = await Utilities.DownloadJsonFromThisUrl(url);
@@ -31,7 +31,7 @@ namespace Cueros.App.Core.Services
         /// Obtiene los N productos mas nuevos de la base de datos.
         /// </summary>
         /// <param name="MaxResults">Numero maximo de resultados a obtener.</param>
-        public static async Task<List<Producto>> GetRecentProducts(int MaxResults)
+        public static async Task<List<Product>> GetRecentProducts(int MaxResults)
         {
             list = await GetProducts();
             MaxResults = CheckValueForMaxResult(MaxResults, list.Count);
@@ -41,7 +41,7 @@ namespace Cueros.App.Core.Services
         /// Obtiene los ultimos N productos mas vendidos de la base de datos.
         /// </summary>
         /// <param name="MaxResults">Numero maximo de resultados a obtener.</param>
-        public static async Task<List<Producto>> GetTopProducts(int MaxResults)
+        public static async Task<List<Product>> GetTopProducts(int MaxResults)
         {
             list = await GetProducts();
             MaxResults = CheckValueForMaxResult(MaxResults, list.Count);
@@ -54,7 +54,7 @@ namespace Cueros.App.Core.Services
         /// Obtiene todos los productos de una categoria.
         /// </summary>
         /// <param name="IdCategory">Id de la categoria.</param>
-        public static async Task<List<Producto>> GetProductsFromThisCategory(string IdCategory)
+        public static async Task<List<Product>> GetProductsFromThisCategory(string IdCategory)
         {
             url = "https://dl.dropboxusercontent.com/s/sz7n21swk4vv15s/CUEROS.json?dl=1&token_hash=AAGvd8odSNROK7fuPa3aUMscH5nR2wbUqvtBZEkCDYFpYQ";
             response = await Utilities.DownloadJsonFromThisUrl(url);
@@ -66,7 +66,7 @@ namespace Cueros.App.Core.Services
         /// </summary>
         /// <param name="IdCategory">Id de la categoria.</param>
         /// <param name="MaxResults">Numero maximo de resultados que se desea obtener.</param>
-        public static async Task<List<Producto>> GetProductsFromThisCategory(string IdCategory, int MaxResults)
+        public static async Task<List<Product>> GetProductsFromThisCategory(string IdCategory, int MaxResults)
         {
             list = await GetProductsFromThisCategory(IdCategory);
             MaxResults = CheckValueForMaxResult(MaxResults, list.Count);
@@ -79,7 +79,7 @@ namespace Cueros.App.Core.Services
         /// Obtiene todos los productos de una categoria, ordenados por su fecha de creacion.
         /// </summary>
         /// <param name="IdCategory">Id de la categoria.</param>
-        public static async Task<List<Producto>> GetRecentProductsFromThisCategory(string IdCategory)
+        public static async Task<List<Product>> GetRecentProductsFromThisCategory(string IdCategory)
         {
             url = "https://dl.dropboxusercontent.com/s/sz7n21swk4vv15s/CUEROS.json?dl=1&token_hash=AAGvd8odSNROK7fuPa3aUMscH5nR2wbUqvtBZEkCDYFpYQ";
             response = await Utilities.DownloadJsonFromThisUrl(url);
@@ -91,7 +91,7 @@ namespace Cueros.App.Core.Services
         /// </summary>
         /// <param name="IdCategory">Id de la categoria.</param>
         /// <param name="MaxResults">Numero maximo de resultados que se desea obtener.</param>
-        public static async Task<List<Producto>> GetRecentProductsFromThisCategory(string IdCategory, int MaxResults)
+        public static async Task<List<Product>> GetRecentProductsFromThisCategory(string IdCategory, int MaxResults)
         {
             list = await GetRecentProductsFromThisCategory(IdCategory);
             MaxResults = CheckValueForMaxResult(MaxResults, list.Count);
@@ -104,7 +104,7 @@ namespace Cueros.App.Core.Services
         /// Obtiene todos los productos de una categoria, ordenados por su numero de ventas.
         /// </summary>
         /// <param name="IdCategory">Id de la categoria.</param>
-        public static async Task<List<Producto>> GetTopProductsFromThisCategory(string IdCategory)
+        public static async Task<List<Product>> GetTopProductsFromThisCategory(string IdCategory)
         {
             url = "https://dl.dropboxusercontent.com/s/sz7n21swk4vv15s/CUEROS.json?dl=1&token_hash=AAGvd8odSNROK7fuPa3aUMscH5nR2wbUqvtBZEkCDYFpYQ";
             response = await Utilities.DownloadJsonFromThisUrl(url);
@@ -116,11 +116,33 @@ namespace Cueros.App.Core.Services
         /// </summary>
         /// <param name="IdCategory">Id de la categoria.</param>
         /// <param name="MaxResults">Numero maximo de resultados que se desea obtener.</param>
-        public static async Task<List<Producto>> GetTopProductsFromThisCategory(string IdCategory, int MaxResults)
+        public static async Task<List<Product>> GetTopProductsFromThisCategory(string IdCategory, int MaxResults)
         {
             list = await GetProductsFromThisCategory(IdCategory);
             MaxResults = CheckValueForMaxResult(MaxResults, list.Count);
             return list.Take(MaxResults).ToList();
+        }
+        #endregion
+
+        #region Single product queries
+        public static async Task<Product> GetProduct(int ID)
+        {
+            url = "http://cadepiacueros.azurewebsites.net/supplier/get?ProductID=/" + ID;
+            response = await Utilities.DownloadJsonFromThisUrl(url);
+
+            return Utilities.TransformToProduct(response);
+        }
+
+        public static bool QuantityIsAvailable(int ProductQuantity, int QuantityRequired)
+        {
+            if (ProductQuantity >= QuantityRequired)
+                return true;
+            return false;
+        }
+
+        public static int GetEstimatedProductionTime(int ProductProductionTime, int QuantityRequired, int NumberOfEmployees)
+        {
+            return (ProductProductionTime * QuantityRequired / NumberOfEmployees);
         }
         #endregion
 
@@ -133,28 +155,35 @@ namespace Cueros.App.Core.Services
             else return MaxResult;
         }
 
-        private static List<Producto> GetTopProducts(List<Producto> list)
+        private static List<Product> GetTopProducts(List<Product> list)
         {
-            IEnumerable<Producto> query = (from P in list
-                                           orderby P.VentasRealizadas descending
-                                           select P);
+            IEnumerable<Product> query = (from P in list
+                                          orderby P.SoldUnits descending
+                                          select P);
             return query.ToList();
         }
 
-        private static List<Producto> GetRecentProducts(List<Producto> list)
+        private static List<Product> GetRecentProducts(List<Product> list)
         {
-            IEnumerable<Producto> query = (from P in list
-                                           orderby P.FechaPublicacion descending
-                                           select P);
+            IEnumerable<Product> query = (from P in list
+                                          orderby P.OnSaleDate descending
+                                          select P);
             return query.ToList();
         }
 
-        private static List<Producto> GetProductsFromThisCategory(List<Producto> list, string IdCategory)
+        private static List<Product> GetProductsFromThisCategory(List<Product> list, string IdCategory)
         {
-            IEnumerable<Producto> query = (from P in list
-                                           where P.Categoria.Id == IdCategory
-                                           select P);
+            IEnumerable<Product> query = (from P in list
+                                          where P.Category.CategoryID == IdCategory
+                                          select P);
             return query.ToList();
+        }
+        #endregion
+
+        #region POST requests
+        public static async Task<bool> CreateProduct(Product newProduct)
+        {
+            return true;
         }
         #endregion
     }

@@ -38,7 +38,7 @@ namespace Cueros.App.WPF
 
         void lstProductosDest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var producto = lstProductosDest.SelectedItem as Producto;
+            var producto = lstProductosDest.SelectedItem as Product;
             Detalle dp = new Detalle(producto, this);
             dp.Show();
             this.Hide();
@@ -46,7 +46,7 @@ namespace Cueros.App.WPF
 
         void lstProductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var producto = lstProductos.SelectedItem as Producto;
+            var producto = lstProductos.SelectedItem as Product;
             Detalle dp = new Detalle(producto,this);
             dp.Show();
             this.Hide();
@@ -54,7 +54,7 @@ namespace Cueros.App.WPF
 
         void lstCategorias_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var categoria = lstCategorias.SelectedItem as Categoria;
+            var categoria = lstCategorias.SelectedItem as Category;
             Informacion inf = new Informacion(categoria, this);
             inf.Show();
             this.Hide();
@@ -71,21 +71,21 @@ namespace Cueros.App.WPF
             {
                 pgrBar.Visibility = Visibility.Visible;
                 brdMain.Opacity = 0;
-                List<Producto> pro = await ServiciosDeProductos.GetRecentProducts(10);
+                List<Product> pro = await ProductsServices.GetRecentProducts(10);
                 lstProductos.ItemsSource = pro;
-                pro = await ServiciosDeProductos.GetTopProducts(10);
+                pro = await ProductsServices.GetTopProducts(10);
                 lstProductosDest.ItemsSource = pro;
-                List<Categoria> cat = await ServiciosDeCategorias.GetListOfCategories();
+                List<Category> cat = await CategoriesServices.GetListOfCategories();
                 lstCategorias.ItemsSource = cat;
                 pgrBar.Visibility = Visibility.Collapsed;
                 brdMain.Opacity = 1;
             }
             catch (Exception)
             {
-                List<Producto> pro = new List<Producto>();
-                pro.Add(new Producto()
+                List<Product> pro = new List<Product>();
+                pro.Add(new Product()
                 {
-                    Nombre = "O.o oops, ahora no podemos conextarnos, intenta más tarde"
+                    Name = "O.o oops, ahora no podemos conextarnos, intenta más tarde"
                 });
                 lstProductos.ItemsSource = pro;
                 lstProductosDest.ItemsSource = pro;

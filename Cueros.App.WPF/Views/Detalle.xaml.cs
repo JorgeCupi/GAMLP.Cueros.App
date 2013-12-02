@@ -24,17 +24,17 @@ namespace Cueros.App.WPF.Views
     /// </summary>
     public partial class Detalle : MetroWindow
     {
-        private Producto producto1;
+        private Product producto1;
         private MainWindow mainWindow;
         private Informacion informacion;
-        public Detalle(Producto pro, MainWindow mainWindow)
+        public Detalle(Product pro, MainWindow mainWindow)
         {
             producto1 = pro;
             this.mainWindow = mainWindow; 
             InitializeComponent();
             Loaded += Detalle_Loaded;
         }
-        public Detalle(Producto pro, Informacion info)
+        public Detalle(Product pro, Informacion info)
         {
             producto1 = pro;
             this.informacion = info;
@@ -44,14 +44,14 @@ namespace Cueros.App.WPF.Views
         void Detalle_Loaded(object sender, RoutedEventArgs e)
         {
             pro.DataContext = producto1;
-            imagenes.ItemsSource = producto1.Fotos;
-            ListaMateriales.ItemsSource=producto1.Materiales;
+            imagenes.ItemsSource = producto1.Pictures;
+            ListaMateriales.ItemsSource=producto1.Materials;
             ListaMateriales.SelectionChanged += ListaMateriales_SelectionChanged;
         }
         void ListaMateriales_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var material = ListaMateriales.SelectedItem as Material;
-            Prov.ItemsSource = material.Proveedores;
+            Prov.ItemsSource = material.Suppliers;
         }
         void btnIncio_Click(object sender, RoutedEventArgs e)
         {

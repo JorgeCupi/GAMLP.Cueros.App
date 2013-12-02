@@ -21,9 +21,9 @@ namespace Cueros.App.WPF
     /// </summary>
     public partial class Materiales : Window
     {
-        private Producto pro;
+        private Product pro;
 
-        public Materiales(Producto pro)
+        public Materiales(Product pro)
         {
             InitializeComponent();
             this.pro = pro;
@@ -42,7 +42,7 @@ namespace Cueros.App.WPF
 
             var material = ListaMateriales.SelectedItem as Material;
 
-            List<Proveedor> prov = new List<Proveedor>();
+            List<Supplier> prov = new List<Supplier>();
 
             string pr;
 
@@ -58,7 +58,7 @@ namespace Cueros.App.WPF
         void listarMateriales()
         {
 
-            var ListaM = pro.Materiales;
+            var ListaM = pro.Materials;
             List<string> Mat = new List<string>();
             string M;
 
@@ -66,15 +66,15 @@ namespace Cueros.App.WPF
             foreach (var item in ListaM)
             {
                 
-                M = "Material: " + item.Nombre;
+                M = "Material: " + item.Name;
                 M = M + " \n";
-                M = M + "Nombre Comercial: " + item.NombreComercial;
+                M = M + "Nombre Comercial: " + item.CommercialName;
                 M = M + " \n";
-                M = M + "Tipo Unidad: " + item.TipoUnidad;
+                M = M + "Tipo Unidad: " + item.Unit;
                 M = M + " \n";
                 M = M + "Color: " + item.Color;
                 M = M + " \n";
-                M = M + "Costo unidad: " + item.CostoUnidad;
+                M = M + "Costo unidad: " + item.UnitPrice;
                 Mat.Add(M);
                 
             }
