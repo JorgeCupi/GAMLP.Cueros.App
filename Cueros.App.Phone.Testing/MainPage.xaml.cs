@@ -68,8 +68,11 @@ namespace Cueros.App.Phone.Testing
             //Supplier supplier = await SuppliersServices.GetSupplier(4);
             //MessageBox.Show(supplier.Name);
 
-            List<Material> materials = await MaterialsServices.GetMaterials();
-            MessageBox.Show(materials.Count.ToString());
+            //List<Material> materials = await MaterialsServices.GetMaterials();
+            //MessageBox.Show(materials.Count.ToString());
+
+            List<Picture> pictures = await PicturesServices.GetPictures();
+            MessageBox.Show(pictures.Count.ToString());
         }
     }
 }

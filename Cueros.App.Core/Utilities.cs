@@ -83,5 +83,15 @@ namespace Cueros.App.Core
         {
             return JsonConvert.DeserializeObject<Order>(response);
         }
+
+        internal static List<Picture> TransformToPicturesList(string response)
+        {
+            return JsonConvert.DeserializeObject<List<Picture>>(response);
+        }
+
+        internal static Picture TransformToPicture(string response)
+        {
+            return JsonConvert.DeserializeObject<Picture>(response);
+        }
     }
 }

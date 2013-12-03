@@ -48,6 +48,7 @@
     <Compile Include="Services\CategoriesServices.cs" />
     <Compile Include="Services\MaterialsServices.cs" />
     <Compile Include="Services\OrdersServices.cs" />
+    <Compile Include="Services\PicturesServices.cs" />
     <Compile Include="Services\ProductsServices.cs" />
     <Compile Include="Services\SuppliersServices.cs" />
     <Compile Include="Utilities.cs" />
