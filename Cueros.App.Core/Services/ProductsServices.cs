@@ -57,9 +57,7 @@ namespace Cueros.App.Core.Services
         /// <param name="IdCategory">Id de la categoria.</param>
         public static async Task<List<Product>> GetProductsFromThisCategory(string IdCategory)
         {
-            url = "http://cadepiacueros.azurewebsites.net/product/getall";
-            response = await Utilities.DownloadJsonFromThisUrl(url);
-            list = Utilities.TransformToProductList(response);
+            list = await GetProducts();
             return GetProductsFromThisCategory(list, IdCategory);
         }
         /// <summary>
@@ -82,8 +80,6 @@ namespace Cueros.App.Core.Services
         /// <param name="IdCategory">Id de la categoria.</param>
         public static async Task<List<Product>> GetRecentProductsFromThisCategory(string IdCategory)
         {
-            url = "http://cadepiacueros.azurewebsites.net/product/getall";
-            response = await Utilities.DownloadJsonFromThisUrl(url);
             list = await GetProductsFromThisCategory(IdCategory);
             return GetRecentProducts(list);
         }
@@ -107,8 +103,6 @@ namespace Cueros.App.Core.Services
         /// <param name="IdCategory">Id de la categoria.</param>
         public static async Task<List<Product>> GetTopProductsFromThisCategory(string IdCategory)
         {
-            url = "http://cadepiacueros.azurewebsites.net/product/getall";
-            response = await Utilities.DownloadJsonFromThisUrl(url);
             list = await GetProductsFromThisCategory(IdCategory);
             return GetTopProducts(list);
         }
