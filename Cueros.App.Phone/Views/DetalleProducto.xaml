@@ -41,13 +41,13 @@
 
     <!--LayoutRoot contiene la cuadrícula raíz donde se coloca el resto del contenido de la página-->
     <phone:Panorama Name="panorama"
-                    Title="{Binding Nombre}"
+                    Title="{Binding Name}"
                     Background="#060671">
 
         <!--Elemento Panorama uno-->
         <phone:PanoramaItem Header="Imagenes"
                             Foreground="#FFFFFF">
-            <ListBox ItemsSource="{Binding Fotos}">
+            <ListBox ItemsSource="{Binding Pictures}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <toolkit:WrapPanel Orientation="Horizontal"/>
@@ -61,7 +61,7 @@
                             <Image Width="400"
                                    Height="200"
                                    Stretch="UniformToFill"
-                                   Source="{Binding URL}">
+                                   Source="{Binding Url}">
                             </Image>
                         </Border>
                     </DataTemplate>
@@ -81,7 +81,7 @@
                                FontWeight="Bold"/>
                         <TextBlock Name="id"
                                FontSize="25"
-                               Text="{Binding Modelo}" 
+                               Text="{Binding Model}" 
                                Margin="30,0,0,0"/>
                     </StackPanel>
 
@@ -91,7 +91,7 @@
                                FontWeight="Bold"/>
                         <TextBlock Name="descripcion"
                                FontSize="25"
-                               Text="{Binding Descripcion}"
+                               Text="{Binding Description}"
                                TextWrapping="Wrap"
                                Margin="30,0,0,0" 
                                HorizontalAlignment="Left" 
@@ -103,7 +103,7 @@
                                FontWeight="Bold"/>
                         <TextBlock Name="linea" 
                                FontSize="25"
-                               Text="{Binding Categoria.Nombre}"
+                               Text="{Binding Category.Nombre}"
                                Opacity="0.7"
                                Margin="30,0,0,0"/>
                     </StackPanel>
@@ -111,7 +111,7 @@
                         <TextBlock Text="Temporada:"
                                FontSize="30"
                                FontWeight="Bold"/>
-                        <TextBlock Text="{Binding Temporada}"
+                        <TextBlock Text="{Binding Season}"
                                FontSize="25"
                                Margin="30,0,0,0"/>
                     </StackPanel>
@@ -121,7 +121,7 @@
 
         <phone:PanoramaItem Header="Materiales"
                             Foreground="#FFFFFF">
-            <ListBox ItemsSource="{Binding Materiales}"
+            <ListBox ItemsSource="{Binding Materials}"
                      SelectionChanged="ListBox_SelectionChanged"
                      Name="lstmateriales"
                      Foreground="#FFFFFF">
@@ -146,15 +146,15 @@
                                     Margin="0,0,10,0"/>
                             <StackPanel Margin="10"
                                         Width="380">
-                                <TextBlock Text="{Binding Nombre}"
+                                <TextBlock Text="{Binding Name}"
                                            FontSize="45"/>
                                 <TextBlock Text="Nombre Comercial:"
                                            Margin="10,0,0,0"/>
-                                <TextBlock Text="{Binding NombreComercial}"
+                                <TextBlock Text="{Binding ComercialName}"
                                            Margin="70,0,0,0"/>
                                 <TextBlock Text="Costo Unidad:"
                                            Margin="10,0,0,0"/>
-                                <TextBlock Text="{Binding CostoUnidad}"
+                                <TextBlock Text="{Binding UnitPrice}"
                                            Margin="70,0,0,0"/>
                                 <TextBlock Text="Color:"
                                                Margin="10,0,0,0"/>
@@ -162,7 +162,7 @@
                                            Margin="70,0,0,0"/>
                                 <TextBlock Text="Tipo Unidad:"
                                            Margin="10,0,0,0"/>
-                                <TextBlock Text="{Binding TipoUnidad}"
+                                <TextBlock Text="{Binding Unit}"
                                            Margin="70,0,0,0"/>
                             </StackPanel>
                         </StackPanel>

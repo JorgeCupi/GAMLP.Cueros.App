@@ -51,8 +51,8 @@
                     <DataTemplate>
                         <toolkit:HubTile Size="Large"
                                          Margin="10"
-                                         Title="{Binding Nombre}"
-                                         Source="{Binding UrlImagen}"
+                                         Title="{Binding Name}"
+                                         Source="{Binding Url}"
                                          Background="#0038BD"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -72,15 +72,15 @@
                                    Height="150" 
                                    Margin="20"
                                    Stretch="UniformToFill"
-                                   Source="{Binding Fotos[0].URL}"/>
+                                   Source="{Binding Pictures[0].URL}"/>
                             <StackPanel VerticalAlignment="Center">
-                                <TextBlock Text="{Binding Nombre}"
+                                <TextBlock Text="{Binding Name}"
                                            TextWrapping="Wrap"
                                            Width="220"
                                            Foreground="White"/>
-                                <TextBlock Text="{Binding Temporada}"
+                                <TextBlock Text="{Binding Season}"
                                            Foreground="White"/>
-                                <TextBlock Text="{Binding FechaPublicacion}"
+                                <TextBlock Text="{Binding OnSaleDate}"
                                            Foreground="White"/>
                             </StackPanel>
                         </StackPanel>
@@ -102,15 +102,15 @@
                                    Height="150" 
                                    Margin="20"
                                    Stretch="UniformToFill"
-                                   Source="{Binding Fotos[0].URL}"/>
+                                   Source="{Binding Pictures[0].URL}"/>
                             <StackPanel VerticalAlignment="Center">
-                                <TextBlock Text="{Binding Nombre}"
+                                <TextBlock Text="{Binding Name}"
                                            TextWrapping="Wrap"
-                                           Foreground="White"
-                                           Width="220"/>
-                                <TextBlock Text="{Binding Temporada}"
+                                           Width="220"
                                            Foreground="White"/>
-                                <TextBlock Text="{Binding FechaPublicacion}"
+                                <TextBlock Text="{Binding Season}"
+                                           Foreground="White"/>
+                                <TextBlock Text="{Binding OnSaleDate}"
                                            Foreground="White"/>
                             </StackPanel>
                         </StackPanel>
