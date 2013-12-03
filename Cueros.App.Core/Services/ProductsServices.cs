@@ -22,7 +22,7 @@ namespace Cueros.App.Core.Services
         /// </summary>
         public static async Task<List<Product>> GetProducts()
         {
-            url = "https://dl.dropboxusercontent.com/s/sz7n21swk4vv15s/CUEROS.json?dl=1&token_hash=AAGvd8odSNROK7fuPa3aUMscH5nR2wbUqvtBZEkCDYFpYQ";
+            url = "http://cadepiacueros.azurewebsites.net/product/getall";
             response = await Utilities.DownloadJsonFromThisUrl(url);
 
             return Utilities.TransformToProductList(response);
@@ -56,7 +56,7 @@ namespace Cueros.App.Core.Services
         /// <param name="IdCategory">Id de la categoria.</param>
         public static async Task<List<Product>> GetProductsFromThisCategory(string IdCategory)
         {
-            url = "https://dl.dropboxusercontent.com/s/sz7n21swk4vv15s/CUEROS.json?dl=1&token_hash=AAGvd8odSNROK7fuPa3aUMscH5nR2wbUqvtBZEkCDYFpYQ";
+            url = "http://cadepiacueros.azurewebsites.net/product/getall";
             response = await Utilities.DownloadJsonFromThisUrl(url);
             list = Utilities.TransformToProductList(response);
             return GetProductsFromThisCategory(list, IdCategory);
@@ -81,7 +81,7 @@ namespace Cueros.App.Core.Services
         /// <param name="IdCategory">Id de la categoria.</param>
         public static async Task<List<Product>> GetRecentProductsFromThisCategory(string IdCategory)
         {
-            url = "https://dl.dropboxusercontent.com/s/sz7n21swk4vv15s/CUEROS.json?dl=1&token_hash=AAGvd8odSNROK7fuPa3aUMscH5nR2wbUqvtBZEkCDYFpYQ";
+            url = "http://cadepiacueros.azurewebsites.net/product/getall";
             response = await Utilities.DownloadJsonFromThisUrl(url);
             list = await GetProductsFromThisCategory(IdCategory);
             return GetRecentProducts(list);
@@ -106,7 +106,7 @@ namespace Cueros.App.Core.Services
         /// <param name="IdCategory">Id de la categoria.</param>
         public static async Task<List<Product>> GetTopProductsFromThisCategory(string IdCategory)
         {
-            url = "https://dl.dropboxusercontent.com/s/sz7n21swk4vv15s/CUEROS.json?dl=1&token_hash=AAGvd8odSNROK7fuPa3aUMscH5nR2wbUqvtBZEkCDYFpYQ";
+            url = "http://cadepiacueros.azurewebsites.net/product/getall";
             response = await Utilities.DownloadJsonFromThisUrl(url);
             list = await GetProductsFromThisCategory(IdCategory);
             return GetTopProducts(list);
