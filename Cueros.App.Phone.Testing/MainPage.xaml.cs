@@ -28,7 +28,7 @@ namespace Cueros.App.Phone.Testing
 
         void NavigateThisProduct(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/DetalleProducto.xaml",UriKind.Relative));
+            NavigationService.Navigate(new Uri("/DetalleProducto.xaml", UriKind.Relative));
         }
 
         private void FillListNews()
@@ -52,17 +52,18 @@ namespace Cueros.App.Phone.Testing
 
         void lstCategorias_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Productos.xaml",UriKind.Relative));
+            NavigationService.Navigate(new Uri("/Productos.xaml", UriKind.Relative));
         }
 
         async void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            List<Product> products = await ProductsServices.GetProducts();
-            MessageBox.Show(products.Count.ToString());
+            //List<Product> products = await ProductsServices.GetProducts();
+            //MessageBox.Show(products.Count.ToString());
+
             //lstCategorias.ItemsSource = await CategoriesServices.GetListOfCategories();
 
-            //List<Supplier> suppliers = await SuppliersServices.GetSuppliers();
-            //MessageBox.Show(suppliers.Count.ToString());
+            List<Supplier> suppliers = await SuppliersServices.GetSuppliers();
+            MessageBox.Show(suppliers.Count.ToString());
 
             //Supplier supplier = await SuppliersServices.GetSupplier(4);
             //MessageBox.Show(supplier.Name);
