@@ -18,4 +18,11 @@ namespace Cueros.App.Core.Models
     {
         public List<Supplier> Suppliers { get; set; }
     }
+
+    public class MaterialsResults 
+    {
+        public string success { get; set; }
+        public string message { get; set; }
+        public List<Material> data { get; set; }
+    }
 }

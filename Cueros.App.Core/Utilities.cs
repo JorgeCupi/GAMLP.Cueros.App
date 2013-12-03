@@ -65,7 +65,8 @@ namespace Cueros.App.Core
 
         internal static List<Material> TransformToMaterialsList(string response)
         {
-            return JsonConvert.DeserializeObject<List<Material>>(response);
+            MaterialsResults res = JsonConvert.DeserializeObject<MaterialsResults>(response);
+            return res.data;
         }
 
         internal static Material TransformToMaterial(string response)

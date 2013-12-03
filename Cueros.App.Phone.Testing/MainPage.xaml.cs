@@ -62,11 +62,14 @@ namespace Cueros.App.Phone.Testing
 
             //lstCategorias.ItemsSource = await CategoriesServices.GetListOfCategories();
 
-            List<Supplier> suppliers = await SuppliersServices.GetSuppliers();
-            MessageBox.Show(suppliers.Count.ToString());
+            //List<Supplier> suppliers = await SuppliersServices.GetSuppliers();
+            //MessageBox.Show(suppliers.Count.ToString());
 
             //Supplier supplier = await SuppliersServices.GetSupplier(4);
             //MessageBox.Show(supplier.Name);
+
+            List<Material> materials = await MaterialsServices.GetMaterials();
+            MessageBox.Show(materials.Count.ToString());
         }
     }
 }
