@@ -4,7 +4,9 @@ namespace Cueros.App.Core.Models
 {
     public class ProductsResults
     {
-        public List<Product> Products { get; set; }
+        public string success { get; set; }
+        public string message { get; set; }
+        public List<Product> data{ get; set; }
     }
 
     public class CategoriesResults

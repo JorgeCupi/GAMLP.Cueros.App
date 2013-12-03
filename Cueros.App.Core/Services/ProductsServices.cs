@@ -24,8 +24,9 @@ namespace Cueros.App.Core.Services
         {
             url = "http://cadepiacueros.azurewebsites.net/product/getall";
             response = await Utilities.DownloadJsonFromThisUrl(url);
-
-            return Utilities.TransformToProductList(response);
+            if (response != "Error 400" && response != "Error 404")
+                return Utilities.TransformToProductList(response);
+            else return null;
         }
         /// <summary>
         /// Obtiene los N productos mas nuevos de la base de datos.

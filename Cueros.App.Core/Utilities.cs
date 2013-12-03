@@ -15,7 +15,7 @@ namespace Cueros.App.Core
         internal static List<Product> TransformToProductList(string response)
         {
             ProductsResults res = JsonConvert.DeserializeObject<ProductsResults>(response);
-            return res.Products;
+            return res.data;
         }
 
         internal static List<Category> TransformToCategoriesList(string response)
@@ -31,12 +31,14 @@ namespace Cueros.App.Core
             {
                 Byte[] result = await client.GetByteArrayAsync(url);
                 string res = System.Text.Encoding.UTF8.GetString(result, 0, result.Length);
+
                 if (res != null)
                     return res;
                 return "Error 404"; //No hay informacion.
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                string ex = e.ToString();
                 return "Error 400"; // No se pudo realizar la descarga del string.
             }
         }
