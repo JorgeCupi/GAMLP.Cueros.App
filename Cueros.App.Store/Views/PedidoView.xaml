@@ -6,13 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
     mc:Ignorable="d">
-    
+
     <Page.Resources>
         <Style x:Key="PrecioFinalStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="25"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>        
+        </Style>
         <Style x:Key="TextStyle" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="18"/>
@@ -20,7 +20,10 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="#060671">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Image/FondoCadepia.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="120"/>
             <RowDefinition Height="*"/>
@@ -55,12 +58,12 @@
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
-        
+
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right" Margin="30,0">
             <TextBlock Text="Precio Final:" Style="{StaticResource ResourceKey=PrecioFinalStyle}"/>
-            <TextBlock Name="txbPrecioFinal" Style="{StaticResource ResourceKey=PrecioFinalStyle}" Margin="0,0,100,0"/>            
+            <TextBlock Name="txbPrecioFinal" Style="{StaticResource ResourceKey=PrecioFinalStyle}" Margin="0,0,100,0"/>
         </StackPanel>
-        
-        
+
+
     </Grid>
 </Page>

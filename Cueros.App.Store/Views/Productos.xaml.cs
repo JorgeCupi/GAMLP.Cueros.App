@@ -71,8 +71,9 @@ namespace Cueros.App.Store.Class
 
         }
 
-        public async void ListProduct() 
+        public async void ListProduct()
         {
+            AnilloProgreso.Visibility = Visibility.Visible;
             List<Product> _list = new List<Product>();
             Product _product;
             try
@@ -84,12 +85,17 @@ namespace Cueros.App.Store.Class
                 }
                 my_list_productos.ItemsSource = _list;
                 Serializar();
+                AnilloProgreso.Visibility = Visibility.Collapsed;
             }
             catch (Exception)
             {
                 Error();
             }
+
+          
         }
+
+
 
         async void Error()
         {
@@ -164,5 +170,51 @@ namespace Cueros.App.Store.Class
             return internetProfile != null &&
                 internetProfile.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
         }
+
+        private void ListViewSelection_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+            if(ListViewSelection.SelectedItem!=null){
+               int value = ListViewSelection.SelectedIndex;
+                
+                switch(value){
+                
+                    case 0:
+                        my_list_productos.Visibility = Visibility.Collapsed;
+                        ListViewCategorias.Visibility = Visibility.Visible;
+                        CargarListaCategorias();
+                        break;
+                }
+            
+            
+            
+            }
+
+        }
+
+        public async void CargarListaCategorias()
+        {
+
+            AnilloProgreso.Visibility = Visibility.Visible;
+            List<Categoria> ListCategorias = new List<Categoria>();
+            Categoria categoria;
+            try
+            {
+                foreach (var item in await ServiciosDeProductos.GetProducts())
+                {
+                    categoria = new Categoria() { Nombre=item.Nombre,UrlImagen=item.Fotos.FirstOrDefault().URL, Id = item.Id };
+                    ListCategorias.Add(categoria);
+                }
+                ListViewCategorias.ItemsSource = ListCategorias;
+                Serializar();
+                AnilloProgreso.Visibility = Visibility.Collapsed;
+            }
+            catch (Exception)
+            {
+                Error();
+            }
+
+        }
+
     }
 }
