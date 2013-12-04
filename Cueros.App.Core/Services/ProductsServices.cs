@@ -25,8 +25,24 @@ namespace Cueros.App.Core.Services
             url = "http://cadepiacueros.azurewebsites.net/product/getall";
             //url = "https://dl-web.dropbox.com/get/GAMLP%20-%20Cueros/Json/CUEROS.json?w=AADsn96zfqT1na4Q82v62OckNFUvW0nq9fP0CEtasSut7Q&dl=1";
             response = await Utilities.DownloadJsonFromThisUrl(url);
-            if (response != "Error 400" && response != "Error 404")
-                return Utilities.TransformToProductList(response);
+            if (response != "Error 400" && response != "Error 404")   
+            {
+                List<Product> list = Utilities.TransformToProductList(response);
+                List<Material> lstMaterials = await MaterialsServices.GetMaterials();
+                List<Supplier> lstSuppliers = await SuppliersServices.GetSuppliers();
+                foreach (Material m in lstMaterials)
+	            {
+		            m.Suppliers = lstSuppliers;
+	            }
+                List<Picture> lstPictures = await PicturesServices.GetPictures();
+                
+                foreach (Product p in list)
+                {
+                    p.Materials = lstMaterials;
+                    p.Pictures = lstPictures;
+                }
+                return list;
+            }
             else return null;
         }
         /// <summary>
@@ -167,10 +183,10 @@ namespace Cueros.App.Core.Services
             return query.ToList();
         }
 
-        private static List<Product> GetProductsFromThisCategory(List<Product> list, string IdCategory)
+        private static List<Product> GetProductsFromThisCategory(List<Product> list, string Description)
         {
             IEnumerable<Product> query = (from P in list
-                                          where P.Category.CategoryID == IdCategory
+                                          where P.Category.Name == Description
                                           select P);
             return query.ToList();
         }

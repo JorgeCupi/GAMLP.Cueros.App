@@ -17,7 +17,7 @@ namespace Cueros.App.Core.Services
             return Utilities.TransformToPicturesList(response);
         }
 
-        public static async Task<Picture> GetCategory(string ID)
+        public static async Task<Picture> GetPicture(string ID)
         {
             string url = "http://cadepiacueros.azurewebsites.net/picture/get?PictureID=" + ID;
             string response = await Utilities.DownloadJsonFromThisUrl(url);

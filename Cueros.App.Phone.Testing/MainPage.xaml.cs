@@ -57,8 +57,8 @@ namespace Cueros.App.Phone.Testing
 
         async void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            //List<Product> products = await ProductsServices.GetProducts();
-            //MessageBox.Show(products.Count.ToString());
+            List<Product> products = await ProductsServices.GetProducts();
+            MessageBox.Show(products.Count.ToString());
 
             //lstCategorias.ItemsSource = await CategoriesServices.GetListOfCategories();
 
@@ -71,8 +71,10 @@ namespace Cueros.App.Phone.Testing
             //List<Material> materials = await MaterialsServices.GetMaterials();
             //MessageBox.Show(materials.Count.ToString());
 
-            List<Picture> pictures = await PicturesServices.GetPictures();
-            MessageBox.Show(pictures.Count.ToString());
+            //List<Picture> pictures = await PicturesServices.GetPictures();
+            //MessageBox.Show(pictures.Count.ToString());
+
+            
         }
     }
 }
