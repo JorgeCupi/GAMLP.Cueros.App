@@ -76,6 +76,12 @@ namespace Cueros.App.WPF.Views
             }
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            det.Show();
+            this.Close();
+        }
+
         //private void Cant_TextChanged(object sender, TextChangedEventArgs e)
         //{
         //    if (!Cant.Text.Equals(""))

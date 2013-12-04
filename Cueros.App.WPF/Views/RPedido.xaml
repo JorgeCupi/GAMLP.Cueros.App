@@ -22,7 +22,7 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Button Style="{DynamicResource MetroCircleButtonStyle}" Grid.Column="0" Grid.Row="0" Width="40" HorizontalAlignment="Left" Click="Button_Click" Margin="4,0,0,0">
+            <Button Style="{DynamicResource MetroCircleButtonStyle}" Grid.Column="0" Grid.Row="0" Width="40" HorizontalAlignment="Left" Click="Button_Click_1" Margin="4,0,0,0">
                 <Button.Background>
                     <ImageBrush ImageSource="/Cueros.App.WPF;component/imagenes/BackButton.png"/>
                 </Button.Background>
