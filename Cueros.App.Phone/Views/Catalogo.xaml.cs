@@ -49,8 +49,8 @@ namespace Cueros.App.Phone.Views
 
         void Cargar()
         {
-            obtenerdestacados();
             obtenerproductos();
+            obtenerdestacados();
             obtenernovedades();
         }
 
