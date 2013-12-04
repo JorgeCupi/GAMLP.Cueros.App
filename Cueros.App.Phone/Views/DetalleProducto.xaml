@@ -61,7 +61,7 @@
                             <Image Width="400"
                                    Height="200"
                                    Stretch="UniformToFill"
-                                   Source="{Binding Url}">
+                                   Source="{Binding URL}">
                             </Image>
                         </Border>
                     </DataTemplate>
@@ -103,7 +103,7 @@
                                FontWeight="Bold"/>
                         <TextBlock Name="linea" 
                                FontSize="25"
-                               Text="{Binding Category.Nombre}"
+                               Text="{Binding Category.Name}"
                                Opacity="0.7"
                                Margin="30,0,0,0"/>
                     </StackPanel>
@@ -150,7 +150,7 @@
                                            FontSize="45"/>
                                 <TextBlock Text="Nombre Comercial:"
                                            Margin="10,0,0,0"/>
-                                <TextBlock Text="{Binding ComercialName}"
+                                <TextBlock Text="{Binding CommercialName}"
                                            Margin="70,0,0,0"/>
                                 <TextBlock Text="Costo Unidad:"
                                            Margin="10,0,0,0"/>

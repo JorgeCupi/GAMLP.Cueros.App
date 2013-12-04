@@ -13,18 +13,27 @@
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
-    <!--LayoutRoot es la cuadrícula raíz donde se coloca todo el contenido de la página-->
-    <StackPanel Margin="20"
-                Name="detalles">
-        <TextBlock Text="Pedidos"
-                   FontSize="45"
-                   Style="{StaticResource PhoneTextNormalStyle}"/>
-        <ListBox>
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </StackPanel>
+    <phone:Panorama Title="Pedidos">
+        <phone:PanoramaItem Header="pendientes">
+            <ListBox Name="pendientes">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#060671"
+                                Margin="10"
+                                Width="350"
+                                Height="150">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="{Binding Date}"/>
+                                <TextBlock Text="{Binding Quantity}"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </phone:PanoramaItem>
+        <phone:PanoramaItem Header="realizados">
+            
+        </phone:PanoramaItem>
+    </phone:Panorama>
+
 </phone:PhoneApplicationPage>

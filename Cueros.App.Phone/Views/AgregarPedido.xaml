@@ -15,15 +15,25 @@
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="False">
 
-    <Grid Background="#060671">
+    <Grid Background="#060671"
+          Name="detalles">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <StackPanel Name="detalles"
-                    Margin="25">
-            <TextBlock Text="{Binding Nombre}"
-                   FontSize="45"
-                   Name="producto"
-                   Style="{StaticResource PhoneTextNormalStyle}"
-                   TextWrapping="Wrap"/>
+        <Border Background="#0038BD"
+                Grid.Row="0"
+                Padding="10">
+            <TextBlock Text="{Binding Name}"
+                           FontSize="45"
+                           Name="producto"
+                           Style="{StaticResource PhoneTextNormalStyle}"
+                           TextWrapping="Wrap"/>
+        </Border>
+        
+        <StackPanel Margin="25"
+                    Grid.Row="1">
             <StackPanel Orientation="Horizontal"
                     Margin="20">
                 <TextBlock Text="Unidades:"
@@ -62,8 +72,8 @@
                 <TextBlock Name="CostoTotal"
                        Width="250"/>
             </StackPanel>
-            <Button Content="Guardar"
-                Width="200"
+            <Button Content="Realizar Pedido"
+                Width="230"
                 Background="#0038BD"
                 Foreground="#FFFFFF"
                 Padding="15"

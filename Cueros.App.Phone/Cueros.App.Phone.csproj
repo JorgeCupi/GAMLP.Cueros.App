@@ -96,6 +96,7 @@
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Models\Almacenar.cs" />
     <Compile Include="Models\GenericEventArgs.cs" />
+    <Compile Include="Models\pedido.cs" />
     <Compile Include="Views\AgregarPedido.xaml.cs">
       <DependentUpon>AgregarPedido.xaml</DependentUpon>
     </Compile>

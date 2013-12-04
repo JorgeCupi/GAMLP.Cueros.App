@@ -7,11 +7,16 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Cueros.App.Core.Models;
+using Cueros.App.Phone.Models;
+using System.Collections.ObjectModel;
 
 namespace Cueros.App.Phone.Views
 {
     public partial class AgregarPedido : PhoneApplicationPage
     {
+        ObservableCollection<Order> pro;
+
         public AgregarPedido()
         {
             InitializeComponent();
@@ -49,7 +54,23 @@ namespace Cueros.App.Phone.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Views/MainPage.xaml", UriKind.Relative));
+            pro = new Almacenar<Order>().Deserialize("Pedidos.json");
+            if (pro == null)
+            {
+                pro = new ObservableCollection<Order>();
+            }
+            List<Order> pedido = pro.ToList();
+            Product p = detalles.DataContext as Product;
+            pedido.Add(new Order()
+            {
+                Date = DateTime.Now,
+                OrderID = (pedido.Count + 1).ToString(),
+                ProductID = int.Parse(p.ProductID),
+                Quantity = int.Parse(cantidad.Text.ToString())
+            });
+            pro = new ObservableCollection<Order>(pedido);
+            new Almacenar<Order>().Serialize(pro, "Pedidos.json");
+            NavigationService.Navigate(new Uri("/Views/Catalogo.xaml", UriKind.Relative));
         }
     }
 }
