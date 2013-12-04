@@ -11,7 +11,9 @@ namespace Cueros.App.Core.Models
 
     public class CategoriesResults
     {
-        public List<Category> Categories { get; set; }
+        public string success { get; set; }
+        public string message { get; set; }
+        public List<Category> data { get; set; }
     }
 
     public class SuppliersResults
