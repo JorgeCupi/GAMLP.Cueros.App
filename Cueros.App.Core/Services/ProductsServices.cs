@@ -22,8 +22,8 @@ namespace Cueros.App.Core.Services
         /// </summary>
         public static async Task<List<Product>> GetProducts()
         {
-            //url = "http://cadepiacueros.azurewebsites.net/product/getall";
-            url = "https://dl-web.dropbox.com/get/GAMLP%20-%20Cueros/Json/CUEROS.json?w=AADsn96zfqT1na4Q82v62OckNFUvW0nq9fP0CEtasSut7Q&dl=1";
+            url = "http://cadepiacueros.azurewebsites.net/product/getall";
+            //url = "https://dl-web.dropbox.com/get/GAMLP%20-%20Cueros/Json/CUEROS.json?w=AADsn96zfqT1na4Q82v62OckNFUvW0nq9fP0CEtasSut7Q&dl=1";
             response = await Utilities.DownloadJsonFromThisUrl(url);
             if (response != "Error 400" && response != "Error 404")
                 return Utilities.TransformToProductList(response);
