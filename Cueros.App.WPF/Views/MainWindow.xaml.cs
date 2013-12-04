@@ -89,13 +89,13 @@ namespace Cueros.App.WPF
                 StreamWriter escritor1 = new StreamWriter("D:\\registros1.json");
                 //Guarda Destacados
                 escritor1.WriteLine(jsonDest);
-                escritor.Close();
+                escritor1.Close();
                 lstProductosDest.ItemsSource = pro;
                 List<Category> cat = await CategoriesServices.GetCategories();
                 jsonCat = JsonConvert.SerializeObject(pro);
                 StreamWriter escritor2 = new StreamWriter("D:\\registros2.json");
                 //Guarda Categorias
-                escritor.WriteLine(jsonCat);
+                escritor2.WriteLine(jsonCat);
                 escritor2.Close();
                 lstCategorias.ItemsSource = cat;
                 pgrBar.Visibility = Visibility.Collapsed;
