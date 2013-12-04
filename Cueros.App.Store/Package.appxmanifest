@@ -17,7 +17,7 @@
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Cueros.App.Store.App">
       <VisualElements DisplayName="Cueros.App.Store" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Cueros.App.Store" ForegroundText="light" BackgroundColor="#464646">
         <DefaultTile ShowName="allLogos" WideLogo="Assets\Wide310x150Logo.jpg" />
-        <SplashScreen Image="Assets\SplashScreen.png" />
+        <SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="white" />
       </VisualElements>
     </Application>
   </Applications>
