@@ -24,5 +24,13 @@ namespace Cueros.App.Core.Services
 
             return Utilities.TransformToPicture(response);
         }
+
+        public static List<Picture> GetPicturesForThisProduct(List<Picture> pics, string description)
+        {
+            IEnumerable<Picture> query = from P in pics
+                                         where P.Description == description
+                                         select P;
+            return query.ToList();
+        }
     }
 }

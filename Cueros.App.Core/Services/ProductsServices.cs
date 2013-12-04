@@ -39,7 +39,7 @@ namespace Cueros.App.Core.Services
                 foreach (Product p in list)
                 {
                     p.Materials = lstMaterials;
-                    p.Pictures = lstPictures;
+                    p.Pictures = PicturesServices.GetPicturesForThisProduct(lstPictures, p.Description);
                 }
                 return list;
             }
