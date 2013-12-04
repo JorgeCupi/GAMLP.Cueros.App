@@ -13,10 +13,11 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid>
+    <Grid> 
         <Border BorderThickness="3" BorderBrush="Black" Background="#060671" Name="Categorias">
             <Grid DataContext="{Binding Pro}">
                 <Grid.ColumnDefinitions>
@@ -24,10 +25,14 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="40"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Button Style="{DynamicResource MetroCircleButtonStyle}" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Height="40" Width="40" HorizontalAlignment="Left" Click="Button_Click" VerticalAlignment="Top" Margin="4,0,0,0"/>
+                <Button Style="{DynamicResource MetroCircleButtonStyle}" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Height="40" Width="40" HorizontalAlignment="Left" Click="Button_Click" VerticalAlignment="Top" Margin="4,0,0,0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Cueros.App.WPF;component/imagenes/BackButton.png"/>
+                    </Button.Background>
+                </Button>
 
                 <TabControl Background="Transparent" Grid.Row="1">
                     <TabItem Header="Todos" FontSize="15">
@@ -67,6 +72,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Margin="10,10,10,0" >
+                        
                         <ListBox Name="imagenes" ItemTemplate="{StaticResource imagenes}"/>
                     </Grid>
                     <Grid Grid.Row="1" Background="White" Margin="10,0,10,0">
@@ -84,20 +90,22 @@
                                 <RowDefinition Height="30"/>
                             </Grid.RowDefinitions>
                             <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Nombre "/>
-                            <Label Grid.Column="1" Grid.Row="0" Content="{Binding Nombre}"/>
+                            <Label Grid.Column="1" Grid.Row="0" Content="{Binding Name}"/>
                             <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Descripcion"/>
-                            <TextBlock Grid.Column="1" Grid.Row="1" Foreground="Black" Text="{Binding Descripcion}" TextWrapping="Wrap" Height="Auto" />
+                            <TextBlock Grid.Column="1" Grid.Row="1" Foreground="Black" Text="{Binding Description}" TextWrapping="Wrap" Height="Auto" />
                             <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Temporada "/>
-                            <Label Grid.Column="1" Grid.Row="2" Foreground="Black" Content="{Binding Temporada}"/>
+                            <Label Grid.Column="1" Grid.Row="2" Foreground="Black" Content="{Binding Season}"/>
                             <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Modelo"/>
-                            <Label Grid.Column="1" Grid.Row="3" Foreground="Black" Content="{Binding Modelo}"/>
+                            <Label Grid.Column="1" Grid.Row="3" Foreground="Black" Content="{Binding Model}"/>
 
                         </Grid>
                     </Grid>
                 </Grid>
             </Grid>
         </Border>
-
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <Controls:ProgressRing IsActive="True" Name="pgrBar" />
+        <TextBlock Margin="0,10,0,0" Name="textb" Text="Se estan obteniendo los productos de esta categoria...." FontSize="20" FontWeight="Medium" Foreground="#0038bd" Height="49"/>
+        </StackPanel>
     </Grid>
 </Controls:MetroWindow>

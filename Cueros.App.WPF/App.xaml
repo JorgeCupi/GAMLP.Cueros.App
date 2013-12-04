@@ -6,16 +6,16 @@
         <DataTemplate x:Key="ListaProductos">
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105" Width="400" Background="#0038bd">
-                    <Image  Source="{Binding Fotos[0].URL}" Width="100" Height="100" Stretch="Fill" Margin="10"/>
-                    <TextBlock Text="{Binding Nombre}" Width="220" TextWrapping="Wrap" Margin="10,0" FontSize="25" Foreground="White" VerticalAlignment="Center"/>
+                    <Image  Source="{Binding Picture[0].URL}" Width="100" Height="100" Stretch="Fill" Margin="10"/>
+                    <TextBlock Text="{Binding Name}" Width="220" TextWrapping="Wrap" Margin="10,0" FontSize="25" Foreground="White" VerticalAlignment="Center"/>
                 </StackPanel>
             </StackPanel>
         </DataTemplate>
         <DataTemplate x:Key="ListaCategorias">
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105" Width="320" Background="#0038bd">
-                    <Image  Source="{Binding UrlImagen}" Width="100" Height="100" Stretch="Fill" Margin="10"/>
-                    <TextBlock Text="{Binding Nombre}" Width="220" TextWrapping="Wrap" Margin="10,0" FontSize="25" Foreground="White" VerticalAlignment="Center"/>
+                    <Image  Source="{Binding Url}" Width="100" Height="100" Stretch="Fill" Margin="10"/>
+                    <TextBlock Text="{Binding Name}" Width="220" TextWrapping="Wrap" Margin="10,0" FontSize="25" Foreground="White" VerticalAlignment="Center"/>
                 </StackPanel>
             </StackPanel>
         </DataTemplate>
@@ -31,17 +31,17 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Foreground="White" Grid.Column="0" Grid.Row="0" Content="Nombre"/>
-                <Label Foreground="White" Grid.Column="1" Grid.Row="0" Content="{Binding Nombre}"/>
+                <Label Foreground="White" Grid.Column="1" Grid.Row="0" Content="{Binding Name}"/>
 
                 <Label Foreground="White" Grid.Column="0" Grid.Row="1" Content="Modelo"/>
-                <Label Foreground="White" Grid.Column="1" Grid.Row="1" Content="{Binding Modelo}"/>
+                <Label Foreground="White" Grid.Column="1" Grid.Row="1" Content="{Binding Model}"/>
 
                 <Label Foreground="White" Grid.Column="0" Grid.Row="2" Content="Temporada"/>
-                <Label Foreground="White" Grid.Column="1" Grid.Row="2" Content="{Binding Temporada}"/>
+                <Label Foreground="White" Grid.Column="1" Grid.Row="2" Content="{Binding Season}"/>
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="Materiales">
-            <Border BorderThickness="3" BorderBrush="#0038bd">
+            <Border BorderThickness="1" BorderBrush="#0038bd">
             <Grid Height="auto" Width="300">
 
                 <Grid.ColumnDefinitions>
@@ -54,10 +54,10 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Label Foreground="White" Grid.Column="0" Grid.Row="0" Content="Nombre"/>
-                <Label Foreground="White" Grid.Column="1" Grid.Row="0" Content="{Binding Nombre}"/>
+                <Label Foreground="White" Grid.Column="1" Grid.Row="0" Content="{Binding Name}"/>
 
                 <Label Foreground="White" Grid.Column="0" Grid.Row="1" Content="Nombre comercial"/>
-                <Label Foreground="White" Grid.Column="1" Grid.Row="1" Content="{Binding NombreComercial}"/>
+                    <Label Foreground="White" Grid.Column="1" Grid.Row="1" Content="{Binding CommercialName}"/>
 
                 <Label Foreground="White" Grid.Column="0" Grid.Row="2" Content="Color"/>
                 <Label Foreground="White" Grid.Column="1" Grid.Row="2" Content="{Binding Color}"/>
@@ -66,7 +66,7 @@
         </DataTemplate>
         <DataTemplate x:Key="Proveedor">
 
-            <Border BorderThickness="3" BorderBrush="#0038bd">
+            <Border BorderThickness="1" BorderBrush="#0038bd">
                 <Grid Height="auto" Width="300">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -80,25 +80,25 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Label Foreground="White" Grid.Column="0" Grid.Row="0" Content="Nombre"/>
-                    <Label Foreground="White" Grid.Column="1" Grid.Row="0" Content="{Binding Nombre}"/>
+                    <Label Foreground="White" Grid.Column="1" Grid.Row="0" Content="{Binding Name}"/>
 
                     <Label Foreground="White" Grid.Column="0" Grid.Row="1" Content="Correo"/>
-                    <Label Foreground="White" Grid.Column="1" Grid.Row="1" Content="{Binding Correo}"/>
+                    <Label Foreground="White" Grid.Column="1" Grid.Row="1" Content="{Binding Email}"/>
 
                     <Label Foreground="White" Grid.Column="0" Grid.Row="2" Content="Direccion"/>
-                    <Label Foreground="White" Grid.Column="1" Grid.Row="2" Content="{Binding Direccion}"/>
+                    <Label Foreground="White" Grid.Column="1" Grid.Row="2" Content="{Binding Adress}"/>
 
                     <Label Foreground="White" Grid.Column="0" Grid.Row="3" Content="Telefono"/>
-                    <Label Foreground="White" Grid.Column="1" Grid.Row="3" Content="{Binding Telefono}"/>
+                    <Label Foreground="White" Grid.Column="1" Grid.Row="3" Content="{Binding PhoneNumber}"/>
 
                     <Label Foreground="White" Grid.Column="0" Grid.Row="4" Content="Ciudad "/>
-                    <Label Foreground="White" Grid.Column="1" Grid.Row="4" Content="{Binding Ciudad}"/>
+                    <Label Foreground="White" Grid.Column="1" Grid.Row="4" Content="{Binding City}"/>
 
                 </Grid>
             </Border>
         </DataTemplate>
         <DataTemplate x:Key="imagenes">
-            <Image  Width="350" Source="{Binding URL}"/>
+            <Image Source="{Binding URL}" Stretch="Uniform"/>
         </DataTemplate>
     </Application.Resources>
 </Application>

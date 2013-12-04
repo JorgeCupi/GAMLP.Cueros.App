@@ -12,23 +12,23 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-                        <Image Stretch="UniformToFill" Source="{Binding  Fotos {0}.URL}"/>
+                        <Image Stretch="UniformToFill" Source="{Binding  Pictures {0}.URL}"/>
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="Id"/>
-                                <TextBox Text="{Binding Id}"/>
+                                <TextBox Text="{Binding ProductID}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                             <Label Content="Nombre"/>
-                            <TextBox Text="{Binding Nombre}"/>
+                            <TextBox Text="{Binding Name}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                             <Label Content="Modelo"/>
-                            <TextBox Text="{Binding Modelo}"/>
+                            <TextBox Text="{Binding Model}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="Descripcion"/>
-                                <TextBox Text="{Binding Descripcion}" TextWrapping="Wrap"/>
+                                <TextBox Text="{Binding Decription}" TextWrapping="Wrap"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>

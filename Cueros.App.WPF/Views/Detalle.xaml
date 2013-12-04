@@ -25,7 +25,11 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button Style="{DynamicResource MetroCircleButtonStyle}" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Height="40" Width="40" HorizontalAlignment="Left" Click="btnIncio_Click" VerticalAlignment="Top" Margin="4,0,0,0"/>
+            <Button Style="{DynamicResource MetroCircleButtonStyle}" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Height="40" Width="40" HorizontalAlignment="Left" Click="btnIncio_Click" VerticalAlignment="Top">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Cueros.App.WPF;component/imagenes/BackButton.png"/>
+                </Button.Background>
+            </Button>
 
             <Grid Grid.Column="0" Grid.Row="1">
                 <Grid.RowDefinitions>
@@ -33,7 +37,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid Background="White">
-                    <ListBox Name="imagenes" Width="330" ItemTemplate="{StaticResource imagenes}" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <ListBox Name="imagenes" Background="White" Width="330" Height="260" ItemTemplate="{StaticResource imagenes}" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
                 </Grid>
                 <Grid Grid.Row="1" Name="pro" Background="White">
                     <Grid.ColumnDefinitions>
@@ -48,13 +52,13 @@
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Nombre "/>
-                    <Label Grid.Column="1" Grid.Row="0" Content="{Binding Nombre}"/>
+                    <Label Grid.Column="1" Grid.Row="0" Content="{Binding Name}"/>
                     <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Descripcion"/>
-                    <TextBlock Grid.Column="1" Grid.Row="1" Foreground="Black" Text="{Binding Descripcion}" TextWrapping="Wrap" Height="Auto" />
+                    <TextBlock Grid.Column="1" Grid.Row="1" Foreground="Black" Text="{Binding Description}" TextWrapping="Wrap" Height="Auto" />
                     <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Temporada "/>
-                    <Label Grid.Column="1" Grid.Row="2" Foreground="Black" Content="{Binding Temporada}"/>
+                    <Label Grid.Column="1" Grid.Row="2" Foreground="Black" Content="{Binding Season}"/>
                     <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Top" Margin="40,0,0,0" Foreground="#0038bd" Content="Modelo"/>
-                    <Label Grid.Column="1" Grid.Row="3" Foreground="Black" Content="{Binding Modelo}"/>
+                    <Label Grid.Column="1" Grid.Row="3" Foreground="Black" Content="{Binding Model}"/>
                     <Button Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" Click="Button_Click" Content="Realizar pedido" Grid.ColumnSpan="2" Margin="2,5,205,5"/>
                 </Grid>
             </Grid>
@@ -64,7 +68,7 @@
                     <ListBox Name="ListaMateriales" Background="Transparent" ItemTemplate="{StaticResource Materiales}"/>
                 </StackPanel>
             </Grid>
-            <Grid Grid.Column="2" Grid.Row="1">
+            <Grid Grid.Column="2" Grid.Row="1" Margin="0,0,5,0">
                 <StackPanel>
                     <Label Content="Proveedores" FontSize="20" Foreground="White"  HorizontalAlignment="Center"/>
                     <ListBox Name="Prov" Background="Transparent" ItemTemplate="{StaticResource Proveedor}"/>

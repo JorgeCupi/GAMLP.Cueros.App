@@ -44,7 +44,7 @@ namespace Cueros.App.WPF.Views
             pro = p;
             listaProductos = new List<Product>();
             Loaded += RPedido_Loaded;
-            Cant.TextChanged +=Cant_TextChanged;
+           // Cant.TextChanged +=Cant_TextChanged;
         }
 
         void RPedido_Loaded(object sender, RoutedEventArgs e)
@@ -52,22 +52,38 @@ namespace Cueros.App.WPF.Views
             DetallesP.DataContext = pro;
             imagen.ItemsSource = pro.Pictures;
             precioTotal = costo * Convert.ToInt32(Cant.Text);
-            Total.Content = precioTotal;
+            //Total.Content = precioTotal;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            det.Show();
-            this.Hide();
+            hacerPedido();
         }
 
-        private void Cant_TextChanged(object sender, TextChangedEventArgs e)
+        private async void hacerPedido()
         {
-            if (!Cant.Text.Equals(""))
+            Order or = new Order();
+            or.ProductID = int.Parse(pro.ProductID);
+            or.ProductID = cantidad;
+            or.Date = DateTime.Today;
+            bool sw = await OrdersServices.TryCreateOrder(or);
+            if (sw)
             {
-                this.precioTotal = costo * Convert.ToInt32(Cant.Text);
-                Total.Content = precioTotal.ToString();
+                MessageBox.Show("Se ha añadido a la orden");
             }
-            
+            else
+            {
+                MessageBox.Show("Se ha producido un error");
+            }
         }
+
+        //private void Cant_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    if (!Cant.Text.Equals(""))
+        //    {
+        //        this.precioTotal = costo * Convert.ToInt32(Cant.Text);
+        //        Total.Content = precioTotal.ToString();
+        //    }
+            
+        //}
     }
 }

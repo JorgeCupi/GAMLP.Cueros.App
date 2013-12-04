@@ -68,8 +68,8 @@ namespace Cueros.App.WPF.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
                 RPedido p = new RPedido(producto1, this);
-                p.Owner = this;
                 p.Show();
+                this.Hide();
         }
 
     }

@@ -13,9 +13,42 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Border BorderThickness="3" BorderBrush="Black" Background="#060671">
-        <Grid Background="#060671">
-
-        </Grid>
-    </Border>
+    <Grid>
+        <Border BorderThickness="3" BorderBrush="Black" Background="#060671">
+            <Grid Background="#060671">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Button Style="{DynamicResource MetroCircleButtonStyle}" Height="40" Width="40" HorizontalAlignment="Left" Click="Button_Click" VerticalAlignment="Top">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Cueros.App.WPF;component/imagenes/BackButton.png"/>
+                    </Button.Background>
+                </Button>
+                <Grid Grid.Column="0" Grid.Row="1">
+                    <StackPanel>
+                        <TextBox x:Name="NombreProducto" Text="Nombre del producto" Width="150" HorizontalAlignment="Left"/>
+                        <ListBox x:Name="ListaMateriales" ItemTemplate="{StaticResource Materiales}" Background="Transparent" SelectionChanged="ListaMateriales_SelectionChanged"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <ListBox Name="Proveedores" ItemTemplate="{StaticResource Proveedor}" Background="Transparent"/>
+                    <Button Grid.Row="1" Content="Agregar"/>
+                </Grid>
+                <Grid Grid.Column="2" Grid.Row="1">
+                    <ListBox Name="Seleccionados" Background="Transparent" ItemTemplate="{StaticResource Proveedor}"/>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
 </Controls:MetroWindow>

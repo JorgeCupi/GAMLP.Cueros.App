@@ -15,12 +15,15 @@ using Cueros.App.Core.Models;
 using Cueros.App.Core.Services;
 using Cueros.App.WPF.Views;
 using MahApps.Metro.Controls;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Cueros.App.WPF
 {
     /// <summary>
     /// Interaction logic for Informacion.xaml
     /// </summary>
+    /// 
     public partial class Informacion :MetroWindow
     {
        String cate;
@@ -56,6 +59,7 @@ namespace Cueros.App.WPF
                 List<Product> Des = await ProductsServices.GetRecentProductsFromThisCategory(cate);
                 Destacados.ItemsSource = Des;
                 pgrBar.Visibility = Visibility.Collapsed;
+                textb.Visibility = Visibility.Collapsed;
                 Categorias.Opacity = 1;
             }
             catch(Exception)

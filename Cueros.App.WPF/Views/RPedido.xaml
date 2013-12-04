@@ -22,10 +22,14 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Button Style="{DynamicResource MetroCircleButtonStyle}" Grid.Column="0" Grid.Row="0" Width="40" HorizontalAlignment="Left" Click="Button_Click" Margin="4,0,0,0"/>
+            <Button Style="{DynamicResource MetroCircleButtonStyle}" Grid.Column="0" Grid.Row="0" Width="40" HorizontalAlignment="Left" Click="Button_Click" Margin="4,0,0,0">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Cueros.App.WPF;component/imagenes/BackButton.png"/>
+                </Button.Background>
+            </Button>
 
             <Label Grid.Row="1" Content="Pedido" FontSize="35" Foreground="White"/>
-            <ListBox Grid.Row="2" Name="imagen" ItemTemplate="{StaticResource imagenes}" Width="385"/>
+            <ListBox Grid.Row="2" Name="imagen" ItemTemplate="{StaticResource imagenes}" Width="385" Background="White"/>
 
             <StackPanel Grid.Row="3">
 
@@ -38,29 +42,29 @@
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition Height="auto"/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Label Grid.Column="0" Grid.Row="0" Foreground="#0038bd" Content="Nombre"/>
-                        <Label Grid.Column="1" Grid.Row="0" Content="{Binding Nombre}"/>
+                        <Label Grid.Column="1" Grid.Row="0" Content="{Binding Name}"/>
 
                         <Label Grid.Column="0" Grid.Row="1" Foreground="#0038bd" Content="Modelo"/>
-                        <Label Grid.Column="1" Grid.Row="1" Content="{Binding Modelo}"/>
+                        <Label Grid.Column="1" Grid.Row="1" Content="{Binding Model}"/>
 
                         <Label Grid.Column="0" Grid.Row="2" Foreground="#0038bd" Content="Descripcion"/>
-                        <TextBlock Grid.Column="1" Grid.Row="2" Width="150" Text="{Binding Descripcion}"/>
+                        <TextBlock Grid.Column="1" Grid.Row="2" Width="190" Height="auto" TextWrapping="Wrap" Text="{Binding Description}"/>
 
                         <Label Grid.Column="0" Grid.Row="3" Foreground="#0038bd" Content="Temporada"/>
-                        <Label Grid.Column="1" Grid.Row="3" Content="{Binding Temporada}"/>
+                        <Label Grid.Column="1" Grid.Row="3" Content="{Binding Season}"/>
                         <Label Grid.Column="0" Grid.Row="4" Foreground="#0038bd" Content="Cantidad"/>
-                        <TextBox Name="Cant" Grid.Column="1" Grid.Row="4" Text="1"/>
+                        <TextBox Name="Cant" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" Width="80" Text="1"/>
 
-                        <Label Grid.Column="0" Grid.Row="5" Foreground="#0038bd" Content="precio"/>
-                        <Label Name="Total" Grid.Column="1" Grid.Row="5" />
-                        <Button Grid.Column="1" Grid.Row="6" Width="80" Content="Gruardar" Background="Transparent" Foreground="#0038bd" Click="Button_Click"/>
+                        <!--<Label Grid.Column="0" Grid.Row="5" Foreground="#0038bd" Content="precio"/>
+                        <Label Name="Total" Grid.Column="1" Grid.Row="5" />-->
+                        <Button Grid.Column="1" Grid.Row="6" Width="80" Content="Guardar" Background="Transparent" Foreground="#0038bd" Click="Button_Click"/>
 
                     </Grid>
                 </ListBox>

@@ -17,6 +17,8 @@ using Cueros.App.Core.Models;
 using System.Collections.ObjectModel;
 using Cueros.App.WPF.Views;
 using MahApps.Metro.Controls;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Cueros.App.WPF
 {
@@ -26,6 +28,10 @@ namespace Cueros.App.WPF
     public partial class MainWindow : MetroWindow
     {
         private Inicio inicio;
+        
+        String json;
+        String jsonDest;
+        String jsonCat;
         public MainWindow( Inicio Ini)
         {
             inicio = Ini;
@@ -72,27 +78,56 @@ namespace Cueros.App.WPF
                 pgrBar.Visibility = Visibility.Visible;
                 brdMain.Opacity = 0;
                 List<Product> pro = await ProductsServices.GetRecentProducts(10);
+                StreamWriter escritor = new StreamWriter("D:\\registros.json");
+                //Guarda Productos
+                json = JsonConvert.SerializeObject(pro);
+                escritor.WriteLine(json);
+                escritor.Close();
                 lstProductos.ItemsSource = pro;
                 pro = await ProductsServices.GetTopProducts(10);
+                jsonDest = JsonConvert.SerializeObject(pro);
+                StreamWriter escritor1 = new StreamWriter("D:\\registros1.json");
+                //Guarda Destacados
+                escritor1.WriteLine(jsonDest);
+                escritor.Close();
                 lstProductosDest.ItemsSource = pro;
                 List<Category> cat = await CategoriesServices.GetCategories();
+                jsonCat = JsonConvert.SerializeObject(pro);
+                StreamWriter escritor2 = new StreamWriter("D:\\registros2.json");
+                //Guarda Categorias
+                escritor.WriteLine(jsonCat);
+                escritor2.Close();
                 lstCategorias.ItemsSource = cat;
                 pgrBar.Visibility = Visibility.Collapsed;
+                textb.Visibility = Visibility.Collapsed;
                 brdMain.Opacity = 1;
             }
             catch (Exception)
             {
-                List<Product> pro = new List<Product>();
-                pro.Add(new Product()
-                {
-                    Name = "O.o oops, ahora no podemos conextarnos, intenta más tarde"
-                });
-                lstProductos.ItemsSource = pro;
-                lstProductosDest.ItemsSource = pro;
-                lstCategorias.ItemsSource = pro;
+                //productos
+                StreamReader lector = new StreamReader("D:\\registros.json");
+
+                json = lector.ReadToEnd();
+                lector.Close();
+                //Destacados
+                StreamReader lector1 = new StreamReader("D:\\registros1.json");
+                jsonDest = lector1.ReadToEnd();
+                lector1.Close();
+                //Categirias
+                StreamReader lector2 = new StreamReader("D:\\registros2.json");
+                jsonCat = lector2.ReadToEnd();
+                lector2.Close();
+
+                ProductsResults res = JsonConvert.DeserializeObject<ProductsResults>(json);
+
+                ProductsResults resDest = JsonConvert.DeserializeObject<ProductsResults>(jsonDest);
+                ProductsResults resCat = JsonConvert.DeserializeObject<ProductsResults>(jsonCat);
+
+                lstProductos.ItemsSource = res.data;
+                lstProductosDest.ItemsSource = resDest.data;
+                lstCategorias.ItemsSource = resCat.data;
             }
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             inicio.Show();
