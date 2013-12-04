@@ -21,7 +21,7 @@ namespace Cueros.App.Core
         internal static List<Category> TransformToCategoriesList(string response)
         {
             CategoriesResults res = JsonConvert.DeserializeObject<CategoriesResults>(response);
-            return res.Categories;
+            return res.data;
         }
 
         public static async Task<string> DownloadJsonFromThisUrl(string url)
