@@ -111,7 +111,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Class\Pedido.cs" />
-    <Compile Include="Class\Product.cs" />
+    <Compile Include="Class\ProductoImagen.cs" />
     <Compile Include="Class\RequestProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\FieldView.xaml.cs">

@@ -9,7 +9,7 @@
     <Page.Resources>
         <DataTemplate x:Key="Template_List">
             <Grid Height="280" Width="250" Grid.Row="1" Margin="5" Background="#0038BD">
-                <Image Source="{Binding UrlImage}" Stretch="Fill"/>
+                <Image Source="{Binding picture}" Stretch="Fill"/>
                 <StackPanel Background="Black" Opacity="0.3" Height="70" VerticalAlignment="Bottom"/>
                 <StackPanel Height="65" VerticalAlignment="Bottom" Margin="10,0,0,0">
                     <TextBlock Text="{Binding Name}" Foreground="White" Style="{StaticResource TitleTextStyle}"/>
@@ -20,11 +20,11 @@
 
         <DataTemplate x:Key="TemplateListCategorias">
             <Grid Height="280" Width="250" Grid.Row="1" Margin="5" Background="#0038BD">
-                <Image Source="{Binding UrlImage}" Stretch="Fill"/>
+                <Image Source="{Binding Url}" Stretch="Fill"/>
                 <StackPanel Background="Black" Opacity="0.3" Height="70" VerticalAlignment="Bottom"/>
                 <StackPanel Height="65" VerticalAlignment="Bottom" Margin="10,0,0,0">
                     <TextBlock Text="{Binding Name}" Foreground="White" Style="{StaticResource TitleTextStyle}"/>
-                    <TextBlock Text="{Binding Id}" Style="{StaticResource SubtitleTextStyle}" Foreground="White"/>
+                    <TextBlock Text="{Binding CategoryID}" Style="{StaticResource SubtitleTextStyle}" Foreground="White"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>

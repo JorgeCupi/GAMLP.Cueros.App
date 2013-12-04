@@ -74,13 +74,14 @@ namespace Cueros.App.Store.Class
         public async void ListProduct()
         {
             AnilloProgreso.Visibility = Visibility.Visible;
-            List<Product> _list = new List<Product>();
-            Product _product;
+            List<ProductoImagen> _list = new List<ProductoImagen>();
+            ProductoImagen _product;
+            
             try
             {
                 foreach (var item in await ProductsServices.GetProducts())
                 {
-                    _product = new Product() { Name = item.Name, UrlImage = item.Pictures.FirstOrDefault().URL, Temporada = item.Season, Id = item.ProductID };
+                    _product = new ProductoImagen() { Name = item.Name,  picture=item.Pictures.FirstOrDefault().URL, Temporada=item.Season};
                     _list.Add(_product);
                 }
                 my_list_productos.ItemsSource = _list;
@@ -90,6 +91,7 @@ namespace Cueros.App.Store.Class
             catch (Exception)
             {
                 Error();
+                AnilloProgreso.Visibility = Visibility.Collapsed;
             }
 
           
@@ -116,7 +118,7 @@ namespace Cueros.App.Store.Class
                 Cueros.App.Core.Models.Product _objeto = null;
                 if (my_list_productos.SelectedItem != null)
                 {
-                    var _idProducto = (my_list_productos.SelectedItem as Product).Id;
+                    var _idProducto = (my_list_productos.SelectedItem as Product).ProductID;
                     var result = from item in await ProductsServices.GetProducts()
                                  where item.ProductID == _idProducto
                                  select item;
@@ -196,13 +198,13 @@ namespace Cueros.App.Store.Class
         {
 
             AnilloProgreso.Visibility = Visibility.Visible;
-            List<Categoria> ListCategorias = new List<Categoria>();
-            Categoria categoria;
+            List<Category> ListCategorias = new List<Category>();
+             Category categoria;
             try
             {
-                foreach (var item in await ServiciosDeProductos.GetProducts())
+                foreach (var item in await CategoriesServices.GetCategories())
                 {
-                    categoria = new Categoria() { Nombre=item.Nombre,UrlImagen=item.Fotos.FirstOrDefault().URL, Id = item.Id };
+                    categoria = new Category() { Name=item.Name,Url=item.Url, CategoryID=item.CategoryID };
                     ListCategorias.Add(categoria);
                 }
                 ListViewCategorias.ItemsSource = ListCategorias;
