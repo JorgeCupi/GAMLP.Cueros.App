@@ -118,14 +118,18 @@ namespace Cueros.App.WPF
                 jsonCat = lector2.ReadToEnd();
                 lector2.Close();
 
-                ProductsResults res = JsonConvert.DeserializeObject<ProductsResults>(json);
+                List<Product> res = JsonConvert.DeserializeObject < List < Product >> (json);
 
-                ProductsResults resDest = JsonConvert.DeserializeObject<ProductsResults>(jsonDest);
-                ProductsResults resCat = JsonConvert.DeserializeObject<ProductsResults>(jsonCat);
+                List<Product> resDest = JsonConvert.DeserializeObject<List<Product>>(jsonDest);
+                List<Product> resCat = JsonConvert.DeserializeObject<List<Product>>(jsonCat);
 
-                lstProductos.ItemsSource = res.data;
-                lstProductosDest.ItemsSource = resDest.data;
-                lstCategorias.ItemsSource = resCat.data;
+                lstProductos.ItemsSource = res;
+                lstProductosDest.ItemsSource = resDest;
+                lstCategorias.ItemsSource = resCat;
+
+                pgrBar.Visibility = Visibility.Collapsed;
+                textb.Visibility = Visibility.Collapsed;
+                brdMain.Opacity = 1;
             }
         }
         private void Button_Click(object sender, RoutedEventArgs e)
