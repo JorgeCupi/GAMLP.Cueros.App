@@ -43,6 +43,15 @@ namespace Cueros.App.WPF
             lstCategorias.SelectionChanged += lstCategorias_SelectionChanged;
             lstProductosDest.SelectionChanged += lstProductosDest_SelectionChanged;
             Loaded+=ListaProductos_Loaded;
+
+            btnCarrito.Click += btnCarrito_Click;
+
+        }
+
+        void btnCarrito_Click(object sender, RoutedEventArgs e)
+        {
+            Carrito Carro = new Carrito(ListaPedido);
+            Carro.Show();
         }
 
         void lstProductosDest_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -64,7 +73,7 @@ namespace Cueros.App.WPF
         void lstCategorias_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var categoria = lstCategorias.SelectedItem as Category;
-            Informacion inf = new Informacion(categoria, this, ListaPedido);
+            Informacion inf = new Informacion(categoria, this);
             inf.Show();
             this.Hide();
         }

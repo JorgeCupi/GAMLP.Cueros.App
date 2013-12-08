@@ -1,4 +1,4 @@
-﻿<Page x:Class="Cueros.App.WPF.Views.Carrito"
+﻿<Window x:Class="Cueros.App.WPF.Views.Carrito"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -36,4 +36,4 @@
             </ListBox.ItemTemplate>
         </ListBox>       
     </Grid>
-</Page>
+</Window>
