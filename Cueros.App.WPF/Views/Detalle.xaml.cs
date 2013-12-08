@@ -27,9 +27,13 @@ namespace Cueros.App.WPF.Views
         private Product producto1;
         private MainWindow mainWindow;
         private Informacion informacion;
-        public Detalle(Product pro, MainWindow mainWindow)
+        List<Order> ListaPedido;
+
+
+        public Detalle(Product pro, MainWindow mainWindow, List<Order> L)
         {
             producto1 = pro;
+            ListaPedido = L;
             this.mainWindow = mainWindow; 
             InitializeComponent();
             Loaded += Detalle_Loaded;
@@ -67,7 +71,7 @@ namespace Cueros.App.WPF.Views
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-                RPedido p = new RPedido(producto1, this);
+                RPedido p = new RPedido(producto1, this, ListaPedido);
                 p.Show();
                 this.Hide();
         }

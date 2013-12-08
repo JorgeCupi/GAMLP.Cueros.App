@@ -64,7 +64,12 @@
 
                         <!--<Label Grid.Column="0" Grid.Row="5" Foreground="#0038bd" Content="precio"/>
                         <Label Name="Total" Grid.Column="1" Grid.Row="5" />-->
-                        <Button Grid.Column="1" Grid.Row="6" Width="80" Content="Guardar" Background="Transparent" Foreground="#0038bd" Click="Button_Click"/>
+
+                        <StackPanel Grid.Column="1" Grid.Row="6" Orientation="Horizontal">
+                            <Button Width="80" Content="Guardar" Background="Transparent" Foreground="#0038bd" Click="Button_Click"/>
+                            <Button Name="btnCarrito"  Width="80" Content="Ver Carrito" Background="Transparent" Foreground="#0038bd"/>
+                        </StackPanel>
+                        
 
                     </Grid>
                 </ListBox>

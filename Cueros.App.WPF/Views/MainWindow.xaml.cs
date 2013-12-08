@@ -32,6 +32,9 @@ namespace Cueros.App.WPF
         String json;
         String jsonDest;
         String jsonCat;
+
+        List<Order> ListaPedido;
+
         public MainWindow( Inicio Ini)
         {
             inicio = Ini;
@@ -45,7 +48,7 @@ namespace Cueros.App.WPF
         void lstProductosDest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var producto = lstProductosDest.SelectedItem as Product;
-            Detalle dp = new Detalle(producto, this);
+            Detalle dp = new Detalle(producto, this, ListaPedido);
             dp.Show();
             this.Hide();
         }
@@ -53,7 +56,7 @@ namespace Cueros.App.WPF
         void lstProductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var producto = lstProductos.SelectedItem as Product;
-            Detalle dp = new Detalle(producto,this);
+            Detalle dp = new Detalle(producto,this, ListaPedido);
             dp.Show();
             this.Hide();
         }
@@ -61,7 +64,7 @@ namespace Cueros.App.WPF
         void lstCategorias_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var categoria = lstCategorias.SelectedItem as Category;
-            Informacion inf = new Informacion(categoria, this);
+            Informacion inf = new Informacion(categoria, this, ListaPedido);
             inf.Show();
             this.Hide();
         }

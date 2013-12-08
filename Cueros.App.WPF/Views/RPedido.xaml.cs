@@ -36,15 +36,27 @@ namespace Cueros.App.WPF.Views
         private Order pedidos;
         private List<Product> listaProductos;
         private Detalle det;
+        List<Order> ListaPedido;
 
-        public RPedido(Product p, Detalle Detail)
+        public RPedido(Product p, Detalle Detail, List<Order> LP)
         {
             InitializeComponent();
             det = Detail;
             pro = p;
+            ListaPedido = LP;
             listaProductos = new List<Product>();
             Loaded += RPedido_Loaded;
+            btnCarrito.Click += btnCarrito_Click;
            // Cant.TextChanged +=Cant_TextChanged;
+        }
+
+        void btnCarrito_Click(object sender, RoutedEventArgs e)
+        {
+            Carrito carro = new Carrito(ListaPedido);
+
+           
+
+            carro.Show();
         }
 
         void RPedido_Loaded(object sender, RoutedEventArgs e)
@@ -59,21 +71,30 @@ namespace Cueros.App.WPF.Views
             hacerPedido();
         }
 
-        private async void hacerPedido()
+        private void hacerPedido()
         {
+
             Order or = new Order();
+
             or.ProductID = int.Parse(pro.ProductID);
             or.Quantity = Convert.ToInt32(Cant.Text);
             or.Date = DateTime.Today;
-            bool sw = await OrdersServices.TryCreateOrder(or);
-            if (sw)
-            {
-                MessageBox.Show("Se ha añadido a la orden");
-            }
-            else
-            {
-                MessageBox.Show("Se ha producido un error");
-            }
+
+            ListaPedido.Add(or);
+
+            //Order or = new Order();
+            //or.ProductID = int.Parse(pro.ProductID);
+            //or.Quantity = Convert.ToInt32(Cant.Text);
+            //or.Date = DateTime.Today;
+            //bool sw = await OrdersServices.TryCreateOrder(or);
+            //if (sw)
+            //{
+            //    MessageBox.Show("Se ha añadido a la orden");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Se ha producido un error");
+            //}
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
