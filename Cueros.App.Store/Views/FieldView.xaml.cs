@@ -19,7 +19,7 @@ namespace Cueros.App.Store.Class
         public FieldView()
         {
             this.InitializeComponent();
-            //this.Loaded += FieldView_Loaded;
+            this.Loaded += FieldView_Loaded;
         }
 
         #region Loaded
