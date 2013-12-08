@@ -26,11 +26,17 @@ namespace Cueros.App.Phone
 
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
         }
         private void SeleccionaRubro(object sender, SelectionChangedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Views/Catalogo.xaml", UriKind.Relative));
+        }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            base.OnBackKeyPress(e);
+            while (NavigationService.CanGoBack) NavigationService.RemoveBackEntry();
         }
     }
 }

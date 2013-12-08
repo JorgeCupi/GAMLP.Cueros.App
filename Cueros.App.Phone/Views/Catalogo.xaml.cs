@@ -29,6 +29,7 @@ namespace Cueros.App.Phone.Views
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             BuildLocalizedApplicationBar();
+
             categoria = new Almacenar<Category>().Deserialize("categorias.json");
             novedades = new Almacenar<Product>().Deserialize("novedades.json");
             destacados = new Almacenar<Product>().Deserialize("destacados.json");
@@ -38,14 +39,9 @@ namespace Cueros.App.Phone.Views
                 lstnovedades.ItemsSource = novedades;
             if (destacados != null && destacados.Count != 0)
                 lstdestacados.ItemsSource = destacados;
+
             Cargar();
         }
-
-        //protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
-       // {
-          //  base.OnBackKeyPress(e);
-           // while (NavigationService.CanGoBack) NavigationService.RemoveBackEntry();
-       // }
 
         void Cargar()
         {

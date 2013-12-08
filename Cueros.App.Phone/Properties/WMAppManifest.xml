@@ -19,7 +19,8 @@
           <SmallImageURI IsRelative="true" IsResource="false">cadepia.png</SmallImageURI>
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">cadepia.png</BackgroundImageURI>
-          <Title>Cueros.App.Phone</Title>
+          <Title>
+          </Title>
           <BackContent>
           </BackContent>
           <BackBackgroundImageURI>
