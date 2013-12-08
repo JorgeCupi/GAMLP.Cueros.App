@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Cueros.App.Core.Models;
+using Cueros.App.Core.Services;
 
 namespace Cueros.App.WPF.Views
 {
@@ -29,7 +30,24 @@ namespace Cueros.App.WPF.Views
             InitializeComponent();
         }
 
+        private async void MandarOrden()
+        {
 
+            foreach(var a in LP)
+            {
+                bool sw = await OrdersServices.TryCreateOrder(a);
+                if (sw)
+                {
+                    MessageBox.Show("Se ha añadido a la orden");
+                }
+                else
+                {
+                    MessageBox.Show("Se ha producido un error");
+                }
+            }
+
+            
+        }
 
     }
 }
