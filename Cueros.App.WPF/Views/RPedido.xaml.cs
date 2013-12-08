@@ -63,7 +63,7 @@ namespace Cueros.App.WPF.Views
         {
             Order or = new Order();
             or.ProductID = int.Parse(pro.ProductID);
-            or.ProductID = cantidad;
+            or.Quantity = Convert.ToInt32(Cant.Text);
             or.Date = DateTime.Today;
             bool sw = await OrdersServices.TryCreateOrder(or);
             if (sw)

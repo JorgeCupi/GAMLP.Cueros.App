@@ -60,7 +60,7 @@
                         <Label Grid.Column="0" Grid.Row="3" Foreground="#0038bd" Content="Temporada"/>
                         <Label Grid.Column="1" Grid.Row="3" Content="{Binding Season}"/>
                         <Label Grid.Column="0" Grid.Row="4" Foreground="#0038bd" Content="Cantidad"/>
-                        <TextBox Name="Cant" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" Width="80" Text="1"/>
+                        <TextBox Name="Cant" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" Width="80" Text="1" Height="26" VerticalAlignment="Bottom"/>
 
                         <!--<Label Grid.Column="0" Grid.Row="5" Foreground="#0038bd" Content="precio"/>
                         <Label Name="Total" Grid.Column="1" Grid.Row="5" />-->
