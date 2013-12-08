@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <!--AppBar-->
     <Page.BottomAppBar>
         <AppBar Background="#0038BD">
             <StackPanel Orientation="Horizontal">
@@ -16,23 +17,19 @@
         </AppBar>
     </Page.BottomAppBar>
 
-
     <Grid Background="#060671" Margin="0,4,0,-4">
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Background="#060671">
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="120"/>
                 <RowDefinition Height="300"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="80"/>
             </Grid.RowDefinitions>
-
 
             <StackPanel Grid.Row="3" Orientation="Horizontal">
                 <TextBlock Text="Cantidad" Style="{StaticResource SubheaderTextStyle}" Margin="10,20" Foreground="#5A7DD5"/>
@@ -44,101 +41,80 @@
 
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <TextBlock Text="Nombre Comercial: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" Margin="5" Foreground="#5A7DD5"/>
-                    <TextBlock Name="TextNombreComercial" Text="{Binding NombreComercial}" Foreground="White" Style="{StaticResource BodyTextStyle}" Margin="5"/>
-
+                    <TextBlock Name="TextNombreComercial" Text="{Binding CommercialName}" Foreground="White" Style="{StaticResource BodyTextStyle}" Margin="5"/>
                 </StackPanel>
+                
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <TextBlock Text="Color: " Style="{StaticResource BodyTextStyle}" Foreground="#5A7DD5"  FontWeight="Bold" Margin="5"/>
                     <TextBlock Name="TextColorMaterial"  Style="{StaticResource BodyTextStyle}" Foreground="White" Margin="5"/>
-
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <TextBlock Text="Tipo Unidad: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold"  Foreground="#5A7DD5" Margin="5"/>
-                    <TextBlock Name="TextTipoUnidad" Text="{Binding TipoUnidad}" Style="{StaticResource BodyTextStyle}" Foreground="White" Margin="5"/>
-
+                    <TextBlock Name="TextTipoUnidad" Text="{Binding Unit}" Style="{StaticResource BodyTextStyle}" Foreground="White" Margin="5"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <TextBlock Text="Costo Unidad: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold"  Foreground="#5A7DD5" Margin="5"/>
-                    <TextBlock Name="TextCostoUnidadMaterial" Text="{Binding CostoUnidad}" Style="{StaticResource BodyTextStyle}" Foreground="White" Margin="5"/>
-
+                    <TextBlock Name="TextCostoUnidadMaterial" Text="{Binding UnitPrice}" Style="{StaticResource BodyTextStyle}" Foreground="White" Margin="5"/>
                 </StackPanel>
-
-
             </StackPanel>
 
-
+            <!--Titulo Materiales--> 
             <Grid Height="120" Grid.Row="0" >
                 <StackPanel Orientation="Horizontal">
-                    <Button Style="{StaticResource BackButtonStyle}" Name="BackButton" Click="BackButton_Click"/>
-                    <TextBlock Style="{StaticResource PageHeaderTextStyle}" Text="Materiales" Foreground="White" Margin="0,0,50,45"/>
+                    <Button Style="{StaticResource BackButtonStyle}" Name="BackButton" Click="BackButton_Click" Margin="50,0,0,0" VerticalAlignment="Center"/>
+                    <TextBlock Style="{StaticResource PageHeaderTextStyle}" Text="Materiales" Foreground="White" Margin="20,0,0,0" VerticalAlignment="Center"/>
                 </StackPanel>
             </Grid>
 
-
-
+            <!--Lista de Materiales-->
             <ListView Background="#060671" Name="ListaDeMateriales" Tapped="ListaDeMateriales_Tapped" Grid.Row="1">
                 <ListView.ItemTemplate>
-
-
-
                     <DataTemplate>
                         <StackPanel Margin="5,5,0,0" Height="80">
-                            <TextBlock Style="{StaticResource SubheaderTextStyle}" Name="TextNombreMaterial" Text="{Binding Nombre}" Foreground="White"/>
-                            <TextBlock Name="TextUnidadMaterial" Style="{StaticResource ItemTextStyle}" Text="{Binding TipoUnidad}" Foreground="White"/>
+                            <TextBlock Style="{StaticResource SubheaderTextStyle}" Name="TextNombreMaterial" Text="{Binding Name}" Foreground="White"/>
+                            <TextBlock Name="TextUnidadMaterial" Style="{StaticResource ItemTextStyle}" Text="{Binding UnitPrice}" Foreground="White"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
         </Grid>
 
-
         <Grid Grid.Column="2" Background="#FFECECEC" DataContext="{Binding m}">
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="350"/>
-
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-
 
             <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
                 <TextBlock Name="TextNombreProductoCabezera" Style="{StaticResource PageHeaderTextStyle}" Foreground="Black" Margin="20,10,10,10"/>
             </StackPanel>
 
-
-
             <StackPanel Grid.Row="2">
-
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <TextBlock Text="Descripcion: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" Margin="5" Foreground="#5A7DD5"/>
-                    <TextBlock Name="TextoDescripcionProducto" Text="{Binding NombreComercial}" Foreground="Black" Style="{StaticResource BodyTextStyle}" Margin="5" Height="auto" Width="350"/>
-
+                    <TextBlock Name="TextoDescripcionProducto" Text="{Binding Description}" Foreground="Black" Style="{StaticResource BodyTextStyle}" Margin="5" Height="auto" Width="350"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <TextBlock Text="Modelo: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" Margin="5" Foreground="#5A7DD5"/>
-                    <TextBlock Name="TextoModeloProducto" Text="{Binding NombreComercial}" Foreground="Black" Style="{StaticResource BodyTextStyle}" Margin="5"/>
-
+                    <TextBlock Name="TextoModeloProducto" Text="{Binding CommercialName}" Foreground="Black" Style="{StaticResource BodyTextStyle}" Margin="5"/>
                 </StackPanel>
+
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <TextBlock Text="Temporda: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" Margin="5" Foreground="#5A7DD5"/>
-                    <TextBlock Name="TextoTemporadaProducto" Text="{Binding NombreComercial}" Foreground="Black" Style="{StaticResource BodyTextStyle}" Margin="5"/>
-
+                    <TextBlock Name="TextoTemporadaProducto" Text="{Binding CommercialName}" Foreground="Black" Style="{StaticResource BodyTextStyle}" Margin="5"/>
                 </StackPanel>
+
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <TextBlock Text="Ventas Realizadas:  " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" Margin="5" Foreground="#5A7DD5"/>
-                    <TextBlock Name="TextoVentasProductos" Text="{Binding NombreComercial}" Foreground="Black" Style="{StaticResource BodyTextStyle}" Margin="5"/>
-
+                    <TextBlock Name="TextoVentasProductos" Text="{Binding CommerialName}" Foreground="Black" Style="{StaticResource BodyTextStyle}" Margin="5"/>
                 </StackPanel>
-
-
             </StackPanel>
 
-
+            <!--FlipView Imagenes-->
             <FlipView Grid.Row="1" Name="FlipViewImagenes">
                 <FlipView.ItemTemplate>
                     <DataTemplate>
@@ -146,26 +122,21 @@
                     </DataTemplate>
                 </FlipView.ItemTemplate>
             </FlipView>
-
-
-
         </Grid>
 
         <Grid Grid.Column="1">
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="120"/>
                 <RowDefinition  Height="*"/>
-
-
             </Grid.RowDefinitions>
+
+            <!--Titulo de Proveedores-->
             <Grid Grid.Row="0" Background="#0038BD">
-                <TextBlock Text="Proveedores" Margin="30,40" Style="{StaticResource PageHeaderTextStyle}"/>
+                <TextBlock Text="Proveedores" Style="{StaticResource PageHeaderTextStyle}" HorizontalAlignment="Center"/>
             </Grid>
 
+            <!--Lista de Proveedores-->
             <ListBox Name="ListBoxProveedores" Grid.Row="1" BorderThickness="0" Foreground="#0038BD">
-
-
                 <ListBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#0038BD" Offset="0.108"/>
@@ -176,46 +147,38 @@
                     <DataTemplate>
                         <StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0">
-
-                                <TextBlock Name="TextNombreProveedor" Text="{Binding Nombre}" Style="{StaticResource TitleTextStyle}" Margin="5,1,1,5"/>
-
+                                <TextBlock Name="TextNombreProveedor" Text="{Binding Name}" Style="{StaticResource TitleTextStyle}" Margin="5,1,1,5"/>
                             </StackPanel>
-
+                            
                             <StackPanel Orientation="Horizontal" Margin="0">
                                 <TextBlock Text="ID: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" Margin="5,1,1,5"/>
-                                <TextBlock Name="TextIdProveedor" Text="{Binding Id}" Style="{StaticResource BodyTextStyle}" Margin="5,1,1,5"/>
-
+                                <TextBlock Name="TextIdProveedor" Text="{Binding SupplierID}" Style="{StaticResource BodyTextStyle}" Margin="5,1,1,5"/>
                             </StackPanel>
+                            
                             <StackPanel Orientation="Horizontal" Margin="0">
                                 <TextBlock Text="Direccion: " Height="auto" Style="{StaticResource BodyTextStyle}" FontWeight="Bold"  Margin="5,1,1,5"/>
-                                <TextBlock Name="TextDireccionProveedor" Text="{Binding Direccion}" Style="{StaticResource BodyTextStyle}" Margin="5,1,1,5"/>
-
+                                <TextBlock Name="TextDireccionProveedor" Text="{Binding Address}" Style="{StaticResource BodyTextStyle}" Margin="5,1,1,5"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Margin="0">
                                 <TextBlock Text="Correo: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" Margin="5,1,1,5"/>
-                                <TextBlock Name="TextCorreoProveedor" Text="{Binding Correo}" Style="{StaticResource BodyTextStyle}" Margin="5,1,1,5"/>
-
+                                <TextBlock Name="TextCorreoProveedor" Text="{Binding Email}" Style="{StaticResource BodyTextStyle}" Margin="5,1,1,5"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Margin="0">
                                 <TextBlock Text="Telefono: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" Margin="5,1,1,5"/>
-                                <TextBlock Name="TextTelefonoProveedor" Text="{Binding Telefono}" Style="{StaticResource BodyTextStyle}" Margin="5,1,1,5"/>
-
+                                <TextBlock Name="TextTelefonoProveedor" Text="{Binding PhoneNumber}" Style="{StaticResource BodyTextStyle}" Margin="5,1,1,5"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Margin="0">
                                 <TextBlock Margin="5,1,1,5" Text="Ciudad: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" />
-                                <TextBlock Margin="5,1,1,5" Name="TextCiudadProveedor" Text="{Binding Ciudad}" Style="{StaticResource BodyTextStyle}"/>
-
+                                <TextBlock Margin="5,1,1,5" Name="TextCiudadProveedor" Text="{Binding City}" Style="{StaticResource BodyTextStyle}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Margin="0">
                                 <TextBlock Margin="5,1,1,5" Text="Pais: " Style="{StaticResource BodyTextStyle}" FontWeight="Bold" />
-                                <TextBlock Margin="5,1,1,5" Name="TextPaisProveedor" Text="{Binding Pais}" Style="{StaticResource BodyTextStyle}"/>
-
+                                <TextBlock Margin="5,1,1,5" Name="TextPaisProveedor" Text="{Binding Country}" Style="{StaticResource BodyTextStyle}"/>
                             </StackPanel>
-
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

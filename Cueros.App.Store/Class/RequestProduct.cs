@@ -13,7 +13,5 @@ namespace Cueros.App.Store.Class
         public double PPriceU { get; set; }
         public double PNItems { get; set; }
         public string PurlImage { get; set; }
-
-        
     }
 }

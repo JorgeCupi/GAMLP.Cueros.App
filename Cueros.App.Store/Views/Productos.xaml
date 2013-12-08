@@ -6,18 +6,21 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    
+    <!--Recursos-->
     <Page.Resources>
+        <!--Template Lista de Productos-->
         <DataTemplate x:Key="Template_List">
             <Grid Height="280" Width="250" Grid.Row="1" Margin="5" Background="#0038BD">
-                <Image Source="{Binding picture}" Stretch="Fill"/>
-                <StackPanel Background="Black" Opacity="0.3" Height="70" VerticalAlignment="Bottom"/>
+                <Image Source="{Binding Pictures[0].URL}" Stretch="Fill"/>
+                <StackPanel Background="Black" Opacity="0.4" Height="70" VerticalAlignment="Bottom"/>
                 <StackPanel Height="65" VerticalAlignment="Bottom" Margin="10,0,0,0">
                     <TextBlock Text="{Binding Name}" Foreground="White" Style="{StaticResource TitleTextStyle}"/>
-                    <TextBlock Text="{Binding Temporada}" Style="{StaticResource SubtitleTextStyle}" Foreground="White"/>
+                    <TextBlock Text="{Binding Season}" Style="{StaticResource SubtitleTextStyle}" Foreground="White"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
-
+        <!--Template Lista de Categorias-->
         <DataTemplate x:Key="TemplateListCategorias">
             <Grid Height="280" Width="250" Grid.Row="1" Margin="5" Background="#0038BD">
                 <Image Source="{Binding Url}" Stretch="Fill"/>
@@ -28,11 +31,10 @@
                 </StackPanel>
             </Grid>
         </DataTemplate>
-    
     </Page.Resources>
     
-    
-    <Grid >
+    <!--Grid Principal-->
+    <Grid>
         <Grid.Background>
             <ImageBrush Stretch="Fill" ImageSource="/Image/FondoCadepia.jpg"/>
         </Grid.Background>
@@ -40,69 +42,55 @@
             <RowDefinition Height="150"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+        <!--Titulo de la pagina-->
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button x:Name="Next" Style="{StaticResource BackButtonStyle}" Tag="Back" Click="Back_Click" Margin="30,40,30,60"/>
-            <TextBlock Text="Productos" Style="{StaticResource PageHeaderTextStyle}" VerticalAlignment="Center"/>
+            <Button Style="{StaticResource BackButtonStyle}" Click="Back_Click" Margin="50,0,0,0" VerticalAlignment="Center"/>
+            <TextBlock Text="Productos" Style="{StaticResource PageHeaderTextStyle}" Margin="20,0,0,0" VerticalAlignment="Center"/>
         </StackPanel>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="220"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
+            <!--Grid Menu Izquierdo-->
             <Grid Grid.Column="0">
-
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="60"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+                <!--Titulo Menu-->
                 <StackPanel >
-                    <StackPanel Grid.Row="0" Orientation="Horizontal">
-
-                        <TextBlock Text="Cadepia" Style="{StaticResource SubheaderTextStyle}" Margin="35,30"/>
-
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="CADEPIA" Style="{StaticResource SubheaderTextStyle}" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </StackPanel>
-
-                    <Rectangle Height="1" Fill="White" Margin="1" Width="150" Opacity="0.5"/>
+                    <!--<Rectangle Height="3" Fill="White" Width="217" Opacity="0.5"/>-->
                 </StackPanel>
-                <ListView Grid.Row="1" Name="ListViewSelection"  Tapped="ListViewSelection_Tapped">
-                    <TextBlock Name="TextSelectionCategorias"  Style="{StaticResource SubheaderTextStyle}" Text="Categorias" Margin="25,0,0,0"/>
-                    <TextBlock Name="TextSelectionDestacados" Style="{StaticResource SubheaderTextStyle}" Text="Destacados" Margin="25,0,0,0"/>
-                    <TextBlock Name="TextSelectionNuevos" Style="{StaticResource SubheaderTextStyle}" Text="Nuevos" Margin="25,0,0,0"/>
-
+                <ListView Grid.Row="1" Name="ListViewSelection"  Tapped="ListViewSelection_Tapped" >
+                    <TextBlock Name="TextSelectionCategorias"  Style="{StaticResource SubheaderTextStyle}" Text="Categorias" Margin="50,0,0,0"/>
+                    <TextBlock Name="TextSelectionDestacados" Style="{StaticResource SubheaderTextStyle}" Text="Destacados" Margin="50,0,0,0"/>
+                    <TextBlock Name="TextSelectionNuevos" Style="{StaticResource SubheaderTextStyle}" Text="Nuevos" Margin="50,0,0,0"/>
                 </ListView>
             </Grid>
-            
-            
-            
-            
-            <ListView Name="my_list_productos" ItemTemplate="{StaticResource Template_List}" HorizontalContentAlignment="Right" Grid.Column="1"  Tapped="my_list_productos_Tapped">
-              
+            <!--Lista de Productos-->
+            <ListView Name="ListProducts" ItemTemplate="{StaticResource Template_List}" HorizontalContentAlignment="Right" Grid.Column="1" Tapped="ListProducts_Tapped">
                 <ListView.ItemsPanel >
                     <ItemsPanelTemplate>
                         <WrapGrid Orientation="Horizontal"/>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
             </ListView>
-            
+            <!--Lista de Categorias-->
             <ListView Grid.Column="1" Name="ListViewCategorias" Visibility="Collapsed" ItemTemplate="{StaticResource TemplateListCategorias}">
-                
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapGrid Orientation="Horizontal"/>
-                           
-                        
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
-                
             </ListView>
-            
-            
-            
-             <ProgressRing  Name="AnilloProgreso" Height="100" Width="100" IsActive="True" Grid.Column="1" Visibility="Visible"/> 
-            
+            <!--Loading-->
+            <ProgressRing  Name="AnilloProgreso" Height="100" Width="100" IsActive="True" Grid.Column="1" Visibility="Visible"/> 
         </Grid>
     </Grid>
 </Page>

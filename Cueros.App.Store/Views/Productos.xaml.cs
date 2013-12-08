@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+//My Inport
 using Cueros.App.Core.Services;
 using Cueros.App.Core.Models;
 using Windows.Storage;
@@ -24,11 +24,9 @@ using Cueros.App.Store.Class;
 
 namespace Cueros.App.Store.Class
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Productos : Page
     {
+        List<Product> list = new List<Product>();
         private static List<RequestProduct> pedido;
         public static List<RequestProduct> Pedido
         {
@@ -36,15 +34,15 @@ namespace Cueros.App.Store.Class
             set { pedido = value; }
         }
 
+        #region Constructor
         public Productos()
         {
             this.InitializeComponent();
             this.Loaded += Productos_Loaded;
         }
+        #endregion
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-        }
+        #region Load Page
         async void Productos_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -53,87 +51,57 @@ namespace Cueros.App.Store.Class
                 var now = IsInternetAvailable();
                 if (!_hayConexion && !now)
                 {
-                    //_hayConexion = false;
-                    my_list_productos.ItemsSource = await Deserializar();
-                    //Código a ejecutar cuando se pierda la red
+                    ListProducts.ItemsSource = await Deserializar();
+                    AnilloProgreso.Visibility = Visibility.Collapsed;
                 }
                 else if (_hayConexion && now)
                 {
-                    //_hayConexion = true;
                     ListProduct();
-                    //Código a ejecutar cuando se recupere la red
                 }
             }
             catch (Exception)
             {
-                Error();
+                ErrorConexion();
             }
-
         }
+        #endregion
 
+        #region ListProduct | Carga la lista de productos
         public async void ListProduct()
         {
             AnilloProgreso.Visibility = Visibility.Visible;
-            List<ProductoImagen> _list = new List<ProductoImagen>();
-            ProductoImagen _product;
-            
+            var listProducts = await ProductsServices.GetProducts();
             try
             {
-                foreach (var item in await ProductsServices.GetProducts())
-                {
-                    _product = new ProductoImagen() { Name = item.Name,  picture=item.Pictures.FirstOrDefault().URL, Temporada=item.Season};
-                    _list.Add(_product);
-                }
-                my_list_productos.ItemsSource = _list;
+                ListProducts.ItemsSource = listProducts;
                 Serializar();
                 AnilloProgreso.Visibility = Visibility.Collapsed;
             }
             catch (Exception)
             {
-                Error();
+                ErrorConexion();
                 AnilloProgreso.Visibility = Visibility.Collapsed;
             }
-
-          
         }
+        #endregion
 
-
-
-        async void Error()
+        #region ErrorConexion
+        async void ErrorConexion()
         {
-            var msgDlg = new Windows.UI.Popups.MessageDialog("Sin conexion", "Conexion fallida :(");
-            msgDlg.DefaultCommandIndex = 1;
-            await msgDlg.ShowAsync();
+            var message = new Windows.UI.Popups.MessageDialog("Sin conexion", "Conexion fallida :(");
+            message.DefaultCommandIndex = 1;
+            await message.ShowAsync();
         }
+        #endregion
 
+        #region Click Back
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             Frame.GoBack();
         }
+        #endregion
 
-        async void my_list_productos_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            try
-            {
-                Cueros.App.Core.Models.Product _objeto = null;
-                if (my_list_productos.SelectedItem != null)
-                {
-                    var _idProducto = (my_list_productos.SelectedItem as Product).ProductID;
-                    var result = from item in await ProductsServices.GetProducts()
-                                 where item.ProductID == _idProducto
-                                 select item;
-                    _objeto = result.ToList().FirstOrDefault();
-                }
-                Frame.Navigate(typeof(Materiales), _objeto);
-            }
-            catch (Exception)
-            {
-                Error();
-                Frame.Navigate(typeof(FieldView));
-            }
-            
-        }
-
+        #region Serializar y Deserelizar
         public async void Serializar() 
         {
             await ApplicationData.Current.LocalFolder.CreateFileAsync("Cadepia.xml", CreationCollisionOption.ReplaceExisting);
@@ -146,60 +114,50 @@ namespace Cueros.App.Store.Class
             }
         }
 
-        List<Product> list = new List<Product>();
         async Task<List<Product>> Deserializar() 
         {
-            //Abrimos el fichero donde están los datos serializados
             StorageFile file = await ApplicationData.Current.LocalFolder.GetFileAsync("Cadepia.xml");
-            //Abrimos el stream del fichero
             using (Stream stream = await file.OpenStreamForReadAsync())
             {
-                //Comprobamos que se ha creado bien el stream
                 if (stream != null)
                 {
-                    //Inicializamos el serializador y desserializamos
                     XmlSerializer serializer = new XmlSerializer(list.GetType());
-                    //Tenemos que definir a que tipo de objeto tiene que convertir el objeto deserializado
                     list = serializer.Deserialize(stream) as List<Product>;
                 }
             }
             return list;
         }
+        #endregion
 
+        #region IsInternetAvailable
         private bool IsInternetAvailable()
         {
             var internetProfile = NetworkInformation.GetInternetConnectionProfile();
             return internetProfile != null &&
                 internetProfile.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
         }
+        #endregion
 
         private void ListViewSelection_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
             if(ListViewSelection.SelectedItem!=null){
                int value = ListViewSelection.SelectedIndex;
-                
                 switch(value){
-                
                     case 0:
-                        my_list_productos.Visibility = Visibility.Collapsed;
+                        ListProducts.Visibility = Visibility.Collapsed;
                         ListViewCategorias.Visibility = Visibility.Visible;
                         CargarListaCategorias();
                         break;
                 }
-            
-            
-            
             }
-
         }
 
+        #region Cargar Lista Categorias
         public async void CargarListaCategorias()
         {
-
             AnilloProgreso.Visibility = Visibility.Visible;
             List<Category> ListCategorias = new List<Category>();
-             Category categoria;
+            Category categoria;
             try
             {
                 foreach (var item in await CategoriesServices.GetCategories())
@@ -213,10 +171,41 @@ namespace Cueros.App.Store.Class
             }
             catch (Exception)
             {
-                Error();
+                ErrorConexion();
+            }
+        }
+        #endregion
+
+        #region ListProducts Tapped
+        private async void ListProducts_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Windows.UI.Popups.MessageDialog message;
+            try
+            {
+                Cueros.App.Core.Models.Product _objeto = null;
+                var listProducts = await ProductsServices.GetProducts();
+                if (ListProducts.SelectedItem != null)
+                {
+                    var _idProducto = (ListProducts.SelectedItem as Product).ProductID;
+                    var result = from item in listProducts
+                                 where item.ProductID == _idProducto
+                                 select item;
+                    _objeto = result.ToList().FirstOrDefault();
+                    Frame.Navigate(typeof(Materiales), _objeto);
+                }
+                else
+                {
+                    message = new Windows.UI.Popups.MessageDialog("Seleccione un producto", "Seleccion");
+                    await message.ShowAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                message = new Windows.UI.Popups.MessageDialog(ex.Message.ToString());
+                message.ShowAsync();
             }
 
         }
-
+        #endregion
     }
 }

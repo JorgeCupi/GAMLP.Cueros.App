@@ -15,38 +15,28 @@ using Windows.UI.Xaml.Navigation;
 using Cueros.App.Core.Models;
 using Cueros.App.Core.Services;
 using Windows.UI.Popups;
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Cueros.App.Store.Class
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Materiales : Page
     {
-        Cueros.App.Core.Models.Product bx = null;
-        Material m = new Material();
+        Cueros.App.Core.Models.Product tmpProduct = null;
+        Material tmpMaterial = new Material();
         ProductoCantidad NewP = new ProductoCantidad();
-        List<Material> listMat = new List<Material>();
-        List<Supplier> listProv = new List<Supplier>();
+        List<Material> listMaterial = new List<Material>();
+        List<Supplier> listProveedor = new List<Supplier>();
 
         public Materiales()
         {
             this.InitializeComponent();
-            this.Loaded += Materiales_Loaded;
             AppButtonAgregar.Click +=AppButtonAgregar_Click;
             AppButtonVer.Click += AppButtonVer_Click;
         }
 
-        void Materiales_Loaded(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
         void obtenerMateriales(Cueros.App.Core.Models.Product a)
         {
-            listMat = a.Materials;
-            ListaDeMateriales.ItemsSource = listMat;
+            listMaterial = a.Materials;
+            ListaDeMateriales.ItemsSource = listMaterial;
             FlipViewImagenes.ItemsSource = a.Pictures;
             TextNombreProductoCabezera.Text = a.Name;
             TextoDescripcionProducto.Text = a.Description;
@@ -54,20 +44,19 @@ namespace Cueros.App.Store.Class
             TextoTemporadaProducto.Text = a.Season;
             TextoVentasProductos.Text = a.SoldUnits.ToString();
         }
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            bx = e.Parameter as Cueros.App.Core.Models.Product;
-            obtenerMateriales(bx);
+            tmpProduct = e.Parameter as Cueros.App.Core.Models.Product;
+            obtenerMateriales(tmpProduct);
         }
-
+        RequestProduct NuevoRequestProduct;
         private void AppButtonAgregar_Click(object sender, RoutedEventArgs e)
         {
             int cantidad = int.Parse(TextBoxCantidadProductos.Text);
-            ProductoCantidad pc = new ProductoCantidad() { Producto = bx, Cantidad = cantidad };
+            ProductoCantidad pc = new ProductoCantidad() { Producto = tmpProduct, Cantidad = cantidad };
             double PrecioU = GetPrecio(pc);
             double PrecioT = PrecioU * cantidad;
-            RequestProduct NuevoRequestProduct = new RequestProduct {PName = bx.Name, PNItems =  cantidad, PPriceU = PrecioU, PPriceT = PrecioT, PurlImage = bx.Pictures.FirstOrDefault().URL};
+            NuevoRequestProduct = new RequestProduct {PName = tmpProduct.Name, PNItems =  cantidad, PPriceU = PrecioU, PPriceT = PrecioT, PurlImage = tmpProduct.Pictures.FirstOrDefault().URL};
             Pedido.Pedidos.Add(NuevoRequestProduct);
             AppButtonAgregar.IsEnabled = false;
         }
@@ -77,31 +66,36 @@ namespace Cueros.App.Store.Class
             this.Frame.Navigate(typeof(PedidoView));
         }
 
-        private void ListaDeMateriales_Tapped(object sender, TappedRoutedEventArgs e)
+        private async void ListaDeMateriales_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (ListaDeMateriales.SelectedItem != null)
             {
-                m.Name = (ListaDeMateriales.SelectedItem as Material).Name;
-                m.CommercialName= (ListaDeMateriales.SelectedItem as Material).CommercialName;
-                m.Unit = (ListaDeMateriales.SelectedItem as Material).Unit;
-                m.UnitPrice= (ListaDeMateriales.SelectedItem as Material).UnitPrice;
-                m.Color = (ListaDeMateriales.SelectedItem as Material).Color;
-                listProv = (ListaDeMateriales.SelectedItem as Material).Suppliers;
-                ListBoxProveedores.ItemsSource = listProv;
-                cargardoDedatosFeo(m);
+                tmpMaterial.Name = (ListaDeMateriales.SelectedItem as Material).Name;
+                tmpMaterial.CommercialName= (ListaDeMateriales.SelectedItem as Material).CommercialName;
+                tmpMaterial.Unit = (ListaDeMateriales.SelectedItem as Material).Unit;
+                tmpMaterial.UnitPrice= (ListaDeMateriales.SelectedItem as Material).UnitPrice;
+                tmpMaterial.Color = (ListaDeMateriales.SelectedItem as Material).Color;
+                listProveedor = (ListaDeMateriales.SelectedItem as Material).Suppliers;
+                ListBoxProveedores.ItemsSource = listProveedor;
+                cargardoDedatosFeo(tmpMaterial);
+            }
+            else 
+            {
+                var message = new Windows.UI.Popups.MessageDialog("No se pudo obtener datos de los materiales", "Conexion");
+                message.DefaultCommandIndex = 1;
+                await message.ShowAsync();
             }
         }
         public void cargardoDedatosFeo(Material a)
         {
-           
-            TextNombreComercial.Text = m.CommercialName;
-            TextColorMaterial.Text = m.Color.ToString();
-            TextTipoUnidad.Text = m.Unit;
-            TextCostoUnidadMaterial.Text = m.UnitPrice.ToString();
+            TextNombreComercial.Text = tmpMaterial.CommercialName;
+            TextColorMaterial.Text = tmpMaterial.Color.ToString();
+            TextTipoUnidad.Text = tmpMaterial.Unit;
+            TextCostoUnidadMaterial.Text = tmpMaterial.UnitPrice.ToString();
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.GoBack();
+            this.Frame.Navigate(typeof(Productos));
         }
         
         private double GetPrecio(ProductoCantidad x)

@@ -111,7 +111,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Class\Pedido.cs" />
-    <Compile Include="Class\ProductoImagen.cs" />
     <Compile Include="Class\RequestProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\FieldView.xaml.cs">
@@ -142,15 +141,15 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.jpg" />
     <Content Include="Image\Alimentos.jpg" />
     <Content Include="Image\CueroChamarra.jpg" />
+    <Content Include="Image\CueroDesktop.jpg" />
+    <Content Include="Image\CueroDesktop2.jpg" />
     <Content Include="Image\Cueros.jpg" />
     <Content Include="Image\FondoCadepia.jpg" />
     <Content Include="Image\herramientas-para-trabajar-el-cuero.jpg" />
     <Content Include="Image\Joyas.jpg" />
     <Content Include="Image\MiniIcono.png" />
-    <Content Include="Image\Queen.jpg" />
     <Content Include="Image\taller_06.jpg" />
     <Content Include="Image\Textiles.jpg" />
-    <Content Include="Image\vacacientifica.jpg" />
     <Content Include="Image\wideLogo.jpg" />
   </ItemGroup>
   <ItemGroup>

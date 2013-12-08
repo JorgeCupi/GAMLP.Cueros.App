@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Cueros.App.Store.Class"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -22,7 +22,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Image/FondoCadepia.jpg"/>
+            <ImageBrush Stretch="Fill" ImageSource="/Image/FondoCadepia.jpg"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="120"/>
@@ -30,17 +30,17 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button Name="btnBack" Style="{StaticResource ResourceKey=PreviousAppBarButtonStyle}" VerticalAlignment="Center" Margin="0,30,0,20" Click="btnBack_Click"/>
-            <TextBlock Text="Pedido" Style="{StaticResource ResourceKey=HeaderTextStyle}" VerticalAlignment="Center"/>
+            <Button Style="{StaticResource BackButtonStyle}"  Margin="50,0,0,0" VerticalAlignment="Center" Click="Back_Click"/>
+            <TextBlock Text="Pedido" Style="{StaticResource PageHeaderTextStyle}" Margin="20,0,0,0" VerticalAlignment="Center"/>
         </StackPanel>
 
-        <GridView Name="gdvContainer" Grid.Row="1" DataContext="{Binding Pedido}" Margin="50">
+        <GridView Name="GridViewPedido" Grid.Row="1" DataContext="{Binding Pedido}" Margin="50,0,0,0">
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal" Width="400" Height="120" Grid.Row="1" Background="#0038BD">
-                        <Image Name="imgProducto" Width="120" Height="120" Source="{Binding PurlImage}" Stretch="UniformToFill" Margin="5"/>
-                        <StackPanel>
-                            <TextBlock  Text="{Binding PName}" Style="{StaticResource ResourceKey=TextStyle}" Margin="10,5"/>
+                    <StackPanel Orientation="Horizontal" Width="380" Height="120" Grid.Row="1" Background="#0038BD">
+                        <Image Name="imgProducto" Width="120" Height="120" Source="{Binding PurlImage}" Stretch="UniformToFill"/>
+                        <StackPanel Margin="20,0,0,0">
+                            <TextBlock  Text="{Binding PName}" Style="{StaticResource ResourceKey=TextStyle}" Margin="10,5" FontSize="24" FontWeight="Normal" FontStyle="Italic"/>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Precio c/u:" Style="{StaticResource ResourceKey=TextStyle}" Margin="10,0" Width="130"/>
                                 <TextBlock Text="{Binding PPriceU}" Style="{StaticResource ResourceKey=TextStyle}" Margin="10,0"/>
@@ -63,7 +63,5 @@
             <TextBlock Text="Precio Final:" Style="{StaticResource ResourceKey=PrecioFinalStyle}"/>
             <TextBlock Name="txbPrecioFinal" Style="{StaticResource ResourceKey=PrecioFinalStyle}" Margin="0,0,100,0"/>
         </StackPanel>
-
-
     </Grid>
 </Page>
